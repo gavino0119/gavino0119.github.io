@@ -3,20 +3,20 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>IO 基础总结 | Gavino</title>
+  <title>源码分析——ArrayList | Gavino</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="File类#File 并不是指文件本身两个常量：    路径分隔符File.pathSeparator    名称分隔符File.separator //路径表示的几种形式 //1、windows下 String path = &amp;quot;C:\\Users\\dell\\Desktop&amp;quot;; //2、 path = &amp;quot;C:&amp;quot;+File.separator+&amp;quot;">
-<meta name="keywords" content="Java">
+  <meta name="description" content="一、概览二、扩容三、删除元素四、fail-fast五、序列化六、总结">
+<meta name="keywords" content="源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IO 基础总结">
-<meta property="og:url" content="https://gavino0119.github.io/2019/07/15/IO-基础总结/index.html">
+<meta property="og:title" content="源码分析——ArrayList">
+<meta property="og:url" content="https://gavino0119.github.io/2019/07/15/源码分析——ArrayList/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="File类#File 并不是指文件本身两个常量：    路径分隔符File.pathSeparator    名称分隔符File.separator //路径表示的几种形式 //1、windows下 String path = &amp;quot;C:\\Users\\dell\\Desktop&amp;quot;; //2、 path = &amp;quot;C:&amp;quot;+File.separator+&amp;quot;">
+<meta property="og:description" content="一、概览二、扩容三、删除元素四、fail-fast五、序列化六、总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-15T07:59:36.289Z">
+<meta property="og:updated_time" content="2019-07-15T13:03:01.196Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IO 基础总结">
-<meta name="twitter:description" content="File类#File 并不是指文件本身两个常量：    路径分隔符File.pathSeparator    名称分隔符File.separator //路径表示的几种形式 //1、windows下 String path = &amp;quot;C:\\Users\\dell\\Desktop&amp;quot;; //2、 path = &amp;quot;C:&amp;quot;+File.separator+&amp;quot;">
+<meta name="twitter:title" content="源码分析——ArrayList">
+<meta name="twitter:description" content="一、概览二、扩容三、删除元素四、fail-fast五、序列化六、总结">
   
     <link rel="alternative" href="/atom.xml" title="Gavino" type="application/atom+xml">
   
@@ -214,11 +214,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-IO-基础总结" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-源码分析——ArrayList" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/07/15/IO-基础总结/" class="article-date">
-      <time datetime="2019-07-15T07:50:48.000Z" itemprop="datePublished">2019-07-15</time>
+      <a href="/2019/07/15/源码分析——ArrayList/" class="article-date">
+      <time datetime="2019-07-15T12:57:35.000Z" itemprop="datePublished">2019-07-15</time>
 </a>
     </div>
   
@@ -231,7 +231,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      IO 基础总结
+      源码分析——ArrayList
     </h1>
   
 
@@ -240,13 +240,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java-基础篇/">Java 基础篇</a>
+    <a class="article-category-link" href="/categories/源码分析/">源码分析</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -256,86 +256,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>#File 并不是指文件本身<br>两个常量：<br>    路径分隔符File.pathSeparator<br>    名称分隔符File.separator</p>
-<pre><code>//路径表示的几种形式
-//1、windows下
-String path = &quot;C:\\Users\\dell\\Desktop&quot;;
-//2、
-path = &quot;C:&quot;+File.separator+&quot;Users&quot;+File.separator+&quot;dell&quot;+File.separator+&quot;Desktop&quot;;
-//3、推荐方式
-path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
-<li>IO流基础</li>
-</ul>
-<h3 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h3><pre><code>流动、流向
-以程序为中心</code></pre><h3 id="二、IO流分类"><a href="#二、IO流分类" class="headerlink" title="二、IO流分类"></a>二、IO流分类</h3><pre><code>1、流向:
-    输入流与输出流
-2、数据
-    字节流:二进制        可以一切文件     包括纯文本 、doc 、音频 、视频等等
-    字符流:文本文件        只能处理纯文本
-3、功能
-    节点:包裹源头
-    处理:增强功能，提供性能(提高效率)</code></pre><h3 id="三、字符流与字节流-重点"><a href="#三、字符流与字节流-重点" class="headerlink" title="三、字符流与字节流(重点)"></a>三、字符流与字节流(重点)</h3><pre><code>1、字节流
-    输入流:InputStream
-    输出流:OutputStream
-2、字符流
-(读入  写出)
-    输入流:Reader
-    输出流:Writer</code></pre><h3 id="四、操作"><a href="#四、操作" class="headerlink" title="四、操作"></a>四、操作</h3><pre><code>1、与文件建立联系
-2、选择流
-3、操作
-4、释放资源
-
-###FileWriter写数据###
-    输出流写数据的步骤：
-    A、创建输出流对象
-    B、调用输出流对象的写数据方法 并刷新缓冲区    (硬盘存储数据的基本单位是字节)
-    C、释放资源    (close()方法先刷新 再通知系统释放资源)
-
-换行:\n        \r         \r\n
-* windows识别的换行为 \r\n
-* Linux识别的换行为 \n
-* mac识别的换行为 \r
-
-###FileReader读数据###
-    同 FileWriter写数据
-
-    代码实例:
-    *    int len;
-    *    char[] chs = new char[1024];
-    *    while ((len=fr.read(chs))!=-1) {
-    *        System.out.print((new String(chs,0,len)));
-    *    }
-    *    fr.close();
-
-    *注意 char[] chs = new char[1024];    //写1024及其整数倍
-
-    *往控制台输出时，不要ln 
-     System.out.print();
-
-###文件复制###
-    数据源:
-    目的地:
-    *判断读            //先读
-     然后写进去     //后写
-
-###字符缓冲流###    (高效地读入和写出) 
-    BufferedWriter bf = new BufferedWriter(new FileWriter(&quot;bf.txt&quot;));
-    BufferedReader br = new BufferedReader(new FileReader(&quot;bf.txt&quot;));
-    //注意构造方法里面
-
-    System.out.print(new String(csh,0,len));
-    //
-
-    缓冲流的特殊功能:
-        newLine()    //写一个换行符    这个换行符由系统决定
-        readLine()    //读一行    【不包括换行符】    </code></pre><ul>
-<li><p>IO流高级</p>
-<p>  File:文件和目录路径名的抽象表示形式，File类的实例是不可变的(即File可以创建实例)</p>
-<p>  ##创建功能<br>  createNewFile()<br>  mkdir()<br>  mkdirs()<br>  ##删除功能</p>
-<p>  ##判断功能</p>
-</li>
-</ul>
-
+        <h3 id="一、概览"><a href="#一、概览" class="headerlink" title="一、概览"></a>一、概览</h3><h3 id="二、扩容"><a href="#二、扩容" class="headerlink" title="二、扩容"></a>二、扩容</h3><h3 id="三、删除元素"><a href="#三、删除元素" class="headerlink" title="三、删除元素"></a>三、删除元素</h3><h3 id="四、fail-fast"><a href="#四、fail-fast" class="headerlink" title="四、fail-fast"></a>四、fail-fast</h3><h3 id="五、序列化"><a href="#五、序列化" class="headerlink" title="五、序列化"></a>五、序列化</h3><h3 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h3>
       
       
         <div class="page-reward">
@@ -390,13 +311,13 @@ path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/07/15/IO-基础总结/">IO 基础总结</a></p>
+        <p><span>本文标题:</span><a href="/2019/07/15/源码分析——ArrayList/">源码分析——ArrayList</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Yan weigang 的个人博客">Yan weigang</a></p>
-        <p><span>发布时间:</span>2019年07月15日 - 15时50分</p>
-        <p><span>最后更新:</span>2019年07月15日 - 15时59分</p>
+        <p><span>发布时间:</span>2019年07月15日 - 20时57分</p>
+        <p><span>最后更新:</span>2019年07月15日 - 21时03分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/07/15/IO-基础总结/" title="IO 基础总结">https://gavino0119.github.io/2019/07/15/IO-基础总结/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://gavino0119.github.io/2019/07/15/IO-基础总结/　　作者: Yan weigang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/07/15/源码分析——ArrayList/" title="源码分析——ArrayList">https://gavino0119.github.io/2019/07/15/源码分析——ArrayList/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://gavino0119.github.io/2019/07/15/源码分析——ArrayList/　　作者: Yan weigang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -409,18 +330,9 @@ path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
 
 <nav id="article-nav">
   
-    <a href="/2019/07/15/源码分析——ArrayList/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          源码分析——ArrayList
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/03/my-first-article/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">About Markdown</div>
+    <a href="/2019/07/15/IO-基础总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">IO 基础总结</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -431,7 +343,7 @@ path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#File类"><span class="toc-number">1.</span> <span class="toc-text">File类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一、概念"><span class="toc-number">2.</span> <span class="toc-text">一、概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、IO流分类"><span class="toc-number">3.</span> <span class="toc-text">二、IO流分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、字符流与字节流-重点"><span class="toc-number">4.</span> <span class="toc-text">三、字符流与字节流(重点)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、操作"><span class="toc-number">5.</span> <span class="toc-text">四、操作</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、概览"><span class="toc-number">1.</span> <span class="toc-text">一、概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、扩容"><span class="toc-number">2.</span> <span class="toc-text">二、扩容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、删除元素"><span class="toc-number">3.</span> <span class="toc-text">三、删除元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、fail-fast"><span class="toc-number">4.</span> <span class="toc-text">四、fail-fast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、序列化"><span class="toc-number">5.</span> <span class="toc-text">五、序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、总结"><span class="toc-number">6.</span> <span class="toc-text">六、总结</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -497,13 +409,11 @@ path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/07/15/源码分析——ArrayList/" title="上一篇: 源码分析——ArrayList">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/07/03/my-first-article/" title="下一篇: About Markdown">
+            <a href="/2019/07/15/IO-基础总结/" title="下一篇: IO 基础总结">
                 <i class="fa fa-angle-right"></i>
             </a>
         
