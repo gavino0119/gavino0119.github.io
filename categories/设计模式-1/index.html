@@ -3,15 +3,14 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>标签 - Gavino</title>
+<title>分类: 设计模式|1 - Gavino</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="Java,Markdown,设计模式,源码">
-<meta property="og:type" content="website">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Gavino">
-<meta property="og:url" content="https://gavino0119.github.io/tags/index.html">
+<meta property="og:url" content="https://gavino0119.github.io/categories/设计模式-1/index.html">
 <meta property="og:site_name" content="Gavino">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gavino0119.github.io/images/og_image.png">
@@ -59,7 +58,7 @@
                 
                 <a class="navbar-item" href="/categories">分类</a>
                 
-                <a class="navbar-item is-active" href="/tags">标签</a>
+                <a class="navbar-item" href="/tags">标签</a>
                 
                 <a class="navbar-item" href="/about">关于</a>
                 
@@ -91,46 +90,95 @@
         <div class="container">
             <div class="columns">
                 <!-- 将main_column_class() 改为 col() -->
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分类</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">设计模式|1</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-20T14:55:48.000Z">2019-07-20</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/设计模式-1/">设计模式|1</a>
                 </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Markdown/">
-                        <span class="tag">Markdown</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/源码/">
-                        <span class="tag">源码</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 909 个字)
+                </span>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/设计模式/">
-                        <span class="tag">设计模式</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/20/单例模式/">单例模式</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。<br>这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
+</blockquote>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><p>1、在内存里只有一个实例，减少了内存的开销，尤其是频繁的创建和销毁实例（比如管理学院首页页面缓存）。<br> 2、避免对资源的多重占用（比如写文件操作）。</p>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>没有接口，不能继承，与单一职责原则冲突，一个类应该只关心内部逻辑，而不关心外面怎么样来实例化。</p>
+<h3 id="实现方式一：懒汉式（线程不安全）"><a href="#实现方式一：懒汉式（线程不安全）" class="headerlink" title="实现方式一：懒汉式（线程不安全）"></a>实现方式一：懒汉式（线程不安全）</h3><p>懒汉式：就是用的时候再进行实例化对象。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;  </span><br><span class="line">    private static Singleton instance;  </span><br><span class="line">    private Singleton ()&#123;&#125;  </span><br><span class="line">  </span><br><span class="line">    public static Singleton getInstance() &#123;  </span><br><span class="line">    if (instance == null) &#123;  </span><br><span class="line">        instance = new Singleton();  </span><br><span class="line">    &#125;  </span><br><span class="line">    return instance;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种实现方式不支持多线程，因为没有同步锁，多线程下不能正常工作。</p>
+<h3 id="实现方式二：懒汉式（线程安全）"><a href="#实现方式二：懒汉式（线程安全）" class="headerlink" title="实现方式二：懒汉式（线程安全）"></a>实现方式二：懒汉式（线程安全）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    private static Singleton instance;</span><br><span class="line"></span><br><span class="line">    public static synchronized Singleton getInstance()&#123;</span><br><span class="line">        if (instance == null)&#123;</span><br><span class="line">            instance = new Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以在多线程环境下使用，但是效率太低。</p>
+<p><strong>优点：</strong>一个对象初始化一次，节省内存。<br><strong>缺点：</strong>必须用synchronized来维持单例，没效率。</p>
+<h3 id="实现方式三：饿汉式（线程安全）"><a href="#实现方式三：饿汉式（线程安全）" class="headerlink" title="实现方式三：饿汉式（线程安全）"></a>实现方式三：饿汉式（线程安全）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    private static Singleton instance = new Singleton();</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为它作为静态资源，所以在类装载时就被实例化</p>
+<p><strong>优点：</strong>没有加锁，执行效率会提高。<br><strong>缺点：</strong>类加载时就初始化，浪费内存。</p>
+<h3 id="实现方式四：双检锁-双重校验锁DCL（线程安全）"><a href="#实现方式四：双检锁-双重校验锁DCL（线程安全）" class="headerlink" title="实现方式四：双检锁/双重校验锁DCL（线程安全）"></a>实现方式四：双检锁/双重校验锁DCL（线程安全）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    private static Singleton instance;</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        if (instance == null)&#123;</span><br><span class="line">            synchronized (Singleton.class)&#123;</span><br><span class="line">                if (instance == null)&#123;</span><br><span class="line">                    instance = new Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>采用双锁机制，安全且在多线程情况下能保持高性能。详细了解请点击：<a href="https://www.jianshu.com/p/3707bc0fc6f0" target="_blank" rel="noopener">Java并发编程 – 单例模式线程安全问题</a></p>
+<h3 id="实现方式五：登记式-静态内部类（线程安全）"><a href="#实现方式五：登记式-静态内部类（线程安全）" class="headerlink" title="实现方式五：登记式/静态内部类（线程安全）"></a>实现方式五：登记式/静态内部类（线程安全）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    private static Singleton instance;</span><br><span class="line"></span><br><span class="line">    private static class SingletonHandler&#123;</span><br><span class="line">        private static final Singleton INSTANCE = new Singleton();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return SingletonHandler.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种方式可以说是恶汉式的变通版，SingletonHandler没有被主动使用的情况下是不会实例化Singleton对象的，所以这样做，既能达到lazy式的加载，又能保证线程安全。</p>
+<h3 id="实现方式六：枚举类（线程安全）"><a href="#实现方式六：枚举类（线程安全）" class="headerlink" title="实现方式六：枚举类（线程安全）"></a>实现方式六：枚举类（线程安全）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public enum  Singleton &#123;</span><br><span class="line">    INSTANCE;</span><br><span class="line">    public void myMethod() &#123;</span><br><span class="line">        System.out.println(&quot;enum instance test&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它不仅能避免多线程同步问题，而且还自动支持序列化机制，防止反序列化重新创建新的对象，绝对防止多次实例化。</p>
+<p>测试：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Singleton singleton = Singleton.INSTANCE;</span><br><span class="line">        singleton.myMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum instance test</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不建议使用第 1 种和第 2 种懒汉方式，建议使用第 3 种饿汉方式。只有在要明确实现 lazy loading 效果时，才会使用第 5 种登记方式。如果涉及到反序列化创建对象时，可以尝试使用第 6 种枚举方式。</p>
+
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+
+
+
+</div>
                         <!-- 修改 -->
 
 
