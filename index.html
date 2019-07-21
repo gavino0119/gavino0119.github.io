@@ -90,7 +90,7 @@
         <div class="container">
             <div class="columns">
                 <!-- 将main_column_class() 改为 col() -->
-                <div class="column is-9-tablet is-9-desktop is-7-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
     <div class="card">
     
     <div class="card-image">
@@ -113,7 +113,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 909 个字)
+                    6 分钟 读完 (大约 910 个字)
                 </span>
                 
                 
@@ -129,38 +129,17 @@
             <blockquote>
 <p>单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。<br>这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
 </blockquote>
-<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><p>1、在内存里只有一个实例，减少了内存的开销，尤其是频繁的创建和销毁实例（比如管理学院首页页面缓存）。<br> 2、避免对资源的多重占用（比如写文件操作）。</p>
-<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>没有接口，不能继承，与单一职责原则冲突，一个类应该只关心内部逻辑，而不关心外面怎么样来实例化。</p>
-<h3 id="实现方式一：懒汉式（线程不安全）"><a href="#实现方式一：懒汉式（线程不安全）" class="headerlink" title="实现方式一：懒汉式（线程不安全）"></a>实现方式一：懒汉式（线程不安全）</h3><p>懒汉式：就是用的时候再进行实例化对象。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;  </span><br><span class="line">    private static Singleton instance;  </span><br><span class="line">    private Singleton ()&#123;&#125;  </span><br><span class="line">  </span><br><span class="line">    public static Singleton getInstance() &#123;  </span><br><span class="line">    if (instance == null) &#123;  </span><br><span class="line">        instance = new Singleton();  </span><br><span class="line">    &#125;  </span><br><span class="line">    return instance;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种实现方式不支持多线程，因为没有同步锁，多线程下不能正常工作。</p>
-<h3 id="实现方式二：懒汉式（线程安全）"><a href="#实现方式二：懒汉式（线程安全）" class="headerlink" title="实现方式二：懒汉式（线程安全）"></a>实现方式二：懒汉式（线程安全）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    private static Singleton instance;</span><br><span class="line"></span><br><span class="line">    public static synchronized Singleton getInstance()&#123;</span><br><span class="line">        if (instance == null)&#123;</span><br><span class="line">            instance = new Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以在多线程环境下使用，但是效率太低。</p>
-<p><strong>优点：</strong>一个对象初始化一次，节省内存。<br><strong>缺点：</strong>必须用synchronized来维持单例，没效率。</p>
-<h3 id="实现方式三：饿汉式（线程安全）"><a href="#实现方式三：饿汉式（线程安全）" class="headerlink" title="实现方式三：饿汉式（线程安全）"></a>实现方式三：饿汉式（线程安全）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    private static Singleton instance = new Singleton();</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>因为它作为静态资源，所以在类装载时就被实例化</p>
-<p><strong>优点：</strong>没有加锁，执行效率会提高。<br><strong>缺点：</strong>类加载时就初始化，浪费内存。</p>
-<h3 id="实现方式四：双检锁-双重校验锁DCL（线程安全）"><a href="#实现方式四：双检锁-双重校验锁DCL（线程安全）" class="headerlink" title="实现方式四：双检锁/双重校验锁DCL（线程安全）"></a>实现方式四：双检锁/双重校验锁DCL（线程安全）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    private static Singleton instance;</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        if (instance == null)&#123;</span><br><span class="line">            synchronized (Singleton.class)&#123;</span><br><span class="line">                if (instance == null)&#123;</span><br><span class="line">                    instance = new Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>采用双锁机制，安全且在多线程情况下能保持高性能。详细了解请点击：<a href="https://www.jianshu.com/p/3707bc0fc6f0" target="_blank" rel="noopener">Java并发编程 – 单例模式线程安全问题</a></p>
-<h3 id="实现方式五：登记式-静态内部类（线程安全）"><a href="#实现方式五：登记式-静态内部类（线程安全）" class="headerlink" title="实现方式五：登记式/静态内部类（线程安全）"></a>实现方式五：登记式/静态内部类（线程安全）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    private static Singleton instance;</span><br><span class="line"></span><br><span class="line">    private static class SingletonHandler&#123;</span><br><span class="line">        private static final Singleton INSTANCE = new Singleton();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return SingletonHandler.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种方式可以说是恶汉式的变通版，SingletonHandler没有被主动使用的情况下是不会实例化Singleton对象的，所以这样做，既能达到lazy式的加载，又能保证线程安全。</p>
-<h3 id="实现方式六：枚举类（线程安全）"><a href="#实现方式六：枚举类（线程安全）" class="headerlink" title="实现方式六：枚举类（线程安全）"></a>实现方式六：枚举类（线程安全）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public enum  Singleton &#123;</span><br><span class="line">    INSTANCE;</span><br><span class="line">    public void myMethod() &#123;</span><br><span class="line">        System.out.println(&quot;enum instance test&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>它不仅能避免多线程同步问题，而且还自动支持序列化机制，防止反序列化重新创建新的对象，绝对防止多次实例化。</p>
-<p>测试：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Singleton singleton = Singleton.INSTANCE;</span><br><span class="line">        singleton.myMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum instance test</span><br></pre></td></tr></table></figure>
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不建议使用第 1 种和第 2 种懒汉方式，建议使用第 3 种饿汉方式。只有在要明确实现 lazy loading 效果时，才会使用第 5 种登记方式。如果涉及到反序列化创建对象时，可以尝试使用第 6 种枚举方式。</p>
-
+            
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/20/单例模式/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -195,7 +174,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2295 个字)
+                    15 分钟 读完 (大约 2296 个字)
                 </span>
                 
                 
@@ -211,135 +190,17 @@
             <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
 <p>ArrayList是我们开发中非常常用的数据存储容器之一，其底层是数组实现的，我们可以在集合中存储任意类型的数据，ArrayList是线程不安全的，非常适合用于对元素进行查找，效率非常高。</p>
 </blockquote>
-<h3 id="线程安全性"><a href="#线程安全性" class="headerlink" title="线程安全性"></a>线程安全性</h3><p>对ArrayList的操作一般分为两个步骤，改变位置(size)和操作元素(e)。所以这个过程在多线程的环境下是不能保证具有原子性的，因此ArrayList在多线程的环境下是线程不安全的。</p>
-<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><h5 id="1-属性分析"><a href="#1-属性分析" class="headerlink" title="1. 属性分析"></a>1. 属性分析</h5><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 默认初始化容量</span><br><span class="line"> */</span><br><span class="line">private static final int DEFAULT_CAPACITY = 10;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 如果自定义容量为0，则会默认用它来初始化ArrayList。或者用于空数组替换。</span><br><span class="line"> */</span><br><span class="line">private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 如果没有自定义容量，则会使用它来初始化ArrayList。或者用于空数组比对。</span><br><span class="line"> */</span><br><span class="line">private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 这就是ArrayList底层用到的数组</span><br><span class="line"> </span><br><span class="line"> * 非私有，以简化嵌套类访问</span><br><span class="line"> * transient 在已经实现序列化的类中，不允许某变量序列化</span><br><span class="line"> */</span><br><span class="line">transient Object[] elementData;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 实际ArrayList集合大小</span><br><span class="line"> */</span><br><span class="line">private int size;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 可分配的最大容量</span><br><span class="line"> */</span><br><span class="line">private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h6 id="扩展：什么是序列化"><a href="#扩展：什么是序列化" class="headerlink" title="扩展：什么是序列化"></a>扩展：什么是序列化</h6><p>序列化是指：将对象转换成以字节序列的形式来表示，以便用于持久化和传输。</p>
-<p>实现方法：实现Serializable接口。</p>
-<p>然后用的时候拿出来进行反序列化即可又变成Java对象。</p>
-<hr>
-<h5 id="transient关键字解析"><a href="#transient关键字解析" class="headerlink" title="transient关键字解析"></a>transient关键字解析</h5><blockquote>
-<p>Java中transient关键字的作用，简单地说，就是让某些被修饰的成员属性变量不被序列化。</p>
-</blockquote>
-<p>有了<code>transient</code>关键字声明，则这个变量不会参与序列化操作，即使所在类实现了Serializable接口，反序列化后该变量为空值。</p>
-<blockquote>
-<p>那么问题来了：ArrayList中数组声明：<code>transient Object[] elementData;</code>，事实上我们使用ArrayList在网络传输用的很正常，并没有出现空值。</p>
-</blockquote>
-<p>原来：<code>ArrayList</code>在序列化的时候会调用<code>writeObject()</code>方法，将<code>size</code>和<code>element</code>写入<code>ObjectOutputStream</code>；反序列化时调用<code>readObject()</code>，从<code>ObjectInputStream</code>获取<code>size</code>和<code>element</code>，再恢复到<code>elementData</code>。</p>
-<blockquote>
-<p>那为什么不直接用elementData来序列化，而采用上诉的方式来实现序列化呢？</p>
-</blockquote>
-<p>原因在于<code>elementData</code>是一个缓存数组，它通常会预留一些容量，等容量不足时再扩充容量，那么有些空间可能就没有实际存储元素，采用上诉的方式来实现序列化时，就可以保证只序列化实际存储的那些元素，而不是整个数组，从而<strong>节省空间和时间</strong>。</p>
-<h5 id="2-构造方法分析"><a href="#2-构造方法分析" class="headerlink" title="2. 构造方法分析"></a>2. 构造方法分析</h5><p>根据initialCapacity 初始化一个空数组，如果值为0，则初始化一个空数组:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 根据initialCapacity 初始化一个空数组</span><br><span class="line"> */</span><br><span class="line">public ArrayList(int initialCapacity) &#123;</span><br><span class="line">    if (initialCapacity &gt; 0) &#123;</span><br><span class="line">        this.elementData = new Object[initialCapacity];</span><br><span class="line">    &#125; else if (initialCapacity == 0) &#123;</span><br><span class="line">        this.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+</span><br><span class="line">                                           initialCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>不带参数初始化，默认容量为10:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 不带参数初始化，默认容量为10</span><br><span class="line"> */</span><br><span class="line">public ArrayList() &#123;</span><br><span class="line">    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通过集合做参数的形式初始化：如果集合为空，则初始化为空数组：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 通过集合做参数的形式初始化</span><br><span class="line"> */</span><br><span class="line">public ArrayList(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    elementData = c.toArray();</span><br><span class="line">    if ((size = elementData.length) != 0) &#123;</span><br><span class="line">        // c.toArray might (incorrectly) not return Object[] (see 6260652)</span><br><span class="line">        if (elementData.getClass() != Object[].class)</span><br><span class="line">            elementData = Arrays.copyOf(elementData, size, Object[].class);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // replace with empty array.</span><br><span class="line">        this.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-主干方法"><a href="#3-主干方法" class="headerlink" title="3. 主干方法"></a>3. 主干方法</h4><h6 id="trimToSize-方法："><a href="#trimToSize-方法：" class="headerlink" title="trimToSize()方法："></a>trimToSize()方法：</h6><blockquote>
-<p>用来最小化实例存储，将容器大小调整为当前元素所占用的容量大小。</p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 这个方法用来最小化实例存储。</span><br><span class="line"> */</span><br><span class="line">public void trimToSize() &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    if (size &lt; elementData.length) &#123;</span><br><span class="line">        elementData = (size == 0)</span><br><span class="line">          ? EMPTY_ELEMENTDATA</span><br><span class="line">          : Arrays.copyOf(elementData, size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="clone-方法"><a href="#clone-方法" class="headerlink" title="clone()方法"></a>clone()方法</h5><blockquote>
-<p>用来克隆出一个新数组。</p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public Object clone() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        ArrayList&lt;?&gt; v = (ArrayList&lt;?&gt;) super.clone();</span><br><span class="line">        v.elementData = Arrays.copyOf(elementData, size);</span><br><span class="line">        v.modCount = 0;</span><br><span class="line">        return v;</span><br><span class="line">    &#125; catch (CloneNotSupportedException e) &#123;</span><br><span class="line">        // this shouldn&apos;t happen, since we are Cloneable</span><br><span class="line">        throw new InternalError(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通过调用<code>Object</code>的<code>clone()</code>方法来得到一个新的<code>ArrayList</code>对象，然后将<code>elementData</code>复制给该对象并返回。</p>
-<h5 id="add-E-e-方法"><a href="#add-E-e-方法" class="headerlink" title="add(E e)方法"></a>add(E e)方法</h5><blockquote>
-<p>在数组末尾添加元素</p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 在数组末尾添加元素</span><br><span class="line"> */</span><br><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    ensureCapacityInternal(size + 1);  // Increments modCount!!</span><br><span class="line">    elementData[size++] = e;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>看到它首先调用了<code>ensureCapacityInternal()</code>方法.注意参数是size+1,这是个面试考点。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private void ensureCapacityInternal(int minCapacity) &#123;</span><br><span class="line">    ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个方法里又嵌套调用了两个方法:计算容量+确保容量</p>
-<p>计算容量：如果elementData是空，则返回默认容量10和size+1的最大值，否则返回size+1</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private static int calculateCapacity(Object[] elementData, int minCapacity) &#123;</span><br><span class="line">    if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">        return Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    return minCapacity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>计算完容量后，进行确保容量可用：(modCount不用理它，它用来计算修改次数)</p>
-<p>如果<code>size+1 &gt; elementData.length</code>证明数组已经放满，则增加容量，调用<code>grow()</code>。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void ensureExplicitCapacity(int minCapacity) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line"></span><br><span class="line">    // overflow-conscious code</span><br><span class="line">    if (minCapacity - elementData.length &gt; 0)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>增加容量：默认1.5倍扩容。</p>
-<ol>
-<li>获取当前数组长度=&gt;oldCapacity</li>
-<li>oldCapacity&gt;&gt;1 表示将oldCapacity右移一位(位运算)，相当于除2。再加上1，相当于新容量扩容1.5倍。</li>
-<li>如果<code>newCapacity&lt;minCapacity</code>，则<code>newCapacity = minCapacity</code>。看例子更明白一点：假设size为1,则<code>minCapacity=size+1=2</code>,而<code>elementData.length=1</code>,<code>newCapacity=1+1&gt;&gt;1=1</code>,<code>1&lt;2</code>所以如果不处理该情况，扩容将不能正确完成。</li>
-<li>如果新容量比最大值还要大，则将新容量赋值为VM要求最大值。</li>
-<li>将elementData拷贝到一个新的容量中。</li>
-</ol>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private void grow(int minCapacity) &#123;</span><br><span class="line">    // overflow-conscious code</span><br><span class="line">    int oldCapacity = elementData.length;</span><br><span class="line">    int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</span><br><span class="line">    if (newCapacity - minCapacity &lt; 0)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    // minCapacity is usually close to size, so this is a win:</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h5 id="size-1的问题"><a href="#size-1的问题" class="headerlink" title="size+1的问题"></a>size+1的问题</h5><blockquote>
-<p>好了，那到这里可以说一下为什么要size+1。</p>
-</blockquote>
-<p>size+1代表的含义是：</p>
-<ol>
-<li>如果集合添加元素成功后，集合中的实际元素个数。</li>
-<li>为了确保扩容不会出现错误。</li>
-</ol>
-<p>假如不加一处理，如果默认size是0，则0+0&gt;&gt;1还是0。<br>如果size是1，则1+1&gt;&gt;1还是1。有人问:不是默认容量大小是10吗?事实上，jdk1.8版本以后，ArrayList的扩容放在add()方法中。之前放在构造方法中。我用的是1.8版本，所以默认<code>ArrayList arrayList = new ArrayList();</code>后，size应该是0.所以,size+1对扩容来讲很必要.</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    ArrayList arrayList = new ArrayList();</span><br><span class="line">    System.out.println(arrayList.size());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出:0</span><br></pre></td></tr></table></figure>
-
-<p>事实上上面的代码是证明不了容量大小的，因为size只会在调用<code>add()</code>方法时才会自增。有办法的小伙伴可以在评论区大显神通。</p>
-<hr>
-<h5 id="add-int-index-E-element-方法"><a href="#add-int-index-E-element-方法" class="headerlink" title="add(int index, E element)方法"></a>add(int index, E element)方法</h5><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void add(int index, E element) &#123;</span><br><span class="line">    rangeCheckForAdd(index);</span><br><span class="line"></span><br><span class="line">    ensureCapacityInternal(size + 1);  // Increments modCount!!</span><br><span class="line">    System.arraycopy(elementData, index, elementData, index + 1,</span><br><span class="line">                     size - index);</span><br><span class="line">    elementData[index] = element;</span><br><span class="line">    size++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>rangeCheckForAdd()是越界异常检测方法。<code>ensureCapacityInternal()</code>之前有讲，着重说一下<code>System.arrayCopy</code>方法：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</span><br><span class="line">代码解释:</span><br><span class="line">　　Object src : 原数组</span><br><span class="line">   int srcPos : 从元数据的起始位置开始</span><br><span class="line">　　Object dest : 目标数组</span><br><span class="line">　　int destPos : 目标数组的开始起始位置</span><br><span class="line">　　int length  : 要copy的数组的长度</span><br></pre></td></tr></table></figure>
-
-<p>示例：size为6，我们调用<code>add(2,element)</code>方法，则会从index=<code>2+1=3</code>的位置开始，将数组元素替换为从index起始位置为<code>index=2</code>，长度为<code>6-2=4</code>的数据。</p>
-<blockquote>
-<p><img src="https://upload-images.jianshu.io/upload_images/5786888-947cd806b120f0ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</blockquote>
-<p>异常处理：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private void rangeCheckForAdd(int index) &#123;</span><br><span class="line">    if (index &gt; size || index &lt; 0)</span><br><span class="line">        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="set-int-index-E-element-方法"><a href="#set-int-index-E-element-方法" class="headerlink" title="set(int index,E element)方法"></a>set(int index,E element)方法</h5><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public E set(int index, E element) &#123;</span><br><span class="line">    rangeCheck(index);</span><br><span class="line"></span><br><span class="line">    E oldValue = elementData(index);</span><br><span class="line">    elementData[index] = element;</span><br><span class="line">    return oldValue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">E elementData(int index) &#123;</span><br><span class="line">    return (E) elementData[index];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>逻辑很简单，覆盖旧值并返回。</p>
-<h5 id="indexOf-Object-o-方法"><a href="#indexOf-Object-o-方法" class="headerlink" title="indexOf(Object o)方法"></a>indexOf(Object o)方法</h5><blockquote>
-<p>根据Object对象获取数组中的索引值。</p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int indexOf(Object o) &#123;</span><br><span class="line">    if (o == null) &#123;</span><br><span class="line">        for (int i = 0; i &lt; size; i++)</span><br><span class="line">            if (elementData[i]==null)</span><br><span class="line">                return i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (int i = 0; i &lt; size; i++)</span><br><span class="line">            if (o.equals(elementData[i]))</span><br><span class="line">                return i;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果o为空，则返回数组中第一个为空的索引；不为空也类似。</p>
-<p>注意：通过源码可以看到，该方法是允许传空值进来的。</p>
-<h5 id="get-int-index-方法"><a href="#get-int-index-方法" class="headerlink" title="get(int index)方法"></a>get(int index)方法</h5><blockquote>
-<p>返回指定下标处的元素的值。</p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public E get(int index) &#123;</span><br><span class="line">    rangeCheck(index);</span><br><span class="line"></span><br><span class="line">    return elementData(index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>rangeCheck(index)</code>会检测index值是否合法，如果合法则返回索引对应的值。</p>
-<h5 id="remove-int-index-方法"><a href="#remove-int-index-方法" class="headerlink" title="remove(int index)方法"></a>remove(int index)方法</h5><blockquote>
-<p>删除指定下标的元素。</p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public E remove(int index) &#123;</span><br><span class="line">    // 检测index是否合法</span><br><span class="line">    rangeCheck(index);</span><br><span class="line">    // 数据结构修改次数</span><br><span class="line">    modCount++;</span><br><span class="line">    E oldValue = elementData(index);</span><br><span class="line"></span><br><span class="line">    // 记住这个算法</span><br><span class="line">    int numMoved = size - index - 1;</span><br><span class="line">    if (numMoved &gt; 0)</span><br><span class="line">        System.arraycopy(elementData, index+1, elementData, index,</span><br><span class="line">                         numMoved);</span><br><span class="line">    elementData[--size] = null; // clear to let GC do its work</span><br><span class="line"></span><br><span class="line">    return oldValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里又碰到了<code>System.arraycopy()</code>方法，详情请查阅上文。</p>
-<p>大概思路：将该元素后面的元素前移，最后一个元素置空。</p>
-<h3 id="ArrayList优缺点"><a href="#ArrayList优缺点" class="headerlink" title="ArrayList优缺点"></a>ArrayList优缺点</h3><p>优点：</p>
-<ol>
-<li>因为其底层是数组，所以修改和查询效率高。</li>
-<li>可自动扩容(1.5倍)。</li>
-</ol>
-<p>缺点：</p>
-<ol>
-<li>插入和删除效率不高。</li>
-<li>线程不安全。</li>
-</ol>
-<p>那面试手写ArrayList应该就不是问题了。</p>
-
+            
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/15/ArrayList源码分析/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -374,7 +235,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 562 个字)
+                    4 分钟 读完 (大约 563 个字)
                 </span>
                 
                 
@@ -394,81 +255,18 @@ String path = &quot;C:\\Users\\dell\\Desktop&quot;;
 //2、
 path = &quot;C:&quot;+File.separator+&quot;Users&quot;+File.separator+&quot;dell&quot;+File.separator+&quot;Desktop&quot;;
 //3、推荐方式
-path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
-<li>IO流基础</li>
-</ul>
-<h3 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h3><pre><code>流动、流向
-以程序为中心</code></pre><h3 id="二、IO流分类"><a href="#二、IO流分类" class="headerlink" title="二、IO流分类"></a>二、IO流分类</h3><pre><code>1、流向:
-    输入流与输出流
-2、数据
-    字节流:二进制        可以一切文件     包括纯文本 、doc 、音频 、视频等等
-    字符流:文本文件        只能处理纯文本
-3、功能
-    节点:包裹源头
-    处理:增强功能，提供性能(提高效率)</code></pre><h3 id="三、字符流与字节流-重点"><a href="#三、字符流与字节流-重点" class="headerlink" title="三、字符流与字节流(重点)"></a>三、字符流与字节流(重点)</h3><pre><code>1、字节流
-    输入流:InputStream
-    输出流:OutputStream
-2、字符流
-(读入  写出)
-    输入流:Reader
-    输出流:Writer</code></pre><h3 id="四、操作"><a href="#四、操作" class="headerlink" title="四、操作"></a>四、操作</h3><pre><code>1、与文件建立联系
-2、选择流
-3、操作
-4、释放资源
-
-###FileWriter写数据###
-    输出流写数据的步骤：
-    A、创建输出流对象
-    B、调用输出流对象的写数据方法 并刷新缓冲区    (硬盘存储数据的基本单位是字节)
-    C、释放资源    (close()方法先刷新 再通知系统释放资源)
-
-换行:\n        \r         \r\n
-* windows识别的换行为 \r\n
-* Linux识别的换行为 \n
-* mac识别的换行为 \r
-
-###FileReader读数据###
-    同 FileWriter写数据
-
-    代码实例:
-    *    int len;
-    *    char[] chs = new char[1024];
-    *    while ((len=fr.read(chs))!=-1) {
-    *        System.out.print((new String(chs,0,len)));
-    *    }
-    *    fr.close();
-
-    *注意 char[] chs = new char[1024];    //写1024及其整数倍
-
-    *往控制台输出时，不要ln 
-     System.out.print();
-
-###文件复制###
-    数据源:
-    目的地:
-    *判断读            //先读
-     然后写进去     //后写
-
-###字符缓冲流###    (高效地读入和写出) 
-    BufferedWriter bf = new BufferedWriter(new FileWriter(&quot;bf.txt&quot;));
-    BufferedReader br = new BufferedReader(new FileReader(&quot;bf.txt&quot;));
-    //注意构造方法里面
-
-    System.out.print(new String(csh,0,len));
-    //
-
-    缓冲流的特殊功能:
-        newLine()    //写一个换行符    这个换行符由系统决定
-        readLine()    //读一行    【不包括换行符】    </code></pre><ul>
-<li><p>IO流高级</p>
-<p>  File:文件和目录路径名的抽象表示形式，File类的实例是不可变的(即File可以创建实例)</p>
-<p>  ##创建功能<br>  createNewFile()<br>  mkdir()<br>  mkdirs()<br>  ##删除功能</p>
-<p>  ##判断功能</p>
-</li>
-</ul>
-
+path = &quot;C:/Users/dell/Desktop&quot;;</code></pre>
+            
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/15/IO-基础总结/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -503,7 +301,7 @@ path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 345 个字)
+                    2 分钟 读完 (大约 346 个字)
                 </span>
                 
                 
@@ -517,27 +315,17 @@ path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
         </h1>
         <div class="content">
             <h3 id="一、Markdown"><a href="#一、Markdown" class="headerlink" title="一、Markdown"></a>一、Markdown</h3><p>Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯（英语：John Gruber）。<br>它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML（或者HTML）文档”。<br>这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。<br>由于Markdown的轻量化、易读易写特性，并且对于图片，图表、数学式都有支持</p>
-<h3 id="二、语法"><a href="#二、语法" class="headerlink" title="二、语法"></a>二、语法</h3><h4 id="2-1-分割线"><a href="#2-1-分割线" class="headerlink" title="2.1 分割线"></a>2.1 分割线</h4><h2 id="分割线最常使用就是三个或以上-，还可以使用-和-。"><a href="#分割线最常使用就是三个或以上-，还可以使用-和-。" class="headerlink" title="分割线最常使用就是三个或以上*，还可以使用-和_。"></a>分割线最常使用就是三个或以上<code>*</code>，还可以使用<code>-</code>和<code>_</code>。</h2><h4 id="2-2标题"><a href="#2-2标题" class="headerlink" title="2.2标题"></a>2.2标题</h4><p>效果：</p>
-<blockquote>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6></blockquote>
-<h4 id="2-3列表"><a href="#2-3列表" class="headerlink" title="2.3列表"></a>2.3列表</h4><p>有序列表的标记方式是将上述的符号换成数字,并辅以<code>.</code>，如：</p>
-<blockquote>
-<p>1 . 第一项<br>2 . 第二项<br>3 . 第三项    </p>
-</blockquote>
-<p>效果：</p>
-<blockquote>
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ol>
-</blockquote>
-<p>后面俩字<strong>加黑</strong></p>
-<p>后面俩字<em>斜体</em></p>
-<h4 id="2-4段落"><a href="#2-4段落" class="headerlink" title="2.4段落"></a>2.4段落</h4><p>段落的前后要有空行，所谓的空行是指没有文字内容。若想在段内强制换行的方式是使用<strong>两个以上</strong>空格加上回车（引用中换行省略回车）。</p>
-<h4 id="2-5代码段"><a href="#2-5代码段" class="headerlink" title="2.5代码段"></a>2.5代码段</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   for(int j=0;j&lt;=ny;++j) &#123;</span><br><span class="line">   	if(i)</span><br><span class="line">       	DP[i][j]+=DP[i-1][j];</span><br><span class="line">   	if(j)</span><br><span class="line">       	DP[i][j]+=DP[i][j-1];</span><br><span class="line">   		DP[i][j]*=!mark[i][j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/03/about markdown/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -568,7 +356,7 @@ path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 163 个字)
+                    1 分钟 读完 (大约 164 个字)
                 </span>
                 
                 
@@ -583,22 +371,18 @@ path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
         <div class="content">
             <h3 id="博客搭建"><a href="#博客搭建" class="headerlink" title="博客搭建"></a>博客搭建</h3><h3 id="博客主题"><a href="#博客主题" class="headerlink" title="博客主题"></a>博客主题</h3><hr>
 <h3 id="填过的坑"><a href="#填过的坑" class="headerlink" title="填过的坑"></a>填过的坑</h3><p>1、关于解决 npm 安装过慢的问题<br>在cmd 命令行将默认源改为淘宝镜像源</p>
-<h2 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h2><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="hljs-string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+<h2 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h2>
+            
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/03/my blog/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>

@@ -8,19 +8,19 @@
 
 
 
-    <meta name="description" content="单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。  优点1、在内存里只有一个实例，减少了内存的开销，尤其是频繁的创建和销毁实例（比如管理学">
+    <meta name="description" content="单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。">
 <meta name="keywords" content="Java,设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单例模式">
 <meta property="og:url" content="https://gavino0119.github.io/2019/07/20/单例模式/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。  优点1、在内存里只有一个实例，减少了内存的开销，尤其是频繁的创建和销毁实例（比如管理学">
+<meta property="og:description" content="单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gavino0119.github.io/images/Singleton.jpg">
-<meta property="og:updated_time" content="2019-07-21T01:26:50.397Z">
+<meta property="og:updated_time" content="2019-07-21T03:58:35.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单例模式">
-<meta name="twitter:description" content="单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。  优点1、在内存里只有一个实例，减少了内存的开销，尤其是频繁的创建和销毁实例（比如管理学">
+<meta name="twitter:description" content="单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。">
 <meta name="twitter:image" content="https://gavino0119.github.io/images/Singleton.jpg">
 
 
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 909 个字)
+                    6 分钟 读完 (大约 910 个字)
                 </span>
                 
                 
@@ -133,6 +133,8 @@
             <blockquote>
 <p>单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。<br>这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
 </blockquote>
+<a id="more"></a>
+
 <h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><p>1、在内存里只有一个实例，减少了内存的开销，尤其是频繁的创建和销毁实例（比如管理学院首页页面缓存）。<br> 2、避免对资源的多重占用（比如写文件操作）。</p>
 <h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>没有接口，不能继承，与单一职责原则冲突，一个类应该只关心内部逻辑，而不关心外面怎么样来实例化。</p>
 <h3 id="实现方式一：懒汉式（线程不安全）"><a href="#实现方式一：懒汉式（线程不安全）" class="headerlink" title="实现方式一：懒汉式（线程不安全）"></a>实现方式一：懒汉式（线程不安全）</h3><p>懒汉式：就是用的时候再进行实例化对象。</p>
@@ -162,6 +164,32 @@
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum instance test</span><br></pre></td></tr></table></figure>
 
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不建议使用第 1 种和第 2 种懒汉方式，建议使用第 3 种饿汉方式。只有在要明确实现 lazy loading 效果时，才会使用第 5 种登记方式。如果涉及到反序列化创建对象时，可以尝试使用第 6 种枚举方式。</p>
+
+            
+<div style="padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    padding: 7px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #565a5f;
+    line-height: 2em;
+">
+        <div class="copyright-left">
+            <i class="fa fa-lightbulb"></i>
+            本文由 <a href="http://blog.kimzing.com/">gavino</a> 创作，
+            <!--
+            采用
+            <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
+            -->
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/07/20/单例模式/index.html <br>
+        </div>
+        <div style="clear:both;height:0px;"></div>
+</div>
 
         </div>
         
@@ -196,7 +224,7 @@
         <i class="fab fa-alipay"></i>
     </span>
     <span>支付宝</span>
-    <div class="qrcode"><img src="/images/honbao.PNG" alt="支付宝"></div>
+    <div class="qrcode"><img src="/images/honbao.jpg" alt="支付宝"></div>
 </a>
 
                 

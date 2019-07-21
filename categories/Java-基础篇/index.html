@@ -90,7 +90,7 @@
         <div class="container">
             <div class="columns">
                 <!-- 将main_column_class() 改为 col() -->
-                <div class="column is-9-tablet is-9-desktop is-7-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
@@ -124,7 +124,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 562 个字)
+                    4 分钟 读完 (大约 563 个字)
                 </span>
                 
                 
@@ -144,81 +144,18 @@ String path = &quot;C:\\Users\\dell\\Desktop&quot;;
 //2、
 path = &quot;C:&quot;+File.separator+&quot;Users&quot;+File.separator+&quot;dell&quot;+File.separator+&quot;Desktop&quot;;
 //3、推荐方式
-path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><ul>
-<li>IO流基础</li>
-</ul>
-<h3 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h3><pre><code>流动、流向
-以程序为中心</code></pre><h3 id="二、IO流分类"><a href="#二、IO流分类" class="headerlink" title="二、IO流分类"></a>二、IO流分类</h3><pre><code>1、流向:
-    输入流与输出流
-2、数据
-    字节流:二进制        可以一切文件     包括纯文本 、doc 、音频 、视频等等
-    字符流:文本文件        只能处理纯文本
-3、功能
-    节点:包裹源头
-    处理:增强功能，提供性能(提高效率)</code></pre><h3 id="三、字符流与字节流-重点"><a href="#三、字符流与字节流-重点" class="headerlink" title="三、字符流与字节流(重点)"></a>三、字符流与字节流(重点)</h3><pre><code>1、字节流
-    输入流:InputStream
-    输出流:OutputStream
-2、字符流
-(读入  写出)
-    输入流:Reader
-    输出流:Writer</code></pre><h3 id="四、操作"><a href="#四、操作" class="headerlink" title="四、操作"></a>四、操作</h3><pre><code>1、与文件建立联系
-2、选择流
-3、操作
-4、释放资源
-
-###FileWriter写数据###
-    输出流写数据的步骤：
-    A、创建输出流对象
-    B、调用输出流对象的写数据方法 并刷新缓冲区    (硬盘存储数据的基本单位是字节)
-    C、释放资源    (close()方法先刷新 再通知系统释放资源)
-
-换行:\n        \r         \r\n
-* windows识别的换行为 \r\n
-* Linux识别的换行为 \n
-* mac识别的换行为 \r
-
-###FileReader读数据###
-    同 FileWriter写数据
-
-    代码实例:
-    *    int len;
-    *    char[] chs = new char[1024];
-    *    while ((len=fr.read(chs))!=-1) {
-    *        System.out.print((new String(chs,0,len)));
-    *    }
-    *    fr.close();
-
-    *注意 char[] chs = new char[1024];    //写1024及其整数倍
-
-    *往控制台输出时，不要ln 
-     System.out.print();
-
-###文件复制###
-    数据源:
-    目的地:
-    *判断读            //先读
-     然后写进去     //后写
-
-###字符缓冲流###    (高效地读入和写出) 
-    BufferedWriter bf = new BufferedWriter(new FileWriter(&quot;bf.txt&quot;));
-    BufferedReader br = new BufferedReader(new FileReader(&quot;bf.txt&quot;));
-    //注意构造方法里面
-
-    System.out.print(new String(csh,0,len));
-    //
-
-    缓冲流的特殊功能:
-        newLine()    //写一个换行符    这个换行符由系统决定
-        readLine()    //读一行    【不包括换行符】    </code></pre><ul>
-<li><p>IO流高级</p>
-<p>  File:文件和目录路径名的抽象表示形式，File类的实例是不可变的(即File可以创建实例)</p>
-<p>  ##创建功能<br>  createNewFile()<br>  mkdir()<br>  mkdirs()<br>  ##删除功能</p>
-<p>  ##判断功能</p>
-</li>
-</ul>
-
+path = &quot;C:/Users/dell/Desktop&quot;;</code></pre>
+            
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/15/IO-基础总结/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
