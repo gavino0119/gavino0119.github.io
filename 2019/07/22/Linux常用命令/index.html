@@ -3,27 +3,31 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>分类 - Gavino</title>
+<title>Linux常用命令 - Gavino</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="Java,Linux,命令,Markdown,设计模式,源码">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gavino">
-<meta property="og:url" content="https://gavino0119.github.io/categories/index.html">
+    <meta name="description" content="命令基本格式 一、常用基本命令1、  cpcp:copy 复制文件cp 源文件 目的地(目录)-p 保留文件原属性-r 复制目录">
+<meta name="keywords" content="Linux,命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令">
+<meta property="og:url" content="https://gavino0119.github.io/2019/07/22/Linux常用命令/index.html">
 <meta property="og:site_name" content="Gavino">
+<meta property="og:description" content="命令基本格式 一、常用基本命令1、  cpcp:copy 复制文件cp 源文件 目的地(目录)-p 保留文件原属性-r 复制目录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gavino0119.github.io/images/og_image.png">
+<meta property="og:image" content="https://www.yzlfxy.com/d/file/2019/06/13/b6d978ad81ea4bea8ad9db4834789c20.jpg">
+<meta property="og:updated_time" content="2019-07-22T14:28:48.483Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gavino">
-<meta name="twitter:image" content="https://gavino0119.github.io/images/og_image.png">
+<meta name="twitter:title" content="Linux常用命令">
+<meta name="twitter:description" content="命令基本格式 一、常用基本命令1、  cpcp:copy 复制文件cp 源文件 目的地(目录)-p 保留文件原属性-r 复制目录">
+<meta name="twitter:image" content="https://www.yzlfxy.com/d/file/2019/06/13/b6d978ad81ea4bea8ad9db4834789c20.jpg">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="Gavino" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="Linux常用命令" type="application/atom+xml">
 
 
 
@@ -45,7 +49,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Gavino" height="28">
+                <img src="/images/logo.png" alt="Linux常用命令" height="28">
             
             </a>
         </div>
@@ -57,7 +61,7 @@
                 
                 <a class="navbar-item" href="/archives">归档</a>
                 
-                <a class="navbar-item is-active" href="/categories">分类</a>
+                <a class="navbar-item" href="/categories">分类</a>
                 
                 <a class="navbar-item" href="/tags">标签</a>
                 
@@ -91,73 +95,209 @@
         <div class="container">
             <div class="columns">
                 <!-- 将main_column_class() 改为 col() -->
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://www.yzlfxy.com/d/file/2019/06/13/b6d978ad81ea4bea8ad9db4834789c20.jpg" alt="Linux常用命令">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-22T10:35:51.000Z">2019-07-22</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 285 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Linux常用命令
+            
+        </h1>
+        <div class="content">
+            <p>命令基本格式</p>
+<h2 id="一、常用基本命令"><a href="#一、常用基本命令" class="headerlink" title="一、常用基本命令"></a><strong>一、常用基本命令</strong></h2><p>1、</p>
+<blockquote>
+<h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a><strong>cp</strong></h3><p>cp:copy 复制文件<br>cp 源文件 目的地(目录)<br>-p 保留文件原属性<br>-r 复制目录</p>
+</blockquote>
+<a id="more"></a>
+
+<p>2、</p>
+<blockquote>
+<h3 id="管道"><a href="#管道" class="headerlink" title="| 管道"></a><strong>| 管道</strong></h3><p><strong>output | input</strong><br>对某些命令执行的结果去作操作,会用到管道；用于命令与命令之间的连接，前一个命令的输出是后一个命令的输入</p>
+</blockquote>
+<p>3、</p>
+<blockquote>
+<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a><strong>rm</strong></h3><table>
+<thead>
+<tr>
+<th align="left">rm</th>
+<th align="left">[filename] remove 删除文件,对 root 用户有提示,普通用户没有提示</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-f</td>
+<td align="left">force 强制删除, root 无提示</td>
+</tr>
+<tr>
+<td align="left">-i</td>
+<td align="left">普通用户有提示的删除</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="left">递归删除,慎重使用 -rf</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p>4、文件的过滤</p>
+<p><strong>grep</strong></p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">grep [OPTIONS] PATTERN [FILE...]</span><br><span class="line">过滤带有 [ 字符串 ] 的行</span><br><span class="line">grep [ 字符串 ] [ 文件 ]	</span><br><span class="line">过滤以 [ 字符串 ] 为开始的行</span><br><span class="line">grep [^ 字符串 ] [ 文件 ]</span><br><span class="line">过滤以 [ 字符串 ] 为结尾的行</span><br><span class="line">grep [ 字符串 $] [ 文件 ]</span><br><span class="line">过滤反选</span><br><span class="line">grep -v [ 字符串 ] [ 文件 ]</span><br><span class="line"></span><br><span class="line">eg.</span><br><span class="line">过滤以 root 为开始的行</span><br><span class="line"> grep ^root /etc/passwd</span><br><span class="line">过滤以 bash 为结尾的行</span><br><span class="line">grep bash$ /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、文件操作"><a href="#二、文件操作" class="headerlink" title="二、文件操作"></a><strong>二、文件操作</strong></h2><h2 id="三、查看日志"><a href="#三、查看日志" class="headerlink" title="三、查看日志"></a><strong>三、查看日志</strong></h2><h2 id="四、查看进程和端口"><a href="#四、查看进程和端口" class="headerlink" title="四、查看进程和端口"></a><strong>四、查看进程和端口</strong></h2><h2 id="五、查看系统的状态"><a href="#五、查看系统的状态" class="headerlink" title="五、查看系统的状态"></a><strong>五、查看系统的状态</strong></h2><p>TOP</p>
+
+            
+<div style="padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    padding: 7px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #565a5f;
+    line-height: 2em;
+">
+        <div class="copyright-left">
+            <i class="fa fa-lightbulb"></i>
+            <!--
+            本文由 <a href="https://gavino0119.github.io/">gavino</a> 创作，
+            采用
+            <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/07/22/Linux常用命令/index.html <br>
+            -->
+        </div>
+        <div style="clear:both;height:0px;"></div>
+</div>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Linux/">Linux</a>, <a class="has-link-grey -link" href="/tags/命令/">命令</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Java-基础篇/">
-            <span class="level-start">
-                <span class="level-item">Java 基础篇</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Java源码分析/">
-            <span class="level-start">
-                <span class="level-item">Java源码分析</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Linux/">
-            <span class="level-start">
-                <span class="level-item">Linux</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/web-前端/">
-            <span class="level-start">
-                <span class="level-item">web 前端</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/设计模式/">
-            <span class="level-start">
-                <span class="level-item">设计模式</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/随笔/">
-            <span class="level-start">
-                <span class="level-item">随笔</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/honbao.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatimg.jpg" alt="微信"></div>
+</a>
+
+                
         </div>
     </div>
-</div></div>
-                        <!-- 修改 -->
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/20/单例模式/">
+                <span class="level-item">单例模式</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://gavino0119.github.io/2019/07/22/Linux常用命令/';
+        this.page.identifier = '2019/07/22/Linux常用命令/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -561,109 +701,7 @@
     
 </div>
 
-
-<!-- 粘贴的部分 -->
-
-                        <!-- 修改 -->
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/07/">
-                <span class="level-start">
-                    <span class="level-item">七月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Linux/">
-                        <span class="tag">Linux</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Markdown/">
-                        <span class="tag">Markdown</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/命令/">
-                        <span class="tag">命令</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/源码/">
-                        <span class="tag">源码</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/设计模式/">
-                        <span class="tag">设计模式</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
 
 <!-- 粘贴的部分 -->
 
@@ -676,7 +714,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Gavino" height="28">
+                    <img src="/images/logo.png" alt="Linux常用命令" height="28">
                 
                 </a>
                 <p class="is-size-7">

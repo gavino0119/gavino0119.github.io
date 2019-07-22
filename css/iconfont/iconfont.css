@@ -1,0 +1,25 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1563696211945'); /* IE9 */
+  src: url('iconfont.eot?t=1563696211945#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPYAAsAAAAAB9wAAAOKAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqDRIMPATYCJAMMCwgABCAFhG0HNhvVBhFVnEvIfh7Y4BaFXL1qkrXv2cQv5aKKmqSvvcjA/vwmyYO+gKPMvQJC2wV56v3PbQOSJUK5kGaRql3z7P7mt3c77HVaJiXRKCGRaYAAgrs9p9dbzYDL6bfAw3lW23ENGnvpwgDjgALdA9cCjAskIG8Yu6AlbgcCQIErgkFS0nJKIIGD2Y8AID2d7Y2QMgZwDeUEEgiEiqkcITPBQ6KT6FVomBF8n3yEQySAgmcwhxa0pbYg4bX0xpSNNI5U4xGQTWcDwGYBDEAwAA4gdZWOCrAoEQwGRdVyzfkCOBDQqcJGI4FU0wsb/eNRgAgwSzUAgD9MUuC15HCBAG9Mk6AArn8WIACQAUwCcALRrJcUwGxtXTVNNuflIWTu2vWL7cgKvSmUsnbz4i12hq1NZG5J4RK7A7pbOuemJZUlyzfvL50/327JGsftd0vmrnVasTrweDj07l28npcaDOWr9S139WV68AqDrlR3t+r83fCdukydIWqPvmTh3sPLdxw4tGyI+dyN4EZuUi2mbCH8qM0laGkjHGu1we9q107jE48i7/j7T/n4atWcXtDoItOZ/crP1N7EgNZBTlN88nC7rlp/2zbJyk5LnpUzdOOFXFLQMFjWzqzeVHucnZ4zGPke5nMj9ud63i+ruTEjM39OsjAS09eRO8L/fY02h+yUUa2j5YMNaglXtnr0KNPRikFXSvnSEw2EfiFy/4KgVl2i5ZDoK0Y1D9tw5tio8eO3DaxDbNL/Ldco082mjm+LaaRZEA1LDt5ta+0f3PZupRLRuHL2Wu0dXACA8TuVBQIA+0v//8Df4NaSR0n1ZjG/JZUDANyvii1Gyu566facBPhdFRwFjH/lOlxhxtkANOi5rkkw3X7JIApQKAAj8Fj6DNfbdC4FCIlNAkrkAkbiTeJoweCpoiGQxEMRZDpbZYU1kckAAh0ACHNHUKZOgDF3InG0N3i2fhCY14SirP6SKt+S9pDREwzB30MSUKlss7TD8hlG69zjtCJgrJDrJAy2YeXTUyyRpxhRbyJHRIFiKmACdsM8J6iYUgzEiEWqgWmqqisZARVaWzKGPAKFgG8PJAKkpLzmol34/AyKrOU83FBXlVxBrJa0D2wGqwNpqi071d3KPrWNiEMIBSiMFMAE2FBuJQioqjulUEAY4gGxyoCJGqmuWmN5ffF+WwAU5nosShjhwB8Tn1qFl+SaBgAA') format('woff2'),
+  url('iconfont.woff?t=1563696211945') format('woff'),
+  url('iconfont.ttf?t=1563696211945') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1563696211945#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-weibo:before {
+  content: "\e508";
+}
+
+.icon-mail:before {
+  content: "\e60e";
+}
+
