@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<script src="/js/src/click.js"></script>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Java基础面试总结(一) - Gavino</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="1. 简单说下什么是跨平台 术语：操作系统指令集、屏蔽系统之间的差异  由于各种操作系统所支持的指令集不是完全一致，所以在操作系统之上加个虚拟机可以来提供统一接口，屏蔽系统之间的差异。">
+<meta name="keywords" content="Java,面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础面试总结(一)">
+<meta property="og:url" content="https://gavino0119.github.io/2019/07/26/Java基础面试总结-一/index.html">
+<meta property="og:site_name" content="Gavino">
+<meta property="og:description" content="1. 简单说下什么是跨平台 术语：操作系统指令集、屏蔽系统之间的差异  由于各种操作系统所支持的指令集不是完全一致，所以在操作系统之上加个虚拟机可以来提供统一接口，屏蔽系统之间的差异。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564210504603&di=7bbc5cba685adf4cb7507731a19136fa&imgtype=0&src=http%3A%2F%2Fp2.qhimg.com%2Ft01e3d3d974977a9e89.png">
+<meta property="og:updated_time" content="2019-07-27T13:25:28.715Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础面试总结(一)">
+<meta name="twitter:description" content="1. 简单说下什么是跨平台 术语：操作系统指令集、屏蔽系统之间的差异  由于各种操作系统所支持的指令集不是完全一致，所以在操作系统之上加个虚拟机可以来提供统一接口，屏蔽系统之间的差异。">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564210504603&di=7bbc5cba685adf4cb7507731a19136fa&imgtype=0&src=http%3A%2F%2Fp2.qhimg.com%2Ft01e3d3d974977a9e89.png">
+
+
+
+
+
+<link rel="alternative" href="/atom.xml" title="Java基础面试总结(一)" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicons.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Java基础面试总结(一)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="My GitHub" href="https://github.com/gavino0119">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <!-- 将main_column_class() 改为 col() -->
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1564210504603&amp;di=7bbc5cba685adf4cb7507731a19136fa&amp;imgtype=0&amp;src=http%3A%2F%2Fp2.qhimg.com%2Ft01e3d3d974977a9e89.png" alt="Java基础面试总结(一)">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-26T12:17:59.000Z">2019-07-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/剑指offer/">剑指offer</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    21 分钟 读完 (大约 3207 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Java基础面试总结(一)
+            
+        </h1>
+        <div class="content">
+            <h3 id="1-简单说下什么是跨平台"><a href="#1-简单说下什么是跨平台" class="headerlink" title="1. 简单说下什么是跨平台"></a>1. 简单说下什么是跨平台</h3><blockquote>
+<p>术语：操作系统指令集、屏蔽系统之间的差异</p>
+</blockquote>
+<p>由于各种操作系统所支持的指令集不是完全一致，所以在操作系统之上加个虚拟机可以来提供统一接口，屏蔽系统之间的差异。</p>
+<a id="more"></a>
+<h3 id="2-Java有几种基本数据类型"><a href="#2-Java有几种基本数据类型" class="headerlink" title="2. Java有几种基本数据类型"></a>2. Java有几种基本数据类型</h3><blockquote>
+<p>有八种基本数据类型。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>字节</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+<td>0.0f</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>0.0d</td>
+</tr>
+<tr>
+<td>char</td>
+<td>2</td>
+<td>‘\u0000’</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>4</td>
+<td>false</td>
+</tr>
+</tbody></table>
+<p>各自占用几字节也记一下。</p>
+<blockquote>
+<p><strong>Java的默认数据类型</strong><br><strong>1、</strong></p>
+</blockquote>
+<h3 id="3-面向对象特征"><a href="#3-面向对象特征" class="headerlink" title="3. 面向对象特征"></a>3. 面向对象特征</h3><p>面向对象的编程语言有封装、继承 、抽象、多态等4个主要的特征。</p>
+<ol>
+<li><p>封装： 把描述一个对象的属性和行为的代码封装在一个模块中，也就是一个类中，属性用变量定义，行为用方法进行定义，方法可以直接访问同一个对象中的属性。</p>
+</li>
+<li><p>抽象： 把现实生活中的对象抽象为类。分为过程抽象和数据抽象</p>
+</li>
+</ol>
+<ul>
+<li>数据抽象 –&gt;鸟有翅膀,羽毛等(类的属性)</li>
+<li>过程抽象 –&gt;鸟会飞,会叫(类的方法)</li>
+</ul>
+<ol start="3">
+<li><p>继承：子类继承父类的特征和行为。子类可以有父类的方法，属性（非private）。子类也可以对父类进行扩展，也可以重写父类的方法。缺点就是提高代码之间的耦合性。</p>
+</li>
+<li><p>多态： 多态是指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定(比如：向上转型，只有运行才能确定其对象属性)。方法覆盖和重载体现了多态性。</p>
+</li>
+</ol>
+<h3 id="4-为什么要有包装类型"><a href="#4-为什么要有包装类型" class="headerlink" title="4. 为什么要有包装类型"></a>4. 为什么要有包装类型</h3><blockquote>
+<p>术语：让基本类型也具有对象的特征</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>包装器类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>为了让基本类型也具有对象的特征，就出现了包装类型（如我们在使用集合类型Collection时就一定要使用包装类型而非基本类型）因为容器都是装object的，这是就需要这些基本类型的包装器类了。</p>
+</blockquote>
+<p>自动装箱：<code>new Integer(6);</code>，底层调用:<code>Integer.valueOf(6)</code></p>
+<p>自动拆箱: <code>int i = new Integer(6);</code>，底层调用<code>i.intValue();</code>方法实现。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer i  = 6;</span><br><span class="line">Integer j = 6;</span><br><span class="line">System.out.println(i==j);</span><br></pre></td></tr></table></figure>
+
+<p>答案在下面这段代码中找：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static Integer valueOf(int i) &#123;</span><br><span class="line">    if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">        return IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">    return new Integer(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="二者的区别："><a href="#二者的区别：" class="headerlink" title="二者的区别："></a>二者的区别：</h5><ol>
+<li><p>声明方式不同：基本类型不使用new关键字，而包装类型需要使用new关键字来在<strong>堆中分配存储空间</strong>；</p>
+</li>
+<li><p>存储方式及位置不同：基本类型是直接将变量值存储在栈中，而包装类型是将对象放在堆中，然后通过引用来使用；</p>
+</li>
+<li><p>初始值不同：基本类型的初始值如int为0，boolean为false，而包装类型的初始值为null；</p>
+</li>
+<li><p>使用方式不同：基本类型直接赋值直接使用就好，而包装类型在集合如Collection、Map时会使用到。</p>
+</li>
+</ol>
+<h3 id="5-和equals区别"><a href="#5-和equals区别" class="headerlink" title="5.==和equals区别"></a>5.==和equals区别</h3><ul>
+<li><code>==</code>较的是两个引用在内存中指向的是不是同一对象（即同一内存空间），也就是说在内存空间中的存储位置是否一致。如果两个对象的引用相同时（指向同一对象时），“==”操作符返回true，否则返回flase。           </li>
+</ul>
+<ul>
+<li><code>equals</code>用来比较<strong>某些特征</strong>是否一样。我们平时用的String类等的equals方法都是重写后的，实现比较两个对象的内容是否相等。</li>
+</ul>
+<p>我们来看看String重写的equals方法：</p>
+<blockquote>
+<p>它不止判断了内存地址，还增加了字符串是否相同的比较。</p>
+</blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object anObject) &#123;</span><br><span class="line">    //判断内存地址是否相同</span><br><span class="line">    if (this == anObject) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    // 判断参数类型是否是String类型</span><br><span class="line">    if (anObject instanceof String) &#123;</span><br><span class="line">        // 强转</span><br><span class="line">        String anotherString = (String)anObject;</span><br><span class="line">        int n = value.length;</span><br><span class="line">        // 判断两个字符串长度是否相等</span><br><span class="line">        if (n == anotherString.value.length) &#123;</span><br><span class="line">            char v1[] = value;</span><br><span class="line">            char v2[] = anotherString.value;</span><br><span class="line">            int i = 0;</span><br><span class="line">            // 一一比较 字符是否相同</span><br><span class="line">            while (n-- != 0) &#123;</span><br><span class="line">                if (v1[i] != v2[i])</span><br><span class="line">                    return false;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-String、StringBuffer和StringBuilder区别"><a href="#6-String、StringBuffer和StringBuilder区别" class="headerlink" title="6. String、StringBuffer和StringBuilder区别"></a>6. String、StringBuffer和StringBuilder区别</h3><blockquote>
+<p>java中String、StringBuffer、StringBuilder是编程中经常使用的字符串类，他们之间的区别也是经常在面试中会问到的问题。现在总结一下，看看他们的不同与相同。</p>
+</blockquote>
+<h5 id="1-数据可变和不可变"><a href="#1-数据可变和不可变" class="headerlink" title="1. 数据可变和不可变"></a>1. 数据可变和不可变</h5><ol>
+<li><code>String</code>底层使用一个不可变的字符数组<code>private final char value[];</code>所以它内容不可变。</li>
+<li><code>StringBuffer</code>和<code>StringBuilder</code>都继承了<code>AbstractStringBuilder</code>底层使用的是可变字符数组：<code>char[] value;</code></li>
+</ol>
+<h5 id="2-线程安全"><a href="#2-线程安全" class="headerlink" title="2. 线程安全"></a>2. 线程安全</h5><ul>
+<li><code>StringBuilder</code>是线程不安全的，效率较高；而<code>StringBuffer</code>是线程安全的，效率较低。</li>
+</ul>
+<p>通过他们的<code>append()</code>方法来看，<code>StringBuffer</code>是有同步锁，而<code>StringBuilder</code>没有：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public synchronized StringBuffer append(Object obj) &#123;</span><br><span class="line">    toStringCache = null;</span><br><span class="line">    super.append(String.valueOf(obj));</span><br><span class="line">    return this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public StringBuilder append(String str) &#123;</span><br><span class="line">    super.append(str);</span><br><span class="line">    return this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-相同点"><a href="#3-相同点" class="headerlink" title="3. 相同点"></a>3. 相同点</h5><p><code>StringBuilder</code>与<code>StringBuffer</code>有公共父类<code>AbstractStringBuilder</code>。</p>
+<p>最后，操作可变字符串速度：<code>StringBuilder &gt; StringBuffer &gt; String</code>，这个答案就显得不足为奇了。</p>
+<h3 id="7-讲一下Java中的集合"><a href="#7-讲一下Java中的集合" class="headerlink" title="7. 讲一下Java中的集合"></a>7. 讲一下Java中的集合</h3><ol>
+<li>Collection下：List系(有序、元素允许重复)和Set系(无序、元素不重复)</li>
+</ol>
+<blockquote>
+<p>set根据equals和hashcode判断，一个对象要存储在Set中，必须重写equals和hashCode方法</p>
+</blockquote>
+<ol start="2">
+<li><p>Map下：HashMap线程不同步；ConcurrentMap线程同步</p>
+</li>
+<li><p>Collection系列和Map系列：Map是对Collection的补充，两个没什么关系</p>
+</li>
+</ol>
+<h3 id="8-ArrayList和LinkedList区别？"><a href="#8-ArrayList和LinkedList区别？" class="headerlink" title="8. ArrayList和LinkedList区别？"></a>8. ArrayList和LinkedList区别？</h3><blockquote>
+<p>之前专门有写过ArrayList和LinkedList源码的文章。</p>
+</blockquote>
+<ol>
+<li>ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。 </li>
+<li>对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。 </li>
+<li>对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据。 </li>
+</ol>
+<h3 id="9-ConcurrentModificationException异常出现的原因"><a href="#9-ConcurrentModificationException异常出现的原因" class="headerlink" title="9. ConcurrentModificationException异常出现的原因"></a>9. ConcurrentModificationException异常出现的原因</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args)  &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</span><br><span class="line">        list.add(2);</span><br><span class="line">        Iterator&lt;Integer&gt; iterator = list.iterator();</span><br><span class="line">        while(iterator.hasNext())&#123;</span><br><span class="line">            Integer integer = iterator.next();</span><br><span class="line">            if(integer==2)</span><br><span class="line">                list.remove(integer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行上段代码是有问题的，会抛出<code>ConcurrentModificationException</code>异常。</p>
+<p><strong>原因</strong>：调用<code>list.remove()</code>方法导致<code>modCount</code>和<code>expectedModCount</code>的值不一致。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">final void checkForComodification() &#123;</span><br><span class="line">    if (modCount != expectedModCount)</span><br><span class="line">    throw new ConcurrentModificationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决办法</strong>：在迭代器中如果要删除元素的话，需要调用<code>Iterator</code>类的<code>remove</code>方法。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args)  &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</span><br><span class="line">        list.add(2);</span><br><span class="line">        Iterator&lt;Integer&gt; iterator = list.iterator();</span><br><span class="line">        while(iterator.hasNext())&#123;</span><br><span class="line">            Integer integer = iterator.next();</span><br><span class="line">            if(integer==2)</span><br><span class="line">                iterator.remove();   //注意这个地方</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-HashMap和HashTable、ConcurrentHashMap区别？"><a href="#10-HashMap和HashTable、ConcurrentHashMap区别？" class="headerlink" title="10. HashMap和HashTable、ConcurrentHashMap区别？"></a>10. HashMap和HashTable、ConcurrentHashMap区别？</h3><p>相同点:</p>
+<ol>
+<li>HashMap和Hashtable都实现了Map接口</li>
+<li>都可以存储key-value数据</li>
+</ol>
+<p>不同点：</p>
+<ol>
+<li>HashMap可以把null作为key或value，HashTable不可以</li>
+<li>HashMap线程不安全，效率高。HashTable线程安全，效率低。</li>
+<li>HashMap的迭代器(Iterator)是fail-fast迭代器，而Hashtable的enumerator迭代器不是fail-fast的。</li>
+</ol>
+<blockquote>
+<p>什么是fail-fast?<br>就是最快的时间能把错误抛出而不是让程序执行。</p>
+</blockquote>
+<h5 id="10-2-如何保证线程安全又效率高？"><a href="#10-2-如何保证线程安全又效率高？" class="headerlink" title="10.2 如何保证线程安全又效率高？"></a>10.2 如何保证线程安全又效率高？</h5><p>Java 5提供了ConcurrentHashMap，它是HashTable的替代，比HashTable的扩展性更好。</p>
+<p>ConcurrentHashMap将整个Map分为N个segment(类似HashTable)，可以提供相同的线程安全，但是效率提升N倍，默认N为16。</p>
+<h5 id="10-3-我们能否让HashMap同步？"><a href="#10-3-我们能否让HashMap同步？" class="headerlink" title="10.3 我们能否让HashMap同步？"></a>10.3 我们能否让HashMap同步？</h5><p>HashMap可以通过下面的语句进行同步：<br><code>Map m = Collections.synchronizeMap(hashMap);</code></p>
+<h3 id="11-拷贝文件的工具类使用字节流还是字符流"><a href="#11-拷贝文件的工具类使用字节流还是字符流" class="headerlink" title="11. 拷贝文件的工具类使用字节流还是字符流"></a>11. 拷贝文件的工具类使用字节流还是字符流</h3><blockquote>
+<p>答案：字节流</p>
+</blockquote>
+<h5 id="11-1-什么是字节流，什么是字符流？"><a href="#11-1-什么是字节流，什么是字符流？" class="headerlink" title="11.1 什么是字节流，什么是字符流？"></a>11.1 什么是字节流，什么是字符流？</h5><p>字节流：传递的是字节（二进制），</p>
+<p>字符流：传递的是字符</p>
+<h5 id="11-2-答案"><a href="#11-2-答案" class="headerlink" title="11.2 答案"></a>11.2 答案</h5><p>我们并不支持下载的文件有没有包含字节流(图片、影像、音源)，所以考虑到通用性，我们会用字节流。</p>
+<h3 id="12-线程创建方式"><a href="#12-线程创建方式" class="headerlink" title="12. 线程创建方式"></a>12. 线程创建方式</h3><blockquote>
+<p>这个之前自己做过总结，也算比较全面。</p>
+</blockquote>
+<h4 id="方法一：继承Thread类，作为线程对象存在（继承Thread对象）"><a href="#方法一：继承Thread类，作为线程对象存在（继承Thread对象）" class="headerlink" title="方法一：继承Thread类，作为线程对象存在（继承Thread对象）"></a>方法一：继承Thread类，作为线程对象存在（继承Thread对象）</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class CreatThreadDemo1 extends Thread&#123;</span><br><span class="line">    /**</span><br><span class="line">     * 构造方法： 继承父类方法的Thread(String name)；方法</span><br><span class="line">     * @param name</span><br><span class="line">     */</span><br><span class="line">    public CreatThreadDemo1(String name)&#123;</span><br><span class="line">        super(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        while (!interrupted())&#123;</span><br><span class="line">            System.out.println(getName()+&quot;线程执行了...&quot;);</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(200);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        CreatThreadDemo1 d1 = new CreatThreadDemo1(&quot;first&quot;);</span><br><span class="line">        CreatThreadDemo1 d2 = new CreatThreadDemo1(&quot;second&quot;);</span><br><span class="line"></span><br><span class="line">        d1.start();</span><br><span class="line">        d2.start();</span><br><span class="line"></span><br><span class="line">        d1.interrupt();  //中断第一个线程</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>常规方法，不多做介绍了，interrupted方法，是来判断该线程是否被中断。（终止线程不允许用stop方法，该方法不会施放占用的资源。所以我们在设计程序的时候，要按照中断线程的思维去设计，就像上面的代码一样）。</p>
+<h6 id="让线程等待的方法"><a href="#让线程等待的方法" class="headerlink" title="让线程等待的方法"></a>让线程等待的方法</h6><ul>
+<li>Thread.sleep(200);  //线程休息2ms</li>
+<li>Object.wait()；  //让线程进入等待，直到调用Object的notify或者notifyAll时，线程停止休眠</li>
+</ul>
+<h4 id="方法二：实现runnable接口，作为线程任务存在"><a href="#方法二：实现runnable接口，作为线程任务存在" class="headerlink" title="方法二：实现runnable接口，作为线程任务存在"></a>方法二：实现runnable接口，作为线程任务存在</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class CreatThreadDemo2 implements Runnable &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        while (true)&#123;</span><br><span class="line">            System.out.println(&quot;线程执行了...&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //将线程任务传给线程对象</span><br><span class="line">        Thread thread = new Thread(new CreatThreadDemo2());</span><br><span class="line">        //启动线程</span><br><span class="line">        thread.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Runnable 只是来修饰线程所执行的任务，它不是一个线程对象。想要启动Runnable对象，必须将它放到一个线程对象里。</p>
+<h4 id="方法三：匿名内部类创建线程对象"><a href="#方法三：匿名内部类创建线程对象" class="headerlink" title="方法三：匿名内部类创建线程对象"></a>方法三：匿名内部类创建线程对象</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class CreatThreadDemo3 extends Thread&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //创建无参线程对象</span><br><span class="line">        new Thread()&#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                System.out.println(&quot;线程执行了...&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line">       //创建带线程任务的线程对象</span><br><span class="line">        new Thread(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                System.out.println(&quot;线程执行了...&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">        //创建带线程任务并且重写run方法的线程对象</span><br><span class="line">        new Thread(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                System.out.println(&quot;runnable run 线程执行了...&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)&#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                System.out.println(&quot;override run 线程执行了...&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建带线程任务并且重写run方法的线程对象中，为什么只运行了Thread的run方法。我们看看Thread类的源码，<img src="http://upload-images.jianshu.io/upload_images/5786888-8fc80d17feb58198.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>，我们可以看到Thread实现了Runnable接口，而Runnable接口里有一个run方法。<br>所以，我们最终调用的重写的方法应该是Thread类的run方法。而不是Runnable接口的run方法。</p>
+<h4 id="方法四：创建带返回值的线程"><a href="#方法四：创建带返回值的线程" class="headerlink" title="方法四：创建带返回值的线程"></a>方法四：创建带返回值的线程</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class CreatThreadDemo4 implements Callable &#123;</span><br><span class="line">    public static void main(String[] args) throws ExecutionException, InterruptedException &#123;</span><br><span class="line">        CreatThreadDemo4 demo4 = new CreatThreadDemo4();</span><br><span class="line"></span><br><span class="line">        FutureTask&lt;Integer&gt; task = new FutureTask&lt;Integer&gt;(demo4); //FutureTask最终实现的是runnable接口</span><br><span class="line"></span><br><span class="line">        Thread thread = new Thread(task);</span><br><span class="line"></span><br><span class="line">        thread.start();</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;我可以在这里做点别的业务逻辑...因为FutureTask是提前完成任务&quot;);</span><br><span class="line">        //拿出线程执行的返回值</span><br><span class="line">        Integer result = task.get();</span><br><span class="line">        System.out.println(&quot;线程中运算的结果为:&quot;+result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //重写Callable接口的call方法</span><br><span class="line">    @Override</span><br><span class="line">    public Object call() throws Exception &#123;</span><br><span class="line">        int result = 1;</span><br><span class="line">        System.out.println(&quot;业务逻辑计算中...&quot;);</span><br><span class="line">        Thread.sleep(3000);</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Callable接口介绍：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public interface Callable&lt;V&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * Computes a result, or throws an exception if unable to do so.</span><br><span class="line">     *</span><br><span class="line">     * @return computed result</span><br><span class="line">     * @throws Exception if unable to compute a result</span><br><span class="line">     */</span><br><span class="line">    V call() throws Exception;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回指定泛型的call方法。然后调用FutureTask对象的get方法得道call方法的返回值。</p>
+<h4 id="方法五：定时器Timer"><a href="#方法五：定时器Timer" class="headerlink" title="方法五：定时器Timer"></a>方法五：定时器Timer</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class CreatThreadDemo5 &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Timer timer = new Timer();</span><br><span class="line"></span><br><span class="line">        timer.schedule(new TimerTask() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                System.out.println(&quot;定时器线程执行了...&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,0,1000);   //延迟0，周期1s</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法六：线程池创建线程"><a href="#方法六：线程池创建线程" class="headerlink" title="方法六：线程池创建线程"></a>方法六：线程池创建线程</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class CreatThreadDemo6 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //创建一个具有10个线程的线程池</span><br><span class="line">        ExecutorService threadPool = Executors.newFixedThreadPool(10);</span><br><span class="line">        long threadpoolUseTime = System.currentTimeMillis();</span><br><span class="line">        for (int i = 0;i&lt;10;i++)&#123;</span><br><span class="line">            threadPool.execute(new Runnable() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void run() &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+&quot;线程执行了...&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        long threadpoolUseTime1 = System.currentTimeMillis();</span><br><span class="line">        System.out.println(&quot;多线程用时&quot;+(threadpoolUseTime1-threadpoolUseTime));</span><br><span class="line">        //销毁线程池</span><br><span class="line">        threadPool.shutdown();</span><br><span class="line">        threadpoolUseTime = System.currentTimeMillis();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法七：利用java8新特性-stream-实现并发"><a href="#方法七：利用java8新特性-stream-实现并发" class="headerlink" title="方法七：利用java8新特性  stream 实现并发"></a>方法七：利用java8新特性  stream 实现并发</h4><p>lambda表达式不懂的，可以看看我的java8新特性文章：</p>
+<p>java8-lambda：<a href="https://www.jianshu.com/p/3a08dc78a05f" target="_blank" rel="noopener">https://www.jianshu.com/p/3a08dc78a05f</a></p>
+<p>java8-stream：<a href="https://www.jianshu.com/p/ea16d6712a00" target="_blank" rel="noopener">https://www.jianshu.com/p/ea16d6712a00</a></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class CreatThreadDemo7 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        List&lt;Integer&gt; values = Arrays.asList(10,20,30,40);</span><br><span class="line">        //parallel 平行的，并行的</span><br><span class="line">        int result = values.parallelStream().mapToInt(p -&gt; p*2).sum();</span><br><span class="line">        System.out.println(result);</span><br><span class="line">        //怎么证明它是并发处理呢</span><br><span class="line">        values.parallelStream().forEach(p-&gt; System.out.println(p));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">200</span><br><span class="line">40</span><br><span class="line">10</span><br><span class="line">20</span><br><span class="line">30</span><br></pre></td></tr></table></figure>
+
+<p>怎么证明它是并发处理呢,他们并不是按照顺序输出的 。</p>
+
+            
+<div style="padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    padding: 7px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #565a5f;
+    line-height: 2em;
+">
+        <div class="copyright-left">
+            <i class="fa fa-lightbulb"></i>
+            <!--
+            本文由 <a href="https://gavino0119.github.io/">gavino</a> 创作，
+            采用
+            <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/07/26/Java基础面试总结-一/index.html <br>
+            -->
+        </div>
+        <div style="clear:both;height:0px;"></div>
+</div>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>, <a class="has-link-grey -link" href="/tags/面试/">面试</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/honbao.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatimg.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/27/Java基础面试总结-二/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Java基础面试总结(二)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/24/ajax的原理及实现/">
+                <span class="level-item">Ajax的原理及实现</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://gavino0119.github.io/2019/07/26/Java基础面试总结-一/';
+        this.page.identifier = '2019/07/26/Java基础面试总结-一/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/head.jpg" alt="Yan weigang">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Yan weigang
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        studying in lanzhou university of technology
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Lanzhou,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        13
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/gavino0119" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/gavino0119">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="mail" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=_s-CyMrIyc3NzrqLi9SZlZc">
+                
+                <i class="fab fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="weibo" href="https://weibo.com/u/6325058730?is_hot=1">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Java-基础篇/">
+            <span class="level-start">
+                <span class="level-item">Java 基础篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java-源码分析/">
+            <span class="level-start">
+                <span class="level-item">Java 源码分析</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/web-前端/">
+            <span class="level-start">
+                <span class="level-item">web 前端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/剑指offer/">
+            <span class="level-start">
+                <span class="level-item">剑指offer</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/常用工具/">
+            <span class="level-start">
+                <span class="level-item">常用工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/数据库/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/设计模式/">
+            <span class="level-start">
+                <span class="level-item">设计模式</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/随笔/">
+            <span class="level-start">
+                <span class="level-item">随笔</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/27/sublime-text-3-常用笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="sublime text 3 常用笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-27T13:33:41.000Z">2019-07-27</time></div>
+                    <a href="/2019/07/27/sublime-text-3-常用笔记/" class="has-link-black-ter is-size-6">sublime text 3 常用笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/常用工具/">常用工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/27/Java面试难点和易混淆点总结-一/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1564214047204&amp;di=48233edcfd950aaf446b8a9d5fdf40ea&amp;imgtype=0&amp;src=http%3A%2F%2Ffile.elecfans.com%2Fweb1%2FM00%2F61%2FC7%2FpIYBAFuGD_2AFqiXAAGOlH_8tRo148.png" alt="Java面试难点和易混淆点总结(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-27T04:33:28.000Z">2019-07-27</time></div>
+                    <a href="/2019/07/27/Java面试难点和易混淆点总结-一/" class="has-link-black-ter is-size-6">Java面试难点和易混淆点总结(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/剑指offer/">剑指offer</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/27/Java基础面试总结-三/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1564211902319&amp;di=3f98981c663e21995807173235606350&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.mobiletrain.org%2Fd%2Ffile%2Fabout%2Finfo%2Fa0f5c8759e568af522a2d691c44ba19a.jpg" alt="Java基础面试总结(三)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-27T04:28:15.000Z">2019-07-27</time></div>
+                    <a href="/2019/07/27/Java基础面试总结-三/" class="has-link-black-ter is-size-6">Java基础面试总结(三)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/剑指offer/">剑指offer</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/27/Java基础面试总结-二/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1564210401806&amp;di=39db0c0926115b9ae78e523d2095411a&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.sohu.com%2Fupload%2F20170801%2F817accef0a27465c84cdd233ede0fe5e_th.png" alt="Java基础面试总结(二)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-27T04:01:55.000Z">2019-07-27</time></div>
+                    <a href="/2019/07/27/Java基础面试总结-二/" class="has-link-black-ter is-size-6">Java基础面试总结(二)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/剑指offer/">剑指offer</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/26/Java基础面试总结-一/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1564210504603&amp;di=7bbc5cba685adf4cb7507731a19136fa&amp;imgtype=0&amp;src=http%3A%2F%2Fp2.qhimg.com%2Ft01e3d3d974977a9e89.png" alt="Java基础面试总结(一)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T12:17:59.000Z">2019-07-26</time></div>
+                    <a href="/2019/07/26/Java基础面试总结-一/" class="has-link-black-ter is-size-6">Java基础面试总结(一)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/剑指offer/">剑指offer</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <!-- 网易云音乐链接 -->
+        <div class="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="280" height="450" src="//music.163.com/outchain/player?type=0&id=2890071854&auto=1&height=430"></iframe>
+        </div>
+
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://google.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Google</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">google.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://baidu.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Baidu</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">baidu.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mysql/" style="font-size: 13.33px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16.67px;">面试</a>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">15</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ajax/">
+                        <span class="tag">Ajax</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Cookie/">
+                        <span class="tag">Cookie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JDBC/">
+                        <span class="tag">JDBC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Mysql/">
+                        <span class="tag">Mysql</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Session/">
+                        <span class="tag">Session</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sublime/">
+                        <span class="tag">Sublime</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/命令/">
+                        <span class="tag">命令</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/源码/">
+                        <span class="tag">源码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/设计模式/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+<!-- 粘贴的部分 -->
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Java基础面试总结(一)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Yan weigang&nbsp;
+                <!-- 注释掉Powered by，Theme by的显示。-->
+                <!-- 
+                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                -->
+                
+                </p>
+
+        <!-- 网站运行时间统计-->
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("07/04/2019 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+            setInterval("createtime()",250);
+            </script><br>
+
+        <!-- 网站访问、访客统计-->
+        <span id="busuanzi_container_site_pv" class="theme-info">
+         |  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span id="busuanzi_container_site_uv" class="theme-info">
+         |  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+
+
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <!-- 雪花特效 -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+    <!-- 修改文章详情页为两栏 -->
+    
+</body>
+</html>
