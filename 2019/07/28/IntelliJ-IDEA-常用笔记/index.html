@@ -8,19 +8,19 @@
 
 
 
-    <meta name="description" content="快捷输入快捷键主题配置主题下载地址：http://www.easycolor.cc/intelliJidea/list.html">
+    <meta name="description" content="IDEA，全称 IntelliJ IDEA，是 Java 语言的集成开发环境，IDEA 在业界被公认为是最好的 java 开发工具之一，尤其在智能代码助手、代码自动提示、重构、J2EE支持、Ant、JUnit、CVS 整合、代码审查、创新的 GUI 设计等方面的功能可以说是超常的。">
 <meta name="keywords" content="IDEA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IntelliJ IDEA 常用笔记">
 <meta property="og:url" content="https://gavino0119.github.io/2019/07/28/IntelliJ-IDEA-常用笔记/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="快捷输入快捷键主题配置主题下载地址：http://www.easycolor.cc/intelliJidea/list.html">
+<meta property="og:description" content="IDEA，全称 IntelliJ IDEA，是 Java 语言的集成开发环境，IDEA 在业界被公认为是最好的 java 开发工具之一，尤其在智能代码助手、代码自动提示、重构、J2EE支持、Ant、JUnit、CVS 整合、代码审查、创新的 GUI 设计等方面的功能可以说是超常的。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://static.oschina.net/uploads/space/2019/0328/061732_lflu_2720166.png">
-<meta property="og:updated_time" content="2019-07-29T02:10:09.962Z">
+<meta property="og:updated_time" content="2019-07-29T08:53:08.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IntelliJ IDEA 常用笔记">
-<meta name="twitter:description" content="快捷输入快捷键主题配置主题下载地址：http://www.easycolor.cc/intelliJidea/list.html">
+<meta name="twitter:description" content="IDEA，全称 IntelliJ IDEA，是 Java 语言的集成开发环境，IDEA 在业界被公认为是最好的 java 开发工具之一，尤其在智能代码助手、代码自动提示、重构、J2EE支持、Ant、JUnit、CVS 整合、代码审查、创新的 GUI 设计等方面的功能可以说是超常的。">
 <meta name="twitter:image" content="https://static.oschina.net/uploads/space/2019/0328/061732_lflu_2720166.png">
 
 
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 25 个字)
+                    2 分钟 读完 (大约 371 个字)
                 </span>
                 
                 
@@ -130,7 +130,23 @@
             
         </h1>
         <div class="content">
-            <h3 id="快捷输入"><a href="#快捷输入" class="headerlink" title="快捷输入"></a>快捷输入</h3><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><p>主题下载地址：<a href="http://www.easycolor.cc/intelliJidea/list.html" target="_blank" rel="noopener">http://www.easycolor.cc/intelliJidea/list.html</a></p>
+            <p>IDEA，全称 IntelliJ IDEA，是 Java 语言的集成开发环境，IDEA 在业界被公认为是<br>最好的 java 开发工具之一，尤其在智能代码助手、代码自动提示、重构、J2EE<br>支持、Ant、JUnit、CVS 整合、代码审查、创新的 GUI 设计等方面的功能可以说<br>是超常的。</p>
+<a id="more"></a>
+<h3 id="快捷输入"><a href="#快捷输入" class="headerlink" title="快捷输入"></a>快捷输入</h3><p><strong>psvm</strong><br><strong>sout</strong></p>
+<blockquote>
+<p>类似的：<br>soutp=System.out.println(“方法形参名 = “ + 形参名);<br>soutv=System.out.println(“变量名 = “ + 变量);<br>soutm=System.out.println(“当前类名.当前方法”);<br>“abc”.sout =&gt; System.out.println(“abc”);</p>
+</blockquote>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><p>主题下载地址：<a href="http://www.easycolor.cc/intelliJidea/list.html" target="_blank" rel="noopener">http://www.easycolor.cc/intelliJidea/list.html</a></p>
+<h2 id="创建模块-Module"><a href="#创建模块-Module" class="headerlink" title="创建模块(Module)"></a>创建模块(Module)</h2><p>在 Eclipse 中我们有 Workspace（工作空间）和 Project（工程）的概念，在 IDEA<br>中只有 Project（工程）和 Module（模块）的概念。这里的对应关系为：</p>
+<blockquote>
+<p>IDEA 官网说明：<br>An Eclipse workspace is similar to a project in IntelliJ IDEA<br>An Eclipse project maps to a module in IntelliJ IDEA</p>
+</blockquote>
+<blockquote>
+<p>翻译：<br>Eclipse 中 workspace 相当于 IDEA 中的 Project<br>Eclipse 中 Project 相当于 IDEA 中的 Module</p>
+</blockquote>
+<p>在 IntelliJ IDEA 中 Project 是最顶级的级别，次级别是 Module。一个 Project可以有多个 Module。<br>目前主流的大型项目都是分布式部署的，结构都是类似这种多 Module 结构。</p>
+<p>模块的删除：<br>先右键–&gt;选择Open Module Settings,点击 -，确认<br>然后再右键删除</p>
+<h2 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h2><p>添加依赖</p>
 
             
 <div style="padding: 15px;

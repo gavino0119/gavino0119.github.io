@@ -9,7 +9,7 @@
 
 
     <meta name="description" content="状态管理（数据管理）为什么需要状态管理什么是状态管理 状态指的是数据 管理指的是多次交互时对数据的修改">
-<meta name="keywords" content="Cookie,Session,Java">
+<meta name="keywords" content="Java,Cookie,Session">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实现状态管理的技术--Cookie和Session">
 <meta property="og:url" content="https://gavino0119.github.io/2019/07/24/Cookie和Session/index.html">
@@ -17,7 +17,7 @@
 <meta property="og:description" content="状态管理（数据管理）为什么需要状态管理什么是状态管理 状态指的是数据 管理指的是多次交互时对数据的修改">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=812917790,1944186895&fm=15&gp=0.jpg">
-<meta property="og:updated_time" content="2019-07-24T05:55:28.419Z">
+<meta property="og:updated_time" content="2019-07-29T03:36:37.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现状态管理的技术--Cookie和Session">
 <meta name="twitter:description" content="状态管理（数据管理）为什么需要状态管理什么是状态管理 状态指的是数据 管理指的是多次交互时对数据的修改">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 863 个字)
+                    14 分钟 读完 (大约 2167 个字)
                 </span>
                 
                 
@@ -135,6 +135,18 @@
 </blockquote>
 <a id="more"></a>
 
+<h2 id="会话技术"><a href="#会话技术" class="headerlink" title="会话技术"></a>会话技术</h2><ol>
+<li>会话：一次会话中包含多次请求和响应。<ul>
+<li>一次会话：浏览器第一次给服务器资源发送请求，会话建立，直到有一方断开为止</li>
+</ul>
+</li>
+<li>功能：在一次会话的范围内的多次请求间，<strong>共享数据</strong></li>
+<li>方式：<ol>
+<li>客户端会话技术：Cookie</li>
+<li>服务器端会话技术：Session</li>
+</ol>
+</li>
+</ol>
 <p>浏览器与服务器请求一次连接一次，每次连接服务器默认都不会保存任何数据<br>通过技术手段，保存某次连接的数据，称为状态管理<br>在多次请求中，使用某次请求的数据，必须使用状态管理技术<br>实现状态管理的技术Cookie和Session</p>
 <blockquote>
 <p>浏览器1（卡（华为手机，充电宝）—&gt; 服务器<br>浏览器2（卡（华为手机，充电宝）—&gt;服务器<br>浏览器3（卡（华为手机，充电宝）—&gt;服务器        </p>
@@ -143,7 +155,125 @@
 <p>浏览器1（id号）—&gt;服务器  （卡1（华为手机，充电宝，id号）<br>浏览器2（id号）—&gt;服务器  （卡2（华为手机，充电宝，id号）<br>浏览器3（id号）—&gt;服务器  （卡3（华为手机，充电宝，id号）</p>
 </blockquote>
 <h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a><strong>Cookie</strong></h2><p>Cookie:保存在浏览器端的文本文件，实现状态管理的方式之一<br>工作原理：当服务器创建cookie并发送到浏览器，浏览器再次访问服务器<br>会自动将cookie发送的服务器</p>
-<h3 id="Cookie的特点："><a href="#Cookie的特点：" class="headerlink" title="Cookie的特点："></a><strong>Cookie的特点：</strong></h3><ul>
+<ol>
+<li><p>概念：客户端会话技术，将数据保存到客户端</p>
+</li>
+<li><p>快速入门：</p>
+<ul>
+<li>使用步骤：<ol>
+<li>创建Cookie对象，绑定数据<ul>
+<li>new Cookie(String name, String value) </li>
+</ul>
+</li>
+<li>发送Cookie对象<ul>
+<li>response.addCookie(Cookie cookie) </li>
+</ul>
+</li>
+<li>获取Cookie，拿到数据<ul>
+<li>Cookie[]  request.getCookies()  </li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li><p>实现原理</p>
+<ul>
+<li>基于响应头set-cookie和请求头cookie实现</li>
+</ul>
+</li>
+<li><p>cookie的细节</p>
+<ol>
+<li><p>一次可不可以发送多个cookie?</p>
+<ul>
+<li>可以</li>
+<li>可以创建多个Cookie对象，使用response调用多次addCookie方法发送cookie即可。</li>
+</ul>
+</li>
+<li><p>cookie在浏览器中保存多长时间？</p>
+<ol>
+<li>默认情况下，当浏览器关闭后，Cookie数据被销毁</li>
+<li>持久化存储：</li>
+</ol>
+<ul>
+<li>setMaxAge(int seconds)<ol>
+<li>正数：将Cookie数据写到硬盘的文件中。持久化存储。并指定cookie存活时间，时间到后，cookie文件自动失效</li>
+<li>负数：默认值</li>
+<li>零：删除cookie信息</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>cookie能不能存中文？</p>
+<ul>
+<li>在tomcat 8 之前 cookie中不能直接存储中文数据。</li>
+<li>需要将中文数据转码—一般采用URL编码(%E3)</li>
+<li>在tomcat 8 之后，cookie支持中文数据。特殊字符还是不支持，建议使用URL编码存储，URL解码解析</li>
+</ul>
+</li>
+<li><p>cookie共享问题？</p>
+<ol>
+<li>假设在一个tomcat服务器中，部署了多个web项目，那么在这些web项目中cookie能不能共享？</li>
+</ol>
+<ul>
+<li><p>默认情况下cookie不能共享</p>
+</li>
+<li><p>setPath(String path):设置cookie的获取范围。默认情况下，设置当前的虚拟目录</p>
+<ul>
+<li>如果要共享，则可以将path设置为”/“</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>2. 不同的tomcat服务器间cookie共享问题？
+  * setDomain(String path):如果设置一级域名相同，那么多个服务器之间cookie可以共享
+    * setDomain(&quot;.baidu.com&quot;),那么tieba.baidu.com和news.baidu.com中cookie可以共享</code></pre><ol start="5">
+<li><p>Cookie的<strong>特点</strong>和<strong>作用</strong></p>
+<ol>
+<li>cookie存储数据在客户端浏览器</li>
+<li>浏览器对于单个cookie 的大小有限制(4kb) 以及 对同一个域名下的总cookie数量也有限制(20个)</li>
+</ol>
+<ul>
+<li>作用：<ol>
+<li>cookie一般用于存出少量的不太敏感的数据</li>
+<li>在不登录的情况下，完成服务器对客户端的身份识别</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>案例：记住上一次访问时间</p>
+<ol>
+<li><p>需求：</p>
+<ol>
+<li>访问一个Servlet，如果是第一次访问，则提示：您好，欢迎您首次访问。</li>
+<li>如果不是第一次访问，则提示：欢迎回来，您上次访问时间为:显示时间字符串</li>
+</ol>
+</li>
+<li><p>分析：</p>
+<ol>
+<li>可以采用Cookie来完成</li>
+<li>在服务器中的Servlet判断是否有一个名为lastTime的cookie</li>
+<li>有：不是第一次访问<ol>
+<li>响应数据：欢迎回来，您上次访问时间为:2018年6月10日11:50:20</li>
+<li>写回Cookie：lastTime=2018年6月10日11:50:01</li>
+</ol>
+</li>
+<li>没有：是第一次访问<ol>
+<li>响应数据：您好，欢迎您首次访问</li>
+<li>写回Cookie：lastTime=2018年6月10日11:50:01</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<ul>
 <li><p>cookie保存在浏览器端的文本文件</p>
 </li>
 <li><p>cookie存储数据大小有限制，不能超过4K</p>
@@ -152,32 +282,108 @@
 </li>
 <li><p>cookie的数据不安全</p>
 </li>
-<li><p>cookie有路径的限制，只能读取同一个应用中的cookie<br>  同一个应用中，相同路径和子路径可以读取cookie<br>  发送cookie之前，都会cookie.serPath(“/“);为了方便读取</p>
+<li><p>cookie有路径的限制，只能读取同一个应用中的cookie<br>同一个应用中，相同路径和子路径可以读取cookie<br>发送cookie之前，都会cookie.serPath(“/“);为了方便读取</p>
 </li>
 <li><p>浏览器可以禁止cookie<br>Cookie的API：</p>
 <ul>
-<li><p>创建cookie<br>Cookie c = new Cookie(“name”,”value”);</p>
-</li>
-<li><p>设置存活时间<br>void setMaxAge(int seconds);<br>-1:保存到浏览器的缓存中<br>=0:cookie的失效，设置为0，被删除状态</p>
-<blockquote>
+<li>创建cookie<br>Cookie c = new Cookie(“name”,”value”);</li>
+<li>设置存活时间<br>void setMaxAge(int seconds);<br>-1:保存到浏览器的缓存中<br>=0:cookie的失效，设置为0，被删除状态<blockquote>
 <p>0:保存到浏览器所在的磁盘中</p>
 </blockquote>
 </li>
-<li><p>设置路径<br>void setPath(String path);<br>cookie.setPat(“/“);</p>
-</li>
-<li><p>获取名字<br>String getName();</p>
-</li>
-<li><p>获取cookie的值<br>String getValue();</p>
-</li>
-<li><p>发送cookie<br>response.addCookie(cookie);</p>
-</li>
-<li><p>获取cookie<br>Cookie[] cookies = request.getCookies();</p>
+<li>设置路径<br>void setPath(String path);<br>cookie.setPat(“/“);</li>
+<li>获取名字<br>String getName();</li>
+<li>获取cookie的值<br>String getValue();</li>
+<li>发送cookie<br>response.addCookie(cookie);</li>
+<li>获取cookie<br>Cookie[] cookies = request.getCookies();</li>
+</ul>
 <p>自动记忆账号和密码</p>
+<ol start="3">
+<li><p>代码实现：<br>package cn.itcast.cookie;</p>
+<p>import javax.servlet.ServletException;<br>import javax.servlet.annotation.WebServlet;<br>import javax.servlet.http.Cookie;<br>import javax.servlet.http.HttpServlet;<br>import javax.servlet.http.HttpServletRequest;<br>import javax.servlet.http.HttpServletResponse;<br>import java.io.IOException;<br>import java.net.URLDecoder;<br>import java.net.URLEncoder;<br>import java.text.SimpleDateFormat;<br>import java.util.Date;</p>
+</li>
+</ol>
 </li>
 </ul>
-</li>
-</ul>
-<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a><strong>Session</strong></h2><p>1、状态（数据）管理-session<br>      会话管理<br>      获取session对象<br>   request.getSession();如果没有查找到session对象，会创建<br>   request.getSession(true);如果没有查找到session对象，会创建<br>   request.getSession(false);如果没有查找到session对象，返回null<br>   void setAttribute(String name,Object value);设置属性<br>   Object getAttribute(String name);获取属性</p>
+<pre><code>@WebServlet(&quot;/cookieTest&quot;)
+public class CookieTest extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //设置响应的消息体的数据格式以及编码
+        response.setContentType(&quot;text/html;charset=utf-8&quot;);
+
+        //1.获取所有Cookie
+        Cookie[] cookies = request.getCookies();
+        boolean flag = false;//没有cookie为lastTime
+        //2.遍历cookie数组
+        if(cookies != null &amp;&amp; cookies.length &gt; 0){
+            for (Cookie cookie : cookies) {
+                //3.获取cookie的名称
+                String name = cookie.getName();
+                //4.判断名称是否是：lastTime
+                if(&quot;lastTime&quot;.equals(name)){
+                    //有该Cookie，不是第一次访问
+
+                    flag = true;//有lastTime的cookie
+
+                    //设置Cookie的value
+                    //获取当前时间的字符串，重新设置Cookie的值，重新发送cookie
+                    Date date  = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss&quot;);
+                    String str_date = sdf.format(date);
+                    System.out.println(&quot;编码前：&quot;+str_date);
+                    //URL编码
+                    str_date = URLEncoder.encode(str_date,&quot;utf-8&quot;);
+                    System.out.println(&quot;编码后：&quot;+str_date);
+                    cookie.setValue(str_date);
+                    //设置cookie的存活时间
+                    cookie.setMaxAge(60 * 60 * 24 * 30);//一个月
+                    response.addCookie(cookie);
+
+
+                    //响应数据
+                    //获取Cookie的value，时间
+                    String value = cookie.getValue();
+                    System.out.println(&quot;解码前：&quot;+value);
+                    //URL解码：
+                    value = URLDecoder.decode(value,&quot;utf-8&quot;);
+                    System.out.println(&quot;解码后：&quot;+value);
+                    response.getWriter().write(&quot;&lt;h1&gt;欢迎回来，您上次访问时间为:&quot;+value+&quot;&lt;/h1&gt;&quot;);
+
+                    break;
+
+                }
+            }
+        }
+
+
+        if(cookies == null || cookies.length == 0 || flag == false){
+            //没有，第一次访问
+
+            //设置Cookie的value
+            //获取当前时间的字符串，重新设置Cookie的值，重新发送cookie
+            Date date  = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss&quot;);
+            String str_date = sdf.format(date);
+            System.out.println(&quot;编码前：&quot;+str_date);
+            //URL编码
+            str_date = URLEncoder.encode(str_date,&quot;utf-8&quot;);
+            System.out.println(&quot;编码后：&quot;+str_date);
+
+            Cookie cookie = new Cookie(&quot;lastTime&quot;,str_date);
+            //设置cookie的存活时间
+            cookie.setMaxAge(60 * 60 * 24 * 30);//一个月
+            response.addCookie(cookie);
+
+            response.getWriter().write(&quot;&lt;h1&gt;您好，欢迎您首次访问&lt;/h1&gt;&quot;);
+        }
+
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doPost(request, response);
+    }
+}</code></pre><h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a><strong>Session</strong></h2><p>1、状态（数据）管理-session<br>      会话管理<br>      获取session对象<br>   request.getSession();如果没有查找到session对象，会创建<br>   request.getSession(true);如果没有查找到session对象，会创建<br>   request.getSession(false);如果没有查找到session对象，返回null<br>   void setAttribute(String name,Object value);设置属性<br>   Object getAttribute(String name);获取属性</p>
 <p>2、基于session实现的功能</p>
 <ul>
 <li>保存登录账号信息，所有包含登录功能的系统都必须实现   </li>
