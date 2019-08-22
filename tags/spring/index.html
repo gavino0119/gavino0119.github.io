@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 266 个字)
+                    2 分钟 读完 (大约 267 个字)
                 </span>
                 
                 
@@ -131,26 +131,17 @@
         </h1>
         <div class="content">
             <h2 id="一、IOC：Inversion-of-Control-控制反转"><a href="#一、IOC：Inversion-of-Control-控制反转" class="headerlink" title="一、IOC：Inversion of Control 控制反转."></a>一、IOC：Inversion of Control 控制反转.</h2><p>指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合.</p>
-<h2 id="二、ioc-控制反转-底层原理"><a href="#二、ioc-控制反转-底层原理" class="headerlink" title="二、ioc(控制反转)底层原理"></a>二、ioc(控制反转)底层原理</h2><h3 id="1、传统方式开发，原始调用类中的方法"><a href="#1、传统方式开发，原始调用类中的方法" class="headerlink" title="1、传统方式开发，原始调用类中的方法"></a>1、传统方式开发，原始调用类中的方法</h3><p>对于如下类及其方法</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class ClassName&#123;</span><br><span class="line">	//方法</span><br><span class="line">	public void methodName()&#123;</span><br><span class="line">		//......</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>若要调用方法methodName(),原始的做法都是先new一个对象，再用该对象调用类中的方法，即</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClassName obj  = new ClassName();</span><br><span class="line">obj.methodName();</span><br></pre></td></tr></table></figure>
-
-<p>缺陷：耦合度太高</p>
-<h3 id="2、利用工厂模式解耦合"><a href="#2、利用工厂模式解耦合" class="headerlink" title="2、利用工厂模式解耦合"></a>2、利用工厂模式解耦合</h3><blockquote>
-<p><em>工厂模式</em> </p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class Factory&#123;</span><br><span class="line">	public static </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、通过IOC把对象的创建交给spring进行管理"><a href="#3、通过IOC把对象的创建交给spring进行管理" class="headerlink" title="3、通过IOC把对象的创建交给spring进行管理"></a>3、通过IOC把对象的创建交给spring进行管理</h3><p>第一步；创建xml文件<br>第二部: 创建工厂类(使用dom4j解析配置文件 + 反射)</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//使用dom4j解析配置文件</span><br><span class="line"></span><br><span class="line">//使用反射创建类对象</span><br><span class="line">class clazz = Class.forName()</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、DI-Dependency-Injection"><a href="#二、DI-Dependency-Injection" class="headerlink" title="二、DI :Dependency Injection"></a>二、DI :Dependency Injection</h2><p> 依赖注入.需要有 IOC 的环境,Spring 创建这个类的过程中,Spring 将类的依赖的属性设置进去.</p>
-<h2 id="三、Spring-中的工厂"><a href="#三、Spring-中的工厂" class="headerlink" title="三、Spring 中的工厂"></a>三、Spring 中的工厂</h2>
             
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/08/19/IOC基本原理及实现/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>

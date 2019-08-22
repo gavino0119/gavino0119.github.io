@@ -8,19 +8,19 @@
 
 
 
-    <meta name="description" content="一、IOC：Inversion of Control 控制反转.指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合. 二、ioc(控制反转)底层原理1、传统方式开发，原始调用类中的方法对于如下类及其方法 123456public class ClassName&amp;#123;	//方法	public void methodName()&amp;#123;		//......	&amp;#12">
+    <meta name="description" content="一、IOC：Inversion of Control 控制反转.指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合.">
 <meta name="keywords" content="spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IOC基本原理及相关实现">
 <meta property="og:url" content="https://gavino0119.github.io/2019/08/19/IOC基本原理及实现/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="一、IOC：Inversion of Control 控制反转.指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合. 二、ioc(控制反转)底层原理1、传统方式开发，原始调用类中的方法对于如下类及其方法 123456public class ClassName&amp;#123;	//方法	public void methodName()&amp;#123;		//......	&amp;#12">
+<meta property="og:description" content="一、IOC：Inversion of Control 控制反转.指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gavino0119.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-19T12:15:45.697Z">
+<meta property="og:updated_time" content="2019-08-22T03:38:03.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOC基本原理及相关实现">
-<meta name="twitter:description" content="一、IOC：Inversion of Control 控制反转.指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合. 二、ioc(控制反转)底层原理1、传统方式开发，原始调用类中的方法对于如下类及其方法 123456public class ClassName&amp;#123;	//方法	public void methodName()&amp;#123;		//......	&amp;#12">
+<meta name="twitter:description" content="一、IOC：Inversion of Control 控制反转.指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合.">
 <meta name="twitter:image" content="https://gavino0119.github.io/images/og_image.png">
 
 
@@ -111,7 +111,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 266 个字)
+                    2 分钟 读完 (大约 267 个字)
                 </span>
                 
                 
@@ -125,6 +125,7 @@
         </h1>
         <div class="content">
             <h2 id="一、IOC：Inversion-of-Control-控制反转"><a href="#一、IOC：Inversion-of-Control-控制反转" class="headerlink" title="一、IOC：Inversion of Control 控制反转."></a>一、IOC：Inversion of Control 控制反转.</h2><p>指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合.</p>
+<a id="more"></a>
 <h2 id="二、ioc-控制反转-底层原理"><a href="#二、ioc-控制反转-底层原理" class="headerlink" title="二、ioc(控制反转)底层原理"></a>二、ioc(控制反转)底层原理</h2><h3 id="1、传统方式开发，原始调用类中的方法"><a href="#1、传统方式开发，原始调用类中的方法" class="headerlink" title="1、传统方式开发，原始调用类中的方法"></a>1、传统方式开发，原始调用类中的方法</h3><p>对于如下类及其方法</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class ClassName&#123;</span><br><span class="line">	//方法</span><br><span class="line">	public void methodName()&#123;</span><br><span class="line">		//......</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

@@ -107,7 +107,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 266 个字)
+                    2 分钟 读完 (大约 267 个字)
                 </span>
                 
                 
@@ -121,26 +121,17 @@
         </h1>
         <div class="content">
             <h2 id="一、IOC：Inversion-of-Control-控制反转"><a href="#一、IOC：Inversion-of-Control-控制反转" class="headerlink" title="一、IOC：Inversion of Control 控制反转."></a>一、IOC：Inversion of Control 控制反转.</h2><p>指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合.</p>
-<h2 id="二、ioc-控制反转-底层原理"><a href="#二、ioc-控制反转-底层原理" class="headerlink" title="二、ioc(控制反转)底层原理"></a>二、ioc(控制反转)底层原理</h2><h3 id="1、传统方式开发，原始调用类中的方法"><a href="#1、传统方式开发，原始调用类中的方法" class="headerlink" title="1、传统方式开发，原始调用类中的方法"></a>1、传统方式开发，原始调用类中的方法</h3><p>对于如下类及其方法</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class ClassName&#123;</span><br><span class="line">	//方法</span><br><span class="line">	public void methodName()&#123;</span><br><span class="line">		//......</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>若要调用方法methodName(),原始的做法都是先new一个对象，再用该对象调用类中的方法，即</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClassName obj  = new ClassName();</span><br><span class="line">obj.methodName();</span><br></pre></td></tr></table></figure>
-
-<p>缺陷：耦合度太高</p>
-<h3 id="2、利用工厂模式解耦合"><a href="#2、利用工厂模式解耦合" class="headerlink" title="2、利用工厂模式解耦合"></a>2、利用工厂模式解耦合</h3><blockquote>
-<p><em>工厂模式</em> </p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class Factory&#123;</span><br><span class="line">	public static </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、通过IOC把对象的创建交给spring进行管理"><a href="#3、通过IOC把对象的创建交给spring进行管理" class="headerlink" title="3、通过IOC把对象的创建交给spring进行管理"></a>3、通过IOC把对象的创建交给spring进行管理</h3><p>第一步；创建xml文件<br>第二部: 创建工厂类(使用dom4j解析配置文件 + 反射)</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//使用dom4j解析配置文件</span><br><span class="line"></span><br><span class="line">//使用反射创建类对象</span><br><span class="line">class clazz = Class.forName()</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、DI-Dependency-Injection"><a href="#二、DI-Dependency-Injection" class="headerlink" title="二、DI :Dependency Injection"></a>二、DI :Dependency Injection</h2><p> 依赖注入.需要有 IOC 的环境,Spring 创建这个类的过程中,Spring 将类的依赖的属性设置进去.</p>
-<h2 id="三、Spring-中的工厂"><a href="#三、Spring-中的工厂" class="headerlink" title="三、Spring 中的工厂"></a>三、Spring 中的工厂</h2>
             
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/08/19/IOC基本原理及实现/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -165,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    几秒 读完 (大约 1 个字)
                 </span>
                 
                 
@@ -178,7 +169,8 @@
             
         </h1>
         <div class="content">
-            
+            <a id="more"></a>
+
             
         </div>
         
@@ -210,7 +202,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 143 个字)
+                    1 分钟 读完 (大约 144 个字)
                 </span>
                 
                 
@@ -224,12 +216,17 @@
         </h1>
         <div class="content">
             <p>java类的<em>成员变量包括实例变量和类变量</em>，<em>成员方法包括实例方法和类方法</em>。</p>
-<h2 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h2><h3 id="实例变量"><a href="#实例变量" class="headerlink" title="实例变量"></a>实例变量</h3><p>，是新建了实例后才能用的变量</p>
-<h3 id="类变量，"><a href="#类变量，" class="headerlink" title="类变量，"></a>类变量，</h3><p>是不用新建实例，直接通过类来调用的变量。特点是用static修饰。所以它们还有个响当当的名字，叫静态变量。<br>成员变量最大，包括实例变量和类变量，类变量=静态变量</p>
-<h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><h3 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h3>
             
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/08/11/Java中的那些成员和变量/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -258,7 +255,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 51 个字)
+                    几秒 读完 (大约 52 个字)
                 </span>
                 
                 
@@ -271,7 +268,8 @@
             
         </h1>
         <div class="content">
-            <h3 id="charAt-用于给出位置上的字符"><a href="#charAt-用于给出位置上的字符" class="headerlink" title="charAt 用于给出位置上的字符"></a><em>charAt</em> 用于给出位置上的字符</h3><h3 id="valueOf-用于将其他类型转换为字符串类型"><a href="#valueOf-用于将其他类型转换为字符串类型" class="headerlink" title="valueOf 用于将其他类型转换为字符串类型"></a><em>valueOf</em> 用于将其他类型转换为字符串类型</h3><h3 id="indexOf-用于实现检索"><a href="#indexOf-用于实现检索" class="headerlink" title="indexOf 用于实现检索"></a><em>indexOf</em> 用于实现检索</h3><h3 id="substring-获取子串位置"><a href="#substring-获取子串位置" class="headerlink" title="substring 获取子串位置"></a><em>substring</em> 获取子串位置</h3><h3 id="trim-去除字符串周围空白"><a href="#trim-去除字符串周围空白" class="headerlink" title="trim 去除字符串周围空白"></a><em>trim</em> 去除字符串周围空白</h3>
+            <a id="more"></a>
+<h3 id="charAt-用于给出位置上的字符"><a href="#charAt-用于给出位置上的字符" class="headerlink" title="charAt 用于给出位置上的字符"></a><em>charAt</em> 用于给出位置上的字符</h3><h3 id="valueOf-用于将其他类型转换为字符串类型"><a href="#valueOf-用于将其他类型转换为字符串类型" class="headerlink" title="valueOf 用于将其他类型转换为字符串类型"></a><em>valueOf</em> 用于将其他类型转换为字符串类型</h3><h3 id="indexOf-用于实现检索"><a href="#indexOf-用于实现检索" class="headerlink" title="indexOf 用于实现检索"></a><em>indexOf</em> 用于实现检索</h3><h3 id="substring-获取子串位置"><a href="#substring-获取子串位置" class="headerlink" title="substring 获取子串位置"></a><em>substring</em> 获取子串位置</h3><h3 id="trim-去除字符串周围空白"><a href="#trim-去除字符串周围空白" class="headerlink" title="trim 去除字符串周围空白"></a><em>trim</em> 去除字符串周围空白</h3>
             
         </div>
         
