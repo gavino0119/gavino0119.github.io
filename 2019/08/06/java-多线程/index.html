@@ -3,31 +3,31 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>java 多线程 - Gavino</title>
+<title>Java 多线程基础总结 - Gavino</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="多线程 一、程序    进程    线程程序：指令集，静态概念 进程：操作系统调度程序，动态概念 线程：在进程内多条执行路径线程之间是独立的    一个进程内可以有多条并行的线程*线程和进程的区别**    根本区别：线程作为资源分配的单位              进程是调度和执行的单位    /*线程是进程的一部分        线程是不同的执行路径 二、线程创建之一    继承Thread">
+    <meta name="description" content="本文是Java多线程的基础入门篇">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java 多线程">
+<meta property="og:title" content="Java 多线程基础总结">
 <meta property="og:url" content="https://gavino0119.github.io/2019/08/06/java-多线程/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="多线程 一、程序    进程    线程程序：指令集，静态概念 进程：操作系统调度程序，动态概念 线程：在进程内多条执行路径线程之间是独立的    一个进程内可以有多条并行的线程*线程和进程的区别**    根本区别：线程作为资源分配的单位              进程是调度和执行的单位    /*线程是进程的一部分        线程是不同的执行路径 二、线程创建之一    继承Thread">
+<meta property="og:description" content="本文是Java多线程的基础入门篇">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gavino0119.github.io/https">
-<meta property="og:updated_time" content="2019-08-06T11:28:49.985Z">
+<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6kXHCG9f-RU9ZD7QH9PRt4VSx2bcLe648MVn5-Vkc3svLoHwcLg">
+<meta property="og:updated_time" content="2019-08-24T03:32:23.595Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java 多线程">
-<meta name="twitter:description" content="多线程 一、程序    进程    线程程序：指令集，静态概念 进程：操作系统调度程序，动态概念 线程：在进程内多条执行路径线程之间是独立的    一个进程内可以有多条并行的线程*线程和进程的区别**    根本区别：线程作为资源分配的单位              进程是调度和执行的单位    /*线程是进程的一部分        线程是不同的执行路径 二、线程创建之一    继承Thread">
-<meta name="twitter:image" content="https://gavino0119.github.io/https">
+<meta name="twitter:title" content="Java 多线程基础总结">
+<meta name="twitter:description" content="本文是Java多线程的基础入门篇">
+<meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6kXHCG9f-RU9ZD7QH9PRt4VSx2bcLe648MVn5-Vkc3svLoHwcLg">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="java 多线程" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="Java 多线程基础总结" type="application/atom+xml">
 
 
 
@@ -49,7 +49,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="java 多线程" height="28">
+                <img src="/images/logo.png" alt="Java 多线程基础总结" height="28">
             
             </a>
         </div>
@@ -99,7 +99,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/https" alt="java 多线程">
+            <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6kXHCG9f-RU9ZD7QH9PRt4VSx2bcLe648MVn5-Vkc3svLoHwcLg" alt="Java 多线程基础总结">
         </span>
     </div>
     
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1210 个字)
+                    22 分钟 读完 (大约 3239 个字)
                 </span>
                 
                 
@@ -126,67 +126,154 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                java 多线程
+                Java 多线程基础总结
             
         </h1>
         <div class="content">
-            <p>多线程</p>
-<h3 id="一、程序-进程-线程"><a href="#一、程序-进程-线程" class="headerlink" title="一、程序    进程    线程"></a>一、程序    进程    线程</h3><pre><code>程序：指令集，静态概念
-进程：操作系统调度程序，动态概念
-线程：在进程内多条执行路径</code></pre><p><em>线程之间是独立的    一个进程内可以有多条并行的线程<br>*</em>线程和进程的区别**<br>    根本区别：线程作为资源分配的单位<br>              进程是调度和执行的单位<br>    /*线程是进程的一部分        线程是不同的执行路径</p>
-<h3 id="二、线程创建之一-继承Thread-run-线程体"><a href="#二、线程创建之一-继承Thread-run-线程体" class="headerlink" title="二、线程创建之一    继承Thread  +run(线程体)"></a>二、线程创建之一    继承Thread  +run(线程体)</h3><pre><code>启动：创建子类对象  +对象.start()
-继承Thread类方式的缺点</code></pre><h3 id="三、静态代理模式"><a href="#三、静态代理模式" class="headerlink" title="三、静态代理模式"></a>三、静态代理模式</h3><pre><code>* 1、真实角色
-* 2、代理角色： 要持有真实角色的引用
-* 3、二者要实现相同的接口</code></pre><h3 id="四、线程创建之二-类实现Runnable接口-重写run-线程体-方法-–-gt-真实角色类"><a href="#四、线程创建之二-类实现Runnable接口-重写run-线程体-方法-–-gt-真实角色类" class="headerlink" title="四、线程创建之二    类实现Runnable接口    +重写run(线程体)方法        –&gt;真实角色类"></a>四、线程创建之二    类实现Runnable接口    +重写run(线程体)方法        –&gt;真实角色类</h3><pre><code>启动：1、创建真实角色
-      2、创建代理角色(Thread类)    +真实角色引用
-      3、代理对象.start()
+            <blockquote>
+<p>本文是Java多线程的基础入门篇</p>
+</blockquote>
+<a id="more"></a>
 
- * 推荐使用Runnable创建线程
- * 1）避免单继承的局限性
- * 2）便于共享资源 </code></pre><h3 id="五、线程创建之三-类实现Callable接口"><a href="#五、线程创建之三-类实现Callable接口" class="headerlink" title="五、线程创建之三    类实现Callable接口"></a>五、线程创建之三    类实现Callable接口</h3><pre><code>#run方法的缺点：
-1、不能抛异常
-2、没有返回值</code></pre><p>Callable创建线程：优点–可以获取返回值，缺点–比较繁琐<br>    1）创建Callable实现类 +重写call()方法<br>    2）借助执行调度服务ExecutorService获取Future对象<br>        ExecutorService ser = Executors.newFixedThreadPool(线程数量);<br>        Future result = ser.submit(实现类对象);<br>    3）获取值    result.get();<br>    4）停止服务    ser.shutdown();</p>
-<h3 id="六、线程状态与停止线程、线程阻塞"><a href="#六、线程状态与停止线程、线程阻塞" class="headerlink" title="六、线程状态与停止线程、线程阻塞"></a>六、线程状态与停止线程、线程阻塞</h3><pre><code>(一)线程状态
-    1、新生状态
-    2、就绪状态
-    3、运行状态
-    4、阻塞状态
-    5、死亡状态 
-(二)停止线程
-    1、自然终止：线程体正常执行完毕。
-    2、外部干涉：
-        1)线程类中定义线程体使用的标识
-        2)线程体使用该标识
-        3)提供对外的方法改变该标识
-        4)外部根据条件调用该方法即可
-(三)线程阻塞
-    1、join:合并线程
-    2、yield：(屈服，让步)暂停自己的线程
-    3、sleep:休眠(暂停当前线程) 不释放锁 常用于两种形式
-        1)、与时间相关的    如倒计时
-        2)、模拟网络延时</code></pre><h3 id="七、线程基本信息-优先级"><a href="#七、线程基本信息-优先级" class="headerlink" title="七、线程基本信息-优先级"></a>七、线程基本信息-优先级</h3><pre><code>currentThread()：当前线程
-getName()：设置名称
-setName(): 获取名称
-isAlive()：判断状态</code></pre><p>优先级不代表执行的先后顺序  代表概率<br>    MAX_PRIORITY 10<br>    NORM_PRIORITY 5(默认)<br>    MIN_PRIORITY 1</p>
-<pre><code>setPriority()    设置优先级</code></pre><h3 id="八、线程同步与锁定"><a href="#八、线程同步与锁定" class="headerlink" title="八、线程同步与锁定"></a>八、线程同步与锁定</h3><pre><code>同步：并发    多个线程访问同一份资源    确保资源安全    --&gt;线程安全
-（常说 Hashtable是线程安全的  HashMap是线程不安全的）
-synchronized--&gt;同步
+<h3 id="一、程序-进程-线程"><a href="#一、程序-进程-线程" class="headerlink" title="一、程序    进程    线程"></a>一、程序    进程    线程</h3><ul>
+<li>程序：指令集，静态概念</li>
+<li>进程：操作系统调度程序，动态概念</li>
+<li>线程：在进程内多条执行路径</li>
+</ul>
+<blockquote>
+<p>线程是进程中包含的一个或多个执行单元。<br>线程只能归属一个进程。并且线程只能访问该进程所拥有的资源。<br>当操作系统创建一个进程，该进程会自动申请一个主线程作为首要执行的任务。<br>线程之间是独立的    一个进程内可以有多条并行的线程<br>一个线程是进程的一个执行单元<br>同类的多个线程共享一块内存空间和一组资源。<br>线程本身是一个有可供程序执行的堆栈。<br>线程的切换耗时小，把线程称为轻负荷进程。</p>
+</blockquote>
+<blockquote>
+<p><strong>进程和线程的关系：</strong><br>    1.一个进程至少要有一个线程。<br>    2.线程的划分尺度一定是小于进程。<br>    3.多个进程在执行过程中拥有独立的内存单元。<br>    4.而多个线程共享内存。<br>    5.线程在执行过程中与进程的区别在于每个独立的线程都有一个程序的执行入口，顺序执行，并有一个程序的执行出口。<br>    6.从逻辑角度讲，多线程的意义在于一个应用程序中，有多个执行部分可以并发运行，但操作系统并没有将多个线程看作独立的应用来实现进程的调度和管理以及资源分配。</p>
+</blockquote>
+<blockquote>
+<p><strong>线程和进程的区别</strong><br>    根本区别：线程作为资源分配的单位<br>              进程是调度和执行的单位<br>    线程是进程的一部分        线程是不同的执行路径</p>
+</blockquote>
+<blockquote>
+<p>并发：多个线程”同时”进行(),实际上多个线程是并发运行的。操作系统将运行时的多个线程以时间片段划分，在不同的时间片段中随机切换。<br>Java支持多线，即在Java应用程序中，可以创建多个线程，多个线程可以并发运行。</p>
+</blockquote>
+<h3 id="二、线程创建之一-继承Thread-run-线程体"><a href="#二、线程创建之一-继承Thread-run-线程体" class="headerlink" title="二、线程创建之一    继承Thread  +run(线程体)"></a>二、线程创建之一    继承Thread  +run(线程体)</h3><blockquote>
+<p>启动：创建子类对象  +对象.start()</p>
+</blockquote>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 继承Thread类，定义线程类</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">public class MyThread extends Thread &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">			System.out.println(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		MyThread t1 = new MyThread();//创建线程对象</span><br><span class="line">		t1.start();//启动线程</span><br><span class="line">		MyThread t2 = new MyThread();</span><br><span class="line">		t2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>继承Thread类方式的缺点</p>
+<h3 id="三、静态代理模式"><a href="#三、静态代理模式" class="headerlink" title="三、静态代理模式"></a>三、静态代理模式</h3><p>* 1、真实角色<br>* 2、代理角色： 要持有真实角色的引用<br>* 3、二者要实现相同的接口</p>
+<h3 id="四、线程创建之二-类实现Runnable接口-重写run-线程体-方法-–-gt-真实角色类"><a href="#四、线程创建之二-类实现Runnable接口-重写run-线程体-方法-–-gt-真实角色类" class="headerlink" title="四、线程创建之二    类实现Runnable接口    +重写run(线程体)方法        –&gt;真实角色类"></a>四、线程创建之二    类实现Runnable接口    +重写run(线程体)方法        –&gt;真实角色类</h3><blockquote>
+<p><strong>启动：</strong><br>    1、创建真实角色<br>    2、创建代理角色(Thread类)    +真实角色引用<br>    3、代理对象.start()</p>
+</blockquote>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 实现 Runnable 接口创建线程 描述的是线程任务，而不是线程</span><br><span class="line"> * 所以不能直接启动</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">public class MyThread implements Runnable &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">			System.out.println(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * Runnable 接口，是线程任务的规范接口，实现Runnable接口的类，描述的是线程任务</span><br><span class="line"> * 可以使用一个Thread对象封装一个实现Runnable接口对象，进而实现多线程。</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Runnable r1 = new MyThread();//创建一个任务对象</span><br><span class="line">		Thread t1 = new Thread(r1);//创建一个线程对象</span><br><span class="line">		t1.start();</span><br><span class="line">		Thread t2 = new Thread(r1);//创建第二个线程对象</span><br><span class="line">		t2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>匿名内部类创建并启动线程<br>        <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	new Thread(new Runnable() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void run() &#123;</span><br><span class="line">			for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">				System.out.println(&quot;匿名内部类多线程&quot;+i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>两种线程的区别</p>
+<ol>
+<li>继承类，不能实现多个线程共享同一个实例资源<br>实现接口，任务模块化，多个线程可以共享同一个资源</li>
+<li>继承类，就不能继承其它类，有单继承局限性<br>实现接口，还可以继承其他的父类</li>
+</ol>
+</blockquote>
+<blockquote>
+<p><strong>推荐使用Runnable创建线程</strong><br>1）避免单继承的局限性<br>2）便于共享资源 </p>
+</blockquote>
+<h3 id="五、线程创建之三-类实现Callable接口"><a href="#五、线程创建之三-类实现Callable接口" class="headerlink" title="五、线程创建之三    类实现Callable接口"></a>五、线程创建之三    类实现Callable接口</h3><blockquote>
+<p>run方法的缺点：<br>1、不能抛异常<br>2、没有返回值</p>
+</blockquote>
+<p>Callable创建线程：优点–可以获取返回值，缺点–比较繁琐</p>
+<blockquote>
+<p>1）创建Callable实现类 +重写call()方法<br>2）借助执行调度服务ExecutorService获取Future对象<br>    ExecutorService ser = Executors.newFixedThreadPool(线程数量);<br>    Future result = ser.submit(实现类对象);<br>3）获取值    result.get();<br>4）停止服务    ser.shutdown();</p>
+</blockquote>
+<h3 id="六、线程状态与停止线程、线程阻塞"><a href="#六、线程状态与停止线程、线程阻塞" class="headerlink" title="六、线程状态与停止线程、线程阻塞"></a>六、线程状态与停止线程、线程阻塞</h3><h4 id="一-线程状态"><a href="#一-线程状态" class="headerlink" title="(一)线程状态"></a>(一)线程状态</h4><blockquote>
+<ol>
+<li>新建状态(new): 创建一个线程对象</li>
+<li>就绪状态(Runnable): 线程对象创建以后，调用start()方法，就绪状态的线程只处于等待cpu的使用权。变为可运行。</li>
+<li>运行状态(Running): 就绪状态的线程，获取到了cpu资源，执行程序代码。</li>
+<li>阻塞状态(Blocked): <ul>
+<li>等待阻塞 调用wait()方法 没有占用cpu资源，也没有处于排队等待cpu状态</li>
+<li>睡眠阻塞 调用sleep()方法 占用cpu资源，也没有处于排队等待cpu状态</li>
+<li>IO阻塞 进入IO操作，线程即进入到IO阻塞状态，当IO操作结束，即结束IO阻塞状态</li>
+</ul>
+</li>
+<li>死亡状态(Dead): 线程任务执行结束 即run()结束，该线程对象就会垃圾回收</li>
+</ol>
+</blockquote>
+<h4 id="二-停止线程"><a href="#二-停止线程" class="headerlink" title="(二)停止线程"></a>(二)停止线程</h4><blockquote>
+<ol>
+<li>自然终止：线程体正常执行完毕。</li>
+<li>外部干涉：<ul>
+<li>线程类中定义线程体使用的标识</li>
+<li>线程体使用该标识</li>
+<li>提供对外的方法改变该标识</li>
+<li>外部根据条件调用该方法即可</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h4 id="三-线程阻塞"><a href="#三-线程阻塞" class="headerlink" title="(三)线程阻塞"></a>(三)线程阻塞</h4><blockquote>
+<ol>
+<li>join:合并线程(调用 join() 后，线程会等待 join() 所属线程运行结束后再继续运行。)</li>
+<li>yield：(屈服，让步)暂停自己的线程(从运行状态切换到就绪状态)<br>就是说当一个线程使用了这个方法之后，它就会把自己CPU执行的时间让掉，让自己或者其它的线程运行</li>
+</ol>
+<p><strong>注意是让自己或者其他线程运行，并不是单纯的让给其他线程。</strong></p>
+<ol start="3">
+<li>sleep:休眠(暂停当前线程) 不释放锁 常用于两种形式<ul>
+<li>与时间相关的    如倒计时</li>
+<li>模拟网络延时</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="七、线程基本信息-优先级"><a href="#七、线程基本信息-优先级" class="headerlink" title="七、线程基本信息-优先级"></a>七、线程基本信息-优先级</h3><blockquote>
+<p>优先级不代表执行的先后顺序  代表概率<br>    MAX_PRIORITY 10<br>    NORM_PRIORITY 5(默认)<br>    MIN_PRIORITY 1<br>    *setPriority()    设置优先级</p>
+</blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 测试线程的优先级</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">			System.out.println(i+&quot; 线程：&quot;+Thread.currentThread().getName()+&quot; 优先级：&quot;+Thread.currentThread().getPriority());</span><br><span class="line">		&#125;</span><br><span class="line">		MyRun r1 = new MyRun();</span><br><span class="line">		MyRun r2 = new MyRun();</span><br><span class="line">		Thread t1 = new Thread(r1);</span><br><span class="line">		t1.setName(&quot;t1&quot;);</span><br><span class="line">		Thread t2 = new Thread(r2);</span><br><span class="line">		t2.setName(&quot;t2&quot;);</span><br><span class="line">		//获取线程的优先级</span><br><span class="line">//		System.out.println(t1.getPriority());</span><br><span class="line">//		System.out.println(t2.getPriority());</span><br><span class="line">		//设置线程优先级</span><br><span class="line">		t1.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">		t2.setPriority(Thread.MIN_PRIORITY);</span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class MyRun implements Runnable &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">			System.out.println(i+&quot; 线程：&quot;+Thread.currentThread().getName()+&quot; 优先级：&quot;+Thread.currentThread().getPriority());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-一)、同步块
-synchronized(引用类型|this|类.class) {
+<p>执行结果：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">0 线程：main 优先级：5</span><br><span class="line">1 线程：main 优先级：5</span><br><span class="line">2 线程：main 优先级：5</span><br><span class="line">...</span><br><span class="line">0 线程：t1 优先级：10</span><br><span class="line">1 线程：t1 优先级：10</span><br><span class="line">2 线程：t1 优先级：10</span><br><span class="line">0 线程：t2 优先级：1</span><br><span class="line">3 线程：t1 优先级：10</span><br><span class="line">...</span><br><span class="line">1 线程：t2 优先级：1</span><br><span class="line">2 线程：t2 优先级：1</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-}
-二)、同步方法
-synchronized</code></pre><p>单例设计模式：确保一个类只有一个对象(该对象为内部自己创建，外部只能调用这一个对象)<br>    #【确保一个类只有一个对象】<br><br>    懒汉式：(前面懒得创建对象，在使用的时候再创建对象)<br>        1、构造器私有化    避免外部直接创建对象<br>        2、声明一个私有的静态变量(属性)<br>        3、创建一个对外的公共的静态方法 访问该变量，如果变量没有对象 创建该对象<br><br>    饿汉式：<br>        1、构造器私有化    避免外部直接创建对象<br>        2、声明一个私有的静态变量(属性)，同时创建对象<br>        3、创建一个对外的公共的静态方法 访问该变量</p>
-<p>九、死锁<br>    #过多的同步容易造成死锁<br><br>    *解决方法：生产者消费者模式（此处不指设计模式）<br>               即：（过马路）信号灯法（标志位）<br>               信号灯:flag<br>               思路:<br>                       flag–&gt;T 生产者生产    消费者等待    生产完成后通知消费<br>                       flag–&gt;F 消费者消费 生产者等待    消费完成后通知生产<br><br>               wait():等待    释放锁        sleep不释放锁<br>               notify()/notifyAll():唤醒<br>               *wait()    notify()/notifyAll()和synchronized一同使用</p>
-<p>十、任务调度<br>    Timer<br>    schedule()<br>    quartz 框架<br>十一、总结<br>    重点：* 创建线程<br>          * 终止线程<br>          * sleep<br>          * 同步(面试中)</p>
-<pre><code>拓展    JUC:
-            在 Java 5.0 提供了 java.util.concurrent(简称JUC)包,在此包中增加了在并发编程中很常用的工具类,
-        用于定义类似于线程的自定义子系统,包括线程池,异步 IO 和轻量级任务框架;还提供了设计用于多线程上下文中
-        的 Collection 实现等。
+<p>线程类中常用的API</p>
+<blockquote>
+<ul>
+<li>currentThread()：当前线程</li>
+<li>getName()：设置名称</li>
+<li>setName(): 获取名称</li>
+<li>isAlive()：判断状态</li>
+<li>setDaemon(): 设置一个线程为守护(后台)线程</li>
+</ul>
+</blockquote>
+<h3 id="八、线程同步与锁定"><a href="#八、线程同步与锁定" class="headerlink" title="八、线程同步与锁定"></a>八、线程同步与锁定</h3><blockquote>
+<p>可能出现<strong>线程安全问题</strong>的条件</p>
+<ol>
+<li>多个线程访问统一资源</li>
+<li>多行代码对同一个变量进行运算</li>
+</ol>
+</blockquote>
+<p>同步：并发    多个线程访问同一份资源    确保资源安全    –&gt;线程安全<br>（常说 Hashtable是线程安全的  HashMap是线程不安全的）<br>synchronized–&gt;同步<br>异步: </p>
+<blockquote>
+<p>synchronized可以修饰一段代码或方法<br>(一)、同步块<br>synchronized(引用类型|this|类.class) {<br>}<br>(二)、同步方法<br>synchronized 修饰方法，将方法添加锁，JVM每次调用方法，都会处理锁(线程安全的方法效率低)<br>public synchronized void method(){…}<br>-——————————————————-<br>* 实例方法，this为默认的锁对象<br>* 类方法，当前类的字节码对象作为锁<br>* 同步代码段锁，可以是任意对象锁</p>
+</blockquote>
+<p>单例设计模式：确保一个类只有一个对象(该对象为内部自己创建，外部只能调用这一个对象)<br>    #【确保一个类只有一个对象】<br><br>    懒汉式：(前面懒得创建对象，在使用的时候再创建对象)<br>        1、构造器私有化    避免外部直接创建对象<br>        2、声明一个私有的静态变量(属性)<br>        3、创建一个对外的公共的静态方法 访问该变量，如果变量没有对象 创建该对象<br><br>    饿汉式：<br>        1、构造器私有化    避免外部直接创建对象<br>        2、声明一个私有的静态变量(属性)，同时创建对象<br>        3、创建一个对外的公共的静态方法 访问该变量</p>
+<h3 id="九、死锁"><a href="#九、死锁" class="headerlink" title="九、死锁"></a>九、死锁</h3><blockquote>
+<p>过多的同步容易造成死锁</p>
+</blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">synchronized(o1)&#123;</span><br><span class="line">	......</span><br><span class="line">	synchronized(02)&#123;</span><br><span class="line">		......</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">synchronized(02)&#123;</span><br><span class="line">	......</span><br><span class="line">	synchronized(01)&#123;</span><br><span class="line">		.....</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        quartz 框架：
-            Quartz是一个完全由java编写的开源作业调度框架。</code></pre><p>高并发编程工具JUC</p>
+<p>模拟线程死锁现象</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author gavino 模拟线程死锁现象 </span><br><span class="line"> * 不同的线程分别占用对方需要的同步资源 </span><br><span class="line"> * 都在等待对方放弃自己需要的同步资源</span><br><span class="line"> * </span><br><span class="line"> * 出现死锁后，不会出现异常</span><br><span class="line"> */</span><br><span class="line">public class Demo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		MyLock myLock = new MyLock();</span><br><span class="line">		YouLock youLock = new YouLock();</span><br><span class="line">		StringBuilder sb = new StringBuilder();</span><br><span class="line"></span><br><span class="line">		Thread t1 = new Thread(new Runnable() &#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void run() &#123;</span><br><span class="line">				synchronized (myLock) &#123;</span><br><span class="line">					sb.append(&quot;my lock&quot;);</span><br><span class="line">					sb.append(&quot;hehehe&quot;);</span><br><span class="line">					System.out.println(sb);</span><br><span class="line">					synchronized (youLock) &#123;</span><br><span class="line">						sb.append(&quot;your lock&quot;);</span><br><span class="line">						sb.append(&quot;hahaha&quot;);</span><br><span class="line">						System.out.println(sb);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		Thread t2 = new Thread(new Runnable() &#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void run() &#123;</span><br><span class="line">				synchronized (youLock) &#123;</span><br><span class="line">					sb.append(&quot;your lock&quot;);</span><br><span class="line">					sb.append(&quot;hahaha&quot;);</span><br><span class="line">					System.out.println(sb);</span><br><span class="line">					synchronized (myLock) &#123;</span><br><span class="line">						sb.append(&quot;my lock&quot;);</span><br><span class="line">						sb.append(&quot;hehehe&quot;);</span><br><span class="line">						System.out.println(sb);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class MyLock &#123;</span><br><span class="line">&#125;</span><br><span class="line">class YouLock &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>解决方法：<strong>生产者消费者模式</strong>（此处不指设计模式）<br>    即：（过马路）信号灯法（标志位）<br>    信号灯:flag<br>    思路:<br>            flag–&gt;T 生产者生产    消费者等待    生产完成后通知消费<br>            flag–&gt;F 消费者消费 生产者等待    消费完成后通知生产</p>
+</blockquote>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 一个场景 共同的资源</span><br><span class="line"> */</span><br><span class="line">public class Product &#123;</span><br><span class="line">	//信号灯</span><br><span class="line">	private boolean flag = true;</span><br><span class="line">	private String pro;</span><br><span class="line">	//生产功能</span><br><span class="line">	public synchronized void produce(String pro) &#123;</span><br><span class="line">		if (!flag) &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				this.wait();</span><br><span class="line">			&#125; catch (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		//开始生产</span><br><span class="line">		try &#123;</span><br><span class="line">			Thread.sleep(500);</span><br><span class="line">		&#125; catch (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(&quot;生产了&quot;+pro);</span><br><span class="line">		//生产完毕</span><br><span class="line">		this.pro = pro ;</span><br><span class="line">		//通知消费</span><br><span class="line">		this.notify();</span><br><span class="line">		//停止生产</span><br><span class="line">		this.flag = false;</span><br><span class="line">	&#125;</span><br><span class="line">	//消费功能</span><br><span class="line">	public synchronized void consume() &#123;</span><br><span class="line">		if (flag) &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				this.wait();</span><br><span class="line">			&#125; catch (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		//开始消费</span><br><span class="line">		try &#123;</span><br><span class="line">			Thread.sleep(200);</span><br><span class="line">		&#125; catch (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		//消费完毕</span><br><span class="line">		System.out.println(&quot;消费了&quot;+pro);</span><br><span class="line">		//通知生产</span><br><span class="line">		this.notifyAll();</span><br><span class="line">		//停止消费</span><br><span class="line">		this.flag = true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>定义生产者<br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 生产者</span><br><span class="line"> */</span><br><span class="line">public class Producer implements Runnable &#123;</span><br><span class="line">	private Product p;</span><br><span class="line">	Producer(Product p) &#123;</span><br><span class="line">		this.p = p;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for(int i=0;i&lt;20;i++) &#123;</span><br><span class="line">			if(0==i%2) &#123;</span><br><span class="line">				p.produce(&quot;产品A&quot;);</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				p.produce(&quot;产品B&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>定义消费者<br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 消费者</span><br><span class="line"> */</span><br><span class="line">public class Consumer implements Runnable &#123;</span><br><span class="line">	private Product p;</span><br><span class="line">	Consumer(Product p) &#123;</span><br><span class="line">		this.p = p;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">			p.consume();	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>应用<br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	//公共资源 产品</span><br><span class="line">	Product product = new Product();</span><br><span class="line">	//多线程	不同的对象访问同一份资源</span><br><span class="line">	Producer p = new Producer(product);</span><br><span class="line">	Consumer c = new Consumer(product);</span><br><span class="line">	new Thread(p).start();</span><br><span class="line">	new Thread(c).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>注意</strong><br>wait():等待    释放锁<br>sleep()不释放锁<br>notify()/notifyAll():唤醒<br>wait()    notify()/notifyAll()和synchronized一同使用<br>-—————————————————<br>wait和notify是object的方法，也就是说所有对象都有这两个方法。<br>这两个方法可以用来阻塞当前线程（同时放弃互斥锁）或者是<br>唤醒其他调用wait方法陷入阻塞的线程（不能唤醒那些因为抢占锁而阻塞的队列）。<br>能够执行wait和notify的前提是代码已经进入了synchronized包含的代码块中。</p>
+</blockquote>
+<h3 id="十、任务调度"><a href="#十、任务调度" class="headerlink" title="十、任务调度"></a>十、任务调度</h3><p>Timer<br>schedule()<br>quartz 框架</p>
+<h3 id="十一、总结"><a href="#十一、总结" class="headerlink" title="十一、总结"></a>十一、总结</h3><blockquote>
+<p>重点：<br>* 创建线程<br>* 终止线程<br>* sleep<br>* 同步(面试中)</p>
+</blockquote>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>JUC:</p>
+<blockquote>
+<p>在 Java 5.0 提供了 java.util.concurrent(简称JUC)包,在此包中增加了在并发编程中很常用的工具类,<br>用于定义类似于线程的自定义子系统,包括线程池,异步 IO 和轻量级任务框架;还提供了设计用于多线程上下文中<br>的 Collection 实现等。<br>quartz 框架：<br>    Quartz是一个完全由java编写的开源作业调度框架。</p>
+</blockquote>
+<p>高并发编程工具JUC</p>
 
             
 <div style="padding: 15px;
@@ -359,7 +446,7 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        24
                     </p>
                 </div>
             </div>
@@ -379,7 +466,7 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        17
                     </p>
                 </div>
             </div>
@@ -432,14 +519,6 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
                 <span class="level-item tag">5</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Java-源码分析/">
-            <span class="level-start">
-                <span class="level-item">Java 源码分析</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Linux/">
             <span class="level-start">
                 <span class="level-item">Linux</span>
@@ -453,7 +532,7 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
                 <span class="level-item">SSM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/web-前端/">
@@ -496,12 +575,20 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/源码分析/">
+            <span class="level-start">
+                <span class="level-item">源码分析</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/设计模式/">
             <span class="level-start">
                 <span class="level-item">设计模式</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/随笔/">
@@ -526,9 +613,47 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
         
         <article class="media">
             
+            <a href="/2019/08/23/代理模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk1x6eq1CTJ2Bt6ER5hYIFytfkLqWEhe_P9BH1bZl3mLqHz8mh" alt="代理模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-23T09:58:55.000Z">2019-08-23</time></div>
+                    <a href="/2019/08/23/代理模式/" class="has-link-black-ter is-size-6">代理模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/22/这就是MyBatis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwb80lMZhLOlxOd8RfDq7s3tznKoHtJxC2HN7NguuODFHgPUlg" alt="这就是MyBatis">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-22T03:47:51.000Z">2019-08-22</time></div>
+                    <a href="/2019/08/22/这就是MyBatis/" class="has-link-black-ter is-size-6">这就是MyBatis</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/08/19/IOC基本原理及实现/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="IOC基本原理及相关实现">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjRS3OZvRTXxS44wp0UqGZn9e-RAPM6YNsmtK55tR0ke3zwzo5Q" alt="IOC基本原理及相关实现">
                 </p>
             </a>
             
@@ -547,7 +672,7 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
             
             <a href="/2019/08/13/JSON简单应用/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JSON简单应用">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIyfxvod6QCB_y5o18rQEDZuTk2THBcr0qL7-NhIdq9uPr1l0tvg" alt="JSON简单应用">
                 </p>
             </a>
             
@@ -564,56 +689,18 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
         
         <article class="media">
             
-            <a href="/2019/08/11/Java中的那些成员和变量/" class="media-left">
+            <a href="/2019/08/11/Java中的那些属性和方法/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Java中的那些成员和变量">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTodRFnZhD3RjtBR1XhYH2B7yXufcY97WGmVpxajmcef9n5dWhzYw" alt="Java中的那些属性和方法">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-11T12:40:34.000Z">2019-08-11</time></div>
-                    <a href="/2019/08/11/Java中的那些成员和变量/" class="has-link-black-ter is-size-6">Java中的那些成员和变量</a>
+                    <a href="/2019/08/11/Java中的那些属性和方法/" class="has-link-black-ter is-size-6">Java中的那些属性和方法</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Java-基础篇/">Java 基础篇</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/11/API常用之-String/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="API常用之--String">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-11T12:25:01.000Z">2019-08-11</time></div>
-                    <a href="/2019/08/11/API常用之-String/" class="has-link-black-ter is-size-6">API常用之--String</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Java-基础篇/">Java 基础篇</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/10/mybatis配置中常见错误/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mybatis配置中常见错误">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-10T07:21:51.000Z">2019-08-10</time></div>
-                    <a href="/2019/08/10/mybatis配置中常见错误/" class="has-link-black-ter is-size-6">mybatis配置中常见错误</a>
-                    <p class="is-size-7 is-uppercase">
-                        
                     </p>
                 </div>
             </div>
@@ -678,7 +765,7 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mysql/" style="font-size: 13.33px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16.67px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 13.33px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16.67px;">面试</a>
     </div>
 </div>
 
@@ -697,7 +784,7 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
                     <span class="level-item">八月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -757,7 +844,7 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">11</span>
+                        <span class="tag is-grey">13</span>
                     </a>
                 </div>
                 
@@ -771,6 +858,13 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Markdown/">
                         <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Mybatis/">
+                        <span class="tag">Mybatis</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -811,6 +905,13 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/框架/">
+                        <span class="tag">框架</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/源码/">
                         <span class="tag">源码</span>
                         <span class="tag is-grey">1</span>
@@ -820,7 +921,7 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/设计模式/">
                         <span class="tag">设计模式</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -853,7 +954,7 @@ synchronized</code></pre><p>单例设计模式：确保一个类只有一个对�
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="java 多线程" height="28">
+                    <img src="/images/logo.png" alt="Java 多线程基础总结" height="28">
                 
                 </a>
                 <p class="is-size-7">
