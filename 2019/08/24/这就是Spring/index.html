@@ -17,7 +17,7 @@
 <meta property="og:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png">
-<meta property="og:updated_time" content="2019-08-24T04:27:36.454Z">
+<meta property="og:updated_time" content="2019-08-24T09:34:53.410Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这就是Spring">
 <meta name="twitter:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 103 个字)
+                    2 分钟 读完 (大约 257 个字)
                 </span>
                 
                 
@@ -135,7 +135,13 @@
 </blockquote>
 <a id="more"></a>
 
-<h2 id="一、Spring-概述"><a href="#一、Spring-概述" class="headerlink" title="一、Spring 概述"></a>一、Spring 概述</h2><h2 id="二、IOC-的概念和作用"><a href="#二、IOC-的概念和作用" class="headerlink" title="二、IOC 的概念和作用"></a>二、IOC 的概念和作用</h2><h2 id="三、使用-spring-的-IOC-解决程序耦合"><a href="#三、使用-spring-的-IOC-解决程序耦合" class="headerlink" title="三、使用 spring 的 IOC 解决程序耦合"></a>三、使用 spring 的 IOC 解决程序耦合</h2><h2 id="四、基于注解的-IOC配置"><a href="#四、基于注解的-IOC配置" class="headerlink" title="四、基于注解的 IOC配置"></a>四、基于注解的 IOC配置</h2><h2 id="五、Spring-整合-Junit"><a href="#五、Spring-整合-Junit" class="headerlink" title="五、Spring 整合 Junit"></a>五、Spring 整合 Junit</h2><h2 id="六、AOP-的相关概念"><a href="#六、AOP-的相关概念" class="headerlink" title="六、AOP 的相关概念"></a>六、AOP 的相关概念</h2><h2 id="七、Spring-中的-AOP"><a href="#七、Spring-中的-AOP" class="headerlink" title="七、Spring 中的 AOP"></a>七、Spring 中的 AOP</h2><h2 id="八、Spring-中的-JdbcTemplate"><a href="#八、Spring-中的-JdbcTemplate" class="headerlink" title="八、Spring 中的 JdbcTemplate"></a>八、Spring 中的 JdbcTemplate</h2><h2 id="九、Spring-中的事务控制"><a href="#九、Spring-中的事务控制" class="headerlink" title="九、Spring 中的事务控制"></a>九、Spring 中的事务控制</h2><h2 id="十、总结"><a href="#十、总结" class="headerlink" title="十、总结"></a>十、总结</h2>
+<h2 id="一、Spring-概述"><a href="#一、Spring-概述" class="headerlink" title="一、Spring 概述"></a>一、Spring 概述</h2><h3 id="Spring-的优势"><a href="#Spring-的优势" class="headerlink" title="Spring 的优势"></a>Spring 的优势</h3><p>方便解耦，简化开发<br>AOP编程的支持<br>声明式事务的支持<br>方便程序的测试<br>方便集成各种优秀框架<br>降低 JavaEE API 的使用难度<br>Java 源码是经典学习范例</p>
+<h3 id="Spring-的体系结构"><a href="#Spring-的体系结构" class="headerlink" title="Spring 的体系结构"></a>Spring 的体系结构</h3><p>核心容器</p>
+<h2 id="二、IOC-的概念和作用"><a href="#二、IOC-的概念和作用" class="headerlink" title="二、IOC 的概念和作用"></a>二、IOC 的概念和作用</h2><p>这部分内容可查看之前的文章<a href="https://gavino0119.github.io/2019/08/19/IOC%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/">https://gavino0119.github.io/2019/08/19/IOC%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/</a><br>对IOC有单独的阐述</p>
+<h2 id="三、使用-spring-的-IOC-解决程序耦合"><a href="#三、使用-spring-的-IOC-解决程序耦合" class="headerlink" title="三、使用 spring 的 IOC 解决程序耦合"></a>三、使用 spring 的 IOC 解决程序耦合</h2><h3 id="创建业务层接口和实现类"><a href="#创建业务层接口和实现类" class="headerlink" title="创建业务层接口和实现类"></a>创建业务层接口和实现类</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">### 创建持久层接口和实现类</span><br></pre></td></tr></table></figure>
+
+<p>```</p>
+<h3 id="基于-XML-的配置"><a href="#基于-XML-的配置" class="headerlink" title="基于 XML 的配置"></a>基于 XML 的配置</h3><h3 id="Spring-基于-XML-的-IOC-细节"><a href="#Spring-基于-XML-的-IOC-细节" class="headerlink" title="Spring 基于 XML 的 IOC 细节"></a>Spring 基于 XML 的 IOC 细节</h3><h2 id="四、基于注解的-IOC配置"><a href="#四、基于注解的-IOC配置" class="headerlink" title="四、基于注解的 IOC配置"></a>四、基于注解的 IOC配置</h2><h2 id="五、Spring-整合-Junit"><a href="#五、Spring-整合-Junit" class="headerlink" title="五、Spring 整合 Junit"></a>五、Spring 整合 Junit</h2><h2 id="六、AOP-的相关概念"><a href="#六、AOP-的相关概念" class="headerlink" title="六、AOP 的相关概念"></a>六、AOP 的相关概念</h2><h2 id="七、Spring-中的-AOP"><a href="#七、Spring-中的-AOP" class="headerlink" title="七、Spring 中的 AOP"></a>七、Spring 中的 AOP</h2><h2 id="八、Spring-中的-JdbcTemplate"><a href="#八、Spring-中的-JdbcTemplate" class="headerlink" title="八、Spring 中的 JdbcTemplate"></a>八、Spring 中的 JdbcTemplate</h2><h2 id="九、Spring-中的事务控制"><a href="#九、Spring-中的事务控制" class="headerlink" title="九、Spring 中的事务控制"></a>九、Spring 中的事务控制</h2><h2 id="十、总结"><a href="#十、总结" class="headerlink" title="十、总结"></a>十、总结</h2>
             
 <div style="padding: 15px;
     margin-bottom: 20px;
