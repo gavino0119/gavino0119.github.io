@@ -17,7 +17,7 @@
 <meta property="og:description" content="本文是Java多线程的基础入门篇">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6kXHCG9f-RU9ZD7QH9PRt4VSx2bcLe648MVn5-Vkc3svLoHwcLg">
-<meta property="og:updated_time" content="2019-08-24T03:32:23.595Z">
+<meta property="og:updated_time" content="2019-08-24T03:58:30.168Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 多线程基础总结">
 <meta name="twitter:description" content="本文是Java多线程的基础入门篇">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    22 分钟 读完 (大约 3239 个字)
+                    22 分钟 读完 (大约 3271 个字)
                 </span>
                 
                 
@@ -259,11 +259,11 @@
 <blockquote>
 <p>解决方法：<strong>生产者消费者模式</strong>（此处不指设计模式）<br>    即：（过马路）信号灯法（标志位）<br>    信号灯:flag<br>    思路:<br>            flag–&gt;T 生产者生产    消费者等待    生产完成后通知消费<br>            flag–&gt;F 消费者消费 生产者等待    消费完成后通知生产</p>
 </blockquote>
-<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 一个场景 共同的资源</span><br><span class="line"> */</span><br><span class="line">public class Product &#123;</span><br><span class="line">	//信号灯</span><br><span class="line">	private boolean flag = true;</span><br><span class="line">	private String pro;</span><br><span class="line">	//生产功能</span><br><span class="line">	public synchronized void produce(String pro) &#123;</span><br><span class="line">		if (!flag) &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				this.wait();</span><br><span class="line">			&#125; catch (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		//开始生产</span><br><span class="line">		try &#123;</span><br><span class="line">			Thread.sleep(500);</span><br><span class="line">		&#125; catch (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(&quot;生产了&quot;+pro);</span><br><span class="line">		//生产完毕</span><br><span class="line">		this.pro = pro ;</span><br><span class="line">		//通知消费</span><br><span class="line">		this.notify();</span><br><span class="line">		//停止生产</span><br><span class="line">		this.flag = false;</span><br><span class="line">	&#125;</span><br><span class="line">	//消费功能</span><br><span class="line">	public synchronized void consume() &#123;</span><br><span class="line">		if (flag) &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				this.wait();</span><br><span class="line">			&#125; catch (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		//开始消费</span><br><span class="line">		try &#123;</span><br><span class="line">			Thread.sleep(200);</span><br><span class="line">		&#125; catch (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		//消费完毕</span><br><span class="line">		System.out.println(&quot;消费了&quot;+pro);</span><br><span class="line">		//通知生产</span><br><span class="line">		this.notifyAll();</span><br><span class="line">		//停止消费</span><br><span class="line">		this.flag = true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>定义生产者<br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 生产者</span><br><span class="line"> */</span><br><span class="line">public class Producer implements Runnable &#123;</span><br><span class="line">	private Product p;</span><br><span class="line">	Producer(Product p) &#123;</span><br><span class="line">		this.p = p;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for(int i=0;i&lt;20;i++) &#123;</span><br><span class="line">			if(0==i%2) &#123;</span><br><span class="line">				p.produce(&quot;产品A&quot;);</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				p.produce(&quot;产品B&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 一个场景 共同的资源</span><br><span class="line"> */</span><br><span class="line">public class Product &#123;</span><br><span class="line">	//信号灯</span><br><span class="line">	private boolean flag = true;</span><br><span class="line">	private String pro;</span><br><span class="line">	//生产功能</span><br><span class="line">	public synchronized void produce(String pro) &#123;</span><br><span class="line">		if (!flag) &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				this.wait();//</span><br><span class="line">			&#125; catch (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		//开始生产</span><br><span class="line">		try &#123;</span><br><span class="line">			Thread.sleep(500);</span><br><span class="line">		&#125; catch (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(&quot;生产了&quot;+pro);</span><br><span class="line">		//生产完毕</span><br><span class="line">		this.pro = pro ;</span><br><span class="line">		//通知消费</span><br><span class="line">		this.notify();</span><br><span class="line">		//停止生产</span><br><span class="line">		this.flag = false;</span><br><span class="line">	&#125;</span><br><span class="line">	//消费功能</span><br><span class="line">	public synchronized void consume() &#123;</span><br><span class="line">		if (flag) &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				this.wait();//</span><br><span class="line">			&#125; catch (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		//开始消费</span><br><span class="line">		try &#123;</span><br><span class="line">			Thread.sleep(200);</span><br><span class="line">		&#125; catch (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		//消费完毕</span><br><span class="line">		System.out.println(&quot;消费了&quot;+pro);</span><br><span class="line">		//通知生产</span><br><span class="line">		this.notifyAll();</span><br><span class="line">		//停止消费</span><br><span class="line">		this.flag = true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>定义生产者<br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 生产者</span><br><span class="line"> */</span><br><span class="line">public class Producer implements Runnable &#123;</span><br><span class="line">	private Product p;</span><br><span class="line">	Producer(Product p) &#123;</span><br><span class="line">		this.p = p;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for(int i=0;i&lt;20;i++) &#123;</span><br><span class="line">			if(0==i%2) &#123;</span><br><span class="line">				p.produce(&quot;产品A&quot;);</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				p.produce(&quot;产品B&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>定义消费者<br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 消费者</span><br><span class="line"> */</span><br><span class="line">public class Consumer implements Runnable &#123;</span><br><span class="line">	private Product p;</span><br><span class="line">	Consumer(Product p) &#123;</span><br><span class="line">		this.p = p;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">			p.consume();	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>应用<br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	//公共资源 产品</span><br><span class="line">	Product product = new Product();</span><br><span class="line">	//多线程	不同的对象访问同一份资源</span><br><span class="line">	Producer p = new Producer(product);</span><br><span class="line">	Consumer c = new Consumer(product);</span><br><span class="line">	new Thread(p).start();</span><br><span class="line">	new Thread(c).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p><strong>注意</strong><br>wait():等待    释放锁<br>sleep()不释放锁<br>notify()/notifyAll():唤醒<br>wait()    notify()/notifyAll()和synchronized一同使用<br>-—————————————————<br>wait和notify是object的方法，也就是说所有对象都有这两个方法。<br>这两个方法可以用来阻塞当前线程（同时放弃互斥锁）或者是<br>唤醒其他调用wait方法陷入阻塞的线程（不能唤醒那些因为抢占锁而阻塞的队列）。<br>能够执行wait和notify的前提是代码已经进入了synchronized包含的代码块中。</p>
+<p><strong>注意</strong><br>wait():等待    会<strong>释放锁</strong><br>sleep()不释放锁<br>notify()/notifyAll():唤醒<br>wait()    notify()/notifyAll()和synchronized一同使用<br>-—————————————————<br>wait和notify是object的方法，也就是说所有对象都有这两个方法。<br>notify() 唤醒处于等待阻塞状态的线程<br>wait() 将当前线程对象切换到等待阻塞状态<br>这两个方法可以用来阻塞当前线程（同时放弃互斥锁）或者是<br>唤醒其他调用wait方法陷入阻塞的线程（不能唤醒那些因为抢占锁而阻塞的队列）。<br>能够执行wait和notify的前提是代码已经进入了synchronized包含的代码块中。</p>
 </blockquote>
 <h3 id="十、任务调度"><a href="#十、任务调度" class="headerlink" title="十、任务调度"></a>十、任务调度</h3><p>Timer<br>schedule()<br>quartz 框架</p>
 <h3 id="十一、总结"><a href="#十一、总结" class="headerlink" title="十一、总结"></a>十一、总结</h3><blockquote>
@@ -446,7 +446,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        24
+                        25
                     </p>
                 </div>
             </div>
@@ -456,7 +456,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        11
+                        12
                     </p>
                 </div>
             </div>
@@ -530,6 +530,14 @@
         <a class="level is-marginless" href="/categories/SSM/">
             <span class="level-start">
                 <span class="level-item">SSM</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Spring/">
+            <span class="level-start">
+                <span class="level-item">Spring</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">2</span>
@@ -613,6 +621,25 @@
         
         <article class="media">
             
+            <a href="/2019/08/24/这就是Spring/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png" alt="这就是Spring">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-24T04:10:43.000Z">2019-08-24</time></div>
+                    <a href="/2019/08/24/这就是Spring/" class="has-link-black-ter is-size-6">这就是Spring</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/08/23/代理模式/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk1x6eq1CTJ2Bt6ER5hYIFytfkLqWEhe_P9BH1bZl3mLqHz8mh" alt="代理模式">
@@ -662,7 +689,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T10:52:10.000Z">2019-08-19</time></div>
                     <a href="/2019/08/19/IOC基本原理及实现/" class="has-link-black-ter is-size-6">IOC基本原理及相关实现</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
                     </p>
                 </div>
             </div>
@@ -682,25 +709,6 @@
                     <a href="/2019/08/13/JSON简单应用/" class="has-link-black-ter is-size-6">JSON简单应用</a>
                     <p class="is-size-7 is-uppercase">
                         
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/11/Java中的那些属性和方法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTodRFnZhD3RjtBR1XhYH2B7yXufcY97WGmVpxajmcef9n5dWhzYw" alt="Java中的那些属性和方法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-11T12:40:34.000Z">2019-08-11</time></div>
-                    <a href="/2019/08/11/Java中的那些属性和方法/" class="has-link-black-ter is-size-6">Java中的那些属性和方法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Java-基础篇/">Java 基础篇</a>
                     </p>
                 </div>
             </div>
@@ -765,7 +773,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 13.33px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16.67px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 13.33px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 13.33px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16.67px;">面试</a>
     </div>
 </div>
 
@@ -784,7 +792,7 @@
                     <span class="level-item">八月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -844,7 +852,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">13</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
@@ -893,7 +901,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/spring/">
                         <span class="tag">spring</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -907,7 +915,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
