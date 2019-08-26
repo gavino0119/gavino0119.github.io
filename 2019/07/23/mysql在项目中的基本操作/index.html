@@ -17,7 +17,7 @@
 <meta property="og:description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=208175266,1099182748&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-08-26T06:52:50.371Z">
+<meta property="og:updated_time" content="2019-08-26T08:56:44.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql在项目中的基本操作">
 <meta name="twitter:description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
@@ -121,7 +121,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2264 个字)
+                    16 分钟 读完 (大约 2468 个字)
                 </span>
                 
                 
@@ -137,10 +137,13 @@
             <p>Mysql</p>
 <h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h2><p>关系型数据库<br>非关系型数据库，NOSQL数据库<br>关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)</p>
 <a id="more"></a>
+<blockquote>
+<p>DDL(数据定义语言): CREATE、 DROP、 ALTER</p>
+</blockquote>
 <h3 id="表的设计"><a href="#表的设计" class="headerlink" title="表的设计"></a>表的设计</h3><h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ul>
-<li>第一范式<br>原子性  表中字段的值是不能拆分的</li>
-<li>第二范式<br>完全依赖<br>表中非主字段必须完全依赖主键字段</li>
-<li>第三范式<br>依赖不能传递</li>
+<li>第一范式<br>强调数据表的原子性  表中字段的值是不能拆分的</li>
+<li>第二范式<br>消除了非主属性对于码的部分函数依赖，即完全依赖<br>表中非主字段必须完全依赖主键字段</li>
+<li>第三范式<br>消除了非主属性对于码的传递函数依赖<br>依赖不能传递</li>
 </ul>
 <blockquote>
 <p>避免表中数据冗余</p>
@@ -159,16 +162,19 @@
 <blockquote>
 <p>int(6)<br> double(10,2)                //浮点型，加小数10位，小数部分占2位<br> varchar:可变长字符类型    //name varchar(10)   Jack<br> char:不可变长字符类型     //idcode char(18)    210<br> date:日期类型<br> timestamp:时间戳类型</p>
 </blockquote>
-<p><strong>约束</strong></p>
+<p><strong>约束</strong><br>约束是用来完备性和正确性</p>
 <ul>
-<li><p>主键约束<br>开发中，通常都会为一张表设计一个字段，该字段用来唯一标识记录。将该字段添加主键约束，添加了主键约束的字段，称为主键字段。<br>添加主键字段防止出现张冠李戴的现象。<br>主键约束的特点：非空、唯一<br>一个表只能有一个主键</p>
+<li><p>主键约束</p>
+<blockquote>
+<p>开发中，通常都会为一张表设计一个字段，该字段用来唯一标识记录。将该字段添加主键约束，添加了主键约束的字段，称为主键字段。<br>添加主键字段防止出现张冠李戴的现象。<br>主键约束的特点：非空、唯一<br>一个表只能有一个主键</p>
+</blockquote>
 </li>
-<li><p>外键约束<br>三种添加方式(在员工表emp)</p>
+<li><p>外键约束<br>*注意:<br>外键字段必须引用于主键字段<br>被引用的表称为主表，引用的表称为从表<br>外键的三种添加方式(如: 在主表员工表 emp 中给字段 deptno 设置外键,外键为从表 dept 的主键 deptno )</p>
 <ul>
-<li><p>方式一<br>列名 数据类型() references 外键所属表(该表主键)</p>
+<li><p>方式一<br>[ 列名 数据类型() references 外键所属表(该表主键) ]</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line">	deptno int(2) references dept(deptno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>方式二<br>不在列名后面写，而是在最后<br>foreign key(外键列名) references 外键所属表(该表主键)</p>
+<li><p>方式二<br>不在列名后面写，而是在最后表级添加<br>[ foreign key(外键列名) references 外键所属表(该表主键) ]</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line">	deptno int(2),</span><br><span class="line">	constraint t_emp_dept_fk foreign key(deptno) references dept(deptno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>方式三<br>前两张方式的局限性：只能先建  才能引入外键<br>可以在创建表时先不添加外键<br>待表建好以后，通过修改表的方式添加外键</p>
@@ -176,16 +182,23 @@
 </li>
 </ul>
 </li>
-<li><p>唯一约束</p>
+<li><p>唯一约束<br>唯一性约束 unique</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line"> 	email varchar(50) unique,</span><br><span class="line"> 	phone varchar(20) unique,</span><br><span class="line"> 	......</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>非空约束</p>
+<li><p>非空约束<br>not null</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line"> 	password varchar(20) not null,</span><br><span class="line"> 	......</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>检查约束</p>
-<blockquote>
-<p>主键约束：primary key,主键字段的值非空唯一<br>外键约束：foreign key references t1(id);外键字段值引用其他主键字段的值</p>
-</blockquote>
+<li><p>检查约束<br>check</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line">created timestamp,</span><br><span class="line">check(created&gt;&apos;2019-1-1&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置一个字段默认值</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">drop table if exists t_user;</span><br><span class="line">create table t_user(</span><br><span class="line">	id int() primary key auto_increment,</span><br><span class="line">	gender char() default &apos;0&apos;,</span><br><span class="line">	......</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
+<blockquote>
+<p>主键约束：primary key,主键字段的值非空唯一<br>  外键约束：foreign key references t1(id);外键字段值引用其他主键字段的值</p>
+</blockquote>
 <ul>
 <li><p>创建数据库</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database mydb;</span><br></pre></td></tr></table></figure>
@@ -212,11 +225,17 @@
 <p><strong>细节操作:</strong></p>
 <ol>
 <li>设置主键并让主键自增<br>auto_increment primary key<br>auto_increment,自动增长，用来生成主键字段的值</li>
-<li>创建表设置字符集:<br>default charset=utf8</li>
-<li>通过修改表的方式添加外键： <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter table emp add foreign key(mgr) references emp(empno);  </span><br><span class="line">alter table emp add foreign key(deptno) references dept(deptno);</span><br></pre></td></tr></table></figure>
+<li>mysql 解决乱码：<br>创建数据库时:<br>create database my_db default charset=utf8;<br>创建表设置字符集:<br>creaate table tablename(<br>……<br>)default charset=utf8;</li>
+<li>mysql 中的时间<ul>
+<li>date</li>
+<li>datetime</li>
+<li>timestamp</li>
+</ul>
 </li>
 </ol>
 </blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">设置系统当前时间demo:</span><br><span class="line">commited date default now(),</span><br><span class="line">starttime datetime default now(),</span><br><span class="line">paytime timestamp default currene_timestamp(),</span><br></pre></td></tr></table></figure>
+
 <p><strong>根据如下需求创建表,并进行相关操作：</strong></p>
 <blockquote>
 <p>创建部门表和员工表，员工表中有部门号字段为外键字段，引用部门表中部门号字段<br> 部门表字段：部门号，部门名，部门地址<br> 员工表字段：员工号，员工姓名，职位，薪水，入职日期，经理编号，部门号             </p>
@@ -248,13 +267,13 @@
 <li><p>每个部门中添加5个员工  </p>
 <ul>
 <li><p>研发部</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insert into emp values(7004,&apos;王啊&apos;,&apos;CLERK&apos;,15000,&apos;2012-09-19&apos;,7001,10); </span><br><span class="line">insert into emp values(7005,&apos;张吖&apos;,&apos;CLERK&apos;,12500,&apos;2013-02-12&apos;,7001,10);</span><br><span class="line">insert into emp values(7006,&apos;白嗄&apos;,&apos;CLERK&apos;,11000,&apos;2017-12-12&apos;,7001,10);</span><br><span class="line">insert into emp values(7007,&apos;王阿&apos;,&apos;CLERK&apos;,9000,&apos;2018-06-06&apos;,7001,10);</span><br><span class="line">insert into emp values(7008,&apos;曹咦&apos;,&apos;CLERK&apos;,19000,&apos;2010-05-12&apos;,7001,10);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insert into emp values(7004,&apos;王啊&apos;,&apos;CLERK&apos;,15000,&apos;2012-09-19&apos;,7001,10); </span><br><span class="line">insert into emp values(7005,&apos;张吖&apos;,&apos;CLERK&apos;,12500,&apos;2013-02-12&apos;,7001,10);</span><br><span class="line">insert into emp values(7006,&apos;白嗄&apos;,&apos;CLERK&apos;,11000,&apos;2017-12-12&apos;,7001,10);</span><br><span class="line">insert into emp values(7007,&apos;王阿&apos;,&apos;CLERK&apos;,9000,&apos;2018-06-06&apos;,7001,10);</span><br><span class="line">insert into emp values(7008,&apos;曹咦&apos;,&apos;CLERK&apos;,19000,&apos;2019-05-12&apos;,7001,10);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>教学部</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   insert into emp values(7010,&apos;楚王&apos;,&apos;讲师&apos;,22000,&apos;2016-09-19&apos;,7002,20); </span><br><span class="line">insert into emp values(7011,&apos;腾非&apos;,&apos;讲师&apos;,18000,&apos;2013-02-12&apos;,7002,20);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   insert into emp values(7010,&apos;楚王&apos;,&apos;讲师&apos;,22000,&apos;2016-09-19&apos;,7002,20); </span><br><span class="line">insert into emp values(7011,&apos;腾非&apos;,&apos;讲师&apos;,18000,&apos;2013-02-12&apos;,7002,20);</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>人事部  </p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into emp values(7015,&apos;张六&apos;,&apos;人事专员&apos;,6000,&apos;2017-09-19&apos;,7003,30);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into emp values(7015,&apos;张六&apos;,&apos;人事专员&apos;,6000,&apos;2017-09-19&apos;,7003,30);</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 
 
 </li>
