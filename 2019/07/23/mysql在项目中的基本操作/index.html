@@ -17,7 +17,7 @@
 <meta property="og:description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=208175266,1099182748&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-08-26T04:23:24.666Z">
+<meta property="og:updated_time" content="2019-08-26T06:51:05.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql在项目中的基本操作">
 <meta name="twitter:description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
@@ -121,7 +121,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    14 分钟 读完 (大约 2091 个字)
+                    15 分钟 读完 (大约 2264 个字)
                 </span>
                 
                 
@@ -159,10 +159,33 @@
 <blockquote>
 <p>int(6)<br> double(10,2)                //浮点型，加小数10位，小数部分占2位<br> varchar:可变长字符类型    //name varchar(10)   Jack<br> char:不可变长字符类型     //idcode char(18)    210<br> date:日期类型<br> timestamp:时间戳类型</p>
 </blockquote>
-<p>约束<br>主键约束<br>开发中，通常都会为一张表设计一个字段，该字段用来唯一标识记录。将该字段添加主键约束，添加了主键约束的字段，称为主键字段。<br>添加主键字段防止出现张冠李戴的现象。<br>主键约束的特点：非空、唯一<br>一个表只能有一个主键<br>外键约束<br>唯一约束<br>非空约束<br>检查约束</p>
+<p><strong>约束</strong></p>
+<ul>
+<li><p>主键约束<br>开发中，通常都会为一张表设计一个字段，该字段用来唯一标识记录。将该字段添加主键约束，添加了主键约束的字段，称为主键字段。<br>添加主键字段防止出现张冠李戴的现象。<br>主键约束的特点：非空、唯一<br>一个表只能有一个主键</p>
+</li>
+<li><p>外键约束<br>三种添加方式(在员工表emp)</p>
+<ul>
+<li><p>方式一<br>列名 数据类型() references 外键所属表(该表主键)</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line">	deptno int(2) references dept(deptno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式二<br>不在列名后面写，而是在最后<br>foreign key(外键列名) references 外键所属表(该表主键)</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line">	deptno int(2),</span><br><span class="line">	constraint t_emp_dept_fk foreign key(deptno) references dept(deptno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式三<br>前两张方式的局限性：只能先建  才能引入外键<br>可以在创建表时先不添加外键<br>待表建好以后，通过修改表的方式添加外键</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line">	deptno int(2)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">alter table emp add foreign key(deptno) references dept(deptno);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>唯一约束</p>
+</li>
+<li><p>非空约束</p>
+</li>
+<li><p>检查约束</p>
 <blockquote>
-<p>主键约束：primary key,主键字段的值非空唯一<br>  外键约束：foreign key references t1(id);外键字段值引用其他主键字段的值</p>
+<p>主键约束：primary key,主键字段的值非空唯一<br>外键约束：foreign key references t1(id);外键字段值引用其他主键字段的值</p>
 </blockquote>
+</li>
+</ul>
 <ul>
 <li><p>创建数据库</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database mydb;</span><br></pre></td></tr></table></figure>
@@ -188,7 +211,7 @@
 <blockquote>
 <p><strong>细节操作:</strong></p>
 <ol>
-<li>设置主键并让主键自增<br>auto_increment primary key</li>
+<li>设置主键并让主键自增<br>auto_increment primary key<br>auto_increment,自动增长，用来生成主键字段的值</li>
 <li>创建表设置字符集:<br>default charset=utf8</li>
 <li>通过修改表的方式添加外键： <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter table emp add foreign key(mgr) references emp(empno);  </span><br><span class="line">alter table emp add foreign key(deptno) references dept(deptno);</span><br></pre></td></tr></table></figure>
 </li>
