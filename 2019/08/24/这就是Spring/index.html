@@ -17,7 +17,7 @@
 <meta property="og:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png">
-<meta property="og:updated_time" content="2019-08-25T02:44:45.801Z">
+<meta property="og:updated_time" content="2019-08-25T03:31:08.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这就是Spring">
 <meta name="twitter:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
@@ -80,6 +80,10 @@
                     </a>
                     
                 
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
                 
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
@@ -720,6 +724,109 @@
         <div class="column-right-shadow is-hidden-widescreen ">
         
             
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#一、Spring-概述">
+        <span class="has-mr-6">1</span>
+        <span>一、Spring 概述</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Spring-的优势">
+        <span class="has-mr-6">1.1</span>
+        <span>Spring 的优势</span>
+        </a></li><li>
+        <a class="is-flex" href="#Spring-的体系结构">
+        <span class="has-mr-6">1.2</span>
+        <span>Spring 的体系结构</span>
+        </a></li><li>
+        <a class="is-flex" href="#Sping-的开发包">
+        <span class="has-mr-6">1.3</span>
+        <span>Sping 的开发包</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#二、IOC-的概念和作用">
+        <span class="has-mr-6">2</span>
+        <span>二、IOC 的概念和作用</span>
+        </a></li><li>
+        <a class="is-flex" href="#三、使用-spring-的-IOC-解决程序耦合">
+        <span class="has-mr-6">3</span>
+        <span>三、使用 spring 的 IOC 解决程序耦合</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#创建持久层接口和实现类">
+        <span class="has-mr-6">3.1</span>
+        <span>创建持久层接口和实现类</span>
+        </a></li><li>
+        <a class="is-flex" href="#创建业务层接口和实现类">
+        <span class="has-mr-6">3.2</span>
+        <span>创建业务层接口和实现类</span>
+        </a></li><li>
+        <a class="is-flex" href="#基于-XML-的配置">
+        <span class="has-mr-6">3.3</span>
+        <span>基于 XML 的配置</span>
+        </a></li><li>
+        <a class="is-flex" href="#Spring-基于-XML-的-IOC-细节">
+        <span class="has-mr-6">3.4</span>
+        <span>Spring 基于 XML 的 IOC 细节</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#BeanFactory-和-ApplicationContext-的区别">
+        <span class="has-mr-6">3.4.1</span>
+        <span>BeanFactory 和 ApplicationContext 的区别</span>
+        </a></li><li>
+        <a class="is-flex" href="#ApplicationContext-接口的实现类">
+        <span class="has-mr-6">3.4.2</span>
+        <span>ApplicationContext 接口的实现类</span>
+        </a></li><li>
+        <a class="is-flex" href="#IOC-中-bean-标签和管理对象细节">
+        <span class="has-mr-6">3.4.3</span>
+        <span>IOC 中 bean 标签和管理对象细节</span>
+        </a></li><li>
+        <a class="is-flex" href="#spring-的依赖注入">
+        <span class="has-mr-6">3.4.4</span>
+        <span>spring 的依赖注入</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#四、基于注解的-IOC配置">
+        <span class="has-mr-6">4</span>
+        <span>四、基于注解的 IOC配置</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#环境搭建">
+        <span class="has-mr-6">4.1</span>
+        <span>环境搭建</span>
+        </a></li><li>
+        <a class="is-flex" href="#常用注解">
+        <span class="has-mr-6">4.2</span>
+        <span>常用注解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#五、Spring-整合-Junit">
+        <span class="has-mr-6">5</span>
+        <span>五、Spring 整合 Junit</span>
+        </a></li><li>
+        <a class="is-flex" href="#六、AOP-的相关概念">
+        <span class="has-mr-6">6</span>
+        <span>六、AOP 的相关概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#七、Spring-中的-AOP">
+        <span class="has-mr-6">7</span>
+        <span>七、Spring 中的 AOP</span>
+        </a></li><li>
+        <a class="is-flex" href="#八、Spring-中的-JdbcTemplate">
+        <span class="has-mr-6">8</span>
+        <span>八、Spring 中的 JdbcTemplate</span>
+        </a></li><li>
+        <a class="is-flex" href="#九、Spring-中的事务控制">
+        <span class="has-mr-6">9</span>
+        <span>九、Spring 中的事务控制</span>
+        </a></li><li>
+        <a class="is-flex" href="#十、总结">
+        <span class="has-mr-6">10</span>
+        <span>十、总结</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
         
             
 <div class="card widget">
