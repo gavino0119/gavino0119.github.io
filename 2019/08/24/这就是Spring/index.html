@@ -17,7 +17,7 @@
 <meta property="og:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png">
-<meta property="og:updated_time" content="2019-08-26T12:02:55.396Z">
+<meta property="og:updated_time" content="2019-08-26T13:14:27.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这就是Spring">
 <meta name="twitter:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
 
 
 
@@ -81,10 +81,6 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -121,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 分钟 读完 (大约 3021 个字)
+                    23 分钟 读完 (大约 3420 个字)
                 </span>
                 
                 
@@ -237,7 +233,7 @@
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 配置 dao --&gt;</span><br><span class="line">    &lt;bean id=&quot;demoDao&quot; class=&quot;gavino.spring.dao.impl.DemoDaoImpl&quot;&gt;&lt;/bean&gt;</span><br><span class="line">    &lt;!-- 配置 service --&gt;</span><br><span class="line">    &lt;bean id=&quot;demoService&quot; class=&quot;gavino.spring.service.impl.DemoServiceImpl&quot;&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;id&quot; value=&quot;101&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;name&quot; value=&quot;依赖注入&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;time&quot; ref=&quot;date&quot;&gt;&lt;/constructor-arg&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;date&quot; class=&quot;java.util.Date&quot;&gt;&lt;/bean&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
 
 <p>在测试类中测试是否注入成功</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author Yan weigang</span><br><span class="line"> */</span><br><span class="line">public class DITest &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void testConstructor()&#123;</span><br><span class="line">        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);</span><br><span class="line">        IDemoService service = context.getBean(&quot;demoService&quot;, IDemoService.class);</span><br><span class="line">        service.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">########################## 测试输出如下 ####################################</span><br><span class="line">----------测试构造函数注入 基本数据类型和String-----------</span><br><span class="line">id:101 name:依赖注入 </span><br><span class="line">----------测试构造函数注入 其它Bean类型-----------</span><br><span class="line">time:Mon Aug 26 19:36:18 CST 2019</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author Yan weigang</span><br><span class="line"> */</span><br><span class="line">public class DITest &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void testConstructor()&#123;</span><br><span class="line">        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);</span><br><span class="line">        IDemoService service = context.getBean(&quot;demoService&quot;, IDemoService.class);</span><br><span class="line">        service.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">########################## 测试输出如下 ####################################</span><br><span class="line">----------测试构造函数注入 基本数据类型和String-----------</span><br><span class="line">id:101 name:依赖注入 </span><br><span class="line">----------测试构造函数注入 其它Bean类型-----------</span><br><span class="line">time:Mon Aug 26 19:46:18 CST 2019</span><br></pre></td></tr></table></figure>
 
 <h5 id="set-方法注入"><a href="#set-方法注入" class="headerlink" title="set 方法注入"></a><strong>set 方法注入</strong></h5><p>注掉构造方法，提供相应的set方法</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author Yan weigang</span><br><span class="line"> */</span><br><span class="line">public class DemoServiceImpl implements IDemoService &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer id;</span><br><span class="line">    private Date time;</span><br><span class="line">//    IDemoDao dao = new DemoDaoImpl();//将通过ioc解决这种依赖关系</span><br><span class="line">//    private IDemoDao dao;</span><br><span class="line">//    public DemoServiceImpl(String name, Integer id, Date time) &#123;</span><br><span class="line">//        this.name = name;</span><br><span class="line">//        this.id = id;</span><br><span class="line">//        this.time = time;</span><br><span class="line">//    &#125;</span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(Integer id) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setTime(Date time) &#123;</span><br><span class="line">        this.time = time;</span><br><span class="line">    &#125;</span><br><span class="line">    @Test</span><br><span class="line">    public void print() &#123;</span><br><span class="line">        System.out.println(&quot;----------测试构造函数注入 基本数据类型和String-----------&quot;);</span><br><span class="line">        System.out.println(&quot;id:&quot;+id+&quot; name:&quot;+name+&quot; &quot;);</span><br><span class="line">        System.out.println(&quot;----------测试构造函数注入 其它Bean类型-----------&quot;);</span><br><span class="line">        System.out.println(&quot;time:&quot;+time);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -248,7 +244,24 @@
 <p>测试类中测试是否注入成功</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    @Test</span><br><span class="line">    public void testConstructor()&#123;</span><br><span class="line">        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);</span><br><span class="line">        IDemoService service = context.getBean(&quot;demoService&quot;, IDemoService.class);</span><br><span class="line">        service.print();</span><br><span class="line">    &#125;</span><br><span class="line">============================= 测试输出如下 ====================================</span><br><span class="line">----------测试构造函数注入 基本数据类型和String-----------</span><br><span class="line">id:20 name:set方法注入 </span><br><span class="line">----------测试构造函数注入 其它Bean类型-----------</span><br><span class="line">time:Mon Aug 26 20:01:38 CST 2019</span><br></pre></td></tr></table></figure>
 
-<h5 id="使用-p-名称空间注入数据（本质还是调用-set-方法）"><a href="#使用-p-名称空间注入数据（本质还是调用-set-方法）" class="headerlink" title="使用 p 名称空间注入数据（本质还是调用 set 方法）"></a><strong>使用 p 名称空间注入数据（本质还是调用 set 方法）</strong></h5><h5 id="注入集合属性"><a href="#注入集合属性" class="headerlink" title="注入集合属性"></a><strong>注入集合属性</strong></h5><h2 id="四、基于注解的-IOC配置"><a href="#四、基于注解的-IOC配置" class="headerlink" title="四、基于注解的 IOC配置"></a><strong>四、基于注解的 IOC配置</strong></h2><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a><strong>环境搭建</strong></h3><p><strong>明确：</strong> 注解配置和 xml 配置要实现的功能都是一样的，都是要降低程序间的耦合。只是配置的形式不一样。</p>
+<h5 id="使用-p-名称空间注入数据（本质还是调用-set-方法）"><a href="#使用-p-名称空间注入数据（本质还是调用-set-方法）" class="headerlink" title="使用 p 名称空间注入数据（本质还是调用 set 方法）"></a><strong>使用 p 名称空间注入数据（本质还是调用 set 方法）</strong></h5><p>使用 p 名称空间注入，使用 p:propertyName 来注入数据，它的本质仍然是调用类中的set 方法实现注入功能。<br>依然提供相应的set方法，代码如在set 方法中注入一样<br>修改bean.xml配置文件：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- p名称空间注入 --&gt;</span><br><span class="line">    &lt;bean id=&quot;demoService&quot; class=&quot;gavino.spring.service.impl.DemoServiceImpl&quot; p:id=&quot;303&quot; p:name=&quot;p名称空间注入&quot; p:time-ref=&quot;date&quot;/&gt;</span><br><span class="line">    &lt;bean id=&quot;date&quot; class=&quot;java.util.Date&quot;&gt;&lt;/bean&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<p>测试类中测试是否注入成功</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">++++++++++++++++++++++++++ 测试输出如下 +++++++++++++++++++++++++++++++++++++</span><br><span class="line">----------测试构造函数注入 基本数据类型和String-----------</span><br><span class="line">id:303 name:p名称空间注入 </span><br><span class="line">----------测试构造函数注入 其它Bean类型-----------</span><br><span class="line">time:Mon Aug 26 20:10:11 CST 2019</span><br></pre></td></tr></table></figure>
+
+<h5 id="注入集合属性"><a href="#注入集合属性" class="headerlink" title="注入集合属性"></a><strong>注入集合属性</strong></h5><p>注入集合属性，用的也是set方法注入的方式，只不过变量的数据类型都是集合。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package gavino.spring.service.impl;</span><br><span class="line">import gavino.spring.dao.IDemoDao;</span><br><span class="line">import gavino.spring.dao.impl.DemoDaoImpl;</span><br><span class="line">import gavino.spring.service.IDemoService;</span><br><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Yan weigang</span><br><span class="line"> */</span><br><span class="line">public class DemoServiceImpl implements IDemoService &#123;</span><br><span class="line">    private String[] str;</span><br><span class="line">    private List&lt;String&gt; list;</span><br><span class="line">    private Set&lt;String&gt; set;</span><br><span class="line">    private Map&lt;String,String&gt; map;</span><br><span class="line">    private Properties props;</span><br><span class="line">    //提供set方法</span><br><span class="line">    public void setStr(String[] str) &#123;</span><br><span class="line">        this.str = str;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setList(List&lt;String&gt; list) &#123;</span><br><span class="line">        this.list = list;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setSet(Set&lt;String&gt; set) &#123;</span><br><span class="line">        this.set = set;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setMap(Map&lt;String, String&gt; map) &#123;</span><br><span class="line">        this.map = map;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setProps(Properties props) &#123;</span><br><span class="line">        this.props = props;</span><br><span class="line">    &#125;</span><br><span class="line">    @Test</span><br><span class="line">    public void print() &#123;</span><br><span class="line">        System.out.println(Arrays.toString(str));</span><br><span class="line">        System.out.println(list);</span><br><span class="line">        System.out.println(set);</span><br><span class="line">        System.out.println(map);</span><br><span class="line">        System.out.println(props);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置bean.xml配置文件</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</span><br><span class="line">    &lt;bean id=&quot;demoService&quot; class=&quot;gavino.spring.service.impl.DemoServiceImpl&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;str&quot;&gt;</span><br><span class="line">            &lt;array&gt;</span><br><span class="line">                &lt;value&gt;数组元素1&lt;/value&gt;</span><br><span class="line">                &lt;value&gt;数组元素2&lt;/value&gt;</span><br><span class="line">                &lt;value&gt;数组元素3&lt;/value&gt;</span><br><span class="line">            &lt;/array&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;list&quot; &gt;</span><br><span class="line">            &lt;list&gt;</span><br><span class="line">                &lt;value&gt;列表A&lt;/value&gt;</span><br><span class="line">                &lt;value&gt;列表B&lt;/value&gt;</span><br><span class="line">                &lt;value&gt;列表C&lt;/value&gt;</span><br><span class="line">            &lt;/list&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;set&quot;&gt;</span><br><span class="line">            &lt;set&gt;</span><br><span class="line">                &lt;value&gt;set 1&lt;/value&gt;</span><br><span class="line">                &lt;value&gt;set 2&lt;/value&gt;</span><br><span class="line">                &lt;value&gt;set 3&lt;/value&gt;</span><br><span class="line">            &lt;/set&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;map&quot;&gt;</span><br><span class="line">            &lt;map&gt;</span><br><span class="line">                &lt;entry key=&quot;testA&quot; value=&quot;aaa&quot;&gt;&lt;/entry&gt;</span><br><span class="line">                &lt;entry key=&quot;testB&quot;&gt;</span><br><span class="line">                    &lt;value&gt;bbb&lt;/value&gt;</span><br><span class="line">                &lt;/entry&gt;</span><br><span class="line">            &lt;/map&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;props&quot;&gt;</span><br><span class="line">            &lt;props&gt;</span><br><span class="line">                &lt;prop key=&quot;username&quot;&gt;root&lt;/prop&gt;</span><br><span class="line">                &lt;prop key=&quot;password&quot;&gt;root&lt;/prop&gt;</span><br><span class="line">            &lt;/props&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<p>测试类中测试是否注入成功</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">============================ 测试输出如下 ===================================</span><br><span class="line">[数组元素1, 数组元素2, 数组元素3]</span><br><span class="line">[列表A, 列表B, 列表C]</span><br><span class="line">[set 1, set 2, set 3]</span><br><span class="line">&#123;testA=aaa, testB=bbb&#125;</span><br><span class="line">&#123;password=root, username=root&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、基于注解的-IOC配置"><a href="#四、基于注解的-IOC配置" class="headerlink" title="四、基于注解的 IOC配置"></a><strong>四、基于注解的 IOC配置</strong></h2><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a><strong>环境搭建</strong></h3><p><strong>明确：</strong> 注解配置和 xml 配置要实现的功能都是一样的，都是要降低程序间的耦合。只是配置的形式不一样。</p>
 <blockquote>
 <p>(一)导入相关依赖<br>(二)使用@Component 注解配置管理的资源<br>(三)创建 spring 的 xml 配置文件并开启对注解的支持<br><strong>注意:</strong><br>基于注解整合时，导入约束时需要多导入一个 context 名称空间下的约束。</p>
 </blockquote>
@@ -754,109 +767,6 @@
         <div class="column-right-shadow is-hidden-widescreen ">
         
             
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#一、Spring-概述">
-        <span class="has-mr-6">1</span>
-        <span>一、Spring 概述</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Spring-的优势">
-        <span class="has-mr-6">1.1</span>
-        <span>Spring 的优势</span>
-        </a></li><li>
-        <a class="is-flex" href="#Spring-的体系结构">
-        <span class="has-mr-6">1.2</span>
-        <span>Spring 的体系结构</span>
-        </a></li><li>
-        <a class="is-flex" href="#Sping-的开发包">
-        <span class="has-mr-6">1.3</span>
-        <span>Sping 的开发包</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#二、IOC-的概念和作用">
-        <span class="has-mr-6">2</span>
-        <span>二、IOC 的概念和作用</span>
-        </a></li><li>
-        <a class="is-flex" href="#三、使用-spring-的-IOC-解决程序耦合">
-        <span class="has-mr-6">3</span>
-        <span>三、使用 spring 的 IOC 解决程序耦合</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#创建持久层接口和实现类">
-        <span class="has-mr-6">3.1</span>
-        <span>创建持久层接口和实现类</span>
-        </a></li><li>
-        <a class="is-flex" href="#创建业务层接口和实现类">
-        <span class="has-mr-6">3.2</span>
-        <span>创建业务层接口和实现类</span>
-        </a></li><li>
-        <a class="is-flex" href="#基于-XML-的配置">
-        <span class="has-mr-6">3.3</span>
-        <span>基于 XML 的配置</span>
-        </a></li><li>
-        <a class="is-flex" href="#Spring-基于-XML-的-IOC-细节">
-        <span class="has-mr-6">3.4</span>
-        <span>Spring 基于 XML 的 IOC 细节</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#BeanFactory-和-ApplicationContext-的区别">
-        <span class="has-mr-6">3.4.1</span>
-        <span>BeanFactory 和 ApplicationContext 的区别</span>
-        </a></li><li>
-        <a class="is-flex" href="#ApplicationContext-接口的实现类">
-        <span class="has-mr-6">3.4.2</span>
-        <span>ApplicationContext 接口的实现类</span>
-        </a></li><li>
-        <a class="is-flex" href="#IOC-中-bean-标签和管理对象细节">
-        <span class="has-mr-6">3.4.3</span>
-        <span>IOC 中 bean 标签和管理对象细节</span>
-        </a></li><li>
-        <a class="is-flex" href="#spring-的依赖注入">
-        <span class="has-mr-6">3.4.4</span>
-        <span>spring 的依赖注入</span>
-        </a></li></ul></li></ul></li><li>
-        <a class="is-flex" href="#四、基于注解的-IOC配置">
-        <span class="has-mr-6">4</span>
-        <span>四、基于注解的 IOC配置</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#环境搭建">
-        <span class="has-mr-6">4.1</span>
-        <span>环境搭建</span>
-        </a></li><li>
-        <a class="is-flex" href="#常用注解">
-        <span class="has-mr-6">4.2</span>
-        <span>常用注解</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#五、Spring-整合-Junit">
-        <span class="has-mr-6">5</span>
-        <span>五、Spring 整合 Junit</span>
-        </a></li><li>
-        <a class="is-flex" href="#六、AOP-的相关概念">
-        <span class="has-mr-6">6</span>
-        <span>六、AOP 的相关概念</span>
-        </a></li><li>
-        <a class="is-flex" href="#七、Spring-中的-AOP">
-        <span class="has-mr-6">7</span>
-        <span>七、Spring 中的 AOP</span>
-        </a></li><li>
-        <a class="is-flex" href="#八、Spring-中的-JdbcTemplate">
-        <span class="has-mr-6">8</span>
-        <span>八、Spring 中的 JdbcTemplate</span>
-        </a></li><li>
-        <a class="is-flex" href="#九、Spring-中的事务控制">
-        <span class="has-mr-6">9</span>
-        <span>九、Spring 中的事务控制</span>
-        </a></li><li>
-        <a class="is-flex" href="#十、总结">
-        <span class="has-mr-6">10</span>
-        <span>十、总结</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
-
         
             
 <div class="card widget">
