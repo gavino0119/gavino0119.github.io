@@ -17,7 +17,7 @@
 <meta property="og:description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=208175266,1099182748&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-08-27T02:05:23.850Z">
+<meta property="og:updated_time" content="2019-08-27T08:29:52.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql在项目中的基本操作">
 <meta name="twitter:description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
@@ -121,7 +121,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    17 分钟 读完 (大约 2481 个字)
+                    18 分钟 读完 (大约 2684 个字)
                 </span>
                 
                 
@@ -332,13 +332,21 @@
 </ul>
 </li>
 <li>多表查询（联合查询，内连接，外连接查询）<br>  (   查询的数据分布在多张表里   )<ul>
-<li>需求：列出员工姓名，薪水，职位，入职日期，部门名，部门地址<br><strong>等值查询(等价于内连接)</strong><br>select ename,sal,job,hiredate,dname,loc from emp e,dept d<br>where e.deptno=d.deptno;<br><strong>内连接查询</strong><br>select ename,sal,job,hiredate,dname,loc from emp e inner join dept d<br>on e.deptno=d.deptno;<br><strong>(等值查询或内连接查询，查询的结果都必须满足连接条件)</strong><br><strong>注意：多表查询一定要指定连接条件，条件的数量n-1<br>否则会出现笛卡尔乘积现象</strong><br>外连接查询 :<br>左外连接、右外连接、全外连接<br><strong>左外连接</strong><br>select ename,sal,job,hiredate,dname,loc from emp e left outer join dept d<br>on e.deptno=d.deptno;<br><strong>右外连接</strong><br>select ename,sal,job,hiredate,dname,loc from dept d right outer join emp e<br>on e.deptno=d.deptno;<br><strong>右外连接</strong><br>select ename,sal,job,hiredate,dname,loc from emp e right outer join dept d<br>on e.deptno=d.deptno;<br><strong>全外连接（oracle支持）</strong><br>select ename,sal,job,hiredate,dname,loc from emp e full outer join dept d<br>on e.deptno=d.deptno;</li>
+<li>需求：列出员工姓名，薪水，职位，入职日期，部门名，部门地址<br><strong>等值查询(等价于内连接)</strong><br>select ename,sal,job,hiredate,dname,loc from emp e,dept d<br>where e.deptno=d.deptno;<br><strong>内连接查询</strong>只查询满足连接条件的数据<br>inner join … on…<br>select ename,sal,job,hiredate,dname,loc from emp e inner join dept d<br>on e.deptno=d.deptno;<br><strong>(等值查询或内连接查询，查询的结果都必须满足连接条件)</strong><br><strong>注意：多表查询一定要指定连接条件，条件的数量最少为 n-1<br>否则会出现笛卡尔乘积现象</strong><br>外连接查询 :<br>左外连接、右外连接、全外连接<br><strong>左外连接</strong><br>select ename,sal,job,hiredate,dname,loc from emp e left outer join dept d<br>on e.deptno=d.deptno;<br><strong>右外连接</strong><br>select ename,sal,job,hiredate,dname,loc from dept d right outer join emp e<br>on e.deptno=d.deptno;<br><strong>右外连接</strong><br>select ename,sal,job,hiredate,dname,loc from emp e right outer join dept d<br>on e.deptno=d.deptno;<br><strong>全外连接（oracle支持）</strong><br>select ename,sal,job,hiredate,dname,loc from emp e full outer join dept d<br>on e.deptno=d.deptno;</li>
 </ul>
 </li>
 <li>mysql分页查询<br>   select * from emp limit 5,5;</li>
 </ul>
 </blockquote>
-
+<h3 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h3><h4 id="HAVING-对分组后的结果再过滤"><a href="#HAVING-对分组后的结果再过滤" class="headerlink" title="HAVING 对分组后的结果再过滤"></a>HAVING 对分组后的结果再过滤</h4><ul>
+<li>HAVING 是分组后的筛选条件,WHERE 则是在分组前筛选</li>
+<li>WHERE子句在聚合前先筛选记录。也就是说作用在GROUP BY 子句和HAVING子句前</li>
+<li>HAVING 在分组和聚集之后选取分组的行。因此，WHERE 子句不能包含聚集函数；</li>
+<li>HAVING 子句总是包含聚集函数。（也可以写不使用聚集的 HAVING 子句， 但这样做没有意义。同样的条件可以更有效地用于 WHERE ）</li>
+</ul>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><h5 id="普通子查询"><a href="#普通子查询" class="headerlink" title="普通子查询"></a>普通子查询</h5><p>执行顺序 先查子查询</p>
+<h5 id="相关子查询"><a href="#相关子查询" class="headerlink" title="相关子查询"></a>相关子查询</h5><p>先执行主查询</p>
+<h5 id="IN-NOT-IN"><a href="#IN-NOT-IN" class="headerlink" title="IN (NOT IN)"></a>IN (NOT IN)</h5><h5 id="EXISTS-NOT-EXISTS"><a href="#EXISTS-NOT-EXISTS" class="headerlink" title="EXISTS (NOT EXISTS)"></a>EXISTS (NOT EXISTS)</h5><h5 id="联合-多表-查询"><a href="#联合-多表-查询" class="headerlink" title="联合(多表)查询"></a>联合(多表)查询</h5>
             
 <div style="padding: 15px;
     margin-bottom: 20px;
@@ -852,7 +860,19 @@
         <a class="is-flex" href="#表的管理">
         <span class="has-mr-6">1.2</span>
         <span>表的管理</span>
-        </a></li></ul></li></ul>
+        </a></li><li>
+        <a class="is-flex" href="#其它操作">
+        <span class="has-mr-6">1.3</span>
+        <span>其它操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#HAVING-对分组后的结果再过滤">
+        <span class="has-mr-6">1.3.1</span>
+        <span>HAVING 对分组后的结果再过滤</span>
+        </a></li><li>
+        <a class="is-flex" href="#子查询">
+        <span class="has-mr-6">1.3.2</span>
+        <span>子查询</span>
+        </a></li></ul></li></ul></li></ul>
         </div>
     </div>
 </div>
