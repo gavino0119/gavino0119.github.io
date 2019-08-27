@@ -17,7 +17,7 @@
 <meta property="og:description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=208175266,1099182748&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-08-26T08:56:44.896Z">
+<meta property="og:updated_time" content="2019-08-27T02:05:23.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql在项目中的基本操作">
 <meta name="twitter:description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
@@ -121,7 +121,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    16 分钟 读完 (大约 2468 个字)
+                    17 分钟 读完 (大约 2481 个字)
                 </span>
                 
                 
@@ -315,7 +315,7 @@
 <li>需求：列出10号部门16年之后入职的员工姓名，薪水，职位，入职日期<br>select ename,sal,job,hiredate from emp where deptno=10 and hiredate&gt;’2016-1-1’;</li>
 <li>需求：列出10号部门或16年之后入职的员工姓名，薪水，职位，入职日期，部门号<br>select ename,sal,job,hiredate,deptno from emp where deptno=10 or hiredate&gt;’2016-1-1’;</li>
 <li>需求：列出10，20号部门中的员工姓名，薪水，职位，部门号<br>select ename,sal,job,deptno from emp where deptno in(10,20);</li>
-<li>需求：列出’王’姓的员工姓名，职位，入职日期<br><strong>(模糊查询：like  %  _)</strong><br>select ename,job,hiredate from emp where ename like ‘王%’;</li>
+<li>需求：列出’王’姓的员工姓名，职位，入职日期<br><strong>(模糊查询：like  %  _)</strong><br>%:任意位任意字符<br>_:一位任意字符<br>select ename,job,hiredate from emp where ename like ‘王%’;</li>
 <li>需求：列出名字中第二个字是’浩’的员工姓名，薪水，职位，入职日期，部门号<br>select ename,sal,job,hiredate,deptno from emp where ename like ‘_浩%’;     </li>
 </ul>
 </li>
