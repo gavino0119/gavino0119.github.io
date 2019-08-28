@@ -17,7 +17,7 @@
 <meta property="og:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png">
-<meta property="og:updated_time" content="2019-08-26T13:14:27.444Z">
+<meta property="og:updated_time" content="2019-08-28T04:13:50.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这就是Spring">
 <meta name="twitter:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    23 分钟 读完 (大约 3420 个字)
+                    26 分钟 读完 (大约 3877 个字)
                 </span>
                 
                 
@@ -268,7 +268,71 @@
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line">http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">http://www.springframework.org/schema/context</span><br><span class="line">http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</span><br><span class="line">&lt;!-- 告知 spring 创建容器时要扫描的包 --&gt; </span><br><span class="line">&lt;context:component-scan base-package=&quot;gavino.spring&quot;&gt;&lt;/context:component-scan&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h3><blockquote>
-<p>1、用于创建对象的<br>@Component<br>@Controller     一般用于表现层的注解。<br>@Service     一般用于业务层的注解。<br>@Repository     一般用于持久层的注解。<br><strong>注意</strong><br>@Controller、@Service、@Repository 三个注解都是针对一个的衍生注解，他们的作用及属性都是一模一样的。<br>它们只不过是提供了更加明确的语义化。<br>2、用于注入数据的<br>@Autowired<br>@Qualifier<br>@Resource<br>@Value<br>3、用于改变作用范围<br>@Scope<br>4、和生命周期相关的<br>@PostConstruct<br>@PreDestroy<br>//<br>@Configuration<br>@ComponentScan<br>@Bean<br>@PropertySource<br>@Import</p>
+<ol>
+<li>用于创建对象的( 相当于：&lt;bean id=”” class=””&gt; )<ul>
+<li>@Component<ul>
+<li>作用：<br>把资源让 spring 来管理。相当于在 xml 中配置一个 bean。</li>
+<li>属性：<br>value：指定 bean 的 id。如果不指定 value 属性，默认 bean 的 id 是当前类的类名。首字母小写。</li>
+</ul>
+</li>
+<li>@Controller     一般用于表现层的注解。</li>
+<li>@Service     一般用于业务层的注解。</li>
+<li>@Repository     一般用于持久层的注解。</li>
+</ul>
+</li>
+</ol>
+<p><strong>注意</strong><br>@Controller、@Service、@Repository 三个注解都是针对一个的衍生注解，他们的作用及属性都是一模一样的。<br>它们只不过是提供了更加明确的语义化。如果注解中有且只有一个属性要赋值时，且名称是 value，value 在赋值时可以不写。</p>
+<ol start="2">
+<li>用于注入数据的<br>( 相当于：&lt;property name=”” ref=””&gt;     &lt;property name=”” value=””&gt; )<ul>
+<li>@Autowired<ul>
+<li>作用：<br>自动按照类型注入。当使用注解注入属性时，set 方法可以省略。它只能注入其他 bean 类型。当有多个类型匹配时，使用要注入的对象变量名称作为 bean 的 id，在 spring 容器查找，找到了也可以注入成功。找不到就报错。</li>
+</ul>
+</li>
+<li>@Qualifier<ul>
+<li>作用：<br>在自动按照类型注入的基础之上，再按照 Bean 的 id 注入。它在给字段注入时不能独立使用，必须和@Autowire 一起使用；但是给方法参数注入时，可以独立使用。</li>
+<li>属性：<br>value：指定 bean 的 id。</li>
+</ul>
+</li>
+<li>@Resource<ul>
+<li>作用：<br>直接按照 Bean 的 id 注入。它也只能注入其他 bean 类型。</li>
+<li>属性：<br>name：指定 bean 的 id。</li>
+</ul>
+</li>
+<li>@Value<ul>
+<li>作用：<br>注入基本数据类型和 String 类型数据的</li>
+<li>属性：<br>value：用于指定值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>用于改变作用范围<ul>
+<li>@Scope( 相当于：&lt;bean id=”” class=”” scope=””&gt; )<ul>
+<li>作用：<br>指定 bean 的作用范围。</li>
+<li>属性：<br>value：指定范围的值。<br>取值：singleton prototype request session globalsession</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>和生命周期相关的( 相当于：&lt;bean id=”” class=”” init-method=”” destroy-method=”” /&gt; )<ul>
+<li>@PostConstruct<ul>
+<li>作用：<br>用于指定初始化方法。</li>
+</ul>
+</li>
+<li>@PreDestroy<ul>
+<li>作用：<br>用于指定销毁方法。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>其他新注解<ul>
+<li>@Configuration</li>
+<li>@ComponentScan</li>
+<li>@Bean</li>
+<li>@PropertySource</li>
+<li>@Import</li>
+</ul>
+</li>
+</ol>
 </blockquote>
 <p><strong>注意</strong></p>
 <p><strong>关于Spring 和 XML 的选择问题</strong><br>注解的优势<br>配置简单<br>XML的优势<br>修改时不用修改源码</p>
@@ -282,7 +346,8 @@
 <blockquote>
 <p>1、导入spring整合junit的jar(坐标)<br>2、使用Junit提供的一个注解把原有的main方法替换了，替换成spring提供的@Runwith(junit4环境下),若导入的是Junit5的坐标，则应替换为@ExtendWith<br>3、告知spring的运行器，spring和ioc创建是基于xml还是注解的，并且说明位置<br>*@ContextConfiguration的说明：<br>    locations：指定xml文件的位置，加上classpath关键字，表示在类路径下<br>    classes：指定注解类所在地位置</p>
 </blockquote>
-<h2 id="六、AOP-的相关概念"><a href="#六、AOP-的相关概念" class="headerlink" title="六、AOP 的相关概念"></a>六、AOP 的相关概念</h2><h2 id="七、Spring-中的-AOP"><a href="#七、Spring-中的-AOP" class="headerlink" title="七、Spring 中的 AOP"></a>七、Spring 中的 AOP</h2><h2 id="八、Spring-中的-JdbcTemplate"><a href="#八、Spring-中的-JdbcTemplate" class="headerlink" title="八、Spring 中的 JdbcTemplate"></a>八、Spring 中的 JdbcTemplate</h2><h2 id="九、Spring-中的事务控制"><a href="#九、Spring-中的事务控制" class="headerlink" title="九、Spring 中的事务控制"></a>九、Spring 中的事务控制</h2><h2 id="十、总结"><a href="#十、总结" class="headerlink" title="十、总结"></a>十、总结</h2>
+<h2 id="六、AOP-的相关概念"><a href="#六、AOP-的相关概念" class="headerlink" title="六、AOP 的相关概念"></a>六、AOP 的相关概念</h2><p>连接点即方法<br>被增强的方法才是切入点，切入点一定是连接点，但连接点不一定是切入点<br>切面<br>切入点表达式</p>
+<h2 id="七、Spring-中的-AOP"><a href="#七、Spring-中的-AOP" class="headerlink" title="七、Spring 中的 AOP"></a>七、Spring 中的 AOP</h2><h2 id="八、Spring-中的-JdbcTemplate"><a href="#八、Spring-中的-JdbcTemplate" class="headerlink" title="八、Spring 中的 JdbcTemplate"></a>八、Spring 中的 JdbcTemplate</h2><h2 id="九、Spring-中的事务控制"><a href="#九、Spring-中的事务控制" class="headerlink" title="九、Spring 中的事务控制"></a>九、Spring 中的事务控制</h2><h2 id="十、总结"><a href="#十、总结" class="headerlink" title="十、总结"></a>十、总结</h2>
             
 <div style="padding: 15px;
     margin-bottom: 20px;
