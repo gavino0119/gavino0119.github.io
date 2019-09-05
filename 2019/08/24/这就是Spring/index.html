@@ -17,7 +17,7 @@
 <meta property="og:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png">
-<meta property="og:updated_time" content="2019-08-28T04:13:50.857Z">
+<meta property="og:updated_time" content="2019-08-31T02:24:36.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这就是Spring">
 <meta name="twitter:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    26 分钟 读完 (大约 3877 个字)
+                    26 分钟 读完 (大约 3881 个字)
                 </span>
                 
                 
@@ -347,7 +347,8 @@
 <p>1、导入spring整合junit的jar(坐标)<br>2、使用Junit提供的一个注解把原有的main方法替换了，替换成spring提供的@Runwith(junit4环境下),若导入的是Junit5的坐标，则应替换为@ExtendWith<br>3、告知spring的运行器，spring和ioc创建是基于xml还是注解的，并且说明位置<br>*@ContextConfiguration的说明：<br>    locations：指定xml文件的位置，加上classpath关键字，表示在类路径下<br>    classes：指定注解类所在地位置</p>
 </blockquote>
 <h2 id="六、AOP-的相关概念"><a href="#六、AOP-的相关概念" class="headerlink" title="六、AOP 的相关概念"></a>六、AOP 的相关概念</h2><p>连接点即方法<br>被增强的方法才是切入点，切入点一定是连接点，但连接点不一定是切入点<br>切面<br>切入点表达式</p>
-<h2 id="七、Spring-中的-AOP"><a href="#七、Spring-中的-AOP" class="headerlink" title="七、Spring 中的 AOP"></a>七、Spring 中的 AOP</h2><h2 id="八、Spring-中的-JdbcTemplate"><a href="#八、Spring-中的-JdbcTemplate" class="headerlink" title="八、Spring 中的 JdbcTemplate"></a>八、Spring 中的 JdbcTemplate</h2><h2 id="九、Spring-中的事务控制"><a href="#九、Spring-中的事务控制" class="headerlink" title="九、Spring 中的事务控制"></a>九、Spring 中的事务控制</h2><h2 id="十、总结"><a href="#十、总结" class="headerlink" title="十、总结"></a>十、总结</h2>
+<h2 id="七、Spring-中的-AOP"><a href="#七、Spring-中的-AOP" class="headerlink" title="七、Spring 中的 AOP"></a>七、Spring 中的 AOP</h2><h2 id="八、Spring-中的-JdbcTemplate"><a href="#八、Spring-中的-JdbcTemplate" class="headerlink" title="八、Spring 中的 JdbcTemplate"></a>八、Spring 中的 JdbcTemplate</h2><p>JdbcTemplate的作用</p>
+<h2 id="九、Spring-中的事务控制"><a href="#九、Spring-中的事务控制" class="headerlink" title="九、Spring 中的事务控制"></a>九、Spring 中的事务控制</h2><h2 id="十、总结"><a href="#十、总结" class="headerlink" title="十、总结"></a>十、总结</h2>
             
 <div style="padding: 15px;
     margin-bottom: 20px;
@@ -429,6 +430,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/31/这就是SpringMVC/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">这就是SpringMVC</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -512,7 +520,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        29
                     </p>
                 </div>
             </div>
@@ -532,7 +540,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
@@ -598,7 +606,7 @@
                 <span class="level-item">SSM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Spring/">
@@ -662,7 +670,7 @@
                 <span class="level-item">设计模式</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/随笔/">
@@ -687,6 +695,82 @@
         
         <article class="media">
             
+            <a href="/2019/09/04/策略模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="策略模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-04T02:07:50.000Z">2019-09-04</time></div>
+                    <a href="/2019/09/04/策略模式/" class="has-link-black-ter is-size-6">策略模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/03/细说-Java-线程池/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="细说 Java 线程池">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-03T03:53:09.000Z">2019-09-03</time></div>
+                    <a href="/2019/09/03/细说-Java-线程池/" class="has-link-black-ter is-size-6">细说 Java 线程池</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/02/lambda表达式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="lambda表达式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-02T10:16:33.000Z">2019-09-02</time></div>
+                    <a href="/2019/09/02/lambda表达式/" class="has-link-black-ter is-size-6">lambda表达式</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/31/这就是SpringMVC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://imgblog.mrdear.cn/springmvc.png" alt="这就是SpringMVC">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-31T02:22:33.000Z">2019-08-31</time></div>
+                    <a href="/2019/08/31/这就是SpringMVC/" class="has-link-black-ter is-size-6">这就是SpringMVC</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/08/24/这就是Spring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png" alt="这就是Spring">
@@ -699,82 +783,6 @@
                     <a href="/2019/08/24/这就是Spring/" class="has-link-black-ter is-size-6">这就是Spring</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/23/代理模式/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk1x6eq1CTJ2Bt6ER5hYIFytfkLqWEhe_P9BH1bZl3mLqHz8mh" alt="代理模式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-23T09:58:55.000Z">2019-08-23</time></div>
-                    <a href="/2019/08/23/代理模式/" class="has-link-black-ter is-size-6">代理模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/22/这就是MyBatis/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwb80lMZhLOlxOd8RfDq7s3tznKoHtJxC2HN7NguuODFHgPUlg" alt="这就是MyBatis">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-22T03:47:51.000Z">2019-08-22</time></div>
-                    <a href="/2019/08/22/这就是MyBatis/" class="has-link-black-ter is-size-6">这就是MyBatis</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/19/IOC基本原理及实现/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjRS3OZvRTXxS44wp0UqGZn9e-RAPM6YNsmtK55tR0ke3zwzo5Q" alt="IOC基本原理及相关实现">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T10:52:10.000Z">2019-08-19</time></div>
-                    <a href="/2019/08/19/IOC基本原理及实现/" class="has-link-black-ter is-size-6">IOC基本原理及相关实现</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/13/JSON简单应用/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIyfxvod6QCB_y5o18rQEDZuTk2THBcr0qL7-NhIdq9uPr1l0tvg" alt="JSON简单应用">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-13T13:05:34.000Z">2019-08-13</time></div>
-                    <a href="/2019/08/13/JSON简单应用/" class="has-link-black-ter is-size-6">JSON简单应用</a>
-                    <p class="is-size-7 is-uppercase">
-                        
                     </p>
                 </div>
             </div>
@@ -839,7 +847,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 13.33px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 13.33px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16.67px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 12.5px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a>
     </div>
 </div>
 
@@ -853,12 +861,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/08/">
                 <span class="level-start">
                     <span class="level-item">八月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -918,7 +937,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -972,6 +991,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/springMVC/">
+                        <span class="tag">springMVC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/命令/">
                         <span class="tag">命令</span>
                         <span class="tag is-grey">1</span>
@@ -981,7 +1007,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -995,7 +1021,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/设计模式/">
                         <span class="tag">设计模式</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 

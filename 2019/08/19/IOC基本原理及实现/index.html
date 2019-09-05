@@ -17,7 +17,7 @@
 <meta property="og:description" content="一、IOC：Inversion of Control 控制反转.指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjRS3OZvRTXxS44wp0UqGZn9e-RAPM6YNsmtK55tR0ke3zwzo5Q">
-<meta property="og:updated_time" content="2019-08-24T04:09:46.405Z">
+<meta property="og:updated_time" content="2019-09-05T00:20:11.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOC基本原理及相关实现">
 <meta name="twitter:description" content="一、IOC：Inversion of Control 控制反转.指的是 对象的创建权反转(交给)给 Spring. 作用是实现了程序的解耦合.">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 569 个字)
+                    4 分钟 读完 (大约 633 个字)
                 </span>
                 
                 
@@ -151,6 +151,9 @@
 <p>通过工厂创建bean对象<br>基本思路是：<em>解析配置文件(配置文件中是类的唯一标识和全限定类名)，利用反射创建实例对象，然后将该标识和获得的对象分别作 key 和 value 封装到 Map 中。<br>最后在静态方法中通过给定的唯一标识获取对应的 value 对象。</em></p>
 </blockquote>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class BeanFactory &#123;</span><br><span class="line">    //定义一个Properties对象</span><br><span class="line">    private static Properties props;</span><br><span class="line">    //定义一个Map,用于存放我们要创建的对象。我们把它称之为容器</span><br><span class="line">    private static Map&lt;String,Object&gt; beans;</span><br><span class="line">    //使用静态代码块为Properties对象赋值</span><br><span class="line">    static &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //实例化对象</span><br><span class="line">            props = new Properties();</span><br><span class="line">            //获取properties文件的流对象</span><br><span class="line">            InputStream in = BeanFactory.class.getClassLoader().getResourceAsStream(&quot;bean.properties&quot;);</span><br><span class="line">            props.load(in);</span><br><span class="line">            //实例化容器</span><br><span class="line">            beans = new HashMap&lt;String,Object&gt;();</span><br><span class="line">            //取出配置文件中所有的Key</span><br><span class="line">            Enumeration keys = props.keys();</span><br><span class="line">            //遍历枚举</span><br><span class="line">            while (keys.hasMoreElements())&#123;</span><br><span class="line">                //取出每个Key</span><br><span class="line">                String key = keys.nextElement().toString();</span><br><span class="line">                //根据key获取value</span><br><span class="line">                String beanPath = props.getProperty(key);</span><br><span class="line">                //反射创建对象</span><br><span class="line">                Object value = Class.forName(beanPath).newInstance();</span><br><span class="line">                //把key和value存入容器中</span><br><span class="line">                beans.put(key,value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch(Exception e)&#123;</span><br><span class="line">            throw new ExceptionInInitializerError(&quot;初始化properties失败！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 根据bean的名称获取对象</span><br><span class="line">     * @param beanName</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    public static Object getBean(String beanName)&#123;</span><br><span class="line">        return beans.get(beanName);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>比如，bean.properties如下：<br>userDao 和 userService 是所提供的对象id标识,可根据个人喜好随意命名<br>gavino.spring.dao.impl.UserDaoImpl 和 gavino.spring.service.impl.UserServiceImpl 是类的全限定类名。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">userDao=gavino.spring.dao.impl.UserDaoImpl</span><br><span class="line">userService=gavino.spring.service.impl.UserServiceImpl</span><br></pre></td></tr></table></figure>
 
 <h2 id="四、DI-Dependency-Injection"><a href="#四、DI-Dependency-Injection" class="headerlink" title="四、DI :Dependency Injection"></a>四、DI :Dependency Injection</h2><p> 依赖注入.需要有 IOC 的环境,Spring 创建这个类的过程中,Spring 将类的依赖的属性设置进去。</p>
 
@@ -325,7 +328,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        29
                     </p>
                 </div>
             </div>
@@ -345,7 +348,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
@@ -411,7 +414,7 @@
                 <span class="level-item">SSM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Spring/">
@@ -475,7 +478,7 @@
                 <span class="level-item">设计模式</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/随笔/">
@@ -500,6 +503,82 @@
         
         <article class="media">
             
+            <a href="/2019/09/04/策略模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="策略模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-04T02:07:50.000Z">2019-09-04</time></div>
+                    <a href="/2019/09/04/策略模式/" class="has-link-black-ter is-size-6">策略模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/03/细说-Java-线程池/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="细说 Java 线程池">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-03T03:53:09.000Z">2019-09-03</time></div>
+                    <a href="/2019/09/03/细说-Java-线程池/" class="has-link-black-ter is-size-6">细说 Java 线程池</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/02/lambda表达式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="lambda表达式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-02T10:16:33.000Z">2019-09-02</time></div>
+                    <a href="/2019/09/02/lambda表达式/" class="has-link-black-ter is-size-6">lambda表达式</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/31/这就是SpringMVC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://imgblog.mrdear.cn/springmvc.png" alt="这就是SpringMVC">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-31T02:22:33.000Z">2019-08-31</time></div>
+                    <a href="/2019/08/31/这就是SpringMVC/" class="has-link-black-ter is-size-6">这就是SpringMVC</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/08/24/这就是Spring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png" alt="这就是Spring">
@@ -512,82 +591,6 @@
                     <a href="/2019/08/24/这就是Spring/" class="has-link-black-ter is-size-6">这就是Spring</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/23/代理模式/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk1x6eq1CTJ2Bt6ER5hYIFytfkLqWEhe_P9BH1bZl3mLqHz8mh" alt="代理模式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-23T09:58:55.000Z">2019-08-23</time></div>
-                    <a href="/2019/08/23/代理模式/" class="has-link-black-ter is-size-6">代理模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/22/这就是MyBatis/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwb80lMZhLOlxOd8RfDq7s3tznKoHtJxC2HN7NguuODFHgPUlg" alt="这就是MyBatis">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-22T03:47:51.000Z">2019-08-22</time></div>
-                    <a href="/2019/08/22/这就是MyBatis/" class="has-link-black-ter is-size-6">这就是MyBatis</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/19/IOC基本原理及实现/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjRS3OZvRTXxS44wp0UqGZn9e-RAPM6YNsmtK55tR0ke3zwzo5Q" alt="IOC基本原理及相关实现">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T10:52:10.000Z">2019-08-19</time></div>
-                    <a href="/2019/08/19/IOC基本原理及实现/" class="has-link-black-ter is-size-6">IOC基本原理及相关实现</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/13/JSON简单应用/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIyfxvod6QCB_y5o18rQEDZuTk2THBcr0qL7-NhIdq9uPr1l0tvg" alt="JSON简单应用">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-13T13:05:34.000Z">2019-08-13</time></div>
-                    <a href="/2019/08/13/JSON简单应用/" class="has-link-black-ter is-size-6">JSON简单应用</a>
-                    <p class="is-size-7 is-uppercase">
-                        
                     </p>
                 </div>
             </div>
@@ -652,7 +655,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 13.33px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 13.33px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16.67px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 12.5px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a>
     </div>
 </div>
 
@@ -666,12 +669,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/08/">
                 <span class="level-start">
                     <span class="level-item">八月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -731,7 +745,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -785,6 +799,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/springMVC/">
+                        <span class="tag">springMVC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/命令/">
                         <span class="tag">命令</span>
                         <span class="tag is-grey">1</span>
@@ -794,7 +815,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -808,7 +829,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/设计模式/">
                         <span class="tag">设计模式</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 

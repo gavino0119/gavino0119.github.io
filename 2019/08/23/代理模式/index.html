@@ -17,7 +17,7 @@
 <meta property="og:description" content="一、代理模式（Proxy Pattern） 代理模式也称为委托模式，是一种结构性设计模式。在代理模式中，一个类代表另一个类的功能。我们创建具有现有对象的对象，以便向外界提供功能接口。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk1x6eq1CTJ2Bt6ER5hYIFytfkLqWEhe_P9BH1bZl3mLqHz8mh">
-<meta property="og:updated_time" content="2019-08-27T09:06:06.351Z">
+<meta property="og:updated_time" content="2019-09-04T23:43:51.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代理模式">
 <meta name="twitter:description" content="一、代理模式（Proxy Pattern） 代理模式也称为委托模式，是一种结构性设计模式。在代理模式中，一个类代表另一个类的功能。我们创建具有现有对象的对象，以便向外界提供功能接口。">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1534 个字)
+                    10 分钟 读完 (大约 1541 个字)
                 </span>
                 
                 
@@ -151,7 +151,7 @@
 </blockquote>
 <h3 id="基于接口的动态代理"><a href="#基于接口的动态代理" class="headerlink" title="基于接口的动态代理"></a>基于接口的动态代理</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package proxy.dynamic;</span><br><span class="line">/**</span><br><span class="line"> * @author gavino</span><br><span class="line"> *	模拟厂家，厂家直销</span><br><span class="line"> */</span><br><span class="line">public class Manufacturers implements Market &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void sal(Double price) &#123;</span><br><span class="line">		System.out.println(&quot;收款 &quot;+price);		</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void afterSal() &#123;</span><br><span class="line">		System.out.println(&quot;免费售后2333&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author gavino</span><br><span class="line"> *	该接口提供销售规则</span><br><span class="line"> */</span><br><span class="line">interface Market&#123;</span><br><span class="line">	/**</span><br><span class="line">	 * 出售</span><br><span class="line">	 */</span><br><span class="line">	public void sal(Double price);</span><br><span class="line">	/**</span><br><span class="line">	 * 售后</span><br><span class="line">	 */</span><br><span class="line">	public void afterSal();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package proxy.dynamic;</span><br><span class="line"></span><br><span class="line">import java.lang.reflect.InvocationHandler;</span><br><span class="line">import java.lang.reflect.Method;</span><br><span class="line">import java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author gavino</span><br><span class="line"> *	模拟消费者</span><br><span class="line"> */</span><br><span class="line">public class Customer &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		//代理类中的真实对象</span><br><span class="line">		final Manufacturers manufacturers = new Manufacturers();</span><br><span class="line">		</span><br><span class="line">		Market agency = (Market) Proxy.newProxyInstance(manufacturers.getClass().getClassLoader(),manufacturers.getClass().getInterfaces(),</span><br><span class="line">				new InvocationHandler() &#123;</span><br><span class="line">					</span><br><span class="line">					@Override</span><br><span class="line">					public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">						//获取当前方法方法</span><br><span class="line">						String name = method.getName();</span><br><span class="line">						//获取方法执行的参数</span><br><span class="line">						Double money = (Double) args[0];</span><br><span class="line">						Object realValue = null;</span><br><span class="line">						if (&quot;sal&quot;.equals(name)) &#123;</span><br><span class="line">							realValue = method.invoke(manufacturers, money*0.8);</span><br><span class="line">						&#125;</span><br><span class="line">						return realValue;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">		manufacturers.sal(13300.0);</span><br><span class="line">		agency.sal(13300.0);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">=================================== 程序执行结果 ===============================================</span><br><span class="line">收款 13300.0</span><br><span class="line">收款 10640.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package proxy.dynamic;</span><br><span class="line"></span><br><span class="line">import java.lang.reflect.InvocationHandler;</span><br><span class="line">import java.lang.reflect.Method;</span><br><span class="line">import java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author gavino</span><br><span class="line"> *	模拟消费者</span><br><span class="line"> */</span><br><span class="line">public class Customer &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		//代理类中的真实对象(Manufacturers 制造商、厂商)</span><br><span class="line">		final Manufacturers manufacturers = new Manufacturers();</span><br><span class="line">		</span><br><span class="line">		Market agency = (Market) Proxy.newProxyInstance(manufacturers.getClass().getClassLoader(),manufacturers.getClass().getInterfaces(),</span><br><span class="line">				new InvocationHandler() &#123;</span><br><span class="line">					</span><br><span class="line">					@Override</span><br><span class="line">					public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">						//获取当前方法方法</span><br><span class="line">						String name = method.getName();</span><br><span class="line">						//获取方法执行的参数</span><br><span class="line">						Double money = (Double) args[0];</span><br><span class="line">						Object realValue = null;</span><br><span class="line">						if (&quot;sal&quot;.equals(name)) &#123;</span><br><span class="line">							realValue = method.invoke(manufacturers, money*0.8);</span><br><span class="line">						&#125;</span><br><span class="line">						return realValue;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">		manufacturers.sal(13300.0);</span><br><span class="line">		agency.sal(13300.0);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">=================================== 程序执行结果 ===============================================</span><br><span class="line">收款 13300.0</span><br><span class="line">收款 10640.0</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p><strong>相关方法和参数的详解</strong><br>Proxy类就是用来创建一个代理对象的类，它提供了很多方法，但是我们最常用的是newProxyInstance方法<br>Proxy.newProxyInstance(loader, interfaces, h);<br>这个方法的作用就是创建一个代理类对象，它接收三个参数：<br>1、loader：一个classloader对象，定义了由哪个classloader对象对生成的代理类进行加载<br>2、interfaces：一个interface对象数组，表示我们将要给我们的代理对象提供一组什么样的接口，<br>  如果我们提供了这样一个接口对象数组，那么也就是声明了代理类实现了这些接口，代理类就可以调用接口中声明的所有方法。<br>3、h：一个InvocationHandler对象，表示的是当动态代理对象调用方法的时候会关联到哪一个InvocationHandler对象上，并最终由其调用</p>
@@ -366,7 +366,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        29
                     </p>
                 </div>
             </div>
@@ -386,7 +386,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
@@ -452,7 +452,7 @@
                 <span class="level-item">SSM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Spring/">
@@ -516,7 +516,7 @@
                 <span class="level-item">设计模式</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/随笔/">
@@ -541,6 +541,82 @@
         
         <article class="media">
             
+            <a href="/2019/09/04/策略模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="策略模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-04T02:07:50.000Z">2019-09-04</time></div>
+                    <a href="/2019/09/04/策略模式/" class="has-link-black-ter is-size-6">策略模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/03/细说-Java-线程池/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="细说 Java 线程池">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-03T03:53:09.000Z">2019-09-03</time></div>
+                    <a href="/2019/09/03/细说-Java-线程池/" class="has-link-black-ter is-size-6">细说 Java 线程池</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/02/lambda表达式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="lambda表达式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-02T10:16:33.000Z">2019-09-02</time></div>
+                    <a href="/2019/09/02/lambda表达式/" class="has-link-black-ter is-size-6">lambda表达式</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/31/这就是SpringMVC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://imgblog.mrdear.cn/springmvc.png" alt="这就是SpringMVC">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-31T02:22:33.000Z">2019-08-31</time></div>
+                    <a href="/2019/08/31/这就是SpringMVC/" class="has-link-black-ter is-size-6">这就是SpringMVC</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/08/24/这就是Spring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png" alt="这就是Spring">
@@ -553,82 +629,6 @@
                     <a href="/2019/08/24/这就是Spring/" class="has-link-black-ter is-size-6">这就是Spring</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/23/代理模式/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk1x6eq1CTJ2Bt6ER5hYIFytfkLqWEhe_P9BH1bZl3mLqHz8mh" alt="代理模式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-23T09:58:55.000Z">2019-08-23</time></div>
-                    <a href="/2019/08/23/代理模式/" class="has-link-black-ter is-size-6">代理模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/22/这就是MyBatis/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwb80lMZhLOlxOd8RfDq7s3tznKoHtJxC2HN7NguuODFHgPUlg" alt="这就是MyBatis">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-22T03:47:51.000Z">2019-08-22</time></div>
-                    <a href="/2019/08/22/这就是MyBatis/" class="has-link-black-ter is-size-6">这就是MyBatis</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/19/IOC基本原理及实现/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjRS3OZvRTXxS44wp0UqGZn9e-RAPM6YNsmtK55tR0ke3zwzo5Q" alt="IOC基本原理及相关实现">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T10:52:10.000Z">2019-08-19</time></div>
-                    <a href="/2019/08/19/IOC基本原理及实现/" class="has-link-black-ter is-size-6">IOC基本原理及相关实现</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/13/JSON简单应用/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIyfxvod6QCB_y5o18rQEDZuTk2THBcr0qL7-NhIdq9uPr1l0tvg" alt="JSON简单应用">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-13T13:05:34.000Z">2019-08-13</time></div>
-                    <a href="/2019/08/13/JSON简单应用/" class="has-link-black-ter is-size-6">JSON简单应用</a>
-                    <p class="is-size-7 is-uppercase">
-                        
                     </p>
                 </div>
             </div>
@@ -693,7 +693,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 13.33px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 13.33px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16.67px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 12.5px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a>
     </div>
 </div>
 
@@ -707,12 +707,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/08/">
                 <span class="level-start">
                     <span class="level-item">八月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -772,7 +783,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -826,6 +837,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/springMVC/">
+                        <span class="tag">springMVC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/命令/">
                         <span class="tag">命令</span>
                         <span class="tag is-grey">1</span>
@@ -835,7 +853,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -849,7 +867,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/设计模式/">
                         <span class="tag">设计模式</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 

@@ -17,7 +17,7 @@
 <meta property="og:description" content="本文是Java多线程的基础入门篇">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6kXHCG9f-RU9ZD7QH9PRt4VSx2bcLe648MVn5-Vkc3svLoHwcLg">
-<meta property="og:updated_time" content="2019-08-24T08:33:07.438Z">
+<meta property="og:updated_time" content="2019-09-03T03:26:35.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 多线程基础总结">
 <meta name="twitter:description" content="本文是Java多线程的基础入门篇">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    22 分钟 读完 (大约 3272 个字)
+                    27 分钟 读完 (大约 3999 个字)
                 </span>
                 
                 
@@ -160,7 +160,7 @@
 <h3 id="四、线程创建之二-类实现Runnable接口-重写run-线程体-方法-–-gt-真实角色类"><a href="#四、线程创建之二-类实现Runnable接口-重写run-线程体-方法-–-gt-真实角色类" class="headerlink" title="四、线程创建之二    类实现Runnable接口    +重写run(线程体)方法        –&gt;真实角色类"></a>四、线程创建之二    类实现Runnable接口    +重写run(线程体)方法        –&gt;真实角色类</h3><blockquote>
 <p><strong>启动：</strong><br>    1、创建真实角色<br>    2、创建代理角色(Thread类)    +真实角色引用<br>    3、代理对象.start()</p>
 </blockquote>
-<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 实现 Runnable 接口创建线程 描述的是线程任务，而不是线程</span><br><span class="line"> * 所以不能直接启动</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">public class MyThread implements Runnable &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">			System.out.println(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * Runnable 接口，是线程任务的规范接口，实现Runnable接口的类，描述的是线程任务</span><br><span class="line"> * 可以使用一个Thread对象封装一个实现Runnable接口对象，进而实现多线程。</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Runnable r1 = new MyThread();//创建一个任务对象</span><br><span class="line">		Thread t1 = new Thread(r1);//创建一个线程对象</span><br><span class="line">		t1.start();</span><br><span class="line">		Thread t2 = new Thread(r1);//创建第二个线程对象</span><br><span class="line">		t2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>匿名内部类创建并启动线程<br>        <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	new Thread(new Runnable() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void run() &#123;</span><br><span class="line">			for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">				System.out.println(&quot;匿名内部类多线程&quot;+i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 实现 Runnable 接口创建线程 描述的是线程任务，而不是线程</span><br><span class="line"> * 所以不能直接启动</span><br><span class="line"> * 注意  此时，MyThread 不是线程类，只是实现了接口的普通类</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">public class MyThread implements Runnable &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">			System.out.println(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * Runnable 接口，是线程任务的规范接口，实现Runnable接口的类，描述的是线程任务</span><br><span class="line"> * 可以使用一个Thread对象封装一个实现Runnable接口对象，进而实现多线程。</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Runnable r1 = new MyThread();//创建一个任务对象</span><br><span class="line">		Thread t1 = new Thread(r1);//创建一个线程对象</span><br><span class="line">		t1.start();//调用的是Thread 的run()方法，由该run()方法调用r1的run()</span><br><span class="line">		Thread t2 = new Thread(r1);//创建第二个线程对象</span><br><span class="line">		t2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>匿名内部类创建并启动线程<br>        <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	new Thread(new Runnable() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void run() &#123;</span><br><span class="line">			for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">				System.out.println(&quot;匿名内部类多线程&quot;+i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>两种线程的区别</p>
 <ol>
@@ -168,6 +168,7 @@
 <li>继承类，就不能继承其它类，有单继承局限性<br>实现接口，还可以继承其他的父类</li>
 </ol>
 </blockquote>
+<p><strong>判断线程的个数，就看new 了多少个 Thread 或多少个 Thread 的子类。实现 Runnable的类并不是线程类</strong></p>
 <blockquote>
 <p><strong>推荐使用Runnable创建线程</strong><br>1）避免单继承的局限性<br>2）便于共享资源 </p>
 </blockquote>
@@ -178,7 +179,24 @@
 <blockquote>
 <p>1）创建Callable实现类 +重写call()方法<br>2）借助执行调度服务ExecutorService获取Future对象<br>    ExecutorService ser = Executors.newFixedThreadPool(线程数量);<br>    Future result = ser.submit(实现类对象);<br>3）获取值    result.get();<br>4）停止服务    ser.shutdown();</p>
 </blockquote>
-<h3 id="六、线程状态与停止线程、线程阻塞"><a href="#六、线程状态与停止线程、线程阻塞" class="headerlink" title="六、线程状态与停止线程、线程阻塞"></a>六、线程状态与停止线程、线程阻塞</h3><h4 id="一-线程状态"><a href="#一-线程状态" class="headerlink" title="(一)线程状态"></a>(一)线程状态</h4><blockquote>
+<h3 id="六、线程池"><a href="#六、线程池" class="headerlink" title="六、线程池"></a>六、线程池</h3><p>就是把若干用户线程添加到线程池中，由线程来统一管理线程</p>
+<h4 id="为什么要使用线程池："><a href="#为什么要使用线程池：" class="headerlink" title="为什么要使用线程池："></a>为什么要使用线程池：</h4><ol>
+<li>减少了创建和销毁线程的次数，每个工作线程</li>
+<li>可以根据系统的承受能力，调整线程池中<br>结论：</li>
+</ol>
+<h4 id="线程池的使用："><a href="#线程池的使用：" class="headerlink" title="线程池的使用："></a>线程池的使用：</h4><p>有一个Executors 的线程工具类，此类提供了若干静态方法<br>这些静态方法<br>1.<br>线程池保证所有的任务是按照任务的提交顺序来执行</p>
+<ol start="2">
+<li><p>Executors.newFixedThreadPool();<br>创建固定大小的线程池，每次提交一个任务就创建一个</p>
+</li>
+<li><p>Executors.newCachedThreadPool();<br>创建了一个可以缓冲的线程池，如果线程大小超过处理任务所需要的线程，那么就回收部分线程，</p>
+</li>
+<li><p>创建一个大小无限制的线程池，此线程池支持定时以及周期性的执行任务的需求。</p>
+</li>
+</ol>
+<blockquote>
+<p>线程池<br>核心线程满了，线程会进入阻塞队列，阻塞式队列满了，才开临时线程<br>能执行的线程总数为: 核心线程数量 + 阻塞队列中的线程数量 + 临时线程数量</p>
+</blockquote>
+<h3 id="七、线程状态与停止线程、线程阻塞"><a href="#七、线程状态与停止线程、线程阻塞" class="headerlink" title="七、线程状态与停止线程、线程阻塞"></a>七、线程状态与停止线程、线程阻塞</h3><h4 id="一-线程状态"><a href="#一-线程状态" class="headerlink" title="(一)线程状态"></a>(一)线程状态</h4><blockquote>
 <ol>
 <li>新建状态(new): 创建一个线程对象</li>
 <li>就绪状态(Runnable): 线程对象创建以后，调用start()方法，就绪状态的线程只处于等待cpu的使用权。变为可运行。</li>
@@ -218,7 +236,7 @@
 </li>
 </ol>
 </blockquote>
-<h3 id="七、线程基本信息-优先级"><a href="#七、线程基本信息-优先级" class="headerlink" title="七、线程基本信息-优先级"></a>七、线程基本信息-优先级</h3><blockquote>
+<h3 id="八、线程基本信息-优先级"><a href="#八、线程基本信息-优先级" class="headerlink" title="八、线程基本信息-优先级"></a>八、线程基本信息-优先级</h3><blockquote>
 <p>优先级不代表执行的先后顺序  代表概率<br>    MAX_PRIORITY 10<br>    NORM_PRIORITY 5(默认)<br>    MIN_PRIORITY 1<br>    *setPriority()    设置优先级</p>
 </blockquote>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 测试线程的优先级</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">			System.out.println(i+&quot; 线程：&quot;+Thread.currentThread().getName()+&quot; 优先级：&quot;+Thread.currentThread().getPriority());</span><br><span class="line">		&#125;</span><br><span class="line">		MyRun r1 = new MyRun();</span><br><span class="line">		MyRun r2 = new MyRun();</span><br><span class="line">		Thread t1 = new Thread(r1);</span><br><span class="line">		t1.setName(&quot;t1&quot;);</span><br><span class="line">		Thread t2 = new Thread(r2);</span><br><span class="line">		t2.setName(&quot;t2&quot;);</span><br><span class="line">		//获取线程的优先级</span><br><span class="line">//		System.out.println(t1.getPriority());</span><br><span class="line">//		System.out.println(t2.getPriority());</span><br><span class="line">		//设置线程优先级</span><br><span class="line">		t1.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">		t2.setPriority(Thread.MIN_PRIORITY);</span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class MyRun implements Runnable &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">			System.out.println(i+&quot; 线程：&quot;+Thread.currentThread().getName()+&quot; 优先级：&quot;+Thread.currentThread().getPriority());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -236,7 +254,7 @@
 <li>setDaemon(): 设置一个线程为守护(后台)线程</li>
 </ul>
 </blockquote>
-<h3 id="八、线程同步与锁定"><a href="#八、线程同步与锁定" class="headerlink" title="八、线程同步与锁定"></a>八、线程同步与锁定</h3><blockquote>
+<h3 id="九、线程同步与锁定"><a href="#九、线程同步与锁定" class="headerlink" title="九、线程同步与锁定"></a>九、线程同步与锁定</h3><blockquote>
 <p>可能出现<strong>线程安全问题</strong>的条件</p>
 <ol>
 <li>多个线程访问统一资源</li>
@@ -245,10 +263,25 @@
 </blockquote>
 <p>同步：并发    多个线程访问同一份资源    确保资源安全    –&gt;线程安全<br>（常说 Hashtable是线程安全的  HashMap是线程不安全的）<br>synchronized–&gt;同步<br>异步: </p>
 <blockquote>
-<p>synchronized可以修饰一段代码或方法<br>(一)、同步块<br>synchronized(引用类型|this|类.class) {<br>}<br>(二)、同步方法<br>synchronized 修饰方法，将方法添加锁，JVM每次调用方法，都会处理锁(线程安全的方法效率低)<br>public synchronized void method(){…}<br>-——————————————————-<br>* 实例方法，this为默认的锁对象<br>* 类方法，当前类的字节码对象作为锁<br>* 同步代码段锁，可以是任意对象锁</p>
+<p>synchronized可以修饰一段代码或方法<br>(一)、同步块<br>synchronized(引用类型|this|类.class) {<br>}<br><strong>注意：(重要)</strong></p>
+<ol>
+<li><strong>给this对象加锁，即谁调用该方法，谁就是该this对象</strong></li>
+<li><strong>串行还是并行，得看所调用的资源是否互斥</strong></li>
+<li><strong>要使资源互斥，即加锁的对象应该为同一对象</strong></li>
+<li>synchronized 作用在类上，类锁<ul>
+<li>synchronized static 和 synchronized(类名.class)<br>此时锁在同一个类上</li>
+</ul>
+</li>
+</ol>
+<p><strong>(两个方法)当锁分别加在对象上和类上时，但是加锁的目标不同，即锁定的资源不互斥，他们将并行运行</strong><br><strong>总结：</strong></p>
+<ul>
+<li>synchronized 关键字加的锁实际是加到对象上的，关键是找到加锁对象</li>
+<li>synchronized 修饰，两个方法是并行还是串行，看锁定的资源是否互斥</li>
+</ul>
 </blockquote>
+<p>(二)、同步方法<br><strong>synchronized 修饰方法，并不是给方法加锁，而是给方法的调用对象加锁，</strong>JVM每次调用方法，都会处理锁(线程安全的方法效率低)<br>public synchronized void method(){…}<br>-——————————————————-<br>* 实例方法，this为默认的锁对象<br>* 类方法，当前类的字节码对象作为锁<br>* 同步代码段锁，可以是任意对象锁</p>
 <p>单例设计模式：确保一个类只有一个对象(该对象为内部自己创建，外部只能调用这一个对象)<br>    #【确保一个类只有一个对象】<br><br>    懒汉式：(前面懒得创建对象，在使用的时候再创建对象)<br>        1、构造器私有化    避免外部直接创建对象<br>        2、声明一个私有的静态变量(属性)<br>        3、创建一个对外的公共的静态方法 访问该变量，如果变量没有对象 创建该对象<br><br>    饿汉式：<br>        1、构造器私有化    避免外部直接创建对象<br>        2、声明一个私有的静态变量(属性)，同时创建对象<br>        3、创建一个对外的公共的静态方法 访问该变量</p>
-<h3 id="九、死锁"><a href="#九、死锁" class="headerlink" title="九、死锁"></a>九、死锁</h3><blockquote>
+<h3 id="十、死锁"><a href="#十、死锁" class="headerlink" title="十、死锁"></a>十、死锁</h3><blockquote>
 <p>过多的同步容易造成死锁</p>
 </blockquote>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">synchronized(o1)&#123;</span><br><span class="line">	......</span><br><span class="line">	synchronized(02)&#123;</span><br><span class="line">		......</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">synchronized(02)&#123;</span><br><span class="line">	......</span><br><span class="line">	synchronized(01)&#123;</span><br><span class="line">		.....</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -265,10 +298,14 @@
 <blockquote>
 <p><strong>注意</strong><br>wait():等待    会<strong>释放锁</strong><br>sleep()不释放锁<br>notify()/notifyAll():唤醒<br>wait()    notify()/notifyAll()和synchronized一同使用<br>-—————————————————<br>wait和notify是object的方法，也就是说所有对象都有这两个方法。<br>notify() 唤醒处于等待阻塞状态的线程<br>wait() 将当前线程对象切换到等待阻塞状态<br>这两个方法可以用来阻塞当前线程（同时放弃互斥锁）或者是<br>唤醒其他调用wait方法陷入阻塞的线程（不能唤醒那些因为抢占锁而阻塞的队列）。<br>能够执行wait和notify的前提是代码已经进入了synchronized包含的代码块中。</p>
 </blockquote>
-<h3 id="十、任务调度"><a href="#十、任务调度" class="headerlink" title="十、任务调度"></a>十、任务调度</h3><p>Timer<br>schedule()<br>quartz 框架</p>
-<h3 id="十一、总结"><a href="#十一、总结" class="headerlink" title="十一、总结"></a>十一、总结</h3><blockquote>
+<h3 id="十一、任务调度"><a href="#十一、任务调度" class="headerlink" title="十一、任务调度"></a>十一、任务调度</h3><p>Timer<br>schedule()<br>quartz 框架</p>
+<h3 id="十二、总结"><a href="#十二、总结" class="headerlink" title="十二、总结"></a>十二、总结</h3><blockquote>
 <p>重点：<br>* 创建线程<br>* 终止线程<br>* sleep<br>* 同步(面试中)</p>
 </blockquote>
+<blockquote>
+<p>面试点<br>一个同步方法可以调用另一个同步方法，一个线程已经拥有某个对象的锁，再次申请的时候仍然会得到该对象的锁。<br>也就是说 synchronized 获得的锁是可重入的。<br>子类也可以调用父类的同步方法</p>
+</blockquote>
+<p>程序在执行过程中，如果出现异常，默认情况锁会被释放。(因此要非常小心的处理同步业务逻辑的异常)</p>
 <h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>JUC:</p>
 <blockquote>
 <p>在 Java 5.0 提供了 java.util.concurrent(简称JUC)包,在此包中增加了在并发编程中很常用的工具类,<br>用于定义类似于线程的自定义子系统,包括线程池,异步 IO 和轻量级任务框架;还提供了设计用于多线程上下文中<br>的 Collection 实现等。<br>quartz 框架：<br>    Quartz是一个完全由java编写的开源作业调度框架。</p>
@@ -446,7 +483,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        29
                     </p>
                 </div>
             </div>
@@ -466,7 +503,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
@@ -532,7 +569,7 @@
                 <span class="level-item">SSM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Spring/">
@@ -596,7 +633,7 @@
                 <span class="level-item">设计模式</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/随笔/">
@@ -621,6 +658,82 @@
         
         <article class="media">
             
+            <a href="/2019/09/04/策略模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="策略模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-04T02:07:50.000Z">2019-09-04</time></div>
+                    <a href="/2019/09/04/策略模式/" class="has-link-black-ter is-size-6">策略模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/03/细说-Java-线程池/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="细说 Java 线程池">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-03T03:53:09.000Z">2019-09-03</time></div>
+                    <a href="/2019/09/03/细说-Java-线程池/" class="has-link-black-ter is-size-6">细说 Java 线程池</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/02/lambda表达式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="lambda表达式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-02T10:16:33.000Z">2019-09-02</time></div>
+                    <a href="/2019/09/02/lambda表达式/" class="has-link-black-ter is-size-6">lambda表达式</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/31/这就是SpringMVC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://imgblog.mrdear.cn/springmvc.png" alt="这就是SpringMVC">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-31T02:22:33.000Z">2019-08-31</time></div>
+                    <a href="/2019/08/31/这就是SpringMVC/" class="has-link-black-ter is-size-6">这就是SpringMVC</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/08/24/这就是Spring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png" alt="这就是Spring">
@@ -633,82 +746,6 @@
                     <a href="/2019/08/24/这就是Spring/" class="has-link-black-ter is-size-6">这就是Spring</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/23/代理模式/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk1x6eq1CTJ2Bt6ER5hYIFytfkLqWEhe_P9BH1bZl3mLqHz8mh" alt="代理模式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-23T09:58:55.000Z">2019-08-23</time></div>
-                    <a href="/2019/08/23/代理模式/" class="has-link-black-ter is-size-6">代理模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/22/这就是MyBatis/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwb80lMZhLOlxOd8RfDq7s3tznKoHtJxC2HN7NguuODFHgPUlg" alt="这就是MyBatis">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-22T03:47:51.000Z">2019-08-22</time></div>
-                    <a href="/2019/08/22/这就是MyBatis/" class="has-link-black-ter is-size-6">这就是MyBatis</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/19/IOC基本原理及实现/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjRS3OZvRTXxS44wp0UqGZn9e-RAPM6YNsmtK55tR0ke3zwzo5Q" alt="IOC基本原理及相关实现">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T10:52:10.000Z">2019-08-19</time></div>
-                    <a href="/2019/08/19/IOC基本原理及实现/" class="has-link-black-ter is-size-6">IOC基本原理及相关实现</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/13/JSON简单应用/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIyfxvod6QCB_y5o18rQEDZuTk2THBcr0qL7-NhIdq9uPr1l0tvg" alt="JSON简单应用">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-13T13:05:34.000Z">2019-08-13</time></div>
-                    <a href="/2019/08/13/JSON简单应用/" class="has-link-black-ter is-size-6">JSON简单应用</a>
-                    <p class="is-size-7 is-uppercase">
-                        
                     </p>
                 </div>
             </div>
@@ -773,7 +810,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 13.33px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 13.33px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16.67px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 12.5px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a>
     </div>
 </div>
 
@@ -787,12 +824,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/08/">
                 <span class="level-start">
                     <span class="level-item">八月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -852,7 +900,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -906,6 +954,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/springMVC/">
+                        <span class="tag">springMVC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/命令/">
                         <span class="tag">命令</span>
                         <span class="tag is-grey">1</span>
@@ -915,7 +970,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -929,7 +984,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/设计模式/">
                         <span class="tag">设计模式</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
