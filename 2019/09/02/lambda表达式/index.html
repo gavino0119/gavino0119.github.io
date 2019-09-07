@@ -8,15 +8,18 @@
 
 
 
-    <meta property="og:type" content="article">
+    <meta name="description" content="其实lambda表达式的本质是接口的子实现lambda表达式简化了匿名内部类的写法lambda表达式另一个叫法,函数式编程">
+<meta property="og:type" content="article">
 <meta property="og:title" content="lambda表达式">
 <meta property="og:url" content="https://gavino0119.github.io/2019/09/02/lambda表达式/index.html">
 <meta property="og:site_name" content="Gavino">
+<meta property="og:description" content="其实lambda表达式的本质是接口的子实现lambda表达式简化了匿名内部类的写法lambda表达式另一个叫法,函数式编程">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gavino0119.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-02T10:16:33.637Z">
+<meta property="og:updated_time" content="2019-09-07T00:48:37.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lambda表达式">
+<meta name="twitter:description" content="其实lambda表达式的本质是接口的子实现lambda表达式简化了匿名内部类的写法lambda表达式另一个叫法,函数式编程">
 <meta name="twitter:image" content="https://gavino0119.github.io/images/og_image.png">
 
 
@@ -103,7 +106,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    5 分钟 读完 (大约 748 个字)
                 </span>
                 
                 
@@ -116,7 +119,28 @@
             
         </h1>
         <div class="content">
-            
+            <p>其实lambda表达式的本质是接口的子实现<br>lambda表达式简化了匿名内部类的写法<br>lambda表达式另一个叫法,函数式编程</p>
+<a id="more"></a>
+<h2 id="1-lambda表达式"><a href="#1-lambda表达式" class="headerlink" title="1.lambda表达式:"></a>1.lambda表达式:</h2><p>  lambda表达式可以称之为闭包,他是java8中的一个非常重要的特性<br>  很多java8新特性的写法都会用到lambda表达式<br>  lambda表达式允许函数作为一个方法的参数,函数作为参数传递到方法中,这样代码就会变得简洁</p>
+<p>  语法:<br>  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(parameters)-&gt;expression表达式</span><br><span class="line">或</span><br><span class="line">(parameters)-&gt;&#123;statement代码块;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>  说明:<br>    -可选参数声明:不需要声明参数类型,编译器统一识别参数值<br>    -可选参数圆括号:只有一个参数无需定义圆括号,多个参数需要定义圆括号<br>    -可选大括号:如果主体包含了一个语句,就不需要使用大括号<br>    -可选返回关键字:如果主体只有一个表达式返回值,则编译器<br>       会自动返回值,大括号需要指定返回了一个数据值</p>
+<blockquote>
+<p>比如:<br>    //不要参数,返回值为5<br>    ()-&gt;5<br>    //接受一个参数(推断出数字类型),返回参数的2倍<br>    x-&gt;2*x<br>    //接受两个参数(推断出数字类型),返回值为参数差值<br>    (x,y)-&gt;x-y<br>    //接受两个参数,返回值为x-y<br>    (int x,int y)-&gt;x-y<br>    //接受一个参数,类型为String的参数,并输出参数的值<br>    //推断出没有返回值,相当于方法的返回值void<br>    (String str)-&gt;System.out.println(str)<br>    //接受两个参数(推断出数字类型,返回值为参数的差值)<br>    (x,y)-&gt;{return (x-y);}</p>
+</blockquote>
+<blockquote>
+<p>其实lambda表达式的本质就是接口的子实现<br>  lambda表达式简化了匿名内部类的写法<br>  lambda表达式另一个写法叫做函数式编程<br>  <strong>注意:</strong><br>    就是把接口的实现是内部类,转换成函数式写法</p>
+</blockquote>
+<p>使用lambda表达式需要注意变量的作用域问题:</p>
+<ul>
+<li>lambda表达式引用外层的成员变量<br>如果外层的成员变量为final的,则在lambda内部不能修改成员变量的值<br>如果外层的成员变量不是final的,则在lambda内部能修改成员变量的值</li>
+<li>lambda表示式的局部变量可以不用声明为final,但必须不可以被后面的代码修改(即隐式的final特性)</li>
+<li>lambda表达式不允许声明一个与局部变量同名的参数或局部变量</li>
+</ul>
+<h2 id="2-方法的引用"><a href="#2-方法的引用" class="headerlink" title="2.方法的引用:"></a>2.方法的引用:</h2><p>  方法的引用方式用类名::方法名,其本质还是lambda表达式<br>  具体的写法有四种</p>
+<blockquote>
+<p>-构造器的引用   语法Class::new<br>  -静态方法的引用 语法 Class::静态方法的名称<br>  -特定类任意的对象引用  语法 Class::非静态方法名称<br>  -特定对象的方法引用    语法 instance对象::非静态的方法的的名称</p>
+</blockquote>
+<h2 id="3-函数式接口"><a href="#3-函数式接口" class="headerlink" title="3.函数式接口"></a>3.函数式接口</h2>
             
 <div style="padding: 15px;
     margin-bottom: 20px;
@@ -279,7 +303,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        29
+                        32
                     </p>
                 </div>
             </div>
@@ -349,7 +373,7 @@
                 <span class="level-item">Java 基础篇</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Linux/">
@@ -454,6 +478,63 @@
         
         <article class="media">
             
+            <a href="/2019/09/07/Java-锁的种类及辨析/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Java 锁的种类及辨析">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T01:54:57.000Z">2019-09-07</time></div>
+                    <a href="/2019/09/07/Java-锁的种类及辨析/" class="has-link-black-ter is-size-6">Java 锁的种类及辨析</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/06/策略、回调和多态/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="策略、回调和多态">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-06T07:05:10.000Z">2019-09-06</time></div>
+                    <a href="/2019/09/06/策略、回调和多态/" class="has-link-black-ter is-size-6">策略、回调和多态</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/06/JDK1-5-相关特性总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JDK1.5 相关特性总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-06T05:22:26.000Z">2019-09-06</time></div>
+                    <a href="/2019/09/06/JDK1-5-相关特性总结/" class="has-link-black-ter is-size-6">JDK1.5 相关特性总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java-基础篇/">Java 基础篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/04/策略模式/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="策略模式">
@@ -485,63 +566,6 @@
                     <a href="/2019/09/03/细说-Java-线程池/" class="has-link-black-ter is-size-6">细说 Java 线程池</a>
                     <p class="is-size-7 is-uppercase">
                         
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/02/lambda表达式/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="lambda表达式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-02T10:16:33.000Z">2019-09-02</time></div>
-                    <a href="/2019/09/02/lambda表达式/" class="has-link-black-ter is-size-6">lambda表达式</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/31/这就是SpringMVC/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://imgblog.mrdear.cn/springmvc.png" alt="这就是SpringMVC">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-31T02:22:33.000Z">2019-08-31</time></div>
-                    <a href="/2019/08/31/这就是SpringMVC/" class="has-link-black-ter is-size-6">这就是SpringMVC</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/24/这就是Spring/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png" alt="这就是Spring">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-24T04:10:43.000Z">2019-08-24</time></div>
-                    <a href="/2019/08/24/这就是Spring/" class="has-link-black-ter is-size-6">这就是Spring</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
                     </p>
                 </div>
             </div>
@@ -625,7 +649,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -696,7 +720,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">16</span>
+                        <span class="tag is-grey">17</span>
                     </a>
                 </div>
                 

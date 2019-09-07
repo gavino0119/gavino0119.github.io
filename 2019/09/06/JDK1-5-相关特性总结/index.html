@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<script src="/js/src/click.js"></script>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>JDK1.5 相关特性总结 - Gavino</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="自动装箱和拆箱:装箱:把基本数据类型的数据装箱成对象类型拆箱:把对象的类型变成基本数据类型">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDK1.5 相关特性总结">
+<meta property="og:url" content="https://gavino0119.github.io/2019/09/06/JDK1-5-相关特性总结/index.html">
+<meta property="og:site_name" content="Gavino">
+<meta property="og:description" content="自动装箱和拆箱:装箱:把基本数据类型的数据装箱成对象类型拆箱:把对象的类型变成基本数据类型">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://gavino0119.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-07T02:36:51.998Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JDK1.5 相关特性总结">
+<meta name="twitter:description" content="自动装箱和拆箱:装箱:把基本数据类型的数据装箱成对象类型拆箱:把对象的类型变成基本数据类型">
+<meta name="twitter:image" content="https://gavino0119.github.io/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/atom.xml" title="JDK1.5 相关特性总结" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicons.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="JDK1.5 相关特性总结" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="My GitHub" href="https://github.com/gavino0119">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <!-- 将main_column_class() 改为 col() -->
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-06T05:22:26.000Z">2019-09-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Java-基础篇/">Java 基础篇</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    26 分钟 读完 (大约 3829 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                JDK1.5 相关特性总结
+            
+        </h1>
+        <div class="content">
+            <h2 id="自动装箱和拆箱"><a href="#自动装箱和拆箱" class="headerlink" title="自动装箱和拆箱:"></a><strong>自动装箱和拆箱:</strong></h2><p>装箱:把基本数据类型的数据装箱成对象类型<br>拆箱:把对象的类型变成基本数据类型<br>  <a id="more"></a><br>  在jdk1.5及以后版本自动装箱和拆箱<br>     int i=10;<br>     Integer ii=i;<br>     int k=ii<br>  在jdk1.5以前的版本<br>     int i=10;<br>     Integer ii=new Integer(10);<br>     int k=ii.intValue();</p>
+<h2 id="增强for循环"><a href="#增强for循环" class="headerlink" title="增强for循环:"></a><strong>增强for循环:</strong></h2><p>  for(类型 变量名 :  集合或数组){<br>  }<br>可变参数:<br>  -用…来定义<br>  -本质就是一个数组<br>  -可以传入任意个参数<br>  -可变参数只能放在方法参数的最后一个位置</p>
+<h2 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入:"></a><strong>静态导入:</strong></h2><p>  -用import static 报名.类名.静态属性名或静态的方法名<br>  -可以提高开发效率<br>  -降低了可读性,建议要慎用</p>
+<h2 id="枚举-enum"><a href="#枚举-enum" class="headerlink" title="枚举:enum"></a><strong>枚举:enum</strong></h2><p>当取值为几个(有限)固定的值.可以使用枚举类型<br>枚举是一个数据类型<br>    普通的枚举:<br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> public  enum RequestMethod&#123;</span><br><span class="line">GET,POST,DELETE,PUT</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> public enum Week&#123;</span><br><span class="line">Monday,</span><br><span class="line">Tuesday,</span><br><span class="line">Wednesday,</span><br><span class="line">Thursday,</span><br><span class="line">Friday,</span><br><span class="line">Saturday,</span><br><span class="line">Sunday</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></code></pre><blockquote>
+<p>总结：<br>枚举也可以有方法和属性和构造函数<br>但是构造方法必须是私有的.<br>枚举还可以实现接口,不能进行继承,枚举也可以包含抽象方法<br>所有的枚举的类型都默认继承自java.lang.Enum类   </p>
+</blockquote>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a><strong>反射</strong></h2><p><strong>(一)什么是反射:</strong><br>  java中提供一套类库,通过这样的类库<br>    -运行时动态获取类中的信息<br>    -运行时动态的调用构造函数创建对象<br>    -运行时动态访问(调用)对象的方法和属性<br>  这种运行期间动态获取类中的信息(属性,方法,包,注解等)<br>  以及动态的调用对象的方法和属性的功能称之为java语言的反射机制<br>  通俗的理解,在运行期间对类的内容进行操作</p>
+<p><strong>(二)Class类:</strong><br>  要想使用反射,就要获取到类中的所有信息(属性,方法,注解等…)<br>  在java中有一个特殊的类 类型是Class,此类型的对象中存储是某个<br>  类中的信息</p>
+<p>  比如:<br>    Class clazz=Class.forName(“lut.Student”);<br>    clazz是一个对象,对象中存储的都是数据,这些数据<br>    都是Student中的属性和方法<br>       属性:访问修饰符  类型  属性名<br>       方法:访问修饰符  返回类型 方法名称(参数列表);</p>
+<pre><code>Class clazz=Class.forName(&quot;lut.User&quot;);
+   clazz存储的是User类中的信息</code></pre><p>  Class类是java提供的,这个Class类可表达任意一个类的信息<br>   -每个类加载后(方法区),系统都会为该类生成一个对应的Class<br>    类型的对象,这个对象存储在堆区中,通过该Class对象可以<br>    访问方法区中的类的信息<br>   -一旦获取了某个类Class类型的对象之后,程序员可以写程序调用<br>    Class对象中的api方法,获取Class对象中的类的信息<br>   -所有的基本数据类型有Class对象<br>     Class clazz=int.class;</p>
+<p><strong>(三)如何获取Class类型的对象</strong><br>-对象.getClass();<br>  比如:<br>     User user=new User();<br>     Class  clazz=user.getClass();<br>-类名.class<br>  比如:<br>     有一个类叫做User类<br>     Class clazz=User.class;<br>-Class.forName(“包名.类名”);<br>  比如:<br>    Class clazz=Class.forName(“lut.User”);</p>
+<p>类的加载分为两个步骤:<br>     -把类加载到方法区中,并创建类的Class类型的对象<br>     -返回Class对象,用以上三种获取Class类型的对象</p>
+<p><strong>(四)通过Class类型对象获取如下:</strong><br>  -Field类:代表的成员变量,即属性<br>  -Method类:代表的是方法<br>  -Constructor类:代表的是构造方法<br>  -Annotation类:代表的是注解</p>
+<p>通过上面类的api方法获取数据<br>  -可以获取Field类中的信息,获取类的属性   访问修饰符 属性的类型  属性名称<br>  -可以获取Method类中的信息,获取方法   修饰符  返回类型  方法名(参数列表)<br>  -可以获取Constructor中的信息,获取构造函数,    修饰符  类名(参数列表)<br>  -可以获取Annotation中的信息,获取注解    注解名称  注解的属性</p>
+<p>结论:<br>   在运行期间,通过Class对象调用反射的api<br>   可以反射实例化对象<br>   可以反射访问属性,和反射调用方法<br>   总之,编译期间能写的代码,用反射也能实现</p>
+<p><strong>(五)反射的api:</strong><br>-反射的方式创建对象<br>  1.用无参数构造创建对象<br>    Class对象.newInstance();//常用的做法<br>  2.用有参数构造创建对象<br>    Class对象.getConstructor(new Class[]{若干参数的类类型})<br>             .newInstance(构造函数的参数);<br>    比如:<br>        //有参数构造<br>        public User(String name,String password){<br>        }<br>        Class clazz=User.class;<br>        //传统的实例化对象<br>        User user=new User(“zhangsan”,”zs”);<br>        //反射的做法:<br>        User user=clazz.getConstructor(new Class[]{String.class,String.class})<br>                       .newInstance(“张三”,”zs”);<br>-反射方式获取Field中的信息<br>  1.获取当前类以及长辈类的public Field<br>    Field[] fields=Class对象.getFields();<br>  2.获取当前类中的所有的属性Field<br>    Field[] fields=Class对象.getDeclaredFields()<br>  3.获取当前类以及长辈类中指定的共有属性<br>    Field field=Class对象.getField(String fieldName);<br>  4.获取当前类中指定的属性<br>    Field field=Class对象.getDeclaredField(String fieldName);<br>  5.通过反射设定Field属性<br>    Field对象.set(Object obj,Object value);<br>    如果Field是私有的<br>    必须先执行:Field对象.setAccessable(true);//设置属性可以访问<br>  6.通过反射获取Field的值<br>    Object value=Field对象.get(object);<br>    如果Field是私有的<br>    必须先执行:Field对象.setAccessable(true);//设置属性可以访问<br>-反射方式获取Method方法信息<br>  1.获取当前类以及长辈类的public Method<br>    Method[] methods=Class对象.getMethods();<br>  2.获取当前类中的所有的属性Field<br>    Method[] methods=Class对象.getDeclaredMethods()<br>  3.获取当前类以及长辈类中指定的共有属性<br>    Method method=Class对象.getMethod(String methodName,new Class[]{方法参数类型});<br>  4.获取当前类中指定的属性<br>    Method method=Class对象.getDeclaredMethod(String methodName,new Class[]{方法参数类型});<br>  5.通过反射动态调用Method<br>    Object returnValue =Method对象.invoke(Object obj,object…args);<br>    解析:<br>      就是通过obj这个对象,调用Method对象确定的方法,给这个方法传递的参数是args<br>      Method对象对应的方法放回值returnValue;</p>
+<p>-反射获取Constructor构造函数<br>  -具体查看api文档<br>-反射获取注解Annotation<br>  -具体查看api文档</p>
+<p><strong>(六)在哪些地方使用反射,反射的应用场景</strong><br> -用反射实现jdbc的通用查询和通用更新<br> -用反射解析注解<br> -单元测设,就是用反射实现的<br> -常见的框架,spring框架,apringmvc框架等,都是用反射实现的<br> -EL表达式<br> 等…</p>
+<p>反射的优点:<br>  大幅度提高开发效率,框架就是反射实现的,框架可以大大提高开发效率<br>反射的缺点:<br>  反射执行效率比非反射的方式执行效率低<br>  反射可以暴露类中的所有细节,突破了封装.</p>
+<h2 id="内省"><a href="#内省" class="headerlink" title="内省:"></a><strong>内省:</strong></h2><p>就是自查的意思,本质就是反射,利用反射自省类中的属性和方法和其他</p>
+<p>  自省的方式有两种<br>    方式一:<br>       jdk(jre)中自带的一套自省的类库,类库包含的是api方法<br>       侧重:属性和属性的值,属性所对应的getter和setter方法<br>    方式二:<br>       apache基金会提供一套公有的自省类库CommonsBeanUtils.jar<br>       他能够处理属性和属性的值和对应的getter和setter<br>       还可以处理普通的方法</p>
+<blockquote>
+<p>总结:<br>  1.能用Commons-Beanutils就用此工具类<br>  2.其次用java的原生的内省Introspector工具类<br>  3.最后用java的原生的反射api   Class Field  Method Constructor Annotation<br>  原生反射api是最灵活的<br>  要开发快选择1方式<br>  要灵活选择3方式</p>
+</blockquote>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解:"></a><strong>注解:</strong></h2><ul>
+<li>注解应用场景很广泛,将来是一个趋势</li>
+<li>他可以提高开发效率,但是执行效率堪忧,因为其底层解析注解是用反射解析的</li>
+<li>用注解可以替换xml配置和属性文件</li>
+<li>注解是一个标识,注解所代表的功能一定要用反射来实现</li>
+<li>这些反射的代码,用于解析(寻找注解,获取注解的属性值)</li>
+<li>然后根据设定的属性值,来决定是否执行一些业务功能</li>
+</ul>
+<p><strong>(一)使用注解有三个步骤:</strong><br>  1.用户定义注解  创建注解<br>  2.把注解应用到对应的目标上  把注解放什么地方(包,类,属性,方法,方法参数等)<br>  3.用反射的代码来确定是否有注解和注解属性值,<br>    根据是否有注解以及注解的值做相应的功能</p>
+<p><strong>(二)如何定义注解:</strong><br>程序员创建注解</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//设定MyAnnotation注应用在什么位置上</span><br><span class="line">@Target(value=&#123;ElementType.METHOD&#125;)</span><br><span class="line">//指定注解的保留策略,source级别  class级别   runtime级别</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface MyAnnotation &#123;</span><br><span class="line">	//注解的value属性</span><br><span class="line">	public String value();</span><br><span class="line">	//注解的name属性,且有默认值abc</span><br><span class="line">	public String name() default &quot;abc&quot;;</span><br><span class="line">	//注解的colors属性,且是一个数组,默认值为red和blue</span><br><span class="line">	public String[] colors() default &#123;&quot;red&quot;,&quot;blue&quot;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>(三)元注解/源注解</strong><br>    @Target和    @Retention和@Override等…都是jdk自带的注解<br>   1.@Target(value={ElementType.Method,…})<br>     指定要修饰在什么样的目标上(包,注解,类/接口,方法,属性,参数等…)<br>       value取值是一个枚举类型的数据<br>       ElementType:<br>         ANNOTATION  注解<br>         METHOD   方法<br>         FIELD    属性<br>         CONSTRUCTOR 构造<br>         TYPE   类/接口<br>         PARAMETER  方法的参数上<br>         等…<br>   2.@Retention(RetentionPolicy.RUNTIME)<br>      注解的保留策略</p>
+<pre><code> .java--.class--&gt;jvm执行.class
+
+SOURCE:源代码级别,Source修饰的注解是给编译看的
+       编译器把源代码编译完毕后,在class文件中就没有注解
+CLASSS:类级别,Class修饰的注解给类加载器看的
+       在类加载的时候可以做一系列的引导操作,
+       在编译器编译完毕后注解存在,在类加载加载之后
+       就要丢弃注解
+RUNTIME:运行时级别,给JVM看的,在程序运行的过程中做相关的操作
+       可以在jvm中借助反射api解析注解</code></pre><p><strong>(四)注解中的属性详解:</strong><br>  a.注解定义属性和接口定义的方法类似,缺省默认public<br>      public 类型 属性名称();<br>  b.定义属性是,如果没有使用default指定默认值<br>    则在使用注解,必须给属性赋值<br>    如果带有默认值,是在使用注解的时候给属性赋值为新值<br>    也可以使用默认值<br>  c.注解中的属性类型必须遵守如下要求<br>     可以是八种基本数据类型,枚举类型,Class类型,String类型,<br>     以及上面类型的一维数组<br>  d.在给数组赋值的时候,如果数组只有一个值就不用写{}<br>  e.有一个极特殊的属性value<br>    如果只为该属性赋值,value=值<br>    但是如果注解中只有value这一个属性,那么value可以省略</p>
+<p><strong>(五)把注解应用到目标</strong><br>   在对应的目标上写上注解<br>   <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  	@MyAnnotation(value=&quot;xx&quot;,name=&quot;yy&quot;,colors=&#123;&quot;pink&quot;,&quot;green&quot;,&quot;gay&quot;&#125;)</span><br><span class="line">public class Demo1 &#123;</span><br><span class="line">	</span><br><span class="line">	private String str;</span><br><span class="line">	@MyAnnotation(value=&quot;aa&quot;,name=&quot;bb&quot;)</span><br><span class="line">	public void method1(String name)&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	public void method2()&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>(六)写反射代码来解析注解:</strong><br>    a.解析类上的注解<br>    b.解析方法上的注解</p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型:"></a><strong>泛型:</strong></h2><p><strong>(一) 一种参数化的类型</strong><br>        //非泛型的写法,不是参数化得类型<br>        ArrayList list0=new ArrayList();<br>        list0.add(“abc”);<br>        list0.add(10);<br>        //泛型的标准的写法,标准参数化的类型,  参数化类型指的是可以任意类型<br>        ArrayList<string> list1=new ArrayList<string>();<br>        list1.add(“abc”);<br>        list1.add(“aaa”);<br>        //泛型的写法,但不推荐<br>        ArrayList list2=new ArrayList<string>();<br>        list2.add(“abc”);<br>        list2.add(“aaa”);<br>        list2.add(10);//语法是可以通过的<br>        //泛型的写法,但不推荐<br>        ArrayList<string> list3=new ArrayList();<br>        list3.add(“abc”);<br>        list3.add(“aaa”);<br>        //list3.add(10);//语法是错误的</string></string></string></string></p>
+<pre><code>//下列的写法是错误的,编译报错,泛型要求两端的类型必须一致
+//ArrayList&lt;Object&gt; list4=new ArrayList&lt;String&gt;();</code></pre><p><strong>(二)自定义泛型</strong></p>
+<ul>
+<li><p>类上的泛型,泛型类</p>
+<blockquote>
+<p>1、泛型类一定要先定义,后使用,在类的名字后面定义泛型的类型<br>2、泛型的类型一定要是引用数据类型,不能是基本数据类型<br>3、 定义在类上,在类的内部使用,在整个类范围内类型是一致的<br>4、类上的泛型的具体类型需要在创建类的对象的时候指定泛型具体类<br>5、如果在使用类上泛型时不指定泛型的具体类型,默认的具体类型为泛型的上边界</p>
+</blockquote>
+</li>
+<li><p>方法上的泛型,泛型方法<br> 泛型要先定义后使用,在返回类型之前定义,通常用大写字母<br> 来定义一个泛型方法,可以定义多个,且定义在方法上,在方法的内部<br> 使用,方法上泛型,在方法调用的时候自动推断出具体的类型,<br> 无论何时,尽量使用泛型方法,因为泛型方法作用域小,只局限<br> 于方法内部<br>  T :类型type<br>  E :元素element<br>  K :关键字key<br>  V :值  value<br>  …<br>   比如:</p>
+   <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> public &lt;T,E&gt; T save(T t,E e)&#123;</span><br><span class="line"> return t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  &lt;T,E&gt;就是标记,标记此方法是一个泛型方法放在修饰符和返回<br>  类型之间,可以放置多个符号,说明有多个参数化类型</p>
+</li>
+</ul>
+<p><strong>(三)泛型的上边界:</strong></p>
+<ul>
+<li>泛型所取得类型是上边界或上边界类型的子孙类型</li>
+<li>如果不指定泛型默认的上边界是Object</li>
+</ul>
+<p><strong>(四)泛型擦除:</strong></p>
+<blockquote>
+<p>泛型编译期间起作用,真正执行期间,泛型已经被擦除了,在编译阶段,编译器会将所有使用泛型的地方替换为泛型的上边界,并在必要的时候增加上必须的类型转换和类型检查，所以在执行期间没有泛型的概念了。泛型在编译期间就被擦除掉了.此过程叫做泛型的擦除</p>
+</blockquote>
+<p> <strong>(五)集合与泛型</strong><br> <strong>在 &lt;&lt;Easy Coding&gt;&gt; 一书中是这样解释的：</strong><br> 1、List、List<object>、List&lt;?&gt;的区别<br> 2、&lt;? extends T&gt; 和 &lt;? super T&gt; 的使用场景</object></p>
+<ul>
+<li>&lt;? extends T&gt; <ul>
+<li>是Get First,适用于消费集合元素为主的场景</li>
+<li>可以赋值给任何T及T子类的集合，上界为T</li>
+<li>取出来的数据带有泛型限制，向上强制转型为 T ,null 可以表示任何类型，除 null 外，任何元素都不得添加进 &lt;? extends T&gt; 集合内</li>
+</ul>
+</li>
+<li>&lt;? super T&gt; <ul>
+<li>是Put First ,适用于生产集合元素为主的场景</li>
+<li>可以赋值给任何T及T父类的集合，下界为T</li>
+<li>只能往里放数据，而在取数据时不知道该数据具体属于谁，相当于泛型丢失<br>extends 的场景是 put 功能受限，而 supper 的场景是 get 功能受限。</li>
+</ul>
+</li>
+</ul>
+<p>* 书中所举例子，以加菲猫、猫、动物为例，说明extends 和 super 的详细语法差异,源代码如下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//用动物的猫科与加菲猫的继承关系说明 extends 与 super 在集合中的意义</span><br><span class="line">public class AnimalCatCarfield&#123;</span><br><span class="line">	public static void main (String[] args)&#123;</span><br><span class="line">		//第1段：声明三个依次继承的类的集合：Object&gt;动物&gt;猫&gt;加菲猫</span><br><span class="line">		List&lt;Animal&gt; animal = new ArrayList&lt;&gt;(Animal);</span><br><span class="line">		List&lt;Cat&gt; cat = new ArrayList&lt;Cat&gt;();</span><br><span class="line">		List&lt;Garfield&gt; garfield = new ArrayList&lt;Garfield&gt;();</span><br><span class="line"></span><br><span class="line">		animal.add(new Animal());</span><br><span class="line">		cat.add(new Cat());</span><br><span class="line">		garfield.add(new Garfield());</span><br><span class="line"></span><br><span class="line">		//第2段：测试赋值操作</span><br><span class="line">		//下行编译出错。只能赋值 Cat 或 Cat 子类集合</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            
+<div style="padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    padding: 7px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #565a5f;
+    line-height: 2em;
+">
+        <div class="copyright-left">
+            <i class="fa fa-lightbulb"></i>
+            <!--
+            本文由 <a href="https://gavino0119.github.io/">gavino</a> 创作，
+            采用
+            <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/09/06/JDK1-5-相关特性总结/index.html <br>
+            -->
+        </div>
+        <div style="clear:both;height:0px;"></div>
+</div>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/honbao.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatimg.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/06/策略、回调和多态/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">策略、回调和多态</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/04/策略模式/">
+                <span class="level-item">策略模式</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://gavino0119.github.io/2019/09/06/JDK1-5-相关特性总结/';
+        this.page.identifier = '2019/09/06/JDK1-5-相关特性总结/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/head.jpg" alt="Yan weigang">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Yan weigang
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        studying in lanzhou university of technology
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Lanzhou,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        32
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        12
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        18
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/gavino0119" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/gavino0119">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="mail" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=_s-CyMrIyc3NzrqLi9SZlZc">
+                
+                <i class="fab fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="weibo" href="https://weibo.com/u/6325058730?is_hot=1">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Java-基础篇/">
+            <span class="level-start">
+                <span class="level-item">Java 基础篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/SSM/">
+            <span class="level-start">
+                <span class="level-item">SSM</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Spring/">
+            <span class="level-start">
+                <span class="level-item">Spring</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/web-前端/">
+            <span class="level-start">
+                <span class="level-item">web 前端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/剑指offer/">
+            <span class="level-start">
+                <span class="level-item">剑指offer</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/常用工具/">
+            <span class="level-start">
+                <span class="level-item">常用工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/教程/">
+            <span class="level-start">
+                <span class="level-item">教程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/数据库/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/源码分析/">
+            <span class="level-start">
+                <span class="level-item">源码分析</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/设计模式/">
+            <span class="level-start">
+                <span class="level-item">设计模式</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/随笔/">
+            <span class="level-start">
+                <span class="level-item">随笔</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/07/Java-锁的种类及辨析/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Java 锁的种类及辨析">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T01:54:57.000Z">2019-09-07</time></div>
+                    <a href="/2019/09/07/Java-锁的种类及辨析/" class="has-link-black-ter is-size-6">Java 锁的种类及辨析</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/06/策略、回调和多态/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="策略、回调和多态">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-06T07:05:10.000Z">2019-09-06</time></div>
+                    <a href="/2019/09/06/策略、回调和多态/" class="has-link-black-ter is-size-6">策略、回调和多态</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/06/JDK1-5-相关特性总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JDK1.5 相关特性总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-06T05:22:26.000Z">2019-09-06</time></div>
+                    <a href="/2019/09/06/JDK1-5-相关特性总结/" class="has-link-black-ter is-size-6">JDK1.5 相关特性总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java-基础篇/">Java 基础篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/04/策略模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="策略模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-04T02:07:50.000Z">2019-09-04</time></div>
+                    <a href="/2019/09/04/策略模式/" class="has-link-black-ter is-size-6">策略模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/03/细说-Java-线程池/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="细说 Java 线程池">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-03T03:53:09.000Z">2019-09-03</time></div>
+                    <a href="/2019/09/03/细说-Java-线程池/" class="has-link-black-ter is-size-6">细说 Java 线程池</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <!-- 网易云音乐链接 -->
+        <div class="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="280" height="450" src="//music.163.com/outchain/player?type=0&id=2890071854&auto=1&height=430"></iframe>
+        </div>
+
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://google.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Google</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">google.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://baidu.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Baidu</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">baidu.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 12.5px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">16</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ajax/">
+                        <span class="tag">Ajax</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Cookie/">
+                        <span class="tag">Cookie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/IDEA/">
+                        <span class="tag">IDEA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JDBC/">
+                        <span class="tag">JDBC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">17</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Mybatis/">
+                        <span class="tag">Mybatis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Mysql/">
+                        <span class="tag">Mysql</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Session/">
+                        <span class="tag">Session</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sublime/">
+                        <span class="tag">Sublime</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/spring/">
+                        <span class="tag">spring</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/springMVC/">
+                        <span class="tag">springMVC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/命令/">
+                        <span class="tag">命令</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/框架/">
+                        <span class="tag">框架</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/源码/">
+                        <span class="tag">源码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/设计模式/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+<!-- 粘贴的部分 -->
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="JDK1.5 相关特性总结" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Yan weigang&nbsp;
+                <!-- 注释掉Powered by，Theme by的显示。-->
+                <!-- 
+                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                -->
+                
+                </p>
+
+        <!-- 网站运行时间统计-->
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("07/04/2019 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+            setInterval("createtime()",250);
+            </script><br>
+
+        <!-- 网站访问、访客统计-->
+        <span id="busuanzi_container_site_pv" class="theme-info">
+         |  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span id="busuanzi_container_site_uv" class="theme-info">
+         |  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+
+
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <!-- 雪花特效 -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+    <!-- 修改文章详情页为两栏 -->
+    
+</body>
+</html>
