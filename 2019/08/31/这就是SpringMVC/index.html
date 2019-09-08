@@ -17,7 +17,7 @@
 <meta property="og:description" content="SpringMVC 是一种基于 Java 的实现 MVC 设计模型的请求驱动类型的轻量级 Web 框架。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://imgblog.mrdear.cn/springmvc.png">
-<meta property="og:updated_time" content="2019-09-05T13:34:43.961Z">
+<meta property="og:updated_time" content="2019-09-08T04:24:21.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这就是SpringMVC">
 <meta name="twitter:description" content="SpringMVC 是一种基于 Java 的实现 MVC 设计模型的请求驱动类型的轻量级 Web 框架。">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    17 分钟 读完 (大约 2593 个字)
+                    21 分钟 读完 (大约 3107 个字)
                 </span>
                 
                 
@@ -315,7 +315,38 @@
 </li>
 <li>代码示例</li>
 </ul>
-<h2 id="响应数据和结果视图"><a href="#响应数据和结果视图" class="headerlink" title="响应数据和结果视图"></a><strong>响应数据和结果视图</strong></h2><h3 id="1、返回值分类"><a href="#1、返回值分类" class="headerlink" title="1、返回值分类"></a>1、返回值分类</h3><h3 id="2、转发和重定向"><a href="#2、转发和重定向" class="headerlink" title="2、转发和重定向"></a>2、转发和重定向</h3><h3 id="3、ResponseBody-响应-json-数据"><a href="#3、ResponseBody-响应-json-数据" class="headerlink" title="3、ResponseBody 响应 json 数据"></a>3、ResponseBody 响应 json 数据</h3><h2 id="SpringMVC-实现文件上传"><a href="#SpringMVC-实现文件上传" class="headerlink" title="SpringMVC 实现文件上传"></a><strong>SpringMVC 实现文件上传</strong></h2><h2 id="SpringMVC-中的异常处理"><a href="#SpringMVC-中的异常处理" class="headerlink" title="SpringMVC 中的异常处理"></a><strong>SpringMVC 中的异常处理</strong></h2><h2 id="SpringMVC-中的拦截器"><a href="#SpringMVC-中的拦截器" class="headerlink" title="SpringMVC 中的拦截器"></a><strong>SpringMVC 中的拦截器</strong></h2>
+<h2 id="响应数据和结果视图"><a href="#响应数据和结果视图" class="headerlink" title="响应数据和结果视图"></a><strong>响应数据和结果视图</strong></h2><h3 id="一-返回值分类"><a href="#一-返回值分类" class="headerlink" title="(一)返回值分类"></a>(一)返回值分类</h3><p><strong>1、字符串</strong></p>
+<p><strong>2、void</strong><br><strong>3、ModelAndView</strong></p>
+<blockquote>
+<p>ModelAndView 是 SpringMVC 为我们提供的一个对象，该对象也可以用作控制器方法的返回值。</p>
+</blockquote>
+<p><strong>注意：</strong><br>我们在页面上获取使用的是 requestScope.username 取的，所以返回 ModelAndView 类型时，浏览器跳转只能是请求转发。</p>
+<h3 id="二-转发和重定向"><a href="#二-转发和重定向" class="headerlink" title="(二)转发和重定向"></a>(二)转发和重定向</h3><p><strong>1、forward 转发</strong><br><strong>2、Redirect 重定向</strong></p>
+<h3 id="三-ResponseBody-响应-json-数据"><a href="#三-ResponseBody-响应-json-数据" class="headerlink" title="(三)ResponseBody 响应 json 数据"></a>(三)ResponseBody 响应 json 数据</h3><ul>
+<li><p><strong>使用说明</strong></p>
+<blockquote>
+<p>作用：<br>该注解用于将 Controller 的方法返回的对象，通过 HttpMessageConverter 接口转换为指定格式的数据如：json,xml 等，通过 Response 响应给客户端</p>
+</blockquote>
+</li>
+<li><p><strong>使用示例</strong></p>
+</li>
+</ul>
+<h2 id="SpringMVC-实现文件上传"><a href="#SpringMVC-实现文件上传" class="headerlink" title="SpringMVC 实现文件上传"></a><strong>SpringMVC 实现文件上传</strong></h2><h2 id="SpringMVC-中的异常处理"><a href="#SpringMVC-中的异常处理" class="headerlink" title="SpringMVC 中的异常处理"></a><strong>SpringMVC 中的异常处理</strong></h2><h3 id="异常处理的思路"><a href="#异常处理的思路" class="headerlink" title="异常处理的思路"></a>异常处理的思路</h3><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><h2 id="SpringMVC-中的拦截器"><a href="#SpringMVC-中的拦截器" class="headerlink" title="SpringMVC 中的拦截器"></a><strong>SpringMVC 中的拦截器</strong></h2><h3 id="一-拦截器的定义和作用"><a href="#一-拦截器的定义和作用" class="headerlink" title="(一)拦截器的定义和作用"></a>(一)拦截器的定义和作用</h3><ul>
+<li>用户可以自己定义一些拦截器来实现特定的功能。</li>
+<li>拦截器链（Interceptor Chain）。拦截器链就是将拦截器按一定的顺序联结成一条链。在访问被拦截的方法或字段时，拦截器链中的拦截器就会按其之前定义的顺序被调用。</li>
+</ul>
+<blockquote>
+<p>拦截器和过滤器:<br>过滤器是 servlet 规范中的一部分，任何 java web 工程都可以使用。<br>拦截器是 SpringMVC 框架自己的，只有使用了 SpringMVC 框架的工程才能用。<br>过滤器在 url-pattern 中配置了/*之后，可以对所有要访问的资源拦截。<br>拦截器它是只会拦截访问的控制器方法，如果访问的是 jsp，html,css,image 或者 js 是不会进行拦截的。</p>
+</blockquote>
+<p><strong>拦截器也是 AOP 思想的具体应用。<br>我们要想自定义拦截器， 要求必须实现：HandlerInterceptor 接口。</strong></p>
+<h3 id="二-自定义拦截器的步骤"><a href="#二-自定义拦截器的步骤" class="headerlink" title="(二)自定义拦截器的步骤"></a>(二)自定义拦截器的步骤</h3><p><strong>Step 一：编写一个普通类实现 HandlerInterceptor 接口</strong><br><strong>Step 二：配置拦截器</strong><br>在spingmvc.xml 中<br><strong>Step 三：测试运行结果</strong></p>
+<h3 id="三-拦截器的细节"><a href="#三-拦截器的细节" class="headerlink" title="(三)拦截器的细节"></a>(三)拦截器的细节</h3><ol>
+<li>拦截器的放行</li>
+<li>拦截器中方法的说明</li>
+<li>拦截器的作用路径</li>
+<li>多个拦截器的执行顺序</li>
+</ol>
+<h3 id="四-流程测试"><a href="#四-流程测试" class="headerlink" title="(四)流程测试"></a>(四)流程测试</h3>
             
 <div style="padding: 15px;
     margin-bottom: 20px;
@@ -487,7 +518,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        32
+                        33
                     </p>
                 </div>
             </div>
@@ -573,7 +604,7 @@
                 <span class="level-item">SSM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Spring/">
@@ -662,6 +693,25 @@
         
         <article class="media">
             
+            <a href="/2019/09/08/SSM-整合/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567922795170&amp;di=82e7390d098b05ce346d4f4ad79593b3&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D3603680830%2C2752111433%26fm%3D214%26gp%3D0.jpg" alt="SSM 整合">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T03:12:29.000Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/SSM-整合/" class="has-link-black-ter is-size-6">SSM 整合</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/07/Java-锁的种类及辨析/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567835839339&amp;di=f757513bf57ef0573ff630f0d1244089&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F04%2F20180804161455_HkifW.jpeg" alt="Java 锁的种类及辨析">
@@ -736,25 +786,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/03/细说-Java-线程池/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2548124522,1042460897&amp;fm=26&amp;gp=0.jpg" alt="细说 Java 线程池">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-03T03:53:09.000Z">2019-09-03</time></div>
-                    <a href="/2019/09/03/细说-Java-线程池/" class="has-link-black-ter is-size-6">细说 Java 线程池</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -814,7 +845,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 12.5px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12.5px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 12.5px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 17.5px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a>
     </div>
 </div>
 
@@ -833,7 +864,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -904,7 +935,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">17</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -974,7 +1005,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
