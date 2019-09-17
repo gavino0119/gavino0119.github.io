@@ -3,26 +3,31 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Gavino</title>
+<title>Java 内存模型 - Gavino</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Gavino">
-<meta property="og:url" content="https://gavino0119.github.io/page/2/index.html">
+    <meta name="description" content="cpu 多核并发缓存架构">
+<meta name="keywords" content="Java,JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 内存模型">
+<meta property="og:url" content="https://gavino0119.github.io/2019/09/17/Java-内存模型/index.html">
 <meta property="og:site_name" content="Gavino">
+<meta property="og:description" content="cpu 多核并发缓存架构">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gavino0119.github.io/images/og_image.png">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568735765594&di=abf4ab20962c4d55737c026082f9fa9d&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg">
+<meta property="og:updated_time" content="2019-09-17T14:00:25.670Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gavino">
-<meta name="twitter:image" content="https://gavino0119.github.io/images/og_image.png">
+<meta name="twitter:title" content="Java 内存模型">
+<meta name="twitter:description" content="cpu 多核并发缓存架构">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568735765594&di=abf4ab20962c4d55737c026082f9fa9d&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="Gavino" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="Java 内存模型" type="application/atom+xml">
 
 
 
@@ -44,7 +49,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Gavino" height="28">
+                <img src="/images/logo.png" alt="Java 内存模型" height="28">
             
             </a>
         </div>
@@ -90,85 +95,29 @@
         <div class="container">
             <div class="columns">
                 <!-- 将main_column_class() 改为 col() -->
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    <div class="card">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <a href="/2019/09/10/面向艺术，面向接口/" class="image is-7by1">
-            <img class="thumbnail" src="http://news.mydrivers.com/Img/20090817/09393557.jpg" alt="面向艺术，面向接口">
-        </a>
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1568735765594&amp;di=abf4ab20962c4d55737c026082f9fa9d&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg" alt="Java 内存模型">
+        </span>
     </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-10T02:42:40.000Z">2019-09-10</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 159 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/10/面向艺术，面向接口/">面向艺术，面向接口</a>
-            
-        </h1>
-        <div class="content">
-            <p>面向接口编程</p>
-            
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/10/面向艺术，面向接口/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/08/SSM-整合/" class="image is-7by1">
-            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567922795170&amp;di=82e7390d098b05ce346d4f4ad79593b3&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D3603680830%2C2752111433%26fm%3D214%26gp%3D0.jpg" alt="SSM 整合">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-08T03:12:29.000Z">2019-09-08</time>
+                <time class="level-item has-text-grey" datetime="2019-09-17T12:53:49.000Z">2019-09-17</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
+                <a class="has-link-grey -link" href="/categories/Java-虚拟机/">Java 虚拟机</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 278 个字)
+                    3 分钟 读完 (大约 476 个字)
                 </span>
                 
                 
@@ -177,229 +126,164 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/08/SSM-整合/">SSM 整合</a>
+                Java 内存模型
             
         </h1>
         <div class="content">
-            <p>通过对 SSM 框架的整合，加深对其应用的熟练以及底层原理的深刻理解，该整合使用的环境是 IntelliJ IDEA。</p>
-            
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/08/SSM-整合/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
+            <h2 id="cpu-多核并发缓存架构"><a href="#cpu-多核并发缓存架构" class="headerlink" title="cpu 多核并发缓存架构"></a>cpu 多核并发缓存架构</h2><a id="more"></a>
 
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/07/Java-锁的种类及辨析/" class="image is-7by1">
-            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567835839339&amp;di=f757513bf57ef0573ff630f0d1244089&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F04%2F20180804161455_HkifW.jpeg" alt="Java 锁的种类及辨析">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-07T01:54:57.000Z">2019-09-07</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    几秒 读完 (大约 0 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/07/Java-锁的种类及辨析/">Java 锁的种类及辨析</a>
-            
-        </h1>
-        <div class="content">
-            
-            
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/06/策略、回调和多态/" class="image is-7by1">
-            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1568430089&amp;di=961720ec57406a9a44663cf2b84f2d04&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201410%2F24%2F20141024012317_wnSix.jpeg" alt="策略、回调和多态">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-06T07:05:10.000Z">2019-09-06</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 367 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/06/策略、回调和多态/">策略、回调和多态</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>策略可以理解为是一个接口的子实现<br>回调是一种双向的调用方式,是一种思想、是一种机制<br>回调也是多态的一种体(实)现</p>
+<h2 id="Java-内存模型-JMM"><a href="#Java-内存模型-JMM" class="headerlink" title="Java 内存模型 JMM"></a>Java 内存模型 JMM</h2><blockquote>
+<p>Java 线程内存模型跟cpu 缓存模型类似, 是基于 cpu 缓存模型来建立的, Java 线程内存模型是标准化的, 屏蔽掉了底层不同计算机的区别。</p>
 </blockquote>
+<ul>
+<li>主内存</li>
+<li>工作内存</li>
+</ul>
+<p>主内存中的共享变量<br>在工作内存中有一个共享变量的副本</p>
+<h2 id="JMM-数据原子操作"><a href="#JMM-数据原子操作" class="headerlink" title="JMM 数据原子操作"></a>JMM 数据原子操作</h2><ul>
+<li>read(读取): 从主内存读取数据</li>
+<li>load(载入): 将主内存读取到的数据写入工作内存</li>
+<li>use(使用): 从工作内存读取数据来计算</li>
+<li>assign(赋值): 将计算好的值重新赋值到工作内存中</li>
+<li>store(存储): 将工作内存数据写入主内存</li>
+<li>write(写入): 将 store 过去的变量值赋值给主内存中的变量</li>
+<li>lock(锁定): 将主内存变量加锁, 标识为线程独占状态</li>
+<li>unlock(解锁): 将主内存变量解锁, 解锁后其他线程可以锁定该变量</li>
+</ul>
+<p>Java 内存模型执行流程(不加v关键字)：</p>
+<blockquote>
+<p>1、每个线程从主内存中读出数据(共享变量)<br>2、然后载入到各自相应的工作内存<br>3、线程从工作内存读取数据(共享变量副本)开始使用, 在使用过程中，某些线程有可能会进行赋值操作(即改变工作内存中的数据),这时会导致线程间的数据不再一致<br>4、当执行store 操作后，会将工作内存数据写入主内存<br>5、然后将 store 过去的变量值赋值给主内存中的变量，由于某些线程改变了工作内存中的数据，所以在写入主内存后，会对主内存中的变量值进行修改, 而其他一些线程的值却从未改变</p>
+</blockquote>
+<p>原子操作</p>
+
             
+<div style="padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    padding: 7px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #565a5f;
+    line-height: 2em;
+">
+        <div class="copyright-left">
+            <i class="fa fa-lightbulb"></i>
+            <!--
+            本文由 <a href="https://gavino0119.github.io/">gavino</a> 创作，
+            采用
+            <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/09/17/Java-内存模型/index.html <br>
+            -->
+        </div>
+        <div style="clear:both;height:0px;"></div>
+</div>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/06/策略、回调和多态/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/JVM/">JVM</a>, <a class="has-link-grey -link" href="/tags/Java/">Java</a>
                 </div>
             </div>
         </div>
         
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
 
 
 
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/09/06/JDK1-5-相关特性总结/" class="image is-7by1">
-            <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=876799479,834982606&amp;fm=11&amp;gp=0.jpg" alt="JDK1.5 相关特性总结">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-06T05:22:26.000Z">2019-09-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Java-基础篇/">Java 基础篇</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    26 分钟 读完 (大约 3829 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
             
-                <a class="has-link-black-ter" href="/2019/09/06/JDK1-5-相关特性总结/">JDK1.5 相关特性总结</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="自动装箱和拆箱"><a href="#自动装箱和拆箱" class="headerlink" title="自动装箱和拆箱:"></a><strong>自动装箱和拆箱:</strong></h2><p>装箱:把基本数据类型的数据装箱成对象类型<br>拆箱:把对象的类型变成基本数据类型<br></p>
-            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/honbao.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatimg.jpg" alt="微信"></div>
+</a>
+
+                
         </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/06/JDK1-5-相关特性总结/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
 
 
 
-
-
-
-
-
-
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/">上一页</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/16/js-相关知识点总结/">
+                <span class="level-item">js 相关知识点总结</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/3/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
-            
-            <li><a class="pagination-link is-current" href="/page/2/">2</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
-            
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://gavino0119.github.io/2019/09/17/Java-内存模型/';
+        this.page.identifier = '2019/09/17/Java-内存模型/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
 </div>
 </div>
-                        <!-- 修改 -->
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -986,238 +870,7 @@
     
 </div>
 
-
-<!-- 粘贴的部分 -->
-
-                        <!-- 修改 -->
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">九月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">13</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">八月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">10</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/07/">
-                <span class="level-start">
-                    <span class="level-item">七月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">16</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Ajax/">
-                        <span class="tag">Ajax</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Cookie/">
-                        <span class="tag">Cookie</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/IDEA/">
-                        <span class="tag">IDEA</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JDBC/">
-                        <span class="tag">JDBC</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JS/">
-                        <span class="tag">JS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JVM/">
-                        <span class="tag">JVM</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">23</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Linux/">
-                        <span class="tag">Linux</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Markdown/">
-                        <span class="tag">Markdown</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Mybatis/">
-                        <span class="tag">Mybatis</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Mysql/">
-                        <span class="tag">Mysql</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Session/">
-                        <span class="tag">Session</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Sublime/">
-                        <span class="tag">Sublime</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/spring/">
-                        <span class="tag">spring</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/springMVC/">
-                        <span class="tag">springMVC</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/前端/">
-                        <span class="tag">前端</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/命令/">
-                        <span class="tag">命令</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/框架/">
-                        <span class="tag">框架</span>
-                        <span class="tag is-grey">6</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/源码/">
-                        <span class="tag">源码</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/设计模式/">
-                        <span class="tag">设计模式</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/面试/">
-                        <span class="tag">面试</span>
-                        <span class="tag is-grey">4</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
 
 <!-- 粘贴的部分 -->
 
@@ -1230,7 +883,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Gavino" height="28">
+                    <img src="/images/logo.png" alt="Java 内存模型" height="28">
                 
                 </a>
                 <p class="is-size-7">

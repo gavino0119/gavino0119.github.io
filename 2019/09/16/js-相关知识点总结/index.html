@@ -17,7 +17,7 @@
 <meta property="og:description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-09-17T00:42:28.804Z">
+<meta property="og:updated_time" content="2019-09-17T06:21:57.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 相关知识点总结">
 <meta name="twitter:description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1340 个字)
+                    13 分钟 读完 (大约 1934 个字)
                 </span>
                 
                 
@@ -142,7 +142,7 @@
 <li>适宜:<br> 客户端的数据计算<br> 客户端的表单验证<br> 浏览器的事件触发<br> 网页特效制作<br> 服务器的异步提交 ajax </li>
 </ul>
 <p>js的注释:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 单行  //</span><br><span class="line">  多行 /**/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单行  //</span><br><span class="line">多行 /**/</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意：</strong></p>
 <blockquote>
@@ -218,7 +218,7 @@
 <li>在方法声明中有一个隐藏的内置对象(数组), arguments, 封装所有的实际参数</li>
 </ol>
 </li>
-<li>调用<br>  方法名称(实参);<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/*求任意个数的和*/</span><br><span class="line">function add()&#123;</span><br><span class="line">	var sum = 0;	</span><br><span class="line">	for(var i=0;i&lt;arguments.length;i++)&#123;</span><br><span class="line">		sum += arguments[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">function getAdd()&#123;</span><br><span class="line">	var sum = add(1,2,3);</span><br><span class="line">	console.log(sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>调用<br>  方法名称(实参);<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/*求任意个数的和*/</span><br><span class="line">function add()&#123;</span><br><span class="line">	var sum = 0;	</span><br><span class="line">	for(var i=0;i&lt;arguments.length;i++)&#123;</span><br><span class="line">		sum += arguments[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">function getResult()&#123;</span><br><span class="line">	var sum = add(1,2,3);</span><br><span class="line">	console.log(sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -248,13 +248,12 @@
 <li>创建<br>  var date = new Date();</li>
 <li>常用方法<ol>
 <li>toLocaleString(): 返回当前 date 对象对应的时间本地字符串格式</li>
-<li>getTime(): 获取毫秒值。返回当前日期对象描述的时间到1970年1月1日零点的毫秒值差</li>
+<li>getTime(): 获取毫秒值。返回当前日期对象描述的时间到1970年1月1日零点的毫秒值差<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function demo()&#123;</span><br><span class="line">	var date = new Date();</span><br><span class="line">	document.write(date+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.toLocaleTimeString()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.toLocaleDateString()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.getTime()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.getDay()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.toString()+&quot;&lt;br&gt;&quot;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 </li>
 </ul>
 </li>
-</ol>
-<ol start="4">
 <li><p>Math: 数学</p>
 <ul>
 <li>创建<br>  Math 对象不用创建，直接使用。Math.方法名();</li>
@@ -319,13 +318,57 @@
 <li>decodeURI(): url 解码</li>
 <li>parseInt(): 将字符串转为数字</li>
 <li>isNaN(): 判断一个值是不是NaN, NaN参与的==比较 全为 false</li>
-<li>eval(): 将 js 字符串 解析，并把它作为脚本来执行。</li>
+<li>eval(): eval函数用于计算表达式字符串,或者用于执行字符串中js代码</li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
-
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><blockquote>
+<p>BOM对象  browser object model浏览器对象模型,用来访问跟浏览器窗口有关的对象<br>在BOM对象有很多的对象,每个对象还有很多属性和方法, 通过这些方法和属性,移动窗口,更改状态栏文本<br>和其他跟窗口操作相关的.</p>
+</blockquote>
+<ul>
+<li><p>window对象:</p>
+<ul>
+<li>window表示浏览器窗口<br>是所有javascript全局对象,如果不写window,默认从window访问起</li>
+</ul>
+</li>
+<li><p>window常用的属性:</p>
+<ul>
+<li>document:在窗口中显示文档树.</li>
+<li>history:浏览器的窗口的后退和前进</li>
+<li>location:窗口文件地址对象.<br> window.location.href=”login.html”;</li>
+<li>screen:当前屏幕对象</li>
+<li>navigator:浏览器的相关信息</li>
+</ul>
+</li>
+<li><p>window对象常用的方法:</p>
+<ul>
+<li>alert();弹出式窗口,模态框(当前窗口不关闭,无法操作后面的窗口)</li>
+<li>confirm();模态框,确认窗口</li>
+<li>setTimeOut()  setInterval() 周期性函数</li>
+<li>clearTimeOut()  clearInterval();</li>
+</ul>
+</li>
+</ul>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><blockquote>
+<p>DOM对象: Document Object model文档对象模型,用来操作文档<br>定义了访问和操作html文档的标准方法<br>应用程序通过对dom树的操作,来实现和html的交互</p>
+</blockquote>
+<p>dom编程:<br>用 js 做 dom 编程的目的，就是为让 html 页面中的内容局部改变<br>查询:<br>  -通过id查询<br>  -通过name查询<br>  -通过标签名查询<br>  -通过表单名查询</p>
+<p>根据id查询<br>   document.getElementById(“”);<br>   通过id查询返回元素节点,<br>   在整个html文档中搜索id<br>   只找到第一个id,返回元素<br>   如果id错误,返回null</p>
+<p>根据层次查询节点:<br> -parentNode<br>   遵循文档的上下文层次结构,查找单个父节点<br>   比如:<br>       <table id="tblid"><br>         <tr><br>            <td id="tdid"></td><br>            <td></td><br>         </tr><br>       </table><br>    var td_ele=document.getElementById(“tdid”);<br>    var tr_ele=td_ele.parentNode;<br>    var table_ele=td_ele.parentNode.parentNode;</p>
+<p>  -childNodes<br>     遵循文档的上下文层次结构,查找多个子节点<br>     比如:上面的例子<br>      var td_ele=document.getElementById(“tdid”);<br>      //获取当前td对象的所有兄弟<br>      var tds_ele=td_ele.parentNode.childNodes;<br>      //获取当前td的父亲,和所有叔叔节点<br>      var trs_ele=td_ele.parentNode.parentNode.childNodes;</p>
+<p>根据标签名查询节点:<br>    getElementsByTagName(“标签名”);<br>    从当前对象往下寻找符合标签名的所有元素对象<br>    返回结果是一个数组<br>    标签名错误,返回长度为0,<br>    比如:<br>       <table id="tblid"><br>         <tr><br>            <td id="tdid"></td><br>            <td></td><br>         </tr><br>       </table></p>
+<pre><code>var table_ele=document.getElementById(&quot;tblid&quot;);
+var trs_ele=table_ele.getElementsByTagName(&quot;tr&quot;);</code></pre><p>根据name属性查询节点<br>  document.getElementsByName(“元素的name属性值”);<br>  注意:不是所有的元素节点都有name属性</p>
+<p>根据document.表单名字.表单控间名<br>    docuemnt.forms[数字].表单控件名 </p>
+<p>创建元素节点:<br>  document.createElement(元素节点名);<br>  返回结果是创建的节点对象</p>
+<p>创建文本节点:<br>  document.createTextNode(“文本信息”);<br>  返回结果是一个文本节点对象</p>
+<p>添加新节点:<br>  parentNode.appendChild(newNode);<br>  追加newNode节点到父节点的所有子节点的最后.</p>
+<p>  parentNode.insertBefore(newNode,refNode);<br>  把newNode插入到refNode的前面<br>  newNode和refNode是兄弟关系</p>
+<p>删除节点:<br>node.removeChild(childNode)<br>  删除node节点下的childNode的节点对象</p>
+<p>定位节点:<br>  parentNode.firstChild;第一个子节点<br>  parentNode.lastChild;最后一个子节点</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2>
             
 <div style="padding: 15px;
     margin-bottom: 20px;
@@ -407,6 +450,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/17/Java-内存模型/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Java 内存模型</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -490,7 +540,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        38
+                        39
                     </p>
                 </div>
             </div>
@@ -500,7 +550,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        12
+                        13
                     </p>
                 </div>
             </div>
@@ -510,7 +560,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        21
                     </p>
                 </div>
             </div>
@@ -561,6 +611,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java-虚拟机/">
+            <span class="level-start">
+                <span class="level-item">Java 虚拟机</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Linux/">
@@ -665,6 +723,25 @@
         
         <article class="media">
             
+            <a href="/2019/09/17/Java-内存模型/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1568735765594&amp;di=abf4ab20962c4d55737c026082f9fa9d&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg" alt="Java 内存模型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-17T12:53:49.000Z">2019-09-17</time></div>
+                    <a href="/2019/09/17/Java-内存模型/" class="has-link-black-ter is-size-6">Java 内存模型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java-虚拟机/">Java 虚拟机</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/16/js-相关知识点总结/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&amp;fm=26&amp;gp=0.jpg" alt="js 相关知识点总结">
@@ -739,25 +816,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/10/面向艺术，面向接口/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://news.mydrivers.com/Img/20090817/09393557.jpg" alt="面向艺术，面向接口">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T02:42:40.000Z">2019-09-10</time></div>
-                    <a href="/2019/09/10/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -817,7 +875,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
     </div>
 </div>
 
@@ -836,7 +894,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">12</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -912,9 +970,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/JVM/">
+                        <span class="tag">JVM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">22</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
