@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<script src="/js/src/click.js"></script>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>js 相关知识点总结 - Gavino</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
+<meta name="keywords" content="Java,JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js 相关知识点总结">
+<meta property="og:url" content="https://gavino0119.github.io/2019/09/16/js-相关知识点总结/index.html">
+<meta property="og:site_name" content="Gavino">
+<meta property="og:description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&fm=26&gp=0.jpg">
+<meta property="og:updated_time" content="2019-09-17T00:42:28.804Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js 相关知识点总结">
+<meta name="twitter:description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
+<meta name="twitter:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&fm=26&gp=0.jpg">
+
+
+
+
+
+<link rel="alternative" href="/atom.xml" title="js 相关知识点总结" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicons.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="js 相关知识点总结" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="My GitHub" href="https://github.com/gavino0119">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <!-- 将main_column_class() 改为 col() -->
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&amp;fm=26&amp;gp=0.jpg" alt="js 相关知识点总结">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-16T11:42:00.000Z">2019-09-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分钟 读完 (大约 1340 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                js 相关知识点总结
+            
+        </h1>
+        <div class="content">
+            <h2 id="关于javascript"><a href="#关于javascript" class="headerlink" title="关于javascript:"></a>关于javascript:</h2><blockquote>
+<p>简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译</p>
+</blockquote>
+ <a id="more"></a>
+
+<p>javascript特点:</p>
+<ul>
+<li>可以用任何编辑文本的工具编写js代码</li>
+<li>由浏览器内置的javascript引擎执行代码<br> 解释执行:事先不编译,逐行执行<br> 基于对象:内置大量的现成的对象   </li>
+<li>适宜:<br> 客户端的数据计算<br> 客户端的表单验证<br> 浏览器的事件触发<br> 网页特效制作<br> 服务器的异步提交 ajax </li>
+</ul>
+<p>js的注释:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 单行  //</span><br><span class="line">  多行 /**/</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<blockquote>
+<p>js代码区分大小写,大小写敏感<br>所有js语句用分号结束<br>标识符的定义:可以包含字母,数字,下划线,$符号,就是不能用数字开头<br>命名的规范用骆驼(驼峰)命名法</p>
+</blockquote>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li><p>原始数据类型(基本数据类型)</p>
+<ol>
+<li>number: 数字        (整数、小数、NaN)</li>
+<li>string: 字符串。 </li>
+<li>boolean: true 和 false</li>
+<li>null: 一个对象为空的占位符<br>注：用 typeof() 得到的 null 的类型为 Object</li>
+<li>undefined: 未定义</li>
+</ol>
+</li>
+<li><p>引用数据类型: 对象</p>
+</li>
+</ul>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><blockquote>
+<p>在 js 中，如果运算数不是运算符所要求的类型，那么 js 引擎会自动的将运算数进行类型转换</p>
+</blockquote>
+<ul>
+<li>其他类型转 number<ol>
+<li>string 转 number: 字面是数字，按照字面值转换。<br>如果字面不是数字，则转为NaN(不是数字的数字类型)</li>
+<li>boolean 转 number: true 转为 1, false 转为 0<br>eg: true+true=2</li>
+</ol>
+</li>
+<li>其他类型转 boolean<ol>
+<li>number: 0 或 NaN 为假，其他为真</li>
+<li>string: 除了空字符串(“”), 其他都是 true</li>
+<li>null &amp; undefined: 都是 false</li>
+<li>对象: 所有对象都是 true</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>比较运算符:</p>
+</blockquote>
+<p>比较运算符的比较方式：</p>
+<ol>
+<li>类型相同，则直接比较<ul>
+<li>对于字符串，按照字典顺序逐位进行比较，直到得出大小为止</li>
+</ul>
+</li>
+<li>类型不同，先进行类型转换，再进行比较<ul>
+<li>=== 表示 全等于, 在比较之前，先判断类型，如果类型不一样，则直接返回 false</li>
+</ul>
+</li>
+</ol>
+<p>变量的定义使用关键字 var 和不使用 var</p>
+<ul>
+<li>使用 var :定义的变量是局部变量</li>
+<li>不使用 var :定义的变量是全局变量(即使在方法里面定义)</li>
+</ul>
+<h2 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h2><ul>
+<li>在 js 中，switch 语句可以接受任意的原始数据类型</li>
+<li>for in</li>
+</ul>
+<h2 id="JavaScript-对象"><a href="#JavaScript-对象" class="headerlink" title="JavaScript 对象"></a>JavaScript 对象</h2><ol>
+<li><p>Function: 函数(方法)对象</p>
+<ul>
+<li>创建：<ol>
+<li>var fun = new Function(形参列表，方法体);<br>该方法了解即可</li>
+<li>functioin 方法名称(形参列表){<br> 方法体<br>}</li>
+<li>var 方法名 = function(){<br> 方法体<br>}</li>
+</ol>
+  <strong>推荐后面两种方式</strong></li>
+<li>属性<br>  length: 代表形参的个数</li>
+<li>特点<ol>
+<li>方法定义时，形参的类型不用写,返回值类型也不用写</li>
+<li>方法是一个对象，如果定义名称相同的方法，(后面定义的)会覆盖之前定义的方法</li>
+<li>在 js 中，当进行方法调用时，方法的调用只与方法的名称有关,和参数列表无关</li>
+<li>在方法声明中有一个隐藏的内置对象(数组), arguments, 封装所有的实际参数</li>
+</ol>
+</li>
+<li>调用<br>  方法名称(实参);<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/*求任意个数的和*/</span><br><span class="line">function add()&#123;</span><br><span class="line">	var sum = 0;	</span><br><span class="line">	for(var i=0;i&lt;arguments.length;i++)&#123;</span><br><span class="line">		sum += arguments[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">function getAdd()&#123;</span><br><span class="line">	var sum = add(1,2,3);</span><br><span class="line">	console.log(sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Array:</p>
+<ul>
+<li>创建<ol>
+<li>var arr = new Array(元素列表);</li>
+<li>var arr = new Array(默认长度);</li>
+<li>var arr = [元素列表];</li>
+</ol>
+</li>
+<li>常用方法<ol>
+<li>join(参数): 将数组中的元素按照指定的分隔符拼接为字符串</li>
+<li>push() 向数组的末尾添加一个或更多元素，并返回新的长度</li>
+</ol>
+</li>
+<li>属性<br>  length: 数组的长度。</li>
+<li>特点<ol>
+<li>js 中，数组元素的类型是可变的</li>
+<li>js 中，数组的长度是可变的。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Date: 日期对象</p>
+<ul>
+<li>创建<br>  var date = new Date();</li>
+<li>常用方法<ol>
+<li>toLocaleString(): 返回当前 date 对象对应的时间本地字符串格式</li>
+<li>getTime(): 获取毫秒值。返回当前日期对象描述的时间到1970年1月1日零点的毫秒值差</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li><p>Math: 数学</p>
+<ul>
+<li>创建<br>  Math 对象不用创建，直接使用。Math.方法名();</li>
+<li>常用方法<ol>
+<li>random(): 返回0~1之间的随机数。含0不含1</li>
+</ol>
+</li>
+<li>属性<br>  PI</li>
+</ul>
+</li>
+<li><p>RegExp: 正则表达式对象</p>
+<ul>
+<li><p>正则表达式: 定义字符串的组成规则</p>
+<ol>
+<li><p>一些特殊含义的单个字符</p>
+<ul>
+<li>\d: 单个数字</li>
+<li>\w: 单个字符</li>
+<li>其他</li>
+</ul>
+</li>
+<li><p>相关量词符号</p>
+<ul>
+<li><p>{m,n}: 表示 m&lt;= 数量 &lt;= n</p>
+<ul>
+<li>m 如果缺省:{,n}: 表示最多 n 次</li>
+<li>n 如果缺省:{m,}: 表示最少 m 次</li>
+</ul>
+</li>
+<li><p>开始和结束</p>
+<ul>
+<li>^: 开始</li>
+<li>$: 结束</li>
+</ul>
+</li>
+<li><p>其他</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>正则对象</p>
+<ul>
+<li>创建<ol>
+<li>var reg = new RegExp(“正则表达式”);</li>
+<li>var reg = /正则表达式/;<br>注意在//之间不加引号</li>
+</ol>
+</li>
+<li>方法<ol>
+<li>test(参数): 验证指定的字符串是否符合正则定义的规范</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Global:</p>
+<ul>
+<li>全局对象, Global 中封装的方法不需要对象就可以直接调用。    </li>
+<li>常用方法:<ul>
+<li>encodeURI(): url 编码</li>
+<li>decodeURI(): url 解码</li>
+<li>parseInt(): 将字符串转为数字</li>
+<li>isNaN(): 判断一个值是不是NaN, NaN参与的==比较 全为 false</li>
+<li>eval(): 将 js 字符串 解析，并把它作为脚本来执行。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+            
+<div style="padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    padding: 7px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #565a5f;
+    line-height: 2em;
+">
+        <div class="copyright-left">
+            <i class="fa fa-lightbulb"></i>
+            <!--
+            本文由 <a href="https://gavino0119.github.io/">gavino</a> 创作，
+            采用
+            <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/09/16/js-相关知识点总结/index.html <br>
+            -->
+        </div>
+        <div style="clear:both;height:0px;"></div>
+</div>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/JS/">JS</a>, <a class="has-link-grey -link" href="/tags/Java/">Java</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/honbao.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatimg.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/14/Bootstrap/">
+                <span class="level-item">Bootstrap</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://gavino0119.github.io/2019/09/16/js-相关知识点总结/';
+        this.page.identifier = '2019/09/16/js-相关知识点总结/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/head.jpg" alt="Yan weigang">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Yan weigang
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        studying in lanzhou university of technology
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Lanzhou,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        38
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        12
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        20
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/gavino0119" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/gavino0119">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="mail" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=_s-CyMrIyc3NzrqLi9SZlZc">
+                
+                <i class="fab fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="weibo" href="https://weibo.com/u/6325058730?is_hot=1">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Java-基础篇/">
+            <span class="level-start">
+                <span class="level-item">Java 基础篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/SSM/">
+            <span class="level-start">
+                <span class="level-item">SSM</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Spring/">
+            <span class="level-start">
+                <span class="level-item">Spring</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/web-前端/">
+            <span class="level-start">
+                <span class="level-item">web 前端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/剑指offer/">
+            <span class="level-start">
+                <span class="level-item">剑指offer</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/常用工具/">
+            <span class="level-start">
+                <span class="level-item">常用工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/教程/">
+            <span class="level-start">
+                <span class="level-item">教程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/数据库/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/源码分析/">
+            <span class="level-start">
+                <span class="level-item">源码分析</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/设计模式/">
+            <span class="level-start">
+                <span class="level-item">设计模式</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/随笔/">
+            <span class="level-start">
+                <span class="level-item">随笔</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/16/js-相关知识点总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&amp;fm=26&amp;gp=0.jpg" alt="js 相关知识点总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:42:00.000Z">2019-09-16</time></div>
+                    <a href="/2019/09/16/js-相关知识点总结/" class="has-link-black-ter is-size-6">js 相关知识点总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/14/Bootstrap/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://pic2.zhimg.com/v2-73acf16b673828e895b45b2dd8fe1b86_1200x500.jpg" alt="Bootstrap">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T12:43:01.000Z">2019-09-14</time></div>
+                    <a href="/2019/09/14/Bootstrap/" class="has-link-black-ter is-size-6">Bootstrap</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/11/通用-Mapper/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&amp;fm=11&amp;gp=0.jpg" alt="通用 Mapper">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T11:58:19.000Z">2019-09-11</time></div>
+                    <a href="/2019/09/11/通用-Mapper/" class="has-link-black-ter is-size-6">通用 Mapper</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/10/Dubbo-学习归档/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3753737640,834291282&amp;fm=26&amp;gp=0.jpg" alt="Dubbo 学习归档">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T11:40:46.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/Dubbo-学习归档/" class="has-link-black-ter is-size-6">Dubbo 学习归档</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/10/面向艺术，面向接口/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://news.mydrivers.com/Img/20090817/09393557.jpg" alt="面向艺术，面向接口">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T02:42:40.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <!-- 网易云音乐链接 -->
+        <div class="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="280" height="450" src="//music.163.com/outchain/player?type=0&id=2890071854&auto=1&height=430"></iframe>
+        </div>
+
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://google.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Google</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">google.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://baidu.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Baidu</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">baidu.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">16</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ajax/">
+                        <span class="tag">Ajax</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Cookie/">
+                        <span class="tag">Cookie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/IDEA/">
+                        <span class="tag">IDEA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JDBC/">
+                        <span class="tag">JDBC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JS/">
+                        <span class="tag">JS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">22</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Markdown/">
+                        <span class="tag">Markdown</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Mybatis/">
+                        <span class="tag">Mybatis</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Mysql/">
+                        <span class="tag">Mysql</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Session/">
+                        <span class="tag">Session</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sublime/">
+                        <span class="tag">Sublime</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/spring/">
+                        <span class="tag">spring</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/springMVC/">
+                        <span class="tag">springMVC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/前端/">
+                        <span class="tag">前端</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/命令/">
+                        <span class="tag">命令</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/框架/">
+                        <span class="tag">框架</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/源码/">
+                        <span class="tag">源码</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/设计模式/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+<!-- 粘贴的部分 -->
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="js 相关知识点总结" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Yan weigang&nbsp;
+                <!-- 注释掉Powered by，Theme by的显示。-->
+                <!-- 
+                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                -->
+                
+                </p>
+
+        <!-- 网站运行时间统计-->
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("07/04/2019 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+            setInterval("createtime()",250);
+            </script><br>
+
+        <!-- 网站访问、访客统计-->
+        <span id="busuanzi_container_site_pv" class="theme-info">
+         |  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span id="busuanzi_container_site_uv" class="theme-info">
+         |  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+
+
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <!-- 雪花特效 -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+    <!-- 修改文章详情页为两栏 -->
+    
+</body>
+</html>

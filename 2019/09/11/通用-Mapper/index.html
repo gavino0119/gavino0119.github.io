@@ -8,20 +8,20 @@
 
 
 
-    <meta name="description" content="什么是通用 Mapper为什么要使用通用 Mapper原生Mybatis的痛点：1、mapper.xml文件里有大量的sql，当数据库表字段变动，配置文件就要修改2、需要自己实现sql分页，select * from table where . . . limit 1,3 自己手写分页，除了传参page、pageSize，还需要返回条目总数count。 3、数据库可移植性差：如果项目更换数据库，比">
-<meta name="keywords" content="Java,spring,框架,Mybatis">
+    <meta name="description" content="什么是通用 Mapper">
+<meta name="keywords" content="Java,框架,spring,Mybatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通用 Mapper">
 <meta property="og:url" content="https://gavino0119.github.io/2019/09/11/通用-Mapper/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="什么是通用 Mapper为什么要使用通用 Mapper原生Mybatis的痛点：1、mapper.xml文件里有大量的sql，当数据库表字段变动，配置文件就要修改2、需要自己实现sql分页，select * from table where . . . limit 1,3 自己手写分页，除了传参page、pageSize，还需要返回条目总数count。 3、数据库可移植性差：如果项目更换数据库，比">
+<meta property="og:description" content="什么是通用 Mapper">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gavino0119.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-11T12:10:44.733Z">
+<meta property="og:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&fm=11&gp=0.jpg">
+<meta property="og:updated_time" content="2019-09-11T12:48:17.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通用 Mapper">
-<meta name="twitter:description" content="什么是通用 Mapper为什么要使用通用 Mapper原生Mybatis的痛点：1、mapper.xml文件里有大量的sql，当数据库表字段变动，配置文件就要修改2、需要自己实现sql分页，select * from table where . . . limit 1,3 自己手写分页，除了传参page、pageSize，还需要返回条目总数count。 3、数据库可移植性差：如果项目更换数据库，比">
-<meta name="twitter:image" content="https://gavino0119.github.io/images/og_image.png">
+<meta name="twitter:description" content="什么是通用 Mapper">
+<meta name="twitter:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&fm=11&gp=0.jpg">
 
 
 
@@ -97,6 +97,12 @@
                 <!-- 将main_column_class() 改为 col() -->
                 <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&amp;fm=11&amp;gp=0.jpg" alt="通用 Mapper">
+        </span>
+    </div>
+    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -111,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 208 个字)
+                    1 分钟 读完 (大约 209 个字)
                 </span>
                 
                 
@@ -124,7 +130,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="什么是通用-Mapper"><a href="#什么是通用-Mapper" class="headerlink" title="什么是通用 Mapper"></a>什么是通用 Mapper</h2><h2 id="为什么要使用通用-Mapper"><a href="#为什么要使用通用-Mapper" class="headerlink" title="为什么要使用通用 Mapper"></a>为什么要使用通用 Mapper</h2><p><strong>原生Mybatis的痛点：</strong><br>1、mapper.xml文件里有大量的sql，当数据库表字段变动，配置文件就要修改<br>2、需要自己实现sql分页，select * from table where . . . limit 1,3 自己手写分页，除了传参page、pageSize，还需要返回条目总数count。 3、数据库可移植性差：如果项目更换数据库，比如oracle–&gt;mysql，mapper.xml中的 sql要重新写，因为Oracle的PLSQL 和mysql 支持的函数是不同的。<br>4、生成的代码量过大。<br>5、批量操作，批量插入，批量更新，需要自写。</p>
+            <h2 id="什么是通用-Mapper"><a href="#什么是通用-Mapper" class="headerlink" title="什么是通用 Mapper"></a>什么是通用 Mapper</h2><a id="more"></a>
+<h2 id="为什么要使用通用-Mapper"><a href="#为什么要使用通用-Mapper" class="headerlink" title="为什么要使用通用 Mapper"></a>为什么要使用通用 Mapper</h2><p><strong>原生Mybatis的痛点：</strong><br>1、mapper.xml文件里有大量的sql，当数据库表字段变动，配置文件就要修改<br>2、需要自己实现sql分页，select * from table where . . . limit 1,3 自己手写分页，除了传参page、pageSize，还需要返回条目总数count。 3、数据库可移植性差：如果项目更换数据库，比如oracle–&gt;mysql，mapper.xml中的 sql要重新写，因为Oracle的PLSQL 和mysql 支持的函数是不同的。<br>4、生成的代码量过大。<br>5、批量操作，批量插入，批量更新，需要自写。</p>
 <h2 id="通用-mapper-的使用"><a href="#通用-mapper-的使用" class="headerlink" title="通用 mapper 的使用"></a>通用 mapper 的使用</h2><h3 id="通用-mapper-与-Spring-集成"><a href="#通用-mapper-与-Spring-集成" class="headerlink" title="通用 mapper 与 Spring 集成"></a>通用 mapper 与 Spring 集成</h3><p><strong>引入依赖</strong><br><strong>与 Spring 集成</strong><br><strong>实体类映射</strong><br><strong>创建 Mapper 接口</strong></p>
 
             
@@ -209,6 +216,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/14/Bootstrap/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Bootstrap</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/10/Dubbo-学习归档/">
@@ -291,7 +305,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        38
                     </p>
                 </div>
             </div>
@@ -311,7 +325,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        20
                     </p>
                 </div>
             </div>
@@ -393,7 +407,7 @@
                 <span class="level-item">web 前端</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/剑指offer/">
@@ -466,9 +480,47 @@
         
         <article class="media">
             
+            <a href="/2019/09/16/js-相关知识点总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&amp;fm=26&amp;gp=0.jpg" alt="js 相关知识点总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:42:00.000Z">2019-09-16</time></div>
+                    <a href="/2019/09/16/js-相关知识点总结/" class="has-link-black-ter is-size-6">js 相关知识点总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/14/Bootstrap/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://pic2.zhimg.com/v2-73acf16b673828e895b45b2dd8fe1b86_1200x500.jpg" alt="Bootstrap">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T12:43:01.000Z">2019-09-14</time></div>
+                    <a href="/2019/09/14/Bootstrap/" class="has-link-black-ter is-size-6">Bootstrap</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/11/通用-Mapper/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="通用 Mapper">
+                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&amp;fm=11&amp;gp=0.jpg" alt="通用 Mapper">
                 </p>
             </a>
             
@@ -514,44 +566,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T02:42:40.000Z">2019-09-10</time></div>
                     <a href="/2019/09/10/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/08/SSM-整合/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567922795170&amp;di=82e7390d098b05ce346d4f4ad79593b3&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D3603680830%2C2752111433%26fm%3D214%26gp%3D0.jpg" alt="SSM 整合">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T03:12:29.000Z">2019-09-08</time></div>
-                    <a href="/2019/09/08/SSM-整合/" class="has-link-black-ter is-size-6">SSM 整合</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/07/Java-锁的种类及辨析/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567835839339&amp;di=f757513bf57ef0573ff630f0d1244089&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F04%2F20180804161455_HkifW.jpeg" alt="Java 锁的种类及辨析">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T01:54:57.000Z">2019-09-07</time></div>
-                    <a href="/2019/09/07/Java-锁的种类及辨析/" class="has-link-black-ter is-size-6">Java 锁的种类及辨析</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -618,7 +632,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
     </div>
 </div>
 
@@ -637,7 +651,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
@@ -706,9 +720,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/JS/">
+                        <span class="tag">JS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">20</span>
+                        <span class="tag is-grey">22</span>
                     </a>
                 </div>
                 
@@ -769,6 +790,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/前端/">
+                        <span class="tag">前端</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/命令/">
                         <span class="tag">命令</span>
                         <span class="tag is-grey">1</span>
@@ -778,7 +806,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
