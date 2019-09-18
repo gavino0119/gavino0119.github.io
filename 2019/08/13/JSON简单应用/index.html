@@ -8,15 +8,18 @@
 
 
 
-    <meta property="og:type" content="article">
+    <meta name="description" content="json(javaScript Object Notation) 是一个轻量级的数据交换格式JSON官网中文网站">
+<meta property="og:type" content="article">
 <meta property="og:title" content="JSON简单应用">
 <meta property="og:url" content="https://gavino0119.github.io/2019/08/13/JSON简单应用/index.html">
 <meta property="og:site_name" content="Gavino">
+<meta property="og:description" content="json(javaScript Object Notation) 是一个轻量级的数据交换格式JSON官网中文网站">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIyfxvod6QCB_y5o18rQEDZuTk2THBcr0qL7-NhIdq9uPr1l0tvg">
-<meta property="og:updated_time" content="2019-08-23T09:14:39.915Z">
+<meta property="og:updated_time" content="2019-09-18T07:03:20.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSON简单应用">
+<meta name="twitter:description" content="json(javaScript Object Notation) 是一个轻量级的数据交换格式JSON官网中文网站">
 <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIyfxvod6QCB_y5o18rQEDZuTk2THBcr0qL7-NhIdq9uPr1l0tvg">
 
 
@@ -109,7 +112,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 1 个字)
+                    3 分钟 读完 (大约 392 个字)
                 </span>
                 
                 
@@ -122,7 +125,52 @@
             
         </h1>
         <div class="content">
-            <a id="more"></a>
+            <p>json(javaScript Object Notation) 是一个轻量级的数据交换格式<br><a href="http://www.json.org" target="_blank" rel="noopener">JSON官网</a><br><a href="http://www.json.org.cn" target="_blank" rel="noopener">中文网站</a></p>
+<a id="more"></a>
+<h2 id="格式-要么对象，要么数组"><a href="#格式-要么对象，要么数组" class="headerlink" title="格式: 要么对象，要么数组"></a><strong>格式:</strong> 要么对象，要么数组</h2><blockquote>
+<p>熟悉json数据格式<br>用{}代表对象<br>用[]代表数组<br>使用名/值的方式定义,名和值之间用 : 间隔<br>名称需要使用””引起来<br>多对定义之间使用 , 间隔了多少个月<br>字符串的属性值用 “” 引起来</p>
+</blockquote>
+<p>a.用键值对表达数据<br>b.{键值对,键值对,键值对…}  json对象<br>c.[{}…,[]…]  json数组<br>d.json数据中可以包含 json数据,json数组,数字,字符串,布尔<br>e.json对象和json数组可以做合理的嵌套 </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var jsonObj=&#123;&quot;name&quot;:&quot;张三&quot;,&quot;age&quot;:30,&quot;address&quot;:&quot;北京&quot;&#125;;</span><br><span class="line">alert(jsonObj.name);</span><br><span class="line">alert(jsonObj.age);</span><br><span class="line">alert(jsonObj.address);</span><br></pre></td></tr></table></figure>
+
+<h3 id="json-对象"><a href="#json-对象" class="headerlink" title="json 对象"></a><strong>json 对象</strong></h3><p>{ whitespace }<br>{ “” : value , “” : value}<br>{} 也是一个 json 对象</p>
+<h3 id="json-数组"><a href="#json-数组" class="headerlink" title="json 数组"></a><strong>json 数组</strong></h3><p>必须以 [ 和 ] 开头和结尾</p>
+<p>[value,value,…]</p>
+<p>[“string”,30,]</p>
+<p>value</p>
+<blockquote>
+<p>value 可以为任意</p>
+</blockquote>
+<p>string</p>
+<blockquote>
+</blockquote>
+<p>number</p>
+<blockquote>
+</blockquote>
+<p>whitespace</p>
+<blockquote>
+</blockquote>
+<h2 id="java对象和json数据的相互转换"><a href="#java对象和json数据的相互转换" class="headerlink" title="java对象和json数据的相互转换:"></a><strong>java对象和json数据的相互转换:</strong></h2><h2 id="javascript中的json对象和json字符串相互转换"><a href="#javascript中的json对象和json字符串相互转换" class="headerlink" title="javascript中的json对象和json字符串相互转换"></a><strong>javascript中的json对象和json字符串相互转换</strong></h2><p> 即,如何用js操作json数据</p>
+<p>json 对象 可直接操作<br>json 字符串</p>
+<ol>
+<li><p>JSON对象转化为JSON字符串</p>
+<ul>
+<li>JSON.stringify()<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//json对象--&gt;json字符串</span><br><span class="line">function fun()&#123;</span><br><span class="line">	var obj=&#123;&quot;name&quot;:&quot;zhangsan&quot;,&quot;age&quot;:20&#125;;</span><br><span class="line">	var str=JSON.stringify(obj);</span><br><span class="line">	alert(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>JSON字符串转化为JSON对象</p>
+<ul>
+<li><p>使用eval()函数进行转换</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//eval函数方式转换(不推荐)</span><br><span class="line">function fun()&#123;</span><br><span class="line">	//这个str不是json数据,是一个json的字符串</span><br><span class="line">	var str=&apos;&#123;&quot;name&quot;:&quot;zhagnsan&quot;,&quot;age&quot;:20&#125;&apos;;</span><br><span class="line">	var obj=eval(&quot;(&quot;+str+&quot;)&quot;);</span><br><span class="line">	alert(obj.name);			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用JSON.parse()方法进行转换</p>
+</li>
+<li><p>使用jQuery进行转换</p>
+</li>
+</ul>
+</li>
+</ol>
 
             
 <div style="padding: 15px;
