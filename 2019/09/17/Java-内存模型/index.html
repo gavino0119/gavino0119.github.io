@@ -17,7 +17,7 @@
 <meta property="og:description" content="cpu 多核并发缓存架构">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568735765594&di=abf4ab20962c4d55737c026082f9fa9d&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg">
-<meta property="og:updated_time" content="2019-09-17T14:00:25.670Z">
+<meta property="og:updated_time" content="2019-09-18T13:52:39.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 内存模型">
 <meta name="twitter:description" content="cpu 多核并发缓存架构">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 476 个字)
+                    4 分钟 读完 (大约 636 个字)
                 </span>
                 
                 
@@ -154,6 +154,11 @@
 <blockquote>
 <p>1、每个线程从主内存中读出数据(共享变量)<br>2、然后载入到各自相应的工作内存<br>3、线程从工作内存读取数据(共享变量副本)开始使用, 在使用过程中，某些线程有可能会进行赋值操作(即改变工作内存中的数据),这时会导致线程间的数据不再一致<br>4、当执行store 操作后，会将工作内存数据写入主内存<br>5、然后将 store 过去的变量值赋值给主内存中的变量，由于某些线程改变了工作内存中的数据，所以在写入主内存后，会对主内存中的变量值进行修改, 而其他一些线程的值却从未改变</p>
 </blockquote>
+<p>总线加锁(性能太低)</p>
+<p>MESI 缓存一致性协议<br>cpu 总线嗅探机制(监听)</p>
+<h2 id="Volatile-可见性底层实现原理"><a href="#Volatile-可见性底层实现原理" class="headerlink" title="Volatile 可见性底层实现原理"></a>Volatile 可见性底层实现原理</h2><ul>
+<li>Volatile 缓存可见性实现原理<br>底层实现主要是通过汇编 lock 前缀指令, 它会锁定这块内存区域的缓存并回写到主内存, 此操作被称为”缓存锁定”, MESI 缓存一致性协议机制会阻止同时修改被两个以上处理器缓存的内存区域数据。一个处理器的缓存值通过总线回写到内存会导致其它处理器相应的缓存失效。</li>
+</ul>
 <p>原子操作</p>
 
             
