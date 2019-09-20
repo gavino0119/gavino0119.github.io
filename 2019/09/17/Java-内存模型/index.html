@@ -17,7 +17,7 @@
 <meta property="og:description" content="cpu 多核并发缓存架构">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568735765594&di=abf4ab20962c4d55737c026082f9fa9d&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg">
-<meta property="og:updated_time" content="2019-09-18T13:52:39.495Z">
+<meta property="og:updated_time" content="2019-09-20T12:09:35.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 内存模型">
 <meta name="twitter:description" content="cpu 多核并发缓存架构">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 636 个字)
+                    9 分钟 读完 (大约 1391 个字)
                 </span>
                 
                 
@@ -150,16 +150,32 @@
 <li>lock(锁定): 将主内存变量加锁, 标识为线程独占状态</li>
 <li>unlock(解锁): 将主内存变量解锁, 解锁后其他线程可以锁定该变量</li>
 </ul>
-<p>Java 内存模型执行流程(不加v关键字)：</p>
+<p>Java 内存模型执行流程(不加Volatile关键字)：</p>
 <blockquote>
-<p>1、每个线程从主内存中读出数据(共享变量)<br>2、然后载入到各自相应的工作内存<br>3、线程从工作内存读取数据(共享变量副本)开始使用, 在使用过程中，某些线程有可能会进行赋值操作(即改变工作内存中的数据),这时会导致线程间的数据不再一致<br>4、当执行store 操作后，会将工作内存数据写入主内存<br>5、然后将 store 过去的变量值赋值给主内存中的变量，由于某些线程改变了工作内存中的数据，所以在写入主内存后，会对主内存中的变量值进行修改, 而其他一些线程的值却从未改变</p>
+<p>1、每个cpu从主内存中读出数据(共享变量)<br>2、然后载入到各自相应的工作内存<br>3、线程从工作内存读取数据(共享变量副本)开始使用, 在使用过程中，某些线程有可能会进行赋值操作(即改变工作内存中的数据),这时会导致线程间的数据不再一致<br>4、当执行store 操作后，会将工作内存数据写入主内存<br>5、然后将 store 过去的变量值赋值给主内存中的变量，由于某些线程改变了工作内存中的数据，所以在写入主内存后，会对主内存中的变量值进行修改, 而其他一些线程的值却从未改变</p>
 </blockquote>
-<p>总线加锁(性能太低)</p>
-<p>MESI 缓存一致性协议<br>cpu 总线嗅探机制(监听)</p>
+<h2 id="JMM-缓存不一致问题"><a href="#JMM-缓存不一致问题" class="headerlink" title="JMM 缓存不一致问题"></a>JMM 缓存不一致问题</h2><p>早期为了解决缓存不一致问题， cpu 设计者通过<strong>总线加锁</strong>的方式进行解决。</p>
+<ul>
+<li><p>总线加锁(性能太低)</p>
+<blockquote>
+<p>比如，第一个线程t1先执行，在 read 操作之前对主存进行lock操作，即在总线级别对主内存加一把锁，此时如果还有其他的cpu线程也要访问主存变量，通过总线read数据时,该数据已经被加了锁，那就只能等t1把锁释放之后，其它线程才能读取该数据。而该锁会一直到t1执行完write操作，将数据同步回主内存时才会在总线上释放掉。<br>显然，这种方式几乎变成了串行执行，大大降低了性能，根本没有利用多核cpu提高性能的优势。</p>
+</blockquote>
+</li>
+<li><p>MESI 缓存一致性协议<br>cpu 总线嗅探机制(监听)</p>
+<blockquote>
+<p>数据在回写到主内存的过程中，会通过总线，其它 cpu 通过 cpu 的总线嗅探机制对总线进行嗅探(监听)，一旦嗅探到自己工作内存拥有的变量，这些 cpu 会马上把自己工作内存中的该变量失效掉，若要使用该变量，需得重新到主内存中读取，(注意，这里数据在写入到主内存之前的 store 阶段就对该数据进行lock加锁(缓存行锁)，直到真正写入到主内存后unlock,使得锁粒度大大减小)，使得其他 cpu 在将变量失效后可以在主内存中读取最新的值，Volatile 的底层实现基本就是利用这样一种机制。</p>
+</blockquote>
+</li>
+</ul>
 <h2 id="Volatile-可见性底层实现原理"><a href="#Volatile-可见性底层实现原理" class="headerlink" title="Volatile 可见性底层实现原理"></a>Volatile 可见性底层实现原理</h2><ul>
 <li>Volatile 缓存可见性实现原理<br>底层实现主要是通过汇编 lock 前缀指令, 它会锁定这块内存区域的缓存并回写到主内存, 此操作被称为”缓存锁定”, MESI 缓存一致性协议机制会阻止同时修改被两个以上处理器缓存的内存区域数据。一个处理器的缓存值通过总线回写到内存会导致其它处理器相应的缓存失效。</li>
 </ul>
-<p>原子操作</p>
+<h2 id="可见性、原子性与有序性"><a href="#可见性、原子性与有序性" class="headerlink" title="可见性、原子性与有序性"></a>可见性、原子性与有序性</h2><blockquote>
+<p>并发编程三大特性:<br>可见性：<br>原子性：<br>有序性：</p>
+</blockquote>
+<blockquote>
+<p><strong>Volatile保证可见性与有序性，但是不保证原子性，保证原子性则需要借助synchronized 这样的锁机制。</strong><br><strong>原因：</strong>当一个cpu的工作内存中的变量值发生改变时，其他工作内存中的该变量值并不一定马上发生改变，因为这中间还有一个回写到主内存的操作，只有回写到主内存以后，其他cpu线程才可以read操作。如下情况:在一个cpu线程(t1)对变量进行回写的过程中，还没有写入到主存，此时，另一个工作空间中线程(t2)对该变量也进行了赋值操作，也进行回写操作，但是肯定只有一个cpu可以抢先回写(假如t1线程对应的变量被先回写)，那么其他cpu会通过总线嗅探机制，对工作空间中的该变量失效，即t2线程对应的变量也会失效掉(即使它已经进行了赋值操作，其实相当于先前的赋值操作白做了)，需要重新load值。</p>
+</blockquote>
 
             
 <div style="padding: 15px;
@@ -243,6 +259,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/19/jQuery/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">jQuery</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/16/js-相关知识点总结/">
@@ -325,7 +348,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        39
+                        40
                     </p>
                 </div>
             </div>
@@ -345,7 +368,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -435,7 +458,7 @@
                 <span class="level-item">web 前端</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/剑指offer/">
@@ -505,6 +528,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/19/jQuery/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1122459309,3492688613&amp;fm=26&amp;gp=0.jpg" alt="jQuery">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-19T01:36:56.000Z">2019-09-19</time></div>
+                    <a href="/2019/09/19/jQuery/" class="has-link-black-ter is-size-6">jQuery</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -582,25 +624,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/10/Dubbo-学习归档/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3753737640,834291282&amp;fm=26&amp;gp=0.jpg" alt="Dubbo 学习归档">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T11:40:46.000Z">2019-09-10</time></div>
-                    <a href="/2019/09/10/Dubbo-学习归档/" class="has-link-black-ter is-size-6">Dubbo 学习归档</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -660,7 +683,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
     </div>
 </div>
 
@@ -679,7 +702,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -806,6 +829,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Sublime/">
                         <span class="tag">Sublime</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jQuery/">
+                        <span class="tag">jQuery</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
