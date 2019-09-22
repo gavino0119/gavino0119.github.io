@@ -16,7 +16,7 @@
 <meta property="og:description" content="面向接口编程">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://news.mydrivers.com/Img/20090817/09393557.jpg">
-<meta property="og:updated_time" content="2019-09-11T12:44:30.204Z">
+<meta property="og:updated_time" content="2019-09-21T03:48:17.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向艺术，面向接口">
 <meta name="twitter:description" content="面向接口编程">
@@ -112,7 +112,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 159 个字)
+                    2 分钟 读完 (大约 270 个字)
                 </span>
                 
                 
@@ -127,9 +127,11 @@
         <div class="content">
             <p>面向接口编程</p>
 <a id="more"></a>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用:"></a>应用:</h2><pre><code>removeIf(Predicate)
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用:"></a>应用:</h2><h3 id="从策略设计模式的角度"><a href="#从策略设计模式的角度" class="headerlink" title="从策略设计模式的角度"></a>从策略设计模式的角度</h3><pre><code>removeIf(Predicate)
 Thread(Runnable)
-方法的参数是一个接口</code></pre><h2 id="自己设计"><a href="#自己设计" class="headerlink" title="自己设计:"></a>自己设计:</h2><blockquote>
+方法的参数是一个接口</code></pre><h3 id="实例之-jdbc-的角度"><a href="#实例之-jdbc-的角度" class="headerlink" title="实例之 jdbc 的角度"></a>实例之 jdbc 的角度</h3><p>jdbc 是java跟数据库的接口<br>数据库厂商给提供 xxx.jar, 这个jar 实现了 jdbc 接口</p>
+<h3 id="实例之-xml-角度"><a href="#实例之-xml-角度" class="headerlink" title="实例之 xml 角度"></a>实例之 xml 角度</h3><h3 id="实例之-jsp-、servlet-角度"><a href="#实例之-jsp-、servlet-角度" class="headerlink" title="实例之 jsp 、servlet 角度"></a>实例之 jsp 、servlet 角度</h3><p>jsp和servlet的子实现有:<br>tomcat、jboss、weblogic、galssfish等<br>不同厂商进行不同的子实现，使得相同的项目可以在不同的服务器上跑</p>
+<h2 id="自己设计"><a href="#自己设计" class="headerlink" title="自己设计:"></a>自己设计:</h2><blockquote>
 <p>以在jdbc 操作数据库，写查询<br>CommonDao.executeQuery(RowMapper,String,Object…);</p>
 </blockquote>
 <p>总结：</p>
@@ -140,7 +142,7 @@ Thread(Runnable)
 <li>在主方法中调用接口方法，方法的返回值跟接口的策略子实现有关系(核心)</li>
 </ol>
 </blockquote>
-<p>复用性强<br>扩展性强(每一个子实现 、策略都是扩展)<br>维护性强</p>
+<p>复用性强、移植性<br>扩展性强(每一个子实现 、策略都是扩展)<br>维护性强</p>
 
             
 <div style="padding: 15px;
@@ -304,7 +306,7 @@ Thread(Runnable)
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        41
                     </p>
                 </div>
             </div>
@@ -487,6 +489,25 @@ Thread(Runnable)
         
         <article class="media">
             
+            <a href="/2019/09/21/xx-商城项目总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="xx 商城项目总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T06:46:18.000Z">2019-09-21</time></div>
+                    <a href="/2019/09/21/xx-商城项目总结/" class="has-link-black-ter is-size-6">xx 商城项目总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/19/jQuery/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1122459309,3492688613&amp;fm=26&amp;gp=0.jpg" alt="jQuery">
@@ -556,25 +577,6 @@ Thread(Runnable)
                     <a href="/2019/09/14/Bootstrap/" class="has-link-black-ter is-size-6">Bootstrap</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/11/通用-Mapper/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&amp;fm=11&amp;gp=0.jpg" alt="通用 Mapper">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T11:58:19.000Z">2019-09-11</time></div>
-                    <a href="/2019/09/11/通用-Mapper/" class="has-link-black-ter is-size-6">通用 Mapper</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
                     </p>
                 </div>
             </div>
@@ -658,7 +660,7 @@ Thread(Runnable)
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">14</span>
+                    <span class="level-item tag">15</span>
                 </span>
             </a>
         </li>

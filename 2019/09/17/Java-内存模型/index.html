@@ -8,19 +8,19 @@
 
 
 
-    <meta name="description" content="cpu 多核并发缓存架构">
+    <meta name="description" content="cpu 多核并发缓存架构空间局部性原则">
 <meta name="keywords" content="Java,JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 内存模型">
 <meta property="og:url" content="https://gavino0119.github.io/2019/09/17/Java-内存模型/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="cpu 多核并发缓存架构">
+<meta property="og:description" content="cpu 多核并发缓存架构空间局部性原则">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568735765594&di=abf4ab20962c4d55737c026082f9fa9d&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg">
-<meta property="og:updated_time" content="2019-09-20T12:09:35.777Z">
+<meta property="og:updated_time" content="2019-09-20T13:15:29.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 内存模型">
-<meta name="twitter:description" content="cpu 多核并发缓存架构">
+<meta name="twitter:description" content="cpu 多核并发缓存架构空间局部性原则">
 <meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568735765594&di=abf4ab20962c4d55737c026082f9fa9d&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg">
 
 
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1391 个字)
+                    10 分钟 读完 (大约 1427 个字)
                 </span>
                 
                 
@@ -130,7 +130,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="cpu-多核并发缓存架构"><a href="#cpu-多核并发缓存架构" class="headerlink" title="cpu 多核并发缓存架构"></a>cpu 多核并发缓存架构</h2><a id="more"></a>
+            <h2 id="cpu-多核并发缓存架构"><a href="#cpu-多核并发缓存架构" class="headerlink" title="cpu 多核并发缓存架构"></a>cpu 多核并发缓存架构</h2><p>空间局部性原则</p>
+<a id="more"></a>
 
 <h2 id="Java-内存模型-JMM"><a href="#Java-内存模型-JMM" class="headerlink" title="Java 内存模型 JMM"></a>Java 内存模型 JMM</h2><blockquote>
 <p>Java 线程内存模型跟cpu 缓存模型类似, 是基于 cpu 缓存模型来建立的, Java 线程内存模型是标准化的, 屏蔽掉了底层不同计算机的区别。</p>
@@ -171,7 +172,7 @@
 <li>Volatile 缓存可见性实现原理<br>底层实现主要是通过汇编 lock 前缀指令, 它会锁定这块内存区域的缓存并回写到主内存, 此操作被称为”缓存锁定”, MESI 缓存一致性协议机制会阻止同时修改被两个以上处理器缓存的内存区域数据。一个处理器的缓存值通过总线回写到内存会导致其它处理器相应的缓存失效。</li>
 </ul>
 <h2 id="可见性、原子性与有序性"><a href="#可见性、原子性与有序性" class="headerlink" title="可见性、原子性与有序性"></a>可见性、原子性与有序性</h2><blockquote>
-<p>并发编程三大特性:<br>可见性：<br>原子性：<br>有序性：</p>
+<p>并发编程三大特性:<br>可见性：<br>原子性：<br>有序性：<br>volatile关键字能禁止指令重排序，所以volatile能在一定程度上保证有序性。</p>
 </blockquote>
 <blockquote>
 <p><strong>Volatile保证可见性与有序性，但是不保证原子性，保证原子性则需要借助synchronized 这样的锁机制。</strong><br><strong>原因：</strong>当一个cpu的工作内存中的变量值发生改变时，其他工作内存中的该变量值并不一定马上发生改变，因为这中间还有一个回写到主内存的操作，只有回写到主内存以后，其他cpu线程才可以read操作。如下情况:在一个cpu线程(t1)对变量进行回写的过程中，还没有写入到主存，此时，另一个工作空间中线程(t2)对该变量也进行了赋值操作，也进行回写操作，但是肯定只有一个cpu可以抢先回写(假如t1线程对应的变量被先回写)，那么其他cpu会通过总线嗅探机制，对工作空间中的该变量失效，即t2线程对应的变量也会失效掉(即使它已经进行了赋值操作，其实相当于先前的赋值操作白做了)，需要重新load值。</p>
@@ -348,7 +349,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        41
                     </p>
                 </div>
             </div>
@@ -531,6 +532,25 @@
         
         <article class="media">
             
+            <a href="/2019/09/21/xx-商城项目总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="xx 商城项目总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T06:46:18.000Z">2019-09-21</time></div>
+                    <a href="/2019/09/21/xx-商城项目总结/" class="has-link-black-ter is-size-6">xx 商城项目总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/19/jQuery/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1122459309,3492688613&amp;fm=26&amp;gp=0.jpg" alt="jQuery">
@@ -600,25 +620,6 @@
                     <a href="/2019/09/14/Bootstrap/" class="has-link-black-ter is-size-6">Bootstrap</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/11/通用-Mapper/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&amp;fm=11&amp;gp=0.jpg" alt="通用 Mapper">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T11:58:19.000Z">2019-09-11</time></div>
-                    <a href="/2019/09/11/通用-Mapper/" class="has-link-black-ter is-size-6">通用 Mapper</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
                     </p>
                 </div>
             </div>
@@ -702,7 +703,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">14</span>
+                    <span class="level-item tag">15</span>
                 </span>
             </a>
         </li>
