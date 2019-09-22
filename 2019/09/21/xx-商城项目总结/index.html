@@ -16,7 +16,7 @@
 <meta property="og:description" content="基于 ssm ,环境工具 IntelliJ IDEA">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gavino0119.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-21T11:45:25.390Z">
+<meta property="og:updated_time" content="2019-09-22T12:42:51.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xx 商城项目总结">
 <meta name="twitter:description" content="基于 ssm ,环境工具 IntelliJ IDEA">
@@ -106,7 +106,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 828 个字)
+                    8 分钟 读完 (大约 1159 个字)
                 </span>
                 
                 
@@ -156,19 +156,32 @@
 <blockquote>
 <p>至此，项目的框架搭建完毕</p>
 </blockquote>
-<h2 id="五、模块实现"><a href="#五、模块实现" class="headerlink" title="五、模块实现"></a>五、模块实现</h2><h3 id="商品管理"><a href="#商品管理" class="headerlink" title="*商品管理"></a>*商品管理</h3><p>(一) 品牌管理后端</p>
+<h2 id="五、模块实现"><a href="#五、模块实现" class="headerlink" title="五、模块实现"></a>五、模块实现</h2><h3 id="———-商品管理模块-———"><a href="#———-商品管理模块-———" class="headerlink" title="-——— 商品管理模块 -———"></a>-——— 商品管理模块 -———</h3><p>(一) 品牌管理后端</p>
 <ol>
-<li>需求分析: 实现对品牌的基本操作(增删改查)</li>
-<li>表结构分析</li>
-<li>代码实现<ol>
+<li><strong>需求分析:</strong><br>实现对品牌的基本操作(增删改查)</li>
+<li><strong>表结构分析</strong></li>
+<li><strong>代码实现</strong><ol>
 <li>创建实体类<br>在 pojo 工程下创建实体类<br>分别用 @Table(在类上) 和 @Id(在属性id上) 标签标明数据库表和对应的主键</li>
 <li>在服务层模块下创建数据访问层<br>创建一个dao接口，并且该接口继承 Mapper&lt;&gt; ,其泛型为对应的实体类 </li>
 <li>做服务接口<br>在业务接口的公共模块下写品牌的 service 接口</li>
 <li>在服务层模块下写 service 接口的实现类<br>调用数据访问层<br>在类上添加 @Service 注解 (注意添加 dubbo下的@Service注解)<br>import com.alibaba.dubbo.config.annotation.Service;</li>
 <li>写 web 层来调用服务层的方法<br>在 web 层模块下新建一个 controller 控制器的类<br>在类上添加 @RestController 和 @RequestMapping(“/brand”)两个注解<br>(@Controller和@RestController的区别？)</li>
+<li>测试<br> 1.启动 zookeeper 服务 (<a href="https://gavino0119.github.io/2019/09/10/Dubbo-%E5%AD%A6%E4%B9%A0%E5%BD%92%E6%A1%A3/">zookeeper相关使用参照此处</a>)<ol start="2">
+<li>由于前面修改了公共接口模块和公共实体类模块这两个工程，所以需要安装这两个工程(注意公共模块发生变化时都要进行安装一下)<br>在IDEA右侧 Maven Projects 下分别点开以上两个工程的 Lifecycle, 选择 install 双击执行即可</li>
+<li>运行程序<br>首先运行服务层<br>点开 Plugins 双击 tomcat 下的 run 即可<br>然后运行 web 层<br>点开 Plugins 双击 tomcat 下的 run 即可</li>
+<li>观察测试结果<br>在浏览器中输入<a href="http://localhost:9101/brand/findAll.do" target="_blank" rel="noopener">http://localhost:9101/brand/findAll.do</a></li>
 </ol>
 </li>
 </ol>
+</li>
+<li><strong>踩过的坑</strong><br>当启动 tomcat 时，（一般都是重新执行 install 安装过的服务层公共模块工程）在启动过程中会报类似如下错误:<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line">[ERROR] COMPILATION ERROR :</span><br><span class="line">[INFO] ------------------------------------------------------</span><br><span class="line">[ERROR] /E:IdeaProjects/pro......[4,32] 程序包 tk.mybatis.mapper.common不存在</span><br><span class="line">[ERROR] /E:IdeaProjects/pro......[11,39] 找不到符号 符号: 类 Mapper</span><br><span class="line">[ERROR] /E:IdeaProjects/pro......[3,43] 程序包com.alibaba.dubbo.config.annotation不存在</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><strong>解决方法:</strong><br>在对子模块进行 clean 和install 前先对父工程进行clean 和install操作。</p>
+<blockquote>
+<p>总结: 在父项目下有的子项目在首次运行clean 和install前应该先运行父项目的clean和install</p>
+</blockquote>
 
             
 <div style="padding: 15px;
