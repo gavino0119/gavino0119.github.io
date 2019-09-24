@@ -8,19 +8,19 @@
 
 
 
-    <meta name="description" content="PageHelper 介绍PageHelper是国内非常优秀的一款开源的mybatis分页插件，它支持基本主流与常用的数据库，例如mysql、oracle、mariaDB、DB2、SQLite、Hsqldb等。">
+    <meta name="description" content="声明：所有图片来源于网络 PageHelper 介绍PageHelper是国内非常优秀的一款开源的mybatis分页插件，它支持基本主流与常用的数据库，例如mysql、oracle、mariaDB、DB2、SQLite、Hsqldb等。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PageHelper 笔记总结">
 <meta property="og:url" content="https://gavino0119.github.io/2019/09/23/PageHelper-笔记总结/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="PageHelper 介绍PageHelper是国内非常优秀的一款开源的mybatis分页插件，它支持基本主流与常用的数据库，例如mysql、oracle、mariaDB、DB2、SQLite、Hsqldb等。">
+<meta property="og:description" content="声明：所有图片来源于网络 PageHelper 介绍PageHelper是国内非常优秀的一款开源的mybatis分页插件，它支持基本主流与常用的数据库，例如mysql、oracle、mariaDB、DB2、SQLite、Hsqldb等。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gavino0119.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-24T00:15:55.288Z">
+<meta property="og:image" content="http://www.younengli.cn/wp-content/uploads/2019/07/beepress1-1561972963.jpeg">
+<meta property="og:updated_time" content="2019-09-24T03:23:25.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PageHelper 笔记总结">
-<meta name="twitter:description" content="PageHelper 介绍PageHelper是国内非常优秀的一款开源的mybatis分页插件，它支持基本主流与常用的数据库，例如mysql、oracle、mariaDB、DB2、SQLite、Hsqldb等。">
-<meta name="twitter:image" content="https://gavino0119.github.io/images/og_image.png">
+<meta name="twitter:description" content="声明：所有图片来源于网络 PageHelper 介绍PageHelper是国内非常优秀的一款开源的mybatis分页插件，它支持基本主流与常用的数据库，例如mysql、oracle、mariaDB、DB2、SQLite、Hsqldb等。">
+<meta name="twitter:image" content="http://www.younengli.cn/wp-content/uploads/2019/07/beepress1-1561972963.jpeg">
 
 
 
@@ -96,6 +96,12 @@
                 <!-- 将main_column_class() 改为 col() -->
                 <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="http://www.younengli.cn/wp-content/uploads/2019/07/beepress1-1561972963.jpeg" alt="PageHelper 笔记总结">
+        </span>
+    </div>
+    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -106,7 +112,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 835 个字)
+                    6 分钟 读完 (大约 847 个字)
                 </span>
                 
                 
@@ -119,14 +125,14 @@
             
         </h1>
         <div class="content">
-            <h2 id="PageHelper-介绍"><a href="#PageHelper-介绍" class="headerlink" title="PageHelper 介绍"></a>PageHelper 介绍</h2><p>PageHelper是国内非常优秀的一款开源的mybatis分页插件，它支持基本主流与常用的数据库，例如mysql、<br>oracle、mariaDB、DB2、SQLite、Hsqldb等。</p>
+            <p><strong>声明：所有图片来源于网络</strong></p>
+<h2 id="PageHelper-介绍"><a href="#PageHelper-介绍" class="headerlink" title="PageHelper 介绍"></a>PageHelper 介绍</h2><p>PageHelper是国内非常优秀的一款开源的mybatis分页插件，它支持基本主流与常用的数据库，例如mysql、<br>oracle、mariaDB、DB2、SQLite、Hsqldb等。</p>
 <a id="more"></a>
 
 <p>依赖</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;pagehelper&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;最新版本&lt;/version&gt; </span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
-<p>##分页插件参数介绍</p>
-<ol>
+<h2 id="分页插件参数介绍"><a href="#分页插件参数介绍" class="headerlink" title="分页插件参数介绍"></a>分页插件参数介绍</h2><ol>
 <li>helperDialect ：分页插件会自动检测当前的数据库链接，自动选择合适的分页方式。 你可以配置<br>helperDialect 属性来指定分页插件使用哪种方言。配置时，可以使用下面的缩写值：<br>oracle , mysql , mariadb , sqlite , hsqldb , postgresql , db2 , sqlserver , informix , h2 , sqlserver201 2 , derby<br>特别注意：使用 SqlServer2012 数据库时，需要手动指定为 sqlserver2012 ，否则会使用 SqlServer2005 的<br>方式进行分页。<br>你也可以实现 AbstractHelperDialect ，然后配置该属性为实现类的全限定名称即可使用自定义的实现方<br>法。</li>
 <li>offsetAsPageNum ：默认值为 false ，该参数对使用 RowBounds 作为分页参数时有效。 当该参数设置为<br>true 时，会将 RowBounds 中的 offset 参数当成 pageNum 使用，可以用页码和页面大小两个参数进行分<br>页。</li>
 <li>rowBoundsWithCount ：默认值为 false ，该参数对使用 RowBounds 作为分页参数时有效。 当该参数设置<br>为 true 时，使用 RowBounds 分页会进行 count 查询。</li>
@@ -207,6 +213,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/24/ES6/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">ES6</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -290,7 +303,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        42
+                        43
                     </p>
                 </div>
             </div>
@@ -310,7 +323,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        24
                     </p>
                 </div>
             </div>
@@ -400,7 +413,7 @@
                 <span class="level-item">web 前端</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/剑指offer/">
@@ -473,9 +486,28 @@
         
         <article class="media">
             
+            <a href="/2019/09/24/ES6/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1569303403855&amp;di=003a209b8972c2a1dcc9cc9b60ccce8e&amp;imgtype=0&amp;src=http%3A%2F%2Ftangjiusheng.com%2Fd%2Ffile%2Fimage%2F20180607%2F1528379661131048.jpg" alt="ES6">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-24T02:10:15.000Z">2019-09-24</time></div>
+                    <a href="/2019/09/24/ES6/" class="has-link-black-ter is-size-6">ES6</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/23/PageHelper-笔记总结/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PageHelper 笔记总结">
+                    <img class="thumbnail" src="http://www.younengli.cn/wp-content/uploads/2019/07/beepress1-1561972963.jpeg" alt="PageHelper 笔记总结">
                 </p>
             </a>
             
@@ -547,25 +579,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/16/js-相关知识点总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&amp;fm=26&amp;gp=0.jpg" alt="js 相关知识点总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:42:00.000Z">2019-09-16</time></div>
-                    <a href="/2019/09/16/js-相关知识点总结/" class="has-link-black-ter is-size-6">js 相关知识点总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -615,7 +628,7 @@
 
     
     
-        <div class="column-right-shadow is-hidden-widescreen ">
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
         
             
         
@@ -625,7 +638,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Dubbo/" style="font-size: 10px;">Dubbo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 12px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Dubbo/" style="font-size: 10px;">Dubbo</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 12px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
     </div>
 </div>
 
@@ -644,7 +657,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">16</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -706,6 +719,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/ES6/">
+                        <span class="tag">ES6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/IDEA/">
                         <span class="tag">IDEA</span>
                         <span class="tag is-grey">1</span>
@@ -736,7 +756,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">24</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 

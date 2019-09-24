@@ -3,30 +3,31 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>lambda表达式 - Gavino</title>
+<title>ES6 - Gavino</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="其实lambda表达式的本质是接口的子实现lambda表达式简化了匿名内部类的写法lambda表达式另一个叫法,函数式编程">
+    <meta name="description" content="声明：所有图片来源于网络 ES6 简介 编程语言JavaScript是ECMAScript的实现和扩展 。ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。">
+<meta name="keywords" content="Java,ES6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lambda表达式">
-<meta property="og:url" content="https://gavino0119.github.io/2019/09/02/lambda表达式/index.html">
+<meta property="og:title" content="ES6">
+<meta property="og:url" content="https://gavino0119.github.io/2019/09/24/ES6/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="其实lambda表达式的本质是接口的子实现lambda表达式简化了匿名内部类的写法lambda表达式另一个叫法,函数式编程">
+<meta property="og:description" content="声明：所有图片来源于网络 ES6 简介 编程语言JavaScript是ECMAScript的实现和扩展 。ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=717955112,942718752&fm=11&gp=0.jpg">
-<meta property="og:updated_time" content="2019-09-10T08:35:57.134Z">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569303403855&di=003a209b8972c2a1dcc9cc9b60ccce8e&imgtype=0&src=http%3A%2F%2Ftangjiusheng.com%2Fd%2Ffile%2Fimage%2F20180607%2F1528379661131048.jpg">
+<meta property="og:updated_time" content="2019-09-24T03:24:34.241Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lambda表达式">
-<meta name="twitter:description" content="其实lambda表达式的本质是接口的子实现lambda表达式简化了匿名内部类的写法lambda表达式另一个叫法,函数式编程">
-<meta name="twitter:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=717955112,942718752&fm=11&gp=0.jpg">
+<meta name="twitter:title" content="ES6">
+<meta name="twitter:description" content="声明：所有图片来源于网络 ES6 简介 编程语言JavaScript是ECMAScript的实现和扩展 。ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569303403855&di=003a209b8972c2a1dcc9cc9b60ccce8e&imgtype=0&src=http%3A%2F%2Ftangjiusheng.com%2Fd%2Ffile%2Fimage%2F20180607%2F1528379661131048.jpg">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="lambda表达式" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="ES6" type="application/atom+xml">
 
 
 
@@ -48,7 +49,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="lambda表达式" height="28">
+                <img src="/images/logo.png" alt="ES6" height="28">
             
             </a>
         </div>
@@ -98,7 +99,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=717955112,942718752&amp;fm=11&amp;gp=0.jpg" alt="lambda表达式">
+            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1569303403855&amp;di=003a209b8972c2a1dcc9cc9b60ccce8e&amp;imgtype=0&amp;src=http%3A%2F%2Ftangjiusheng.com%2Fd%2Ffile%2Fimage%2F20180607%2F1528379661131048.jpg" alt="ES6">
         </span>
     </div>
     
@@ -106,13 +107,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-02T10:16:33.000Z">2019-09-02</time>
+                <time class="level-item has-text-grey" datetime="2019-09-24T02:10:15.000Z">2019-09-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1515 个字)
+                    5 分钟 读完 (大约 725 个字)
                 </span>
                 
                 
@@ -121,73 +126,70 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                lambda表达式
+                ES6
             
         </h1>
         <div class="content">
-            <p>其实lambda表达式的本质是接口的子实现<br>lambda表达式简化了匿名内部类的写法<br>lambda表达式另一个叫法,函数式编程</p>
+            <p><strong>声明：所有图片来源于网络</strong></p>
+<h2 id="ES6-简介"><a href="#ES6-简介" class="headerlink" title="ES6 简介"></a>ES6 简介</h2><blockquote>
+<p>编程语言JavaScript是ECMAScript的实现和扩展 。ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。</p>
+</blockquote>
 <a id="more"></a>
-<h2 id="1-lambda表达式"><a href="#1-lambda表达式" class="headerlink" title="1.lambda表达式:"></a>1.lambda表达式:</h2><p>  lambda表达式可以称之为闭包,他是java8中的一个非常重要的特性<br>  很多java8新特性的写法都会用到lambda表达式<br>  lambda表达式允许函数作为一个方法的参数,函数作为参数传递到方法中,这样代码就会变得简洁</p>
-<p>  语法:</p>
-<blockquote>
-<p>lambda 操作符 -&gt;<br> -&gt; 左侧： 是 lambda 表达式的参数列表(接口中抽象方法的参数列表)<br> -&gt; 右侧： 是 lambda 表达式中所需执行的功能，即 lambda 体(接口中抽象方法实现的功能)</p>
-</blockquote>
-  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(parameters)-&gt;expression表达式</span><br><span class="line">或</span><br><span class="line">(parameters)-&gt;&#123;statement代码块;&#125;</span><br></pre></td></tr></table></figure>
 
-<p>  说明:<br>    -可选参数声明:不需要声明参数类型,编译器统一识别参数值<br>    -可选参数圆括号:只有一个参数无需定义圆括号,多个参数需要定义圆括号<br>    -可选大括号:如果主体包含了一个语句,就不需要使用大括号，return 也可省<br>    -可选返回关键字:如果主体只有一个表达式返回值,则编译器<br>       会自动返回值,大括号需要指定返回了一个数据值</p>
+<h2 id="常用语法新特性"><a href="#常用语法新特性" class="headerlink" title="常用语法新特性"></a><strong>常用语法新特性</strong></h2><h3 id="变量声明-let"><a href="#变量声明-let" class="headerlink" title="变量声明 let"></a>变量声明 let</h3><p>我们都知道在ES6以前，var关键字声明变量。无论声明在何处，都会被视为声明在函数的最顶部(不在函数内即在全局作用域的最顶部)。这就是函数变量提升例如</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function aa() &#123;</span><br><span class="line"> if(true) &#123;</span><br><span class="line">  var test = &apos;hello man&apos; </span><br><span class="line">  &#125;</span><br><span class="line">  alert(test) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上的代码实际上是:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function aa() &#123;</span><br><span class="line"> var test; </span><br><span class="line"> if(true) &#123;</span><br><span class="line">  test = &apos;hello man&apos; </span><br><span class="line">  &#125;</span><br><span class="line">  alert(test) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>比如:<br>    //不要参数,返回值为5<br>    ()-&gt;5<br>    //接受一个参数(推断出数字类型),返回参数的2倍<br>    x-&gt;2*x<br>    //接受两个参数(推断出数字类型),返回值为参数差值<br>    (x,y)-&gt;x-y<br>    //接受两个参数,返回值为x-y<br>    (int x,int y)-&gt;x-y<br>    //接受一个参数,类型为String的参数,并输出参数的值<br>    //推断出没有返回值,相当于方法的返回值void<br>    (String str)-&gt;System.out.println(str)<br>    //接受两个参数(推断出数字类型,返回值为参数的差值)<br>    (x,y)-&gt;{return (x-y);}</p>
+<p>let 允许创建块级作用域，ES6 推荐在函数中使用 let 定义变量，而非 var：</p>
+</blockquote>
+<p>在 ES6 (块级作用域即在一个函数内部 ，在一个代码块内部),代码效果如下</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function aa() &#123; </span><br><span class="line">  if(bool) &#123; </span><br><span class="line">    let test = &apos;hello man&apos; </span><br><span class="line">  &#125; else &#123; </span><br><span class="line">    //test 在此处访问不到 </span><br><span class="line">    console.log(test) </span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常量声明"><a href="#常量声明" class="headerlink" title="常量声明"></a>常量声明</h3><blockquote>
+<p>同样在块级作用域有效的另一个变量声明方式是 const，它可以声明一个常量。</p>
+</blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const name = &apos;lux&apos; </span><br><span class="line">name = &apos;joe&apos; //再次赋值此时会报错</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>ES6 中，const 声明的常量类似于指针，它指向某个引用，也就是说这个「常量」并非一成不变的，如</p>
 </blockquote>
 <blockquote>
-<p>其实lambda表达式的本质就是接口的子实现<br>  lambda表达式简化了匿名内部类的写法<br>  lambda表达式另一个写法叫做函数式编程<br>  <strong>注意:</strong><br>    就是把接口的实现是内部类,转换成函数式写法</p>
-</blockquote>
-<p>使用lambda表达式需要注意变量的作用域问题:</p>
+<p><strong>有几个点需要注意：</strong></p>
 <ul>
-<li>lambda表达式引用外层的成员变量<br>如果外层的成员变量为final的,则在lambda内部不能修改成员变量的值<br>如果外层的成员变量不是final的,则在lambda内部能修改成员变量的值</li>
-<li>lambda表示式的局部变量可以不用声明为final,但必须不可以被后面的代码修改(即隐式的final特性)</li>
-<li>lambda表达式不允许声明一个与局部变量同名的参数或局部变量</li>
+<li>let 关键词声明的变量不具备变量提升（hoisting）特性</li>
+<li>let 和 const 声明只在最靠近的一个块中（花括号内）有效</li>
+<li>当使用常量 const 声明时，请使用大写变量，如：CAPITAL_CASING</li>
+<li>const 在声明时必须被赋值</li>
 </ul>
-<h2 id="2-方法的引用"><a href="#2-方法的引用" class="headerlink" title="2.方法的引用:"></a>2.方法的引用:</h2><p>  方法的引用方式用类名::方法名,其本质还是lambda表达式</p>
-<p>  具体的写法有四种</p>
-<blockquote>
-<p>-构造器的引用   语法Class::new<br>  -静态方法的引用 语法 Class::静态方法的名称<br>  -特定类任意的对象引用  语法 Class::非静态方法名称<br>  -特定对象的方法引用    语法 instance(实例)对象::非静态的方法的的名称</p>
 </blockquote>
-<blockquote>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt; implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable&#123;...&#125;</span><br><span class="line"></span><br><span class="line">public interface List&lt;E&gt; extends Collection&lt;E&gt; &#123;...&#125;</span><br><span class="line"></span><br><span class="line">public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="模板语法和分隔符"><a href="#模板语法和分隔符" class="headerlink" title="模板语法和分隔符"></a>模板语法和分隔符</h3><p>ES6 中有一种十分简洁的方法组装一堆字符串和变量。<br>${ … } 用来渲染一个变量<br>` 作为分隔符</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let user = &apos;Gavino&apos;;</span><br><span class="line">console.log(`Hi $&#123;user&#125;!`); // Hi Gavino!</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>在 Iterable 接口的源码中提供了方法 forEach(Consumer&lt;? super T&gt; action) ,该方法的参数为一个接口 Consumer 对象, 并且调用其 accept(t) 方法。</p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//Iterable接口的源码</span><br><span class="line">public interface Iterable&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">	......</span><br><span class="line">    default void forEach(Consumer&lt;? super T&gt; action) &#123;</span><br><span class="line">        Objects.requireNonNull(action);</span><br><span class="line">        for (T t : this) &#123;</span><br><span class="line">            action.accept(t);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>es6模板字符简直是开发者的福音啊，解决了ES5在字符串功能上的痛点。<br>第一个用途，基本的字符串格式化。将表达式嵌入字符串中进行拼接。用${}来界定。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//es5 </span><br><span class="line">var name = &apos;lux&apos; </span><br><span class="line">console.log(&apos;hello&apos; + name) </span><br><span class="line"></span><br><span class="line">//es6 </span><br><span class="line">const name = &apos;lux&apos; </span><br><span class="line">console.log(`hello $&#123;name&#125;`) //hello lux</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>在 Consumer 接口源码中，有一个 accept(T t) 方法。而且该接口用 @FunctionalInterface 修饰，是一个函数式接口</p>
-</blockquote>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//Consumer接口源码</span><br><span class="line">@FunctionalInterface</span><br><span class="line">public interface Consumer&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Performs this operation on the given argument.</span><br><span class="line">     *</span><br><span class="line">     * @param t the input argument</span><br><span class="line">     */</span><br><span class="line">    void accept(T t);</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二个用途，在ES5时我们通过反斜杠()来做多行字符串或者字符串一行行拼接。ES6反 引号(``)直接搞定。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// es5 </span><br><span class="line">var msg = &quot;Hi \ </span><br><span class="line">man!&quot; </span><br><span class="line"></span><br><span class="line">// es6 </span><br><span class="line">const template = `&lt;div&gt; </span><br><span class="line">	&lt;span&gt;hello world&lt;/span&gt; </span><br><span class="line">&lt;/div&gt;`</span><br></pre></td></tr></table></figure>
 
-<p>再结合案例代码，不难分析</p>
-<h2 id="3-函数式接口"><a href="#3-函数式接口" class="headerlink" title="3.函数式接口"></a>3.函数式接口</h2><blockquote>
-<p>lambda 表达式需要”函数式接口”的支持<br>接口中只有一个抽象方法的接口，称为函数式接口，可以使用注解 @FunctionalInterface 修饰 (保证该接口中只有一个抽象方法)，可以检查是否是函数式接口。</p>
+<h3 id="箭头函数（Arrow-Functions）"><a href="#箭头函数（Arrow-Functions）" class="headerlink" title="箭头函数（Arrow Functions）"></a>箭头函数（Arrow Functions）</h3><blockquote>
+<p>ES6 中，箭头函数就是函数的一种简写形式，使用括号包裹参数，跟随一个 =&gt;，紧接着是函数体：</p>
 </blockquote>
-<h3 id="lambda-练习"><a href="#lambda-练习" class="headerlink" title="lambda 练习"></a><strong>lambda 练习</strong></h3><ol>
-<li>调用 Collections.sort() 方法，通过定制排序比较两个 Employee (先按年龄比，年龄相同按姓名比), 使用 lambda 作为参数传递。<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package lambda;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Collections;</span><br><span class="line">/**</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">public class T_1 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		ArrayList&lt;Employee&gt; emps = new ArrayList&lt;Employee&gt;();</span><br><span class="line">		emps.add(new Employee(&quot;张三&quot;,19));</span><br><span class="line">		emps.add(new Employee(&quot;李四&quot;,18));</span><br><span class="line">		emps.add(new Employee(&quot;赵六&quot;,19));</span><br><span class="line">		emps.add(new Employee(&quot;王五&quot;,20));</span><br><span class="line">		Collections.sort(emps,(e1,e2)-&gt;&#123;</span><br><span class="line">			if (e1.getAge()==e2.getAge()) &#123;</span><br><span class="line">				return e1.getName().compareTo(e2.getName());</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				return Integer.compare(e1.getAge(), e2.getAge());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		emps.forEach(emp -&gt; System.out.println(emp));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Employee&#123;</span><br><span class="line">	private String name;</span><br><span class="line">	private Integer age;</span><br><span class="line">	</span><br><span class="line">	public Employee() &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	public Employee(String name, Integer age) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">		this.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line">	public Integer getAge() &#123;</span><br><span class="line">		return age;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public String toString() &#123;</span><br><span class="line">		return &quot;Employee [name=&quot; + name + &quot;, age=&quot; + age + &quot;]&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如下代码（ES6）</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(response,message) =&gt; &#123;</span><br><span class="line"> ....... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
+<p>相当于ES5代码</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function(response,message)&#123;</span><br><span class="line"> ...... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>箭头函数最直观的三个特点。 </p>
+<ol>
+<li>不需要function关键字来创建函数 </li>
+<li>省略return关键字 </li>
+<li>继承当前上下文的 this 关键字</li>
 </ol>
-<p>结果</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Employee [name=李四, age=18]</span><br><span class="line">Employee [name=张三, age=19]</span><br><span class="line">Employee [name=赵六, age=19]</span><br><span class="line">Employee [name=王五, age=20]</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>① 声明函数式接口，接口中声明抽象方法，public string getValue(String str);<br>② 声明类 TestLambda ,类中编写方法使用接口作为参数，将一个字符串转换成大写，并作为方法的返回值<br>③ 再将字符串的第 2 个和第 4 个索引位置进行截取子串</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package lanmbda;</span><br><span class="line"></span><br><span class="line">public class T_2 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		String str = &quot;lanzhou&quot;;</span><br><span class="line">		String subStr = strHandler(str,(s)-&gt;s.substring(2, 4));</span><br><span class="line">		System.out.println(subStr);</span><br><span class="line">		String upperStr = strHandler(str,(s)-&gt;s.toUpperCase());</span><br><span class="line">		System.out.println(upperStr);</span><br><span class="line">	&#125;</span><br><span class="line">	/**</span><br><span class="line">	 * 用于处理字符串</span><br><span class="line">	 * @return</span><br><span class="line">	 */</span><br><span class="line">	public static String strHandler(String str, MyFunction mf) &#123;</span><br><span class="line">		return mf.getValue(str);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 函数式接口</span><br><span class="line"> * @author gavino</span><br><span class="line"> */</span><br><span class="line">@FunctionalInterface</span><br><span class="line">interface MyFunction&#123;</span><br><span class="line">	public String getValue(String str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>① 声明一个带两个泛型的函数式接口，泛型类型为 &lt;T,R&gt; T 为参数,R 为返回值<br>② 接口中声明对应抽象方法<br>③ 在 TestLambda 类中声明方法，使用接口作为参数，计算两个 long 型参数的和<br>④ 再计算两个 long 型参数的乘积</p>
-</li>
-</ol>
-<h2 id="4-四大内置核心函数式接口"><a href="#4-四大内置核心函数式接口" class="headerlink" title="4.四大内置核心函数式接口"></a>4.四大内置核心函数式接口</h2><p>在 java 8 之前已经有部分的函数式接口<br>比如</p>
-<p>java 8 以后</p>
-
+<h2 id="for…of-VS-for…in"><a href="#for…of-VS-for…in" class="headerlink" title="for…of VS for…in"></a>for…of VS for…in</h2><h2 id="……"><a href="#……" class="headerlink" title="……."></a>…….</h2>
             
 <div style="padding: 15px;
     margin-bottom: 20px;
@@ -208,12 +210,21 @@
             本文由 <a href="https://gavino0119.github.io/">gavino</a> 创作，
             采用
             <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
-            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/09/02/lambda表达式/index.html <br>
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/09/24/ES6/index.html <br>
             -->
         </div>
         <div style="clear:both;height:0px;"></div>
 </div>
 
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ES6/">ES6</a>, <a class="has-link-grey -link" href="/tags/Java/">Java</a>
+                </div>
+            </div>
         </div>
         
         
@@ -261,17 +272,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/03/细说-Java-线程池/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">细说 Java 线程池</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/31/这就是SpringMVC/">
-                <span class="level-item">这就是SpringMVC</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/23/PageHelper-笔记总结/">
+                <span class="level-item">PageHelper 笔记总结</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -287,8 +291,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://gavino0119.github.io/2019/09/02/lambda表达式/';
-        this.page.identifier = '2019/09/02/lambda表达式/';
+        this.page.url = 'https://gavino0119.github.io/2019/09/24/ES6/';
+        this.page.identifier = '2019/09/24/ES6/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -934,7 +938,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="lambda表达式" height="28">
+                    <img src="/images/logo.png" alt="ES6" height="28">
                 
                 </a>
                 <p class="is-size-7">
