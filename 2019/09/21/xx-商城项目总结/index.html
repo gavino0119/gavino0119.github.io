@@ -9,18 +9,19 @@
 
 
     <meta name="description" content="基于 ssm ,环境工具 IntelliJ IDEA">
+<meta name="keywords" content="Java,框架,springMVC,Dubbo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xx 商城项目总结">
 <meta property="og:url" content="https://gavino0119.github.io/2019/09/21/xx-商城项目总结/index.html">
 <meta property="og:site_name" content="Gavino">
 <meta property="og:description" content="基于 ssm ,环境工具 IntelliJ IDEA">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gavino0119.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-22T12:42:51.159Z">
+<meta property="og:image" content="http://img.juimg.com/tuku/yulantu/140304/330861-14030422354356.jpg">
+<meta property="og:updated_time" content="2019-09-23T13:31:53.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xx 商城项目总结">
 <meta name="twitter:description" content="基于 ssm ,环境工具 IntelliJ IDEA">
-<meta name="twitter:image" content="https://gavino0119.github.io/images/og_image.png">
+<meta name="twitter:image" content="http://img.juimg.com/tuku/yulantu/140304/330861-14030422354356.jpg">
 
 
 
@@ -96,17 +97,27 @@
                 <!-- 将main_column_class() 改为 col() -->
                 <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="http://img.juimg.com/tuku/yulantu/140304/330861-14030422354356.jpg" alt="xx 商城项目总结">
+        </span>
+    </div>
+    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-21T06:46:18.000Z">2019-09-21</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1159 个字)
+                    12 分钟 读完 (大约 1820 个字)
                 </span>
                 
                 
@@ -142,11 +153,11 @@
 <li>dubbo.properties</li>
 </ol>
 </li>
-<li>创建 web.xml 文件<br>在 main 下创建 webapp/WEB-INF 文件夹, 在该目录下创建 web.xml(此文件是web项目的入口文件)<br>并在 <packaging>war</packaging></li>
+<li>创建 web.xml 文件<br>在 main 下创建 webapp/WEB-INF 文件夹, 在该目录下创建 web.xml(此文件是web项目的入口文件)<br>并在 &lt;packaging&gt;war&lt;/packaging&gt;</li>
 </ol>
 <p>其它服务模块的搭建都类似</p>
 <h3 id="三-web-层模块的搭建"><a href="#三-web-层模块的搭建" class="headerlink" title="(三) web 层模块的搭建"></a>(三) web 层模块的搭建</h3><ol>
-<li><p><packaging>war</packaging><br>引入公共接口模块和 web 的公共模块以及 tomcat 的相关插件<br>注意：要指定 tomcat 的端口作为 web 服务的端口系列并区别于之前服务层模块的服务器端口</p>
+<li><p>&lt;packaging&gt;war&lt;/packaging&gt;<br>引入公共接口模块和 web 的公共模块以及 tomcat 的相关插件<br>注意：要指定 tomcat 的端口作为 web 服务的端口系列并区别于之前服务层模块的服务器端口</p>
 </li>
 <li><p>添加配置文件<br>dubbo.properties  该文件中不需要配置端口，服务层模块中需要</p>
 </li>
@@ -156,7 +167,7 @@
 <blockquote>
 <p>至此，项目的框架搭建完毕</p>
 </blockquote>
-<h2 id="五、模块实现"><a href="#五、模块实现" class="headerlink" title="五、模块实现"></a>五、模块实现</h2><h3 id="———-商品管理模块-———"><a href="#———-商品管理模块-———" class="headerlink" title="-——— 商品管理模块 -———"></a>-——— 商品管理模块 -———</h3><p>(一) 品牌管理后端</p>
+<h2 id="五、模块实现"><a href="#五、模块实现" class="headerlink" title="五、模块实现"></a>五、模块实现</h2><h3 id="———-商品管理模块-———"><a href="#———-商品管理模块-———" class="headerlink" title="-——— 商品管理模块 -———"></a>-——— 商品管理模块 -———</h3><p>(一) 品牌管理后端<br>(1) 品牌列表</p>
 <ol>
 <li><strong>需求分析:</strong><br>实现对品牌的基本操作(增删改查)</li>
 <li><strong>表结构分析</strong></li>
@@ -182,6 +193,21 @@
 <blockquote>
 <p>总结: 在父项目下有的子项目在首次运行clean 和install前应该先运行父项目的clean和install</p>
 </blockquote>
+<p>(2) 品牌分页</p>
+<ol>
+<li>在公共实体模块下创建 entity 包, 在该包下创建 PageResult 类。<ul>
+<li>pojo 包下放和数据库相连的实体类</li>
+<li>entity 包下放具有通用性的封装实体类</li>
+</ul>
+</li>
+<li>在公共接口模块下的品牌的 service 接口里添加方法返回分页数据</li>
+<li>在对应的服务层模块下的service 实现类中实现上面接口中添加的方法</li>
+<li>到web 层调用服务层的方法，在品牌管理的 controller 控制器的类中添加分页查询方法，并在该方法上添加 @GetMapping(“/findPage”) 注解，此时只能用 get 方式提交请求</li>
+<li>品牌分页测试<br>安装修改过的公共模块(执行 install 操作)<br>启动服务器(先确保 zookeeper 服务开启，然后先启动服务层，再启动 web 层)<br>浏览器中输入 localhost:9101/brand/findPage.do?page=1&amp;size=10(表示查询的第一页数据，每页显示10条)</li>
+</ol>
+<p>(3) 品牌条件查询<br>url<br>/brand/findList.do<br>http 请求方式<br>POST<br>公共接口工程下定义业务方法用于品牌条件查询<br>在对应的服务层模块下的service 实现类中实现上面接口中添加的方法<br>到web 层的 controller 类中添加调用方法<br>测试：<br>利用 Postman<br>(4) 品牌条件+分页查询<br>url<br>/brand/findPage.do<br>http 请求方式<br>POST<br>公共接口工程下定义业务方法用于品牌条件+分页查询<br>在对应的服务层模块下的service 实现类中实现上面接口中添加的方法<br>到web 层的 controller 类中添加调用方法<br>测试<br>localhost:9101/brand/findPage.do?page=1&amp;size=10<br>(5) 根据 ID 查询品牌<br>url<br>/brand/findById.do<br>http 请求方式<br>GET<br>公共接口工程下定义业务方法用于根据 ID 查询品牌<br>在对应的服务层模块下的service 实现类中实现上面接口中添加的方法<br>到web 层的 controller 类中添加调用方法</p>
+<p>(6) 添加品牌<br>url<br>/brand/add.do<br>http 请求方式<br>POST</p>
+<p>公共接口工程下定义业务方法用于根据 ID 查询品牌(返回值为 void)<br>在对应的服务层模块下的service 实现类中实现上面接口中添加的方法<br>到web 层的 controller 类中添加调用方法<br>注： 由于对于添加成功与否应该给用户一个回馈信息，所以在公共实体类模块下的 entity 包下新建一个实体类 Result 用于封装给用户的返回结果<br>controller 类中的调用方法应该返回 Result 的封装信息</p>
 
             
 <div style="padding: 15px;
@@ -209,6 +235,15 @@
         <div style="clear:both;height:0px;"></div>
 </div>
 
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Dubbo/">Dubbo</a>, <a class="has-link-grey -link" href="/tags/Java/">Java</a>, <a class="has-link-grey -link" href="/tags/springMVC/">springMVC</a>, <a class="has-link-grey -link" href="/tags/框架/">框架</a>
+                </div>
+            </div>
         </div>
         
         
@@ -255,6 +290,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/23/PageHelper-笔记总结/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">PageHelper 笔记总结</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -338,7 +380,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        41
+                        42
                     </p>
                 </div>
             </div>
@@ -358,7 +400,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </div>
             </div>
@@ -432,7 +474,7 @@
                 <span class="level-item">SSM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Spring/">
@@ -521,9 +563,28 @@
         
         <article class="media">
             
+            <a href="/2019/09/23/PageHelper-笔记总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PageHelper 笔记总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-23T08:26:46.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/PageHelper-笔记总结/" class="has-link-black-ter is-size-6">PageHelper 笔记总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/21/xx-商城项目总结/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="xx 商城项目总结">
+                    <img class="thumbnail" src="http://img.juimg.com/tuku/yulantu/140304/330861-14030422354356.jpg" alt="xx 商城项目总结">
                 </p>
             </a>
             
@@ -532,7 +593,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T06:46:18.000Z">2019-09-21</time></div>
                     <a href="/2019/09/21/xx-商城项目总结/" class="has-link-black-ter is-size-6">xx 商城项目总结</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
                     </p>
                 </div>
             </div>
@@ -588,25 +649,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:42:00.000Z">2019-09-16</time></div>
                     <a href="/2019/09/16/js-相关知识点总结/" class="has-link-black-ter is-size-6">js 相关知识点总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/14/Bootstrap/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://pic2.zhimg.com/v2-73acf16b673828e895b45b2dd8fe1b86_1200x500.jpg" alt="Bootstrap">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T12:43:01.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/Bootstrap/" class="has-link-black-ter is-size-6">Bootstrap</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
                     </p>
@@ -673,7 +715,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Dubbo/" style="font-size: 10px;">Dubbo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 12px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
     </div>
 </div>
 
@@ -692,7 +734,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -747,6 +789,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Dubbo/">
+                        <span class="tag">Dubbo</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/IDEA/">
                         <span class="tag">IDEA</span>
                         <span class="tag is-grey">1</span>
@@ -777,7 +826,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -840,7 +889,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/springMVC/">
                         <span class="tag">springMVC</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -861,7 +910,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 

@@ -17,7 +17,7 @@
 <meta property="og:description" content="线程池线程池就是首先创建一些线程，它们的集合称为线程池。使用线程池可以很好地提高性能，线程池在系统启动时即创建大量空闲的线程，程序将一个任务传给线程池，线程池就会启动一条线程来执行这个任务，执行结束以后，该线程并不会死亡，而是再次返回线程池中成为空闲状态，等待执行下一个任务。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2548124522,1042460897&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-09-10T11:44:55.344Z">
+<meta property="og:updated_time" content="2019-09-24T00:40:31.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="细说 Java 线程池">
 <meta name="twitter:description" content="线程池线程池就是首先创建一些线程，它们的集合称为线程池。使用线程池可以很好地提高性能，线程池在系统启动时即创建大量空闲的线程，程序将一个任务传给线程池，线程池就会启动一条线程来执行这个任务，执行结束以后，该线程并不会死亡，而是再次返回线程池中成为空闲状态，等待执行下一个任务。">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1580 个字)
+                    14 分钟 读完 (大约 2157 个字)
                 </span>
                 
                 
@@ -168,23 +168,71 @@
 </ul>
 <h2 id="线程池的使用"><a href="#线程池的使用" class="headerlink" title="线程池的使用:"></a>线程池的使用:</h2><p>有一个Executors的线程工具类,此类提供了若干静态方法<br>这些静态方法用于生成线程池的对象</p>
 <ol>
-<li>Executors.newSingleThreadExecutor();<blockquote>
+<li><p>Executors.newSingleThreadExecutor();</p>
+<blockquote>
 <p>创建一个单线程的线程池,这个线程池只有一个线程在工作即单线程执行任务,如果这个唯一的线程因为异常结束,那么就会有一个新的线程来替代它,,因此线程池保证所有的任务是按照任务的提交顺序来执行</p>
 </blockquote>
 </li>
-<li>Executors.newFixedThreadPool();<blockquote>
+<li><p>Executors.newFixedThreadPool();</p>
+<blockquote>
 <p>创建固定大小的线程池,每次提交一个任务就创建一个线程直到线程达到线程池的最大的大小,线程池的大小一旦达到最大就会保持不变,如果某个线程因为执行异常而结束,那么久会补充一个新的线程</p>
 </blockquote>
 </li>
-<li>Executors.newCachedThreadPool();<blockquote>
+<li><p>Executors.newCachedThreadPool();</p>
+<blockquote>
 <p>创建了一个可以缓冲的线程池,如果线程大小超过处理任务所需要的线程,那么就回收部分线程,当线程数增加的时候,此线程池由可以智能添加新的线程来处理任务,此线程不会对线程池大小做限制,线程池的大小完全依赖操作系统能够创建的最大大小</p>
 </blockquote>
 </li>
-<li>Executors.newScheduledThreadPool()<blockquote>
+<li><p>Executors.newScheduledThreadPool()</p>
+<blockquote>
 <p>创建一个大小无限制的线程池,此线程池支持定时以及周期性的执行任务的需求</p>
 </blockquote>
 </li>
+<li><p>Executors.newWorkStealingPool()</p>
+<blockquote>
+<p>(JDK8新增)会根据所需的并发数来动态创建和关闭线程。能够合理的使用CPU进行对任务进行并发操作，所以适合使用在很耗时的任务。<br>注意返回的是ForkJoinPool对象。</p>
+</blockquote>
+<p> 什么是ForkJoinPool:</p>
+<blockquote>
+<p>使用一个无限队列来保存需要执行的任务，可以传入线程的数量，<br> 不传入，则默认使用当前计算机中可用的cpu数量，<br> 使用分治法来解决问题，使用fork()和join()来进行调用</p>
+</blockquote>
+</li>
 </ol>
+<h2 id="ThreadPoolExector源码分析"><a href="#ThreadPoolExector源码分析" class="headerlink" title="ThreadPoolExector源码分析"></a>ThreadPoolExector源码分析</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">public static ExecutorService newSingleThreadExecutor() &#123;</span><br><span class="line">    return new FinalizableDelegatedExecutorService</span><br><span class="line">        (new ThreadPoolExecutor(1, 1,</span><br><span class="line">                                0L, TimeUnit.MILLISECONDS,</span><br><span class="line">                                new LinkedBlockingQueue&lt;Runnable&gt;()));</span><br><span class="line">&#125;</span><br><span class="line">//</span><br><span class="line">public static ExecutorService newFixedThreadPool(int nThreads) &#123;</span><br><span class="line">    return new ThreadPoolExecutor(nThreads, nThreads,</span><br><span class="line">                                  0L, TimeUnit.MILLISECONDS,</span><br><span class="line">                                  new LinkedBlockingQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;</span><br><span class="line">//</span><br><span class="line">public static ExecutorService newCachedThreadPool() &#123;</span><br><span class="line">    return new ThreadPoolExecutor(0, Integer.MAX_VALUE,</span><br><span class="line">                                  60L, TimeUnit.SECONDS,</span><br><span class="line">                                  new SynchronousQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;</span><br><span class="line">//</span><br><span class="line">public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize) &#123;</span><br><span class="line">    return new ScheduledThreadPoolExecutor(corePoolSize);</span><br><span class="line">&#125;</span><br><span class="line">//</span><br><span class="line">public static ExecutorService newWorkStealingPool(int parallelism) &#123;</span><br><span class="line">    return new ForkJoinPool</span><br><span class="line">        (parallelism,</span><br><span class="line">         ForkJoinPool.defaultForkJoinWorkerThreadFactory,</span><br><span class="line">         null, true);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ForkJoinPool:</span><br><span class="line">public ForkJoinPool(int parallelism,</span><br><span class="line">                        ForkJoinWorkerThreadFactory factory,</span><br><span class="line">                        UncaughtExceptionHandler handler,</span><br><span class="line">                        boolean asyncMode) &#123;</span><br><span class="line">        this(checkParallelism(parallelism),</span><br><span class="line">             checkFactory(factory),</span><br><span class="line">             handler,</span><br><span class="line">             asyncMode ? FIFO_QUEUE : LIFO_QUEUE,</span><br><span class="line">             &quot;ForkJoinPool-&quot; + nextPoolId() + &quot;-worker-&quot;);</span><br><span class="line">        checkPermission();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="源码结构分析"><a href="#源码结构分析" class="headerlink" title="源码结构分析"></a>源码结构分析</h3><ol>
+<li>Executor 是一个运行新任务的简单接口</li>
+<li>ExecutorService 扩展了Executor接口。添加了一些用来管理执行器生命周期和任务生命周期的方法 </li>
+<li>AbstractExecutorService 对ExecutorService接口的抽象类实现。</li>
+<li>ThreadPoolExecutor 是Java线程池的核心实现。</li>
+</ol>
+<blockquote>
+<p>在向线程池提交任务时，会通过两个方法：execute和submit。</p>
+</blockquote>
+<h4 id="execute方法"><a href="#execute方法" class="headerlink" title="execute方法:"></a><strong>execute方法:</strong></h4><blockquote>
+<p>execute方法最主要的逻辑是在addWorker方法中实现的</p>
+</blockquote>
+<p><strong>addWorker方法</strong></p>
+<blockquote>
+<p>addWorker方法的主要工作是在线程池中创建一个新的线程并执行</p>
+</blockquote>
+<p>因为workers是HashSet类型的，不能保证线程安全。所以需要持有mainLock。</p>
+<p><strong>Worker.java</strong></p>
+<blockquote>
+<p>Worker 继承了AQS并发框架还实现了Runnable。证明它还是一个线程任务类。那我们调用t.start()事实上就是调用了该类重写的run方法.<br>其 run 方法又调用了runWorker方法：</p>
+</blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public void run() &#123;</span><br><span class="line">    runWorker(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>runWorker方法：</strong></p>
+<blockquote>
+<p>runWorker方法的执行过程：</p>
+<ol>
+<li>while循环中，不断地通过getTask()方法从workerQueue中获取任务</li>
+<li>如果线程池正在停止，则中断线程。否则调用3.</li>
+<li>调用task.run()执行任务；</li>
+<li>如果task为null则跳出循环，执行processWorkerExit()方法，销毁线程workers.remove(w);</li>
+</ol>
+</blockquote>
 
             
 <div style="padding: 15px;
@@ -357,7 +405,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        41
+                        42
                     </p>
                 </div>
             </div>
@@ -377,7 +425,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </div>
             </div>
@@ -451,7 +499,7 @@
                 <span class="level-item">SSM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Spring/">
@@ -540,9 +588,28 @@
         
         <article class="media">
             
+            <a href="/2019/09/23/PageHelper-笔记总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PageHelper 笔记总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-23T08:26:46.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/PageHelper-笔记总结/" class="has-link-black-ter is-size-6">PageHelper 笔记总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/21/xx-商城项目总结/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="xx 商城项目总结">
+                    <img class="thumbnail" src="http://img.juimg.com/tuku/yulantu/140304/330861-14030422354356.jpg" alt="xx 商城项目总结">
                 </p>
             </a>
             
@@ -551,7 +618,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T06:46:18.000Z">2019-09-21</time></div>
                     <a href="/2019/09/21/xx-商城项目总结/" class="has-link-black-ter is-size-6">xx 商城项目总结</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
                     </p>
                 </div>
             </div>
@@ -607,25 +674,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:42:00.000Z">2019-09-16</time></div>
                     <a href="/2019/09/16/js-相关知识点总结/" class="has-link-black-ter is-size-6">js 相关知识点总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/14/Bootstrap/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://pic2.zhimg.com/v2-73acf16b673828e895b45b2dd8fe1b86_1200x500.jpg" alt="Bootstrap">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T12:43:01.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/Bootstrap/" class="has-link-black-ter is-size-6">Bootstrap</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
                     </p>
@@ -692,7 +740,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Dubbo/" style="font-size: 10px;">Dubbo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mybatis/" style="font-size: 12px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 12px;">Mysql</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springMVC/" style="font-size: 12px;">springMVC</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/框架/" style="font-size: 18px;">框架</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/设计模式/" style="font-size: 14px;">设计模式</a> <a href="/tags/面试/" style="font-size: 16px;">面试</a>
     </div>
 </div>
 
@@ -711,7 +759,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -766,6 +814,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Dubbo/">
+                        <span class="tag">Dubbo</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/IDEA/">
                         <span class="tag">IDEA</span>
                         <span class="tag is-grey">1</span>
@@ -796,7 +851,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -859,7 +914,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/springMVC/">
                         <span class="tag">springMVC</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -880,7 +935,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
