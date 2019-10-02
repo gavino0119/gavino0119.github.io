@@ -3,31 +3,31 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>IO 常用API及基础总结 - Gavino</title>
+<title>js 相关知识点总结 - Gavino</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="File类#File 并不是指文件本身两个常量：    路径分隔符File.pathSeparator    名称分隔符File.separator //路径表示的几种形式 //1、windows下 String path = &amp;quot;C:\\Users\\dell\\Desktop&amp;quot;; //2、 path = &amp;quot;C:&amp;quot;+File.separator+&amp;quot;">
-<meta name="keywords" content="Java">
+    <meta name="description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
+<meta name="keywords" content="Java,JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IO 常用API及基础总结">
-<meta property="og:url" content="https://gavino0119.github.io/2019/07/15/API常用之-IO/index.html">
+<meta property="og:title" content="js 相关知识点总结">
+<meta property="og:url" content="https://gavino0119.github.io/2018/09/16/js-相关知识点总结/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="File类#File 并不是指文件本身两个常量：    路径分隔符File.pathSeparator    名称分隔符File.separator //路径表示的几种形式 //1、windows下 String path = &amp;quot;C:\\Users\\dell\\Desktop&amp;quot;; //2、 path = &amp;quot;C:&amp;quot;+File.separator+&amp;quot;">
+<meta property="og:description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gavino0119.github.io/images/io基础.jpg">
-<meta property="og:updated_time" content="2019-09-03T06:57:10.604Z">
+<meta property="og:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&fm=26&gp=0.jpg">
+<meta property="og:updated_time" content="2019-10-02T14:25:21.154Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IO 常用API及基础总结">
-<meta name="twitter:description" content="File类#File 并不是指文件本身两个常量：    路径分隔符File.pathSeparator    名称分隔符File.separator //路径表示的几种形式 //1、windows下 String path = &amp;quot;C:\\Users\\dell\\Desktop&amp;quot;; //2、 path = &amp;quot;C:&amp;quot;+File.separator+&amp;quot;">
-<meta name="twitter:image" content="https://gavino0119.github.io/images/io基础.jpg">
+<meta name="twitter:title" content="js 相关知识点总结">
+<meta name="twitter:description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
+<meta name="twitter:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&fm=26&gp=0.jpg">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="IO 常用API及基础总结" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="js 相关知识点总结" type="application/atom+xml">
 
 
 
@@ -49,7 +49,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="IO 常用API及基础总结" height="28">
+                <img src="/images/logo.png" alt="js 相关知识点总结" height="28">
             
             </a>
         </div>
@@ -99,7 +99,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/images/io基础.jpg" alt="IO 常用API及基础总结">
+            <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&amp;fm=26&amp;gp=0.jpg" alt="js 相关知识点总结">
         </span>
     </div>
     
@@ -107,17 +107,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-15T07:50:48.000Z">2019-07-15</time>
+                <time class="level-item has-text-grey" datetime="2018-09-16T11:42:00.000Z">2018-09-16</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Java-基础篇/">Java 基础篇</a>
+                <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 935 个字)
+                    15 分钟 读完 (大约 2314 个字)
                 </span>
                 
                 
@@ -126,104 +126,316 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                IO 常用API及基础总结
+                js 相关知识点总结
             
         </h1>
         <div class="content">
-            <h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>#File 并不是指文件本身<br>两个常量：<br>    路径分隔符File.pathSeparator<br>    名称分隔符File.separator</p>
-<pre><code>//路径表示的几种形式
-//1、windows下
-String path = &quot;C:\\Users\\dell\\Desktop&quot;;
-//2、
-path = &quot;C:&quot;+File.separator+&quot;Users&quot;+File.separator+&quot;dell&quot;+File.separator+&quot;Desktop&quot;;
-//3、推荐方式
-path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><a id="more"></a>
-
-<ul>
-<li>IO流基础</li>
-</ul>
-<h3 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h3><pre><code>流动、流向
-以程序为中心</code></pre><h3 id="二、IO流分类"><a href="#二、IO流分类" class="headerlink" title="二、IO流分类"></a>二、IO流分类</h3><pre><code>1、流向:
-    输入流与输出流</code></pre><blockquote>
-<p>输入流    进内存<br>输出流    出内存</p>
+            <h2 id="关于javascript"><a href="#关于javascript" class="headerlink" title="关于javascript:"></a>关于javascript:</h2><blockquote>
+<p>简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译</p>
 </blockquote>
-<pre><code>2、数据
-    字节流:二进制        可以一切文件     包括纯文本 、doc 、音频 、视频等等
-    字符流:文本文件        只能处理纯文本
-3、功能
-    节点:包裹源头
-    处理:增强功能，提供性能(提高效率)</code></pre><h3 id="三、字符流与字节流-重点"><a href="#三、字符流与字节流-重点" class="headerlink" title="三、字符流与字节流(重点)"></a>三、字符流与字节流(重点)</h3><pre><code>1、字节流
-    输入流:InputStream
-    输出流:OutputStream
-2、字符流
-(读入  写出)
-    输入流:Reader
-    输出流:Writer</code></pre><h3 id="四、操作"><a href="#四、操作" class="headerlink" title="四、操作"></a>四、操作</h3><pre><code>1、与文件建立联系
-2、选择流
-3、操作
-4、释放资源
+ <a id="more"></a>
 
-###FileWriter写数据###
-    输出流写数据的步骤：
-    A、创建输出流对象
-    B、调用输出流对象的写数据方法 并刷新缓冲区    (硬盘存储数据的基本单位是字节)
-    C、释放资源    (close()方法先刷新 再通知系统释放资源)
+<p>javascript特点:</p>
+<ul>
+<li>可以用任何编辑文本的工具编写js代码</li>
+<li>由浏览器内置的javascript引擎执行代码<br> 解释执行:事先不编译,逐行执行<br> 基于对象:内置大量的现成的对象   </li>
+<li>适宜:<br> 客户端的数据计算<br> 客户端的表单验证<br> 浏览器的事件触发<br> 网页特效制作<br> 服务器的异步提交 ajax </li>
+</ul>
+<p>js的注释:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单行  //</span><br><span class="line">多行 /**/</span><br></pre></td></tr></table></figure>
 
-换行:\n        \r         \r\n
-* windows识别的换行为 \r\n
-* Linux识别的换行为 \n
-* mac识别的换行为 \r
+<p><strong>注意：</strong></p>
+<blockquote>
+<p>js代码区分大小写,大小写敏感<br>所有js语句用分号结束<br>标识符的定义:可以包含字母,数字,下划线,$符号,就是不能用数字开头<br>命名的规范用骆驼(驼峰)命名法</p>
+</blockquote>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li><p>原始数据类型(基本数据类型)</p>
+<ol>
+<li>number: 数字        (整数、小数、NaN)</li>
+<li>string: 字符串。 </li>
+<li>boolean: true 和 false</li>
+<li>null: 一个对象为空的占位符<br>注：用 typeof() 得到的 null 的类型为 Object</li>
+<li>undefined: 未定义</li>
+</ol>
+</li>
+<li><p>引用数据类型: 对象</p>
+</li>
+</ul>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><blockquote>
+<p>在 js 中，如果运算数不是运算符所要求的类型，那么 js 引擎会自动的将运算数进行类型转换</p>
+</blockquote>
+<ul>
+<li>其他类型转 number<ol>
+<li>string 转 number: 字面是数字，按照字面值转换。<br>如果字面不是数字，则转为NaN(不是数字的数字类型)</li>
+<li>boolean 转 number: true 转为 1, false 转为 0<br>eg: true+true=2</li>
+</ol>
+</li>
+<li>其他类型转 boolean<ol>
+<li>number: 0 或 NaN 为假，其他为真</li>
+<li>string: 除了空字符串(“”), 其他都是 true</li>
+<li>null &amp; undefined: 都是 false</li>
+<li>对象: 所有对象都是 true</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>比较运算符:</p>
+</blockquote>
+<p>比较运算符的比较方式：</p>
+<ol>
+<li>类型相同，则直接比较<ul>
+<li>对于字符串，按照字典顺序逐位进行比较，直到得出大小为止</li>
+</ul>
+</li>
+<li>类型不同，先进行类型转换，再进行比较<ul>
+<li>=== 表示 全等于, 在比较之前，先判断类型，如果类型不一样，则直接返回 false</li>
+</ul>
+</li>
+</ol>
+<p>变量的定义使用关键字 var 和不使用 var</p>
+<ul>
+<li>使用 var :定义的变量是局部变量</li>
+<li>不使用 var :定义的变量是全局变量(即使在方法里面定义)</li>
+</ul>
+<h2 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h2><ul>
+<li>在 js 中，switch 语句可以接受任意的原始数据类型</li>
+<li>for in</li>
+</ul>
+<h2 id="JavaScript-对象"><a href="#JavaScript-对象" class="headerlink" title="JavaScript 对象"></a>JavaScript 对象</h2><ol>
+<li><p>Function: 函数(方法)对象</p>
+<ul>
+<li>创建：<ol>
+<li>var fun = new Function(形参列表，方法体);<br>该方法了解即可</li>
+<li>functioin 方法名称(形参列表){<br> 方法体<br>}</li>
+<li>var 方法名 = function(){<br> 方法体<br>}</li>
+</ol>
+  <strong>推荐后面两种方式</strong></li>
+<li>属性<br>  length: 代表形参的个数</li>
+<li>特点<ol>
+<li>方法定义时，形参的类型不用写,返回值类型也不用写</li>
+<li>方法是一个对象，如果定义名称相同的方法，(后面定义的)会覆盖之前定义的方法</li>
+<li>在 js 中，当进行方法调用时，方法的调用只与方法的名称有关,和参数列表无关</li>
+<li>在方法声明中有一个隐藏的内置对象(数组), arguments, 封装所有的实际参数</li>
+</ol>
+</li>
+<li>调用<br>  方法名称(实参);<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/*求任意个数的和*/</span><br><span class="line">function add()&#123;</span><br><span class="line">	var sum = 0;	</span><br><span class="line">	for(var i=0;i&lt;arguments.length;i++)&#123;</span><br><span class="line">		sum += arguments[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">function getResult()&#123;</span><br><span class="line">	var sum = add(1,2,3);</span><br><span class="line">	console.log(sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Array:</p>
+<ul>
+<li>创建<ol>
+<li>var arr = new Array(元素列表);</li>
+<li>var arr = new Array(默认长度);</li>
+<li>var arr = [元素列表];</li>
+</ol>
+</li>
+<li>常用方法<ol>
+<li>join(参数): 将数组中的元素按照指定的分隔符拼接为字符串</li>
+<li>push() 向数组的末尾添加一个或更多元素，并返回新的长度</li>
+</ol>
+</li>
+<li>属性<br>  length: 数组的长度。</li>
+<li>特点<ol>
+<li>js 中，数组元素的类型是可变的</li>
+<li>js 中，数组的长度是可变的。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Date: 日期对象</p>
+<ul>
+<li>创建<br>  var date = new Date();</li>
+<li>常用方法<ol>
+<li>toLocaleString(): 返回当前 date 对象对应的时间本地字符串格式</li>
+<li>getTime(): 获取毫秒值。返回当前日期对象描述的时间到1970年1月1日零点的毫秒值差<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function demo()&#123;</span><br><span class="line">	var date = new Date();</span><br><span class="line">	document.write(date+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.toLocaleTimeString()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.toLocaleDateString()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.getTime()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.getDay()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.toString()+&quot;&lt;br&gt;&quot;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Math: 数学</p>
+<ul>
+<li>创建<br>  Math 对象不用创建，直接使用。Math.方法名();</li>
+<li>常用方法<ol>
+<li>random(): 返回0~1之间的随机数。含0不含1</li>
+</ol>
+</li>
+<li>属性<br>  PI</li>
+</ul>
+</li>
+<li><p>RegExp: 正则表达式对象</p>
+<ul>
+<li><p>正则表达式: 定义字符串的组成规则</p>
+<ol>
+<li><p>一些特殊含义的单个字符</p>
+<ul>
+<li>\d: 单个数字</li>
+<li>\w: 单个字符</li>
+<li>其他</li>
+</ul>
+</li>
+<li><p>相关量词符号</p>
+<ul>
+<li><p>{m,n}: 表示 m&lt;= 数量 &lt;= n</p>
+<ul>
+<li>m 如果缺省:{,n}: 表示最多 n 次</li>
+<li>n 如果缺省:{m,}: 表示最少 m 次</li>
+</ul>
+</li>
+<li><p>开始和结束</p>
+<ul>
+<li>^: 开始</li>
+<li>$: 结束</li>
+</ul>
+</li>
+<li><p>其他</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>正则对象</p>
+<ul>
+<li>创建<ol>
+<li>var reg = new RegExp(“正则表达式”);</li>
+<li>var reg = /正则表达式/;<br>注意在//之间不加引号</li>
+</ol>
+</li>
+<li>方法<ol>
+<li>test(参数): 验证指定的字符串是否符合正则定义的规范</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Global:</p>
+<ul>
+<li>全局对象, Global 中封装的方法不需要对象就可以直接调用。    </li>
+<li>常用方法:<ul>
+<li>encodeURI(): url 编码</li>
+<li>decodeURI(): url 解码</li>
+<li>parseInt(): 将字符串转为数字</li>
+<li>isNaN(): 判断一个值是不是NaN, NaN参与的==比较 全为 false</li>
+<li>eval(): eval函数用于计算表达式字符串,或者用于执行字符串中js代码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><blockquote>
+<p>BOM对象  browser object model浏览器对象模型,用来访问跟浏览器窗口有关的对象<br>在BOM对象有很多的对象,每个对象还有很多属性和方法, 通过这些方法和属性,移动窗口,更改状态栏文本<br>和其他跟窗口操作相关的.</p>
+</blockquote>
+<ul>
+<li><p>window对象:</p>
+<ul>
+<li>window表示浏览器窗口<br>是所有javascript全局对象,如果不写window,默认从window访问起</li>
+</ul>
+</li>
+<li><p>window常用的属性:</p>
+<ul>
+<li>document:在窗口中显示文档树.</li>
+<li>history:浏览器的窗口的后退和前进</li>
+<li>location:窗口文件地址对象.<br> window.location.href=”login.html”;</li>
+<li>screen:当前屏幕对象</li>
+<li>navigator:浏览器的相关信息</li>
+</ul>
+</li>
+<li><p>window对象常用的方法:</p>
+<ul>
+<li>alert();弹出式窗口,模态框(当前窗口不关闭,无法操作后面的窗口)</li>
+<li>confirm();模态框,确认窗口</li>
+<li>setTimeOut()  setInterval() 周期性函数</li>
+<li>clearTimeOut()  clearInterval();</li>
+</ul>
+</li>
+</ul>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><p>DOM 功能：控制 html 文档的内容<br>document下的相关对象</p>
+<blockquote>
+<p>DOM对象: Document Object model文档对象模型,用来操作文档<br>将标记语言文档的各个组成部分,封装为对象. 可以使用这些对象,对标记语言文档进行 CRUD 的动态操作<br>定义了访问和操作html文档的标准方法<br>应用程序通过对dom树的操作,来实现和html的交互</p>
+</blockquote>
+<h3 id="DOM-编程"><a href="#DOM-编程" class="headerlink" title="DOM 编程:"></a>DOM 编程:</h3><p>用 js 做 dom 编程的目的，就是为让 html 页面中的内容局部改变</p>
+<ul>
+<li><p>核心 DOM 模型</p>
+<ul>
+<li>Document: 文档对象<ul>
+<li>创建<ul>
+<li>window.document</li>
+<li>document</li>
+</ul>
+</li>
+<li>方法<ol>
+<li>获取Element对象<ul>
+<li>getElementById()</li>
+</ul>
+</li>
+<li>创建其他DOM对象<ul>
+<li>createElement()</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Element: 元素对象        <ul>
+<li>获取/创建</li>
+<li>方法<ol>
+<li>removeAttribute(): 删除属性</li>
+<li>setAttribute(): 设置属性</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Node :节点对象<ul>
+<li>所有dom对象都可以被认为是一个节点</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>查询:</strong></p>
+<ul>
+<li>通过id查询</li>
+<li>通过name查询</li>
+<li>通过标签名查询</li>
+<li>通过表单名查询</li>
+</ul>
+<ol>
+<li><p>根据id查询<br>document.getElementById(“id名”);<br>通过id查询返回元素节点,<br>在整个html文档中搜索id<br>只找到第一个id,返回元素<br>如果id错误,返回null</p>
+</li>
+<li><p>根据层次查询节点:<br>-parentNode<br>遵循文档的上下文层次结构,查找单个父节点<br>比如:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;table id=&quot;tblid&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">	&lt;td id=&quot;tdid&quot;&gt;&lt;/td&gt;</span><br><span class="line">	&lt;td&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">var td_ele=document.getElementById(&quot;tdid&quot;);</span><br><span class="line">var tr_ele=td_ele.parentNode;</span><br><span class="line">var table_ele=td_ele.parentNode.parentNode;</span><br></pre></td></tr></table></figure>
 
-###FileReader读数据###
-    同 FileWriter写数据
+<p>-childNodes<br>  遵循文档的上下文层次结构,查找多个子节点<br>  比如:上面的例子<br>   var td_ele=document.getElementById(“tdid”);<br>   //获取当前td对象的所有兄弟<br>   var tds_ele=td_ele.parentNode.childNodes;<br>   //获取当前td的父亲,和所有叔叔节点<br>   var trs_ele=td_ele.parentNode.parentNode.childNodes;</p>
+</li>
+<li><p>根据标签名查询节点:<br> getElementsByTagName(“标签名”);<br> 从当前对象往下寻找符合标签名的所有元素对象<br> 返回结果是一个数组<br> 标签名错误,返回长度为0,<br> 比如:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;table id=&quot;tblid&quot;&gt;</span><br><span class="line"> &lt;tr&gt;</span><br><span class="line">	&lt;td id=&quot;tdid&quot;&gt;&lt;/td&gt;</span><br><span class="line">	&lt;td&gt;&lt;/td&gt;</span><br><span class="line"> &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">var table_ele=document.getElementById(&quot;tblid&quot;);</span><br><span class="line">var trs_ele=table_ele.getElementsByTagName(&quot;tr&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据name属性查询节点<br>document.getElementsByName(“元素的name属性值”);<br>注意:不是所有的元素节点都有name属性</p>
+</li>
+<li><p>根据document.表单名字.表单控间名<br> docuemnt.forms[数字].表单控件名 </p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>创建元素节点:<br>document.createElement(元素节点名);<br>返回结果是创建的节点对象</p>
+</li>
+<li><p>创建文本节点:<br>document.createTextNode(“文本信息”);<br>返回结果是一个文本节点对象</p>
+</li>
+<li><p>添加新节点:<br>parentNode.appendChild(newNode);<br>追加newNode节点到父节点的所有子节点的最后.</p>
+<p>parentNode.insertBefore(newNode,refNode);<br>把newNode插入到refNode的前面<br>newNode和refNode是兄弟关系</p>
+</li>
+<li><p>删除节点:<br>node.removeChild(childNode)<br>删除node节点下的childNode的节点对象</p>
+</li>
+</ul>
+<ul>
+<li>定位节点:<br>parentNode.firstChild;第一个子节点<br>parentNode.lastChild;最后一个子节点</li>
+</ul>
+<h2 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a>自定义对象</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">	&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		/*直接创建对象*/</span><br><span class="line">		function testObject()&#123;</span><br><span class="line">			var personObj = new Object();</span><br><span class="line">			//添加属性</span><br><span class="line">			personObj.name = &quot;张三&quot;;</span><br><span class="line">			personObj.age = 30;</span><br><span class="line"></span><br><span class="line">			//添加方法</span><br><span class="line">			personObj.say=function()&#123;</span><br><span class="line">				alert(&quot;hello  &quot;+this.name+&quot; &quot;+this.age);</span><br><span class="line">			&#125;</span><br><span class="line">			//使用新添加的属性和方法</span><br><span class="line">			personObj.say();</span><br><span class="line">			alert(personObj.name+&quot;  &quot;+personObj.age);</span><br><span class="line">		&#125;</span><br><span class="line">		/*构造函数创建对象*/</span><br><span class="line">		function Person(n,a,ad)&#123;</span><br><span class="line">			//定义 name 和 age 属性</span><br><span class="line">			this.name = n;</span><br><span class="line">			this.age = a;</span><br><span class="line">			this.address = ad;</span><br><span class="line">			//定义方法, 且直接给方法体</span><br><span class="line">			this.showInfo=function()&#123;</span><br><span class="line">				alert(this.name+&quot; &quot;+this.age+&quot; &quot;+this.address);</span><br><span class="line">			&#125;</span><br><span class="line">			//定义方法, 且间接给方法体</span><br><span class="line">			this.showAddress=introAddress;</span><br><span class="line">		&#125;</span><br><span class="line">		function introAddress()&#123;</span><br><span class="line">			alert(this.address);</span><br><span class="line">		&#125;</span><br><span class="line">		function testObject1()&#123;</span><br><span class="line">			var p = new Person(&quot;李四&quot;,26,&quot;北京&quot;);</span><br><span class="line">			alert(p.name+&quot; &quot;+p.age+&quot; &quot;+p.address);</span><br><span class="line">			p.showInfo();</span><br><span class="line">			p.showAddress();</span><br><span class="line">		&#125;</span><br><span class="line">		/*用json创建对象*/</span><br><span class="line">		function testObject2()&#123;</span><br><span class="line">			var jsonObj = &#123;&quot;name&quot;:&quot;王五&quot;,&quot;age&quot;:30,&quot;address&quot;:&quot;兰州&quot;&#125;;</span><br><span class="line">			alert(jsonObj.name+&quot; &quot;+jsonObj.age+&quot; &quot;+jsonObj.address);</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div onclick=&quot;testObject();&quot;&gt;直接创建对象的演示&lt;/div&gt;</span><br><span class="line">	&lt;div onclick=&quot;testObject1();&quot;&gt;用构造函数创建对象的演示&lt;/div&gt;</span><br><span class="line">	&lt;div onclick=&quot;testObject2();&quot;&gt;用json创建对象的演示&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
-    代码实例:
-    *    int len;
-    *    char[] chs = new char[1024];
-    *    while ((len=fr.read(chs))!=-1) {
-    *        System.out.print((new String(chs,0,len)));
-    *    }
-    *    fr.close();
-
-    *注意 char[] chs = new char[1024];    //写1024及其整数倍
-
-    *往控制台输出时，不要ln 
-     System.out.print();
-
-###文件复制###
-    数据源:
-    目的地:
-    *判断读            //先读
-     然后写进去     //后写
-
-###字符缓冲流###    (高效地读入和写出) 
-    BufferedWriter bf = new BufferedWriter(new FileWriter(&quot;bf.txt&quot;));
-    BufferedReader br = new BufferedReader(new FileReader(&quot;bf.txt&quot;));
-    //注意构造方法里面
-
-    System.out.print(new String(csh,0,len));
-    //
-
-    缓冲流的特殊功能:
-        newLine()    //写一个换行符    这个换行符由系统决定
-        readLine()    //读一行    【不包括换行符】    </code></pre><h3 id="五、IO-常用API-的测试"><a href="#五、IO-常用API-的测试" class="headerlink" title="五、IO 常用API 的测试"></a>五、IO 常用API 的测试</h3><h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h4><pre><code>File:文件和目录路径名的抽象表示形式，File类的实例是不可变的(即File可以创建实例)
-
-##创建功能
-createNewFile()
-mkdir()
-mkdirs()
-##删除功能
-
-##判断功能</code></pre><h4 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h4><h4 id="字节缓冲流"><a href="#字节缓冲流" class="headerlink" title="字节缓冲流"></a>字节缓冲流</h4><h4 id="对象流"><a href="#对象流" class="headerlink" title="对象流"></a>对象流</h4><h4 id="转换流-OutputStreamWriter-、-InputStreamReader"><a href="#转换流-OutputStreamWriter-、-InputStreamReader" class="headerlink" title="转换流    (OutputStreamWriter 、 InputStreamReader)"></a>转换流    (OutputStreamWriter 、 InputStreamReader)</h4><pre><code>可以指定字符集
-*实例化转化流，必须先实例化一个字节流*</code></pre><p>测试转换流</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testOut() throws IOException &#123;</span><br><span class="line">	OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(&quot;osw.txt&quot;), &quot;UTF-8&quot;);</span><br><span class="line">	osw.write(&quot;测试写字符，指定字符集为UTF-8&quot;);</span><br><span class="line">	osw.close();</span><br><span class="line">&#125;</span><br><span class="line">@Test</span><br><span class="line">public void testIn() throws IOException &#123;</span><br><span class="line">	InputStreamReader isr = new InputStreamReader(new FileInputStream(&quot;osw.txt&quot;),&quot;UTF-8&quot;);</span><br><span class="line">	char[] buf = new char[1024];</span><br><span class="line">	isr.read(buf);</span><br><span class="line">	System.out.println(new String(buf));</span><br><span class="line">	isr.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="缓冲字符流"><a href="#缓冲字符流" class="headerlink" title="缓冲字符流"></a>缓冲字符流</h4><p>BufferedWriter<br>BufferedReader</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testOut() throws IOException &#123;</span><br><span class="line">	BufferedWriter bw = new BufferedWriter(new FileWriter(&quot;bw.txt&quot;));</span><br><span class="line">	bw.write(&quot;测试字符缓冲流&quot;);</span><br><span class="line">	bw.flush();</span><br><span class="line">	bw.close();</span><br><span class="line">&#125;</span><br><span class="line">@Test</span><br><span class="line">public void testIn() throws IOException &#123;</span><br><span class="line">	BufferedReader br = new BufferedReader(new FileReader(&quot;bw.txt&quot;));</span><br><span class="line">	//br.readLine() 读一行，读到最后时返回null</span><br><span class="line">	String line = &quot;&quot;;</span><br><span class="line">	while ((line=br.readLine())!=null) &#123;</span><br><span class="line">		System.out.println(line);</span><br><span class="line">	&#125;</span><br><span class="line">	br.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="打印流-PrintWriter字符打印流"><a href="#打印流-PrintWriter字符打印流" class="headerlink" title="打印流    PrintWriter字符打印流"></a>打印流    PrintWriter字符打印流</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 测试打印流</span><br><span class="line"> * @throws FileNotFoundException </span><br><span class="line"> */</span><br><span class="line">@Test</span><br><span class="line">public void testPrint() throws FileNotFoundException &#123;</span><br><span class="line">	PrintWriter pw = new PrintWriter(&quot;pw.txt&quot;);</span><br><span class="line">	pw.print(&quot;测试字符打印流&quot;);</span><br><span class="line">	pw.close();</span><br><span class="line">&#125;</span><br><span class="line">@Test</span><br><span class="line">public void testPrintStream() throws FileNotFoundException &#123;</span><br><span class="line">	PrintStream ps = new PrintStream(&quot;ps.txt&quot;);</span><br><span class="line">	ps.print(&quot;测试字节打印流&quot;);</span><br><span class="line">	ps.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="六、注意"><a href="#六、注意" class="headerlink" title="六、注意"></a>六、注意</h3><p>1、字符流的底层，依然是字节流<br>2、File 类只是用来表示目录和文件的相关信息，不对文件内容进行访问<br>   new File(“”); //仅仅是创建一个内存对象<br>3、int read() ; 读取一个字节/(字符)内容，返回将该字节内容存到int类型的低8/(16)位<br>4、操作文件即为节点流<br>5、包装流</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><p>把JS代码写在head标签里面<br>“Uncaught TypeError: Cannot set property ‘onclick’ of null”<br>节点需要先加载完才能执行onclick事件。</p>
 
             
 <div style="padding: 15px;
@@ -245,7 +457,7 @@ mkdirs()
             本文由 <a href="https://gavino0119.github.io/">gavino</a> 创作，
             采用
             <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
-            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/07/15/API常用之-IO/index.html <br>
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2018/09/16/js-相关知识点总结/index.html <br>
             -->
         </div>
         <div style="clear:both;height:0px;"></div>
@@ -257,7 +469,7 @@ mkdirs()
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>
+                    <a class="has-link-grey -link" href="/tags/JS/">JS</a>, <a class="has-link-grey -link" href="/tags/Java/">Java</a>
                 </div>
             </div>
         </div>
@@ -308,16 +520,16 @@ mkdirs()
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/20/单例模式/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/09/27/sublime-text-3-常用笔记/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">单例模式</span>
+                <span class="level-item">sublime text 3 常用笔记</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/08/SSM-整合/">
-                <span class="level-item">SSM 整合</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/08/15/API常用之-IO/">
+                <span class="level-item">IO 常用API及基础总结</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -333,8 +545,8 @@ mkdirs()
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://gavino0119.github.io/2019/07/15/API常用之-IO/';
-        this.page.identifier = '2019/07/15/API常用之-IO/';
+        this.page.url = 'https://gavino0119.github.io/2018/09/16/js-相关知识点总结/';
+        this.page.identifier = '2018/09/16/js-相关知识点总结/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -590,25 +802,6 @@ mkdirs()
         
         <article class="media">
             
-            <a href="/2019/09/19/jQuery/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1122459309,3492688613&amp;fm=26&amp;gp=0.jpg" alt="jQuery">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-19T01:36:56.000Z">2019-09-19</time></div>
-                    <a href="/2019/09/19/jQuery/" class="has-link-black-ter is-size-6">jQuery</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/09/17/Java-内存模型/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1568735765594&amp;di=abf4ab20962c4d55737c026082f9fa9d&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg" alt="Java 内存模型">
@@ -628,18 +821,18 @@ mkdirs()
         
         <article class="media">
             
-            <a href="/2019/09/16/js-相关知识点总结/" class="media-left">
+            <a href="/2019/09/11/通用-Mapper/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&amp;fm=26&amp;gp=0.jpg" alt="js 相关知识点总结">
+                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&amp;fm=11&amp;gp=0.jpg" alt="通用 Mapper">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:42:00.000Z">2019-09-16</time></div>
-                    <a href="/2019/09/16/js-相关知识点总结/" class="has-link-black-ter is-size-6">js 相关知识点总结</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T11:58:19.000Z">2019-09-11</time></div>
+                    <a href="/2019/09/11/通用-Mapper/" class="has-link-black-ter is-size-6">通用 Mapper</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
                     </p>
                 </div>
             </div>
@@ -647,18 +840,37 @@ mkdirs()
         
         <article class="media">
             
-            <a href="/2019/09/14/Bootstrap/" class="media-left">
+            <a href="/2019/09/10/Dubbo-学习归档/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://pic2.zhimg.com/v2-73acf16b673828e895b45b2dd8fe1b86_1200x500.jpg" alt="Bootstrap">
+                    <img class="thumbnail" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3753737640,834291282&amp;fm=26&amp;gp=0.jpg" alt="Dubbo 学习归档">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T12:43:01.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/Bootstrap/" class="has-link-black-ter is-size-6">Bootstrap</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T11:40:46.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/Dubbo-学习归档/" class="has-link-black-ter is-size-6">Dubbo 学习归档</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/10/面向艺术，面向接口/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://news.mydrivers.com/Img/20090817/09393557.jpg" alt="面向艺术，面向接口">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T02:42:40.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
+                    <p class="is-size-7 is-uppercase">
+                        
                     </p>
                 </div>
             </div>
@@ -742,7 +954,7 @@ mkdirs()
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">11</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -753,7 +965,7 @@ mkdirs()
                     <span class="level-item">八月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -764,7 +976,7 @@ mkdirs()
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -808,7 +1020,7 @@ mkdirs()
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -819,7 +1031,7 @@ mkdirs()
                     <span class="level-item">一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -830,7 +1042,7 @@ mkdirs()
                     <span class="level-item">十二月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -841,7 +1053,7 @@ mkdirs()
                     <span class="level-item">十一月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -863,7 +1075,7 @@ mkdirs()
                     <span class="level-item">九月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -874,7 +1086,7 @@ mkdirs()
                     <span class="level-item">八月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -885,7 +1097,7 @@ mkdirs()
                     <span class="level-item">七月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1079,7 +1291,7 @@ mkdirs()
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="IO 常用API及基础总结" height="28">
+                    <img src="/images/logo.png" alt="js 相关知识点总结" height="28">
                 
                 </a>
                 <p class="is-size-7">

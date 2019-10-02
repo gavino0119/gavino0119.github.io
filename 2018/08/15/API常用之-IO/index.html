@@ -3,31 +3,31 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Bootstrap - Gavino</title>
+<title>IO 常用API及基础总结 - Gavino</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="Bootstrap 简介 Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的, 一个用于快速开发 Web 应用程序和网站的前端框架。Bootstrap 的响应式 CSS 能够自适应于台式机、平板电脑和手机。">
-<meta name="keywords" content="Java,框架,前端">
+    <meta name="description" content="File类#File 并不是指文件本身两个常量：    路径分隔符File.pathSeparator    名称分隔符File.separator //路径表示的几种形式 //1、windows下 String path = &amp;quot;C:\\Users\\dell\\Desktop&amp;quot;; //2、 path = &amp;quot;C:&amp;quot;+File.separator+&amp;quot;">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bootstrap">
-<meta property="og:url" content="https://gavino0119.github.io/2019/09/14/Bootstrap/index.html">
+<meta property="og:title" content="IO 常用API及基础总结">
+<meta property="og:url" content="https://gavino0119.github.io/2018/08/15/API常用之-IO/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="Bootstrap 简介 Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的, 一个用于快速开发 Web 应用程序和网站的前端框架。Bootstrap 的响应式 CSS 能够自适应于台式机、平板电脑和手机。">
+<meta property="og:description" content="File类#File 并不是指文件本身两个常量：    路径分隔符File.pathSeparator    名称分隔符File.separator //路径表示的几种形式 //1、windows下 String path = &amp;quot;C:\\Users\\dell\\Desktop&amp;quot;; //2、 path = &amp;quot;C:&amp;quot;+File.separator+&amp;quot;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pic2.zhimg.com/v2-73acf16b673828e895b45b2dd8fe1b86_1200x500.jpg">
-<meta property="og:updated_time" content="2019-09-15T02:57:47.881Z">
+<meta property="og:image" content="https://gavino0119.github.io/images/io基础.jpg">
+<meta property="og:updated_time" content="2019-10-02T14:30:39.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bootstrap">
-<meta name="twitter:description" content="Bootstrap 简介 Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的, 一个用于快速开发 Web 应用程序和网站的前端框架。Bootstrap 的响应式 CSS 能够自适应于台式机、平板电脑和手机。">
-<meta name="twitter:image" content="http://pic2.zhimg.com/v2-73acf16b673828e895b45b2dd8fe1b86_1200x500.jpg">
+<meta name="twitter:title" content="IO 常用API及基础总结">
+<meta name="twitter:description" content="File类#File 并不是指文件本身两个常量：    路径分隔符File.pathSeparator    名称分隔符File.separator //路径表示的几种形式 //1、windows下 String path = &amp;quot;C:\\Users\\dell\\Desktop&amp;quot;; //2、 path = &amp;quot;C:&amp;quot;+File.separator+&amp;quot;">
+<meta name="twitter:image" content="https://gavino0119.github.io/images/io基础.jpg">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="Bootstrap" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="IO 常用API及基础总结" type="application/atom+xml">
 
 
 
@@ -49,7 +49,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Bootstrap" height="28">
+                <img src="/images/logo.png" alt="IO 常用API及基础总结" height="28">
             
             </a>
         </div>
@@ -99,7 +99,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="http://pic2.zhimg.com/v2-73acf16b673828e895b45b2dd8fe1b86_1200x500.jpg" alt="Bootstrap">
+            <img class="thumbnail" src="/images/io基础.jpg" alt="IO 常用API及基础总结">
         </span>
     </div>
     
@@ -107,17 +107,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-14T12:43:01.000Z">2019-09-14</time>
+                <time class="level-item has-text-grey" datetime="2018-08-15T07:50:48.000Z">2018-08-15</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                <a class="has-link-grey -link" href="/categories/Java-基础篇/">Java 基础篇</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 68 个字)
+                    6 分钟 读完 (大约 935 个字)
                 </span>
                 
                 
@@ -126,16 +126,105 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Bootstrap
+                IO 常用API及基础总结
             
         </h1>
         <div class="content">
-            <h2 id="Bootstrap-简介"><a href="#Bootstrap-简介" class="headerlink" title="Bootstrap 简介"></a>Bootstrap 简介</h2><blockquote>
-<p>Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的, 一个用于快速开发 Web 应用程序和网站的前端框架。Bootstrap 的响应式 CSS 能够自适应于台式机、平板电脑和手机。</p>
-</blockquote>
-<a id="more"></a>
+            <h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>#File 并不是指文件本身<br>两个常量：<br>    路径分隔符File.pathSeparator<br>    名称分隔符File.separator</p>
+<pre><code>//路径表示的几种形式
+//1、windows下
+String path = &quot;C:\\Users\\dell\\Desktop&quot;;
+//2、
+path = &quot;C:&quot;+File.separator+&quot;Users&quot;+File.separator+&quot;dell&quot;+File.separator+&quot;Desktop&quot;;
+//3、推荐方式
+path = &quot;C:/Users/dell/Desktop&quot;;</code></pre><a id="more"></a>
 
-<h2 id="Bootstrap-环境安装"><a href="#Bootstrap-环境安装" class="headerlink" title="Bootstrap 环境安装"></a>Bootstrap 环境安装</h2><h2 id="Bootstrap-使用"><a href="#Bootstrap-使用" class="headerlink" title="Bootstrap 使用"></a>Bootstrap 使用</h2>
+<ul>
+<li>IO流基础</li>
+</ul>
+<h3 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h3><pre><code>流动、流向
+以程序为中心</code></pre><h3 id="二、IO流分类"><a href="#二、IO流分类" class="headerlink" title="二、IO流分类"></a>二、IO流分类</h3><pre><code>1、流向:
+    输入流与输出流</code></pre><blockquote>
+<p>输入流    进内存<br>输出流    出内存</p>
+</blockquote>
+<pre><code>2、数据
+    字节流:二进制        可以一切文件     包括纯文本 、doc 、音频 、视频等等
+    字符流:文本文件        只能处理纯文本
+3、功能
+    节点:包裹源头
+    处理:增强功能，提供性能(提高效率)</code></pre><h3 id="三、字符流与字节流-重点"><a href="#三、字符流与字节流-重点" class="headerlink" title="三、字符流与字节流(重点)"></a>三、字符流与字节流(重点)</h3><pre><code>1、字节流
+    输入流:InputStream
+    输出流:OutputStream
+2、字符流
+(读入  写出)
+    输入流:Reader
+    输出流:Writer</code></pre><h3 id="四、操作"><a href="#四、操作" class="headerlink" title="四、操作"></a>四、操作</h3><pre><code>1、与文件建立联系
+2、选择流
+3、操作
+4、释放资源
+
+###FileWriter写数据###
+    输出流写数据的步骤：
+    A、创建输出流对象
+    B、调用输出流对象的写数据方法 并刷新缓冲区    (硬盘存储数据的基本单位是字节)
+    C、释放资源    (close()方法先刷新 再通知系统释放资源)
+
+换行:\n        \r         \r\n
+* windows识别的换行为 \r\n
+* Linux识别的换行为 \n
+* mac识别的换行为 \r
+
+###FileReader读数据###
+    同 FileWriter写数据
+
+    代码实例:
+    *    int len;
+    *    char[] chs = new char[1024];
+    *    while ((len=fr.read(chs))!=-1) {
+    *        System.out.print((new String(chs,0,len)));
+    *    }
+    *    fr.close();
+
+    *注意 char[] chs = new char[1024];    //写1024及其整数倍
+
+    *往控制台输出时，不要ln 
+     System.out.print();
+
+###文件复制###
+    数据源:
+    目的地:
+    *判断读            //先读
+     然后写进去     //后写
+
+###字符缓冲流###    (高效地读入和写出) 
+    BufferedWriter bf = new BufferedWriter(new FileWriter(&quot;bf.txt&quot;));
+    BufferedReader br = new BufferedReader(new FileReader(&quot;bf.txt&quot;));
+    //注意构造方法里面
+
+    System.out.print(new String(csh,0,len));
+    //
+
+    缓冲流的特殊功能:
+        newLine()    //写一个换行符    这个换行符由系统决定
+        readLine()    //读一行    【不包括换行符】    </code></pre><h3 id="五、IO-常用API-的测试"><a href="#五、IO-常用API-的测试" class="headerlink" title="五、IO 常用API 的测试"></a>五、IO 常用API 的测试</h3><h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h4><pre><code>File:文件和目录路径名的抽象表示形式，File类的实例是不可变的(即File可以创建实例)
+
+##创建功能
+createNewFile()
+mkdir()
+mkdirs()
+##删除功能
+
+##判断功能</code></pre><h4 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h4><h4 id="字节缓冲流"><a href="#字节缓冲流" class="headerlink" title="字节缓冲流"></a>字节缓冲流</h4><h4 id="对象流"><a href="#对象流" class="headerlink" title="对象流"></a>对象流</h4><h4 id="转换流-OutputStreamWriter-、-InputStreamReader"><a href="#转换流-OutputStreamWriter-、-InputStreamReader" class="headerlink" title="转换流    (OutputStreamWriter 、 InputStreamReader)"></a>转换流    (OutputStreamWriter 、 InputStreamReader)</h4><pre><code>可以指定字符集
+*实例化转化流，必须先实例化一个字节流*</code></pre><p>测试转换流</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testOut() throws IOException &#123;</span><br><span class="line">	OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(&quot;osw.txt&quot;), &quot;UTF-8&quot;);</span><br><span class="line">	osw.write(&quot;测试写字符，指定字符集为UTF-8&quot;);</span><br><span class="line">	osw.close();</span><br><span class="line">&#125;</span><br><span class="line">@Test</span><br><span class="line">public void testIn() throws IOException &#123;</span><br><span class="line">	InputStreamReader isr = new InputStreamReader(new FileInputStream(&quot;osw.txt&quot;),&quot;UTF-8&quot;);</span><br><span class="line">	char[] buf = new char[1024];</span><br><span class="line">	isr.read(buf);</span><br><span class="line">	System.out.println(new String(buf));</span><br><span class="line">	isr.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="缓冲字符流"><a href="#缓冲字符流" class="headerlink" title="缓冲字符流"></a>缓冲字符流</h4><p>BufferedWriter<br>BufferedReader</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testOut() throws IOException &#123;</span><br><span class="line">	BufferedWriter bw = new BufferedWriter(new FileWriter(&quot;bw.txt&quot;));</span><br><span class="line">	bw.write(&quot;测试字符缓冲流&quot;);</span><br><span class="line">	bw.flush();</span><br><span class="line">	bw.close();</span><br><span class="line">&#125;</span><br><span class="line">@Test</span><br><span class="line">public void testIn() throws IOException &#123;</span><br><span class="line">	BufferedReader br = new BufferedReader(new FileReader(&quot;bw.txt&quot;));</span><br><span class="line">	//br.readLine() 读一行，读到最后时返回null</span><br><span class="line">	String line = &quot;&quot;;</span><br><span class="line">	while ((line=br.readLine())!=null) &#123;</span><br><span class="line">		System.out.println(line);</span><br><span class="line">	&#125;</span><br><span class="line">	br.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="打印流-PrintWriter字符打印流"><a href="#打印流-PrintWriter字符打印流" class="headerlink" title="打印流    PrintWriter字符打印流"></a>打印流    PrintWriter字符打印流</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 测试打印流</span><br><span class="line"> * @throws FileNotFoundException </span><br><span class="line"> */</span><br><span class="line">@Test</span><br><span class="line">public void testPrint() throws FileNotFoundException &#123;</span><br><span class="line">	PrintWriter pw = new PrintWriter(&quot;pw.txt&quot;);</span><br><span class="line">	pw.print(&quot;测试字符打印流&quot;);</span><br><span class="line">	pw.close();</span><br><span class="line">&#125;</span><br><span class="line">@Test</span><br><span class="line">public void testPrintStream() throws FileNotFoundException &#123;</span><br><span class="line">	PrintStream ps = new PrintStream(&quot;ps.txt&quot;);</span><br><span class="line">	ps.print(&quot;测试字节打印流&quot;);</span><br><span class="line">	ps.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六、注意"><a href="#六、注意" class="headerlink" title="六、注意"></a>六、注意</h3><p>1、字符流的底层，依然是字节流<br>2、File 类只是用来表示目录和文件的相关信息，不对文件内容进行访问<br>   new File(“”); //仅仅是创建一个内存对象<br>3、int read() ; 读取一个字节/(字符)内容，返回将该字节内容存到int类型的低8/(16)位<br>4、操作文件即为节点流<br>5、包装流</p>
+
             
 <div style="padding: 15px;
     margin-bottom: 20px;
@@ -156,7 +245,7 @@
             本文由 <a href="https://gavino0119.github.io/">gavino</a> 创作，
             采用
             <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
-            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/09/14/Bootstrap/index.html <br>
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2018/08/15/API常用之-IO/index.html <br>
             -->
         </div>
         <div style="clear:both;height:0px;"></div>
@@ -168,7 +257,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>, <a class="has-link-grey -link" href="/tags/前端/">前端</a>, <a class="has-link-grey -link" href="/tags/框架/">框架</a>
+                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>
                 </div>
             </div>
         </div>
@@ -219,7 +308,7 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/16/js-相关知识点总结/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/09/16/js-相关知识点总结/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">js 相关知识点总结</span>
             </a>
@@ -227,8 +316,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/11/通用-Mapper/">
-                <span class="level-item">通用 Mapper</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/08/11/Java中的那些属性和方法/">
+                <span class="level-item">Java中的那些属性和方法</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -244,8 +333,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://gavino0119.github.io/2019/09/14/Bootstrap/';
-        this.page.identifier = '2019/09/14/Bootstrap/';
+        this.page.url = 'https://gavino0119.github.io/2018/08/15/API常用之-IO/';
+        this.page.identifier = '2018/08/15/API常用之-IO/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -501,25 +590,6 @@
         
         <article class="media">
             
-            <a href="/2019/09/19/jQuery/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1122459309,3492688613&amp;fm=26&amp;gp=0.jpg" alt="jQuery">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-19T01:36:56.000Z">2019-09-19</time></div>
-                    <a href="/2019/09/19/jQuery/" class="has-link-black-ter is-size-6">jQuery</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/09/17/Java-内存模型/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1568735765594&amp;di=abf4ab20962c4d55737c026082f9fa9d&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg" alt="Java 内存模型">
@@ -539,18 +609,18 @@
         
         <article class="media">
             
-            <a href="/2019/09/16/js-相关知识点总结/" class="media-left">
+            <a href="/2019/09/11/通用-Mapper/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&amp;fm=26&amp;gp=0.jpg" alt="js 相关知识点总结">
+                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&amp;fm=11&amp;gp=0.jpg" alt="通用 Mapper">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:42:00.000Z">2019-09-16</time></div>
-                    <a href="/2019/09/16/js-相关知识点总结/" class="has-link-black-ter is-size-6">js 相关知识点总结</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T11:58:19.000Z">2019-09-11</time></div>
+                    <a href="/2019/09/11/通用-Mapper/" class="has-link-black-ter is-size-6">通用 Mapper</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
                     </p>
                 </div>
             </div>
@@ -558,18 +628,37 @@
         
         <article class="media">
             
-            <a href="/2019/09/14/Bootstrap/" class="media-left">
+            <a href="/2019/09/10/Dubbo-学习归档/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://pic2.zhimg.com/v2-73acf16b673828e895b45b2dd8fe1b86_1200x500.jpg" alt="Bootstrap">
+                    <img class="thumbnail" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3753737640,834291282&amp;fm=26&amp;gp=0.jpg" alt="Dubbo 学习归档">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T12:43:01.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/Bootstrap/" class="has-link-black-ter is-size-6">Bootstrap</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T11:40:46.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/Dubbo-学习归档/" class="has-link-black-ter is-size-6">Dubbo 学习归档</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/10/面向艺术，面向接口/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://news.mydrivers.com/Img/20090817/09393557.jpg" alt="面向艺术，面向接口">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T02:42:40.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
+                    <p class="is-size-7 is-uppercase">
+                        
                     </p>
                 </div>
             </div>
@@ -653,7 +742,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">11</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -664,7 +753,7 @@
                     <span class="level-item">八月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -675,7 +764,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -719,7 +808,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -730,7 +819,7 @@
                     <span class="level-item">一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -741,7 +830,7 @@
                     <span class="level-item">十二月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -752,7 +841,7 @@
                     <span class="level-item">十一月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -774,7 +863,7 @@
                     <span class="level-item">九月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -785,7 +874,7 @@
                     <span class="level-item">八月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -796,7 +885,7 @@
                     <span class="level-item">七月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -990,7 +1079,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Bootstrap" height="28">
+                    <img src="/images/logo.png" alt="IO 常用API及基础总结" height="28">
                 
                 </a>
                 <p class="is-size-7">

@@ -3,31 +3,31 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>js 相关知识点总结 - Gavino</title>
+<title>Mysql在项目中的基本操作 - Gavino</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
-<meta name="keywords" content="Java,JS">
+    <meta name="description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
+<meta name="keywords" content="Mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js 相关知识点总结">
-<meta property="og:url" content="https://gavino0119.github.io/2019/09/16/js-相关知识点总结/index.html">
+<meta property="og:title" content="Mysql在项目中的基本操作">
+<meta property="og:url" content="https://gavino0119.github.io/2019/01/23/mysql在项目中的基本操作/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
+<meta property="og:description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-09-18T12:56:18.748Z">
+<meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=208175266,1099182748&fm=26&gp=0.jpg">
+<meta property="og:updated_time" content="2019-10-02T14:28:03.323Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js 相关知识点总结">
-<meta name="twitter:description" content="关于javascript: 简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译">
-<meta name="twitter:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&fm=26&gp=0.jpg">
+<meta name="twitter:title" content="Mysql在项目中的基本操作">
+<meta name="twitter:description" content="Mysql 数据库：关系型数据库非关系型数据库，NOSQL数据库关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)">
+<meta name="twitter:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=208175266,1099182748&fm=26&gp=0.jpg">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="js 相关知识点总结" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="Mysql在项目中的基本操作" type="application/atom+xml">
 
 
 
@@ -49,7 +49,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="js 相关知识点总结" height="28">
+                <img src="/images/logo.png" alt="Mysql在项目中的基本操作" height="28">
             
             </a>
         </div>
@@ -81,6 +81,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -99,7 +103,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&amp;fm=26&amp;gp=0.jpg" alt="js 相关知识点总结">
+            <img class="thumbnail" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=208175266,1099182748&amp;fm=26&amp;gp=0.jpg" alt="Mysql在项目中的基本操作">
         </span>
     </div>
     
@@ -107,17 +111,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-16T11:42:00.000Z">2019-09-16</time>
+                <time class="level-item has-text-grey" datetime="2019-01-23T05:44:23.000Z">2019-01-23</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                <a class="has-link-grey -link" href="/categories/数据库/">数据库</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2314 个字)
+                    19 分钟 读完 (大约 2890 个字)
                 </span>
                 
                 
@@ -126,316 +130,235 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                js 相关知识点总结
+                Mysql在项目中的基本操作
             
         </h1>
         <div class="content">
-            <h2 id="关于javascript"><a href="#关于javascript" class="headerlink" title="关于javascript:"></a>关于javascript:</h2><blockquote>
-<p>简称js, javascript是嵌入html中在浏览器中运行的脚本语言, js跟java和c没有任何关系,只是语法相似,用来向html页面添加交互行为, 直接嵌入html页面, 由浏览器解释执行代码,不进行预编译</p>
-</blockquote>
- <a id="more"></a>
-
-<p>javascript特点:</p>
-<ul>
-<li>可以用任何编辑文本的工具编写js代码</li>
-<li>由浏览器内置的javascript引擎执行代码<br> 解释执行:事先不编译,逐行执行<br> 基于对象:内置大量的现成的对象   </li>
-<li>适宜:<br> 客户端的数据计算<br> 客户端的表单验证<br> 浏览器的事件触发<br> 网页特效制作<br> 服务器的异步提交 ajax </li>
-</ul>
-<p>js的注释:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单行  //</span><br><span class="line">多行 /**/</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong></p>
+            <p>Mysql</p>
+<h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h2><p>关系型数据库<br>非关系型数据库，NOSQL数据库<br>关系型数据库：Oracle  Mysql(SUN Java)  DB2(IBM)</p>
+<a id="more"></a>
 <blockquote>
-<p>js代码区分大小写,大小写敏感<br>所有js语句用分号结束<br>标识符的定义:可以包含字母,数字,下划线,$符号,就是不能用数字开头<br>命名的规范用骆驼(驼峰)命名法</p>
+<p>DDL(数据定义语言): CREATE、 DROP、 ALTER</p>
 </blockquote>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
-<li><p>原始数据类型(基本数据类型)</p>
-<ol>
-<li>number: 数字        (整数、小数、NaN)</li>
-<li>string: 字符串。 </li>
-<li>boolean: true 和 false</li>
-<li>null: 一个对象为空的占位符<br>注：用 typeof() 得到的 null 的类型为 Object</li>
-<li>undefined: 未定义</li>
-</ol>
-</li>
-<li><p>引用数据类型: 对象</p>
-</li>
-</ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><blockquote>
-<p>在 js 中，如果运算数不是运算符所要求的类型，那么 js 引擎会自动的将运算数进行类型转换</p>
-</blockquote>
-<ul>
-<li>其他类型转 number<ol>
-<li>string 转 number: 字面是数字，按照字面值转换。<br>如果字面不是数字，则转为NaN(不是数字的数字类型)</li>
-<li>boolean 转 number: true 转为 1, false 转为 0<br>eg: true+true=2</li>
-</ol>
-</li>
-<li>其他类型转 boolean<ol>
-<li>number: 0 或 NaN 为假，其他为真</li>
-<li>string: 除了空字符串(“”), 其他都是 true</li>
-<li>null &amp; undefined: 都是 false</li>
-<li>对象: 所有对象都是 true</li>
-</ol>
-</li>
+<h3 id="表的设计"><a href="#表的设计" class="headerlink" title="表的设计"></a>表的设计</h3><h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ul>
+<li>第一范式<br>强调数据表的原子性  表中字段的值是不能拆分的</li>
+<li>第二范式<br>消除了非主属性对于码的部分函数依赖，即完全依赖<br>表中非主字段必须完全依赖主键字段</li>
+<li>第三范式<br>消除了非主属性对于码的传递函数依赖<br>依赖不能传递</li>
 </ul>
 <blockquote>
-<p>比较运算符:</p>
+<p>避免表中数据冗余</p>
 </blockquote>
-<p>比较运算符的比较方式：</p>
-<ol>
-<li>类型相同，则直接比较<ul>
-<li>对于字符串，按照字典顺序逐位进行比较，直到得出大小为止</li>
-</ul>
-</li>
-<li>类型不同，先进行类型转换，再进行比较<ul>
-<li>=== 表示 全等于, 在比较之前，先判断类型，如果类型不一样，则直接返回 false</li>
-</ul>
-</li>
-</ol>
-<p>变量的定义使用关键字 var 和不使用 var</p>
+<p>创建表语法:<br>create table 表名(<br>    字段名1 数据类型(长度) 约束,<br>    字段名1 数据类型(长度),<br>    字段名1 数据类型(长度)<br>);</p>
 <ul>
-<li>使用 var :定义的变量是局部变量</li>
-<li>不使用 var :定义的变量是全局变量(即使在方法里面定义)</li>
-</ul>
-<h2 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h2><ul>
-<li>在 js 中，switch 语句可以接受任意的原始数据类型</li>
-<li>for in</li>
-</ul>
-<h2 id="JavaScript-对象"><a href="#JavaScript-对象" class="headerlink" title="JavaScript 对象"></a>JavaScript 对象</h2><ol>
-<li><p>Function: 函数(方法)对象</p>
-<ul>
-<li>创建：<ol>
-<li>var fun = new Function(形参列表，方法体);<br>该方法了解即可</li>
-<li>functioin 方法名称(形参列表){<br> 方法体<br>}</li>
-<li>var 方法名 = function(){<br> 方法体<br>}</li>
-</ol>
-  <strong>推荐后面两种方式</strong></li>
-<li>属性<br>  length: 代表形参的个数</li>
-<li>特点<ol>
-<li>方法定义时，形参的类型不用写,返回值类型也不用写</li>
-<li>方法是一个对象，如果定义名称相同的方法，(后面定义的)会覆盖之前定义的方法</li>
-<li>在 js 中，当进行方法调用时，方法的调用只与方法的名称有关,和参数列表无关</li>
-<li>在方法声明中有一个隐藏的内置对象(数组), arguments, 封装所有的实际参数</li>
-</ol>
-</li>
-<li>调用<br>  方法名称(实参);<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/*求任意个数的和*/</span><br><span class="line">function add()&#123;</span><br><span class="line">	var sum = 0;	</span><br><span class="line">	for(var i=0;i&lt;arguments.length;i++)&#123;</span><br><span class="line">		sum += arguments[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">function getResult()&#123;</span><br><span class="line">	var sum = add(1,2,3);</span><br><span class="line">	console.log(sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>Array:</p>
-<ul>
-<li>创建<ol>
-<li>var arr = new Array(元素列表);</li>
-<li>var arr = new Array(默认长度);</li>
-<li>var arr = [元素列表];</li>
-</ol>
-</li>
-<li>常用方法<ol>
-<li>join(参数): 将数组中的元素按照指定的分隔符拼接为字符串</li>
-<li>push() 向数组的末尾添加一个或更多元素，并返回新的长度</li>
-</ol>
-</li>
-<li>属性<br>  length: 数组的长度。</li>
-<li>特点<ol>
-<li>js 中，数组元素的类型是可变的</li>
-<li>js 中，数组的长度是可变的。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>Date: 日期对象</p>
-<ul>
-<li>创建<br>  var date = new Date();</li>
-<li>常用方法<ol>
-<li>toLocaleString(): 返回当前 date 对象对应的时间本地字符串格式</li>
-<li>getTime(): 获取毫秒值。返回当前日期对象描述的时间到1970年1月1日零点的毫秒值差<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function demo()&#123;</span><br><span class="line">	var date = new Date();</span><br><span class="line">	document.write(date+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.toLocaleTimeString()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.toLocaleDateString()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.getTime()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.getDay()+&quot;&lt;br&gt;&quot;);</span><br><span class="line">	document.write(date.toString()+&quot;&lt;br&gt;&quot;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>Math: 数学</p>
-<ul>
-<li>创建<br>  Math 对象不用创建，直接使用。Math.方法名();</li>
-<li>常用方法<ol>
-<li>random(): 返回0~1之间的随机数。含0不含1</li>
-</ol>
-</li>
-<li>属性<br>  PI</li>
-</ul>
-</li>
-<li><p>RegExp: 正则表达式对象</p>
-<ul>
-<li><p>正则表达式: 定义字符串的组成规则</p>
-<ol>
-<li><p>一些特殊含义的单个字符</p>
-<ul>
-<li>\d: 单个数字</li>
-<li>\w: 单个字符</li>
-<li>其他</li>
-</ul>
-</li>
-<li><p>相关量词符号</p>
-<ul>
-<li><p>{m,n}: 表示 m&lt;= 数量 &lt;= n</p>
-<ul>
-<li>m 如果缺省:{,n}: 表示最多 n 次</li>
-<li>n 如果缺省:{m,}: 表示最少 m 次</li>
-</ul>
-</li>
-<li><p>开始和结束</p>
-<ul>
-<li>^: 开始</li>
-<li>$: 结束</li>
-</ul>
-</li>
-<li><p>其他</p>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>正则对象</p>
-<ul>
-<li>创建<ol>
-<li>var reg = new RegExp(“正则表达式”);</li>
-<li>var reg = /正则表达式/;<br>注意在//之间不加引号</li>
-</ol>
-</li>
-<li>方法<ol>
-<li>test(参数): 验证指定的字符串是否符合正则定义的规范</li>
-</ol>
-</li>
+<li>表名，字段名<ul>
+<li>只能由字母，数字，下划线，$ 组成</li>
+<li>不能由数字开头</li>
+<li>不能是SQL中的关键字</li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Global:</p>
-<ul>
-<li>全局对象, Global 中封装的方法不需要对象就可以直接调用。    </li>
-<li>常用方法:<ul>
-<li>encodeURI(): url 编码</li>
-<li>decodeURI(): url 解码</li>
-<li>parseInt(): 将字符串转为数字</li>
-<li>isNaN(): 判断一个值是不是NaN, NaN参与的==比较 全为 false</li>
-<li>eval(): eval函数用于计算表达式字符串,或者用于执行字符串中js代码</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><blockquote>
-<p>BOM对象  browser object model浏览器对象模型,用来访问跟浏览器窗口有关的对象<br>在BOM对象有很多的对象,每个对象还有很多属性和方法, 通过这些方法和属性,移动窗口,更改状态栏文本<br>和其他跟窗口操作相关的.</p>
-</blockquote>
-<ul>
-<li><p>window对象:</p>
-<ul>
-<li>window表示浏览器窗口<br>是所有javascript全局对象,如果不写window,默认从window访问起</li>
-</ul>
-</li>
-<li><p>window常用的属性:</p>
-<ul>
-<li>document:在窗口中显示文档树.</li>
-<li>history:浏览器的窗口的后退和前进</li>
-<li>location:窗口文件地址对象.<br> window.location.href=”login.html”;</li>
-<li>screen:当前屏幕对象</li>
-<li>navigator:浏览器的相关信息</li>
-</ul>
-</li>
-<li><p>window对象常用的方法:</p>
-<ul>
-<li>alert();弹出式窗口,模态框(当前窗口不关闭,无法操作后面的窗口)</li>
-<li>confirm();模态框,确认窗口</li>
-<li>setTimeOut()  setInterval() 周期性函数</li>
-<li>clearTimeOut()  clearInterval();</li>
-</ul>
-</li>
-</ul>
-<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><p>DOM 功能：控制 html 文档的内容<br>document下的相关对象</p>
+<p>删除表<br>drop table 表名;</p>
+<p>MYSQL常用的数据类型</p>
 <blockquote>
-<p>DOM对象: Document Object model文档对象模型,用来操作文档<br>将标记语言文档的各个组成部分,封装为对象. 可以使用这些对象,对标记语言文档进行 CRUD 的动态操作<br>定义了访问和操作html文档的标准方法<br>应用程序通过对dom树的操作,来实现和html的交互</p>
+<p>int(6)<br> double(10,2)                //浮点型，加小数10位，小数部分占2位<br> varchar:可变长字符类型    //name varchar(10)   Jack<br> char:不可变长字符类型     //idcode char(18)    210<br> date:日期类型<br> timestamp:时间戳类型</p>
 </blockquote>
-<h3 id="DOM-编程"><a href="#DOM-编程" class="headerlink" title="DOM 编程:"></a>DOM 编程:</h3><p>用 js 做 dom 编程的目的，就是为让 html 页面中的内容局部改变</p>
+<p><strong>约束</strong><br>约束是用来完备性和正确性</p>
 <ul>
-<li><p>核心 DOM 模型</p>
+<li><p>主键约束</p>
+<blockquote>
+<p>开发中，通常都会为一张表设计一个字段，该字段用来唯一标识记录。将该字段添加主键约束，添加了主键约束的字段，称为主键字段。<br>添加主键字段防止出现张冠李戴的现象。<br>主键约束的特点：非空、唯一<br>一个表只能有一个主键</p>
+</blockquote>
+</li>
+<li><p>外键约束<br>*注意:<br>外键字段必须引用于主键字段<br>被引用的表称为主表，引用的表称为从表<br>外键的三种添加方式(如: 在主表员工表 emp 中给字段 deptno 设置外键,外键为从表 dept 的主键 deptno )</p>
 <ul>
-<li>Document: 文档对象<ul>
-<li>创建<ul>
-<li>window.document</li>
-<li>document</li>
-</ul>
+<li><p>方式一<br>[ 列名 数据类型() references 外键所属表(该表主键) ]</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line">	deptno int(2) references dept(deptno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
-<li>方法<ol>
-<li>获取Element对象<ul>
-<li>getElementById()</li>
-</ul>
+<li><p>方式二<br>不在列名后面写，而是在最后表级添加<br>[ foreign key(外键列名) references 外键所属表(该表主键) ]</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line">	deptno int(2),</span><br><span class="line">	constraint t_emp_dept_fk foreign key(deptno) references dept(deptno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
-<li>创建其他DOM对象<ul>
-<li>createElement()</li>
-</ul>
-</li>
-</ol>
+<li><p>方式三<br>前两张方式的局限性：只能先建  才能引入外键<br>可以在创建表时先不添加外键<br>待表建好以后，通过修改表的方式添加外键</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line">	deptno int(2)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">alter table emp add foreign key(deptno) references dept(deptno);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li>Element: 元素对象        <ul>
-<li>获取/创建</li>
-<li>方法<ol>
-<li>removeAttribute(): 删除属性</li>
-<li>setAttribute(): 设置属性</li>
-</ol>
+<li><p>唯一约束<br>唯一性约束 unique</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line"> 	email varchar(50) unique,</span><br><span class="line"> 	phone varchar(20) unique,</span><br><span class="line"> 	......</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>非空约束<br>not null</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	.......,</span><br><span class="line"> 	password varchar(20) not null,</span><br><span class="line"> 	......</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查约束<br>check</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line">created timestamp,</span><br><span class="line">check(created&gt;&apos;2019-1-1&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置一个字段默认值</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">drop table if exists t_user;</span><br><span class="line">create table t_user(</span><br><span class="line">	id int() primary key auto_increment,</span><br><span class="line">	gender char() default &apos;0&apos;,</span><br><span class="line">	......</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-</li>
-<li>Node :节点对象<ul>
-<li>所有dom对象都可以被认为是一个节点</li>
-<li></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>查询:</strong></p>
+<blockquote>
+<p>主键约束：primary key,主键字段的值非空唯一<br>  外键约束：foreign key references t1(id);外键字段值引用其他主键字段的值</p>
+</blockquote>
 <ul>
-<li>通过id查询</li>
-<li>通过name查询</li>
-<li>通过标签名查询</li>
-<li>通过表单名查询</li>
+<li><p>创建数据库</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database mydb;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择数据库</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mydb;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据库中的表</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建表 Demo</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table t_user(</span><br><span class="line">	id int(6) auto_increment primary key,</span><br><span class="line">	username varchar(20),</span><br><span class="line">	password varchar(20),</span><br><span class="line">	email varchar(50),</span><br><span class="line">	phone varchar(20),</span><br><span class="line">	type char(1),</span><br><span class="line">	created timestamp,</span><br><span class="line">	updated timestamp</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>先删除再创建表</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drop table if exists t_user;</span><br><span class="line">create table t_user(.....);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看表结构</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc 表名;</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
+<p>sql 语句中的常用操作细节:</p>
+<blockquote>
+<p><strong>细节操作:</strong></p>
 <ol>
-<li><p>根据id查询<br>document.getElementById(“id名”);<br>通过id查询返回元素节点,<br>在整个html文档中搜索id<br>只找到第一个id,返回元素<br>如果id错误,返回null</p>
-</li>
-<li><p>根据层次查询节点:<br>-parentNode<br>遵循文档的上下文层次结构,查找单个父节点<br>比如:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;table id=&quot;tblid&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">	&lt;td id=&quot;tdid&quot;&gt;&lt;/td&gt;</span><br><span class="line">	&lt;td&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">var td_ele=document.getElementById(&quot;tdid&quot;);</span><br><span class="line">var tr_ele=td_ele.parentNode;</span><br><span class="line">var table_ele=td_ele.parentNode.parentNode;</span><br></pre></td></tr></table></figure>
-
-<p>-childNodes<br>  遵循文档的上下文层次结构,查找多个子节点<br>  比如:上面的例子<br>   var td_ele=document.getElementById(“tdid”);<br>   //获取当前td对象的所有兄弟<br>   var tds_ele=td_ele.parentNode.childNodes;<br>   //获取当前td的父亲,和所有叔叔节点<br>   var trs_ele=td_ele.parentNode.parentNode.childNodes;</p>
-</li>
-<li><p>根据标签名查询节点:<br> getElementsByTagName(“标签名”);<br> 从当前对象往下寻找符合标签名的所有元素对象<br> 返回结果是一个数组<br> 标签名错误,返回长度为0,<br> 比如:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;table id=&quot;tblid&quot;&gt;</span><br><span class="line"> &lt;tr&gt;</span><br><span class="line">	&lt;td id=&quot;tdid&quot;&gt;&lt;/td&gt;</span><br><span class="line">	&lt;td&gt;&lt;/td&gt;</span><br><span class="line"> &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">var table_ele=document.getElementById(&quot;tblid&quot;);</span><br><span class="line">var trs_ele=table_ele.getElementsByTagName(&quot;tr&quot;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据name属性查询节点<br>document.getElementsByName(“元素的name属性值”);<br>注意:不是所有的元素节点都有name属性</p>
-</li>
-<li><p>根据document.表单名字.表单控间名<br> docuemnt.forms[数字].表单控件名 </p>
+<li>设置主键并让主键自增<br>auto_increment primary key<br>auto_increment,自动增长，用来生成主键字段的值</li>
+<li>mysql 解决乱码：<br>创建数据库时:<br>create database my_db default charset=utf8;<br>创建表设置字符集:<br>creaate table tablename(<br>……<br>)default charset=utf8;</li>
+<li>mysql 中的时间<ul>
+<li>date</li>
+<li>datetime</li>
+<li>timestamp</li>
+</ul>
 </li>
 </ol>
-</li>
-</ul>
-<ul>
-<li><p>创建元素节点:<br>document.createElement(元素节点名);<br>返回结果是创建的节点对象</p>
-</li>
-<li><p>创建文本节点:<br>document.createTextNode(“文本信息”);<br>返回结果是一个文本节点对象</p>
-</li>
-<li><p>添加新节点:<br>parentNode.appendChild(newNode);<br>追加newNode节点到父节点的所有子节点的最后.</p>
-<p>parentNode.insertBefore(newNode,refNode);<br>把newNode插入到refNode的前面<br>newNode和refNode是兄弟关系</p>
-</li>
-<li><p>删除节点:<br>node.removeChild(childNode)<br>删除node节点下的childNode的节点对象</p>
-</li>
-</ul>
-<ul>
-<li>定位节点:<br>parentNode.firstChild;第一个子节点<br>parentNode.lastChild;最后一个子节点</li>
-</ul>
-<h2 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a>自定义对象</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">	&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		/*直接创建对象*/</span><br><span class="line">		function testObject()&#123;</span><br><span class="line">			var personObj = new Object();</span><br><span class="line">			//添加属性</span><br><span class="line">			personObj.name = &quot;张三&quot;;</span><br><span class="line">			personObj.age = 30;</span><br><span class="line"></span><br><span class="line">			//添加方法</span><br><span class="line">			personObj.say=function()&#123;</span><br><span class="line">				alert(&quot;hello  &quot;+this.name+&quot; &quot;+this.age);</span><br><span class="line">			&#125;</span><br><span class="line">			//使用新添加的属性和方法</span><br><span class="line">			personObj.say();</span><br><span class="line">			alert(personObj.name+&quot;  &quot;+personObj.age);</span><br><span class="line">		&#125;</span><br><span class="line">		/*构造函数创建对象*/</span><br><span class="line">		function Person(n,a,ad)&#123;</span><br><span class="line">			//定义 name 和 age 属性</span><br><span class="line">			this.name = n;</span><br><span class="line">			this.age = a;</span><br><span class="line">			this.address = ad;</span><br><span class="line">			//定义方法, 且直接给方法体</span><br><span class="line">			this.showInfo=function()&#123;</span><br><span class="line">				alert(this.name+&quot; &quot;+this.age+&quot; &quot;+this.address);</span><br><span class="line">			&#125;</span><br><span class="line">			//定义方法, 且间接给方法体</span><br><span class="line">			this.showAddress=introAddress;</span><br><span class="line">		&#125;</span><br><span class="line">		function introAddress()&#123;</span><br><span class="line">			alert(this.address);</span><br><span class="line">		&#125;</span><br><span class="line">		function testObject1()&#123;</span><br><span class="line">			var p = new Person(&quot;李四&quot;,26,&quot;北京&quot;);</span><br><span class="line">			alert(p.name+&quot; &quot;+p.age+&quot; &quot;+p.address);</span><br><span class="line">			p.showInfo();</span><br><span class="line">			p.showAddress();</span><br><span class="line">		&#125;</span><br><span class="line">		/*用json创建对象*/</span><br><span class="line">		function testObject2()&#123;</span><br><span class="line">			var jsonObj = &#123;&quot;name&quot;:&quot;王五&quot;,&quot;age&quot;:30,&quot;address&quot;:&quot;兰州&quot;&#125;;</span><br><span class="line">			alert(jsonObj.name+&quot; &quot;+jsonObj.age+&quot; &quot;+jsonObj.address);</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div onclick=&quot;testObject();&quot;&gt;直接创建对象的演示&lt;/div&gt;</span><br><span class="line">	&lt;div onclick=&quot;testObject1();&quot;&gt;用构造函数创建对象的演示&lt;/div&gt;</span><br><span class="line">	&lt;div onclick=&quot;testObject2();&quot;&gt;用json创建对象的演示&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">设置系统当前时间demo:</span><br><span class="line">commited date default now(),</span><br><span class="line">starttime datetime default now(),</span><br><span class="line">paytime timestamp default currene_timestamp(),</span><br></pre></td></tr></table></figure>
 
-<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><p>把JS代码写在head标签里面<br>“Uncaught TypeError: Cannot set property ‘onclick’ of null”<br>节点需要先加载完才能执行onclick事件。</p>
+<p><strong>根据如下需求创建表,并进行相关操作：</strong></p>
+<blockquote>
+<p>创建部门表和员工表，员工表中有部门号字段为外键字段，引用部门表中部门号字段<br> 部门表字段：部门号，部门名，部门地址<br> 员工表字段：员工号，员工姓名，职位，薪水，入职日期，经理编号，部门号             </p>
+</blockquote>
+<p> <strong>部门表</strong><br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table dept(</span><br><span class="line">	deptno int(2) auto_increment primary key,</span><br><span class="line">	dname varchar(30),</span><br><span class="line">	loc varchar(50)      	</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p> <strong>员工表</strong><br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">	empno int(4) auto_increment primary key,</span><br><span class="line">	ename varchar(20),</span><br><span class="line">	job   varchar(20),</span><br><span class="line">	sal double(10,2),</span><br><span class="line">	hiredate date,</span><br><span class="line">	mgr int(4),</span><br><span class="line">	deptno int(2),</span><br><span class="line">	foreign key(mgr) references emp1(empno),</span><br><span class="line">	foreign key(deptno) references dept1(deptno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>创建表设置字符集<br>    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">create table dept(</span><br><span class="line">	deptno int(2) auto_increment primary key,</span><br><span class="line">	dname varchar(30),</span><br><span class="line">	loc varchar(50)      	</span><br><span class="line">) default charset=utf8;       </span><br><span class="line">create table emp(</span><br><span class="line">	empno int(4) auto_increment primary key,</span><br><span class="line">	ename varchar(20),</span><br><span class="line">	job   varchar(20),</span><br><span class="line">	sal double(10,2),</span><br><span class="line">	hiredate date,</span><br><span class="line">	mgr int(4),</span><br><span class="line">	deptno int(2)</span><br><span class="line">)default charset=utf8; </span><br><span class="line">alter table emp add foreign key(mgr) references emp(empno);  </span><br><span class="line">alter table emp add foreign key(deptno) references dept(deptno);</span><br></pre></td></tr></table></figure></p>
+<h3 id="表的管理"><a href="#表的管理" class="headerlink" title="表的管理"></a>表的管理</h3><p><strong>DML（INSERT UPDATE DELETE SELECT）</strong></p>
+<ul>
+<li><p>INSERT:添加数据</p>
+<ul>
+<li><p>需求：创建管理员账号</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into t_user values(NULL,&apos;admin&apos;,&apos;admin&apos;,&apos;admin@gavino.com&apos;,&apos;15699782000&apos;,&apos;2&apos;,now(),now());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需求：创建普通用户账号</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into t_user values(NULL,&apos;user01&apos;,&apos;user01&apos;,&apos;user01@gavino.com&apos;,&apos;15699782111&apos;,&apos;1&apos;,now(),now());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需求：<br>1、创建4个部门分别为10,20,30,40,部门名为研发部，教学部，人事部，财务部</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">insert into dept values(10,&apos;研发部&apos;,&apos;理工本部综合楼301&apos;);</span><br><span class="line">insert into dept values(20,&apos;教学部&apos;,&apos;理工本部综合楼302&apos;);</span><br><span class="line">insert into dept values(30,&apos;人事部&apos;,&apos;理工本部综合楼303&apos;);</span><br><span class="line">insert into dept values(40,&apos;财务部&apos;,&apos;理工本部综合楼304&apos;);</span><br></pre></td></tr></table></figure>
+
+<p>2、向员工表中添加如下员工：</p>
+<ul>
+<li><p>一个总裁</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into emp values(7000,&apos;KING&apos;,&apos;总裁&apos;,20000,&apos;2010-1-1&apos;,null,10);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三个部门（研发部，教学部，人事部）经理</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into emp values(7001,&apos;汪三四&apos;,&apos;经理&apos;,18000,&apos;2013-2-12&apos;,7000,10);</span><br><span class="line">insert into emp values(7002,&apos;马五六&apos;,&apos;经理&apos;,22000,&apos;2014-3-10&apos;,7000,20);</span><br><span class="line">insert into emp values(7003,&apos;周七八&apos;,&apos;经理&apos;,10000,&apos;2012-5-29&apos;,7000,30);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>每个部门中添加5个员工  </p>
+<ul>
+<li><p>研发部</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insert into emp values(7004,&apos;王啊&apos;,&apos;CLERK&apos;,15000,&apos;2012-09-19&apos;,7001,10); </span><br><span class="line">insert into emp values(7005,&apos;张吖&apos;,&apos;CLERK&apos;,12500,&apos;2013-02-12&apos;,7001,10);</span><br><span class="line">insert into emp values(7006,&apos;白嗄&apos;,&apos;CLERK&apos;,11000,&apos;2017-12-12&apos;,7001,10);</span><br><span class="line">insert into emp values(7007,&apos;王阿&apos;,&apos;CLERK&apos;,9000,&apos;2018-06-06&apos;,7001,10);</span><br><span class="line">insert into emp values(7008,&apos;曹咦&apos;,&apos;CLERK&apos;,19000,&apos;2019-05-12&apos;,7001,10);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>教学部</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   insert into emp values(7010,&apos;楚王&apos;,&apos;讲师&apos;,22000,&apos;2016-09-19&apos;,7002,20); </span><br><span class="line">insert into emp values(7011,&apos;腾非&apos;,&apos;讲师&apos;,18000,&apos;2013-02-12&apos;,7002,20);</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>人事部  </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into emp values(7015,&apos;张六&apos;,&apos;人事专员&apos;,6000,&apos;2017-09-19&apos;,7003,30);</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>UPDATE</p>
+<ul>
+<li>需求：将公司中30号部门员工涨薪1000<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update emp set sal=sal+1000 where deptno=30;</span><br><span class="line">update emp set sal=sal+600,hiredate=&apos;2016-05-12&apos; where empno=7019;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>DELETE</p>
+  <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into emp(empno,ename) values(8000,&apos;aaaa&apos;);  </span><br><span class="line">delete from emp where empno=8000;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li>SELECT:<br> DML（INSERT,UPDATE,DELETE）<br> DQL（SELECT）<br> DML（INSERT,UPDATE,DELETE,SELECT 增删改查  CRUD）</li>
+</ul>
+<blockquote>
+<p><strong>sql 更多练习：</strong></p>
+<ul>
+<li>基本查询<br>   select 字段1,字段2… from 表名;<ul>
+<li>需求：列出员工姓名，薪水，职位，入职日期<br>select ename,sal,job,hiredate from emp;</li>
+<li>需求：列出员工表中所有数据<br>select * from emp;      <strong>(开发中，尽可能不使用*)</strong><br>select empno,ename,job,sal,hiredate,mgr,deptno from emp;</li>
+</ul>
+</li>
+<li>过滤查询  <ul>
+<li>需求：列出10号部门员工的姓名，工资，入职日期<br>select ename,sal,hiredate from emp where deptno=10;</li>
+<li>需求：列出薪水低于10000的员工姓名，薪水，职位，部门号<br>select ename,sal,job,deptno from emp where sal&lt;10000;</li>
+<li>需求：列出10号部门16年之后入职的员工姓名，薪水，职位，入职日期<br>select ename,sal,job,hiredate from emp where deptno=10 and hiredate&gt;’2016-1-1’;</li>
+<li>需求：列出10号部门或16年之后入职的员工姓名，薪水，职位，入职日期，部门号<br>select ename,sal,job,hiredate,deptno from emp where deptno=10 or hiredate&gt;’2016-1-1’;</li>
+<li>需求：列出10，20号部门中的员工姓名，薪水，职位，部门号<br>select ename,sal,job,deptno from emp where deptno in(10,20);</li>
+<li>需求：列出’王’姓的员工姓名，职位，入职日期<br><strong>(模糊查询：like  %  _)</strong><br>%:任意位任意字符<br>_:一位任意字符<br>select ename,job,hiredate from emp where ename like ‘王%’;</li>
+<li>需求：列出名字中第二个字是’浩’的员工姓名，薪水，职位，入职日期，部门号<br>select ename,sal,job,hiredate,deptno from emp where ename like ‘_浩%’;     </li>
+</ul>
+</li>
+<li>排序查询<br>   order by  asc(升序)  desc(降序)<ul>
+<li>需求：列出员工的姓名，薪水，职位入职日期，根据薪水降序排序<br>select ename,sal,hiredate from emp order by sal desc;</li>
+<li>需求：列出员工的姓名，薪水，职位,入职日期，根据薪水降序排序,入职日期升序排序<br>select ename,sal,hiredate from emp order by sal desc,hiredate asc;  </li>
+<li>需求：列出10号部门员工的姓名，薪水，职位，入职日期，根据薪水降序排序<br>select ename,sal,job,hiredate from emp where deptno=10 order by sal desc;</li>
+</ul>
+</li>
+<li>分组查询<br>   <strong>group by</strong><br>   <strong>(统计运算：max min sum avg count)</strong><ul>
+<li>需求：列出公司中每个部门员工薪水总和<br>select deptno, sum(sal) from emp group by deptno;</li>
+<li>需求：列出公司中每个部门的最大工资，最小工资，平均工资，工资总和<br>select deptno,max(sal),min(sal),avg(sal),sum(sal) from emp group by deptno;</li>
+<li>需求：列出公司中有多少个员工<br>select ename,count(*) from emp;–语法错误<br>   (注意：分组查询，只能查询分组字段和分组之后的函数运算结果)</li>
+</ul>
+</li>
+<li>多表查询（联合查询，内连接，外连接查询）<br>  (   查询的数据分布在多张表里   )<ul>
+<li>需求：列出员工姓名，薪水，职位，入职日期，部门名，部门地址<br><strong>等值查询(等价于内连接)</strong><br>select ename,sal,job,hiredate,dname,loc from emp e,dept d<br>where e.deptno=d.deptno;<br><strong>内连接查询</strong>只查询满足连接条件的数据<br>inner join … on…<br>select ename,sal,job,hiredate,dname,loc from emp e inner join dept d<br>on e.deptno=d.deptno;<br><strong>(等值查询或内连接查询，查询的结果都必须满足连接条件)</strong><br><strong>注意：多表查询一定要指定连接条件，条件的数量最少为 n-1<br>否则会出现笛卡尔乘积现象</strong><br>外连接查询 :<br>左外连接、右外连接、全外连接<br><strong>左外连接</strong><br>select ename,sal,job,hiredate,dname,loc from emp e left outer join dept d<br>on e.deptno=d.deptno;<br><strong>右外连接</strong><br>select ename,sal,job,hiredate,dname,loc from dept d right outer join emp e<br>on e.deptno=d.deptno;<br><strong>右外连接</strong><br>select ename,sal,job,hiredate,dname,loc from emp e right outer join dept d<br>on e.deptno=d.deptno;<br><strong>全外连接（oracle支持）</strong><br>select ename,sal,job,hiredate,dname,loc from emp e full outer join dept d<br>on e.deptno=d.deptno;</li>
+</ul>
+</li>
+<li>mysql分页查询<br>   select * from emp limit 5,5;</li>
+</ul>
+</blockquote>
+<h3 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a><strong>其它操作</strong></h3><h4 id="HAVING-对分组后的结果再过滤"><a href="#HAVING-对分组后的结果再过滤" class="headerlink" title="HAVING 对分组后的结果再过滤"></a>HAVING 对分组后的结果再过滤</h4><ul>
+<li>HAVING 是分组后的筛选条件,WHERE 则是在分组前筛选</li>
+<li>WHERE子句在聚合前先筛选记录。也就是说作用在GROUP BY 子句和HAVING子句前</li>
+<li>HAVING 在分组和聚集之后选取分组的行。因此，WHERE 子句不能包含聚集函数；</li>
+<li>HAVING 子句总是包含聚集函数。（也可以写不使用聚集的 HAVING 子句， 但这样做没有意义。同样的条件可以更有效地用于 WHERE ）</li>
+</ul>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><h5 id="普通子查询"><a href="#普通子查询" class="headerlink" title="普通子查询"></a>普通子查询</h5><p>执行顺序 先查子查询</p>
+<h5 id="相关子查询"><a href="#相关子查询" class="headerlink" title="相关子查询"></a>相关子查询</h5><p>先执行主查询</p>
+<h4 id="IN-NOT-IN"><a href="#IN-NOT-IN" class="headerlink" title="IN (NOT IN)"></a>IN (NOT IN)</h4><h4 id="EXISTS-NOT-EXISTS"><a href="#EXISTS-NOT-EXISTS" class="headerlink" title="EXISTS (NOT EXISTS)"></a>EXISTS (NOT EXISTS)</h4><h4 id="联合-多表-查询"><a href="#联合-多表-查询" class="headerlink" title="联合(多表)查询"></a>联合(多表)查询</h4><h4 id="UNION-UNION-ALL"><a href="#UNION-UNION-ALL" class="headerlink" title="UNION    UNION ALL"></a>UNION    UNION ALL</h4><p>UNION     对多个结果集去重的连接操作<br>UNION ALL 对多个结果集不去重的连接操作</p>
+<h3 id="视图-view"><a href="#视图-view" class="headerlink" title="视图(view)"></a>视图(view)</h3><p>一个命名的查询 ,可以通过视图隐藏表结构<br>可以简化SQL语句<br>创建视图</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create or replace view myview</span><br><span class="line">as</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>使用视图查询:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from myview;</span><br></pre></td></tr></table></figure>
+
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><ol>
+<li>原子性(Atomicity)<br>一个不可分割的操作单元，保证所有的操作要么都成功，要么都失败</li>
+<li>一致性(Consistency)<br>事务前后数据的完整性必须保持一致</li>
+<li>隔离性(Isolation)<br>并发访问数据库期间，一个用户的事务不会被其他事务所干扰，多个并发事务的数据相互隔离</li>
+<li>持久性(Durability)<br>一旦事务被提交，它对数据的改变就是永久的。</li>
+</ol>
 
             
 <div style="padding: 15px;
@@ -457,7 +380,7 @@
             本文由 <a href="https://gavino0119.github.io/">gavino</a> 创作，
             采用
             <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
-            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/09/16/js-相关知识点总结/index.html <br>
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/01/23/mysql在项目中的基本操作/index.html <br>
             -->
         </div>
         <div style="clear:both;height:0px;"></div>
@@ -469,7 +392,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/JS/">JS</a>, <a class="has-link-grey -link" href="/tags/Java/">Java</a>
+                    <a class="has-link-grey -link" href="/tags/Mysql/">Mysql</a>
                 </div>
             </div>
         </div>
@@ -520,16 +443,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/17/Java-内存模型/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/08/JDBC连接数据库基本操作/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Java 内存模型</span>
+                <span class="level-item">JDBC连接数据库基本操作</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/14/Bootstrap/">
-                <span class="level-item">Bootstrap</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/06/JDK1-5-相关特性总结/">
+                <span class="level-item">JDK1.5 相关特性总结</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -545,8 +468,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://gavino0119.github.io/2019/09/16/js-相关知识点总结/';
-        this.page.identifier = '2019/09/16/js-相关知识点总结/';
+        this.page.url = 'https://gavino0119.github.io/2019/01/23/mysql在项目中的基本操作/';
+        this.page.identifier = '2019/01/23/mysql在项目中的基本操作/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -802,25 +725,6 @@
         
         <article class="media">
             
-            <a href="/2019/09/19/jQuery/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1122459309,3492688613&amp;fm=26&amp;gp=0.jpg" alt="jQuery">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-19T01:36:56.000Z">2019-09-19</time></div>
-                    <a href="/2019/09/19/jQuery/" class="has-link-black-ter is-size-6">jQuery</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/09/17/Java-内存模型/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1568735765594&amp;di=abf4ab20962c4d55737c026082f9fa9d&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D453166055%2C1110215390%26fm%3D214%26gp%3D0.jpg" alt="Java 内存模型">
@@ -840,18 +744,18 @@
         
         <article class="media">
             
-            <a href="/2019/09/16/js-相关知识点总结/" class="media-left">
+            <a href="/2019/09/11/通用-Mapper/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=337462954,697092651&amp;fm=26&amp;gp=0.jpg" alt="js 相关知识点总结">
+                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&amp;fm=11&amp;gp=0.jpg" alt="通用 Mapper">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T11:42:00.000Z">2019-09-16</time></div>
-                    <a href="/2019/09/16/js-相关知识点总结/" class="has-link-black-ter is-size-6">js 相关知识点总结</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T11:58:19.000Z">2019-09-11</time></div>
+                    <a href="/2019/09/11/通用-Mapper/" class="has-link-black-ter is-size-6">通用 Mapper</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
                     </p>
                 </div>
             </div>
@@ -859,18 +763,37 @@
         
         <article class="media">
             
-            <a href="/2019/09/14/Bootstrap/" class="media-left">
+            <a href="/2019/09/10/Dubbo-学习归档/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://pic2.zhimg.com/v2-73acf16b673828e895b45b2dd8fe1b86_1200x500.jpg" alt="Bootstrap">
+                    <img class="thumbnail" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3753737640,834291282&amp;fm=26&amp;gp=0.jpg" alt="Dubbo 学习归档">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T12:43:01.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/Bootstrap/" class="has-link-black-ter is-size-6">Bootstrap</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T11:40:46.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/Dubbo-学习归档/" class="has-link-black-ter is-size-6">Dubbo 学习归档</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web-前端/">web 前端</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/10/面向艺术，面向接口/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://news.mydrivers.com/Img/20090817/09393557.jpg" alt="面向艺术，面向接口">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T02:42:40.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
+                    <p class="is-size-7 is-uppercase">
+                        
                     </p>
                 </div>
             </div>
@@ -928,6 +851,69 @@
         <div class="column-right-shadow is-hidden-widescreen is-sticky">
         
             
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#数据库：">
+        <span class="has-mr-6">1</span>
+        <span>数据库：</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#表的设计">
+        <span class="has-mr-6">1.1</span>
+        <span>表的设计</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#范式">
+        <span class="has-mr-6">1.1.1</span>
+        <span>范式</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#表的管理">
+        <span class="has-mr-6">1.2</span>
+        <span>表的管理</span>
+        </a></li><li>
+        <a class="is-flex" href="#其它操作">
+        <span class="has-mr-6">1.3</span>
+        <span>其它操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#HAVING-对分组后的结果再过滤">
+        <span class="has-mr-6">1.3.1</span>
+        <span>HAVING 对分组后的结果再过滤</span>
+        </a></li><li>
+        <a class="is-flex" href="#子查询">
+        <span class="has-mr-6">1.3.2</span>
+        <span>子查询</span>
+        </a></li><li>
+        <a class="is-flex" href="#IN-NOT-IN">
+        <span class="has-mr-6">1.3.3</span>
+        <span>IN (NOT IN)</span>
+        </a></li><li>
+        <a class="is-flex" href="#EXISTS-NOT-EXISTS">
+        <span class="has-mr-6">1.3.4</span>
+        <span>EXISTS (NOT EXISTS)</span>
+        </a></li><li>
+        <a class="is-flex" href="#联合-多表-查询">
+        <span class="has-mr-6">1.3.5</span>
+        <span>联合(多表)查询</span>
+        </a></li><li>
+        <a class="is-flex" href="#UNION-UNION-ALL">
+        <span class="has-mr-6">1.3.6</span>
+        <span>UNION    UNION ALL</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#视图-view">
+        <span class="has-mr-6">1.4</span>
+        <span>视图(view)</span>
+        </a></li><li>
+        <a class="is-flex" href="#事务">
+        <span class="has-mr-6">1.5</span>
+        <span>事务</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
         
             
 <div class="card widget">
@@ -954,7 +940,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">11</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -965,7 +951,7 @@
                     <span class="level-item">八月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -976,7 +962,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1020,7 +1006,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1031,7 +1017,7 @@
                     <span class="level-item">一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1042,7 +1028,7 @@
                     <span class="level-item">十二月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1053,7 +1039,7 @@
                     <span class="level-item">十一月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1075,7 +1061,7 @@
                     <span class="level-item">九月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1086,7 +1072,7 @@
                     <span class="level-item">八月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1097,7 +1083,7 @@
                     <span class="level-item">七月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1291,7 +1277,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="js 相关知识点总结" height="28">
+                    <img src="/images/logo.png" alt="Mysql在项目中的基本操作" height="28">
                 
                 </a>
                 <p class="is-size-7">
