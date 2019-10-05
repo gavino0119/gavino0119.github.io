@@ -94,8 +94,8 @@
     <div class="card">
     
     <div class="card-image">
-        <a href="/2019/08/06/java-多线程/" class="image is-7by1">
-            <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6kXHCG9f-RU9ZD7QH9PRt4VSx2bcLe648MVn5-Vkc3svLoHwcLg" alt="Java 多线程基础总结">
+        <a href="/2019/07/27/MyCat/" class="image is-7by1">
+            <img class="thumbnail" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3666629826,182399709&amp;fm=26&amp;gp=0.jpg" alt="MyCat">
         </a>
     </div>
     
@@ -103,17 +103,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-06T11:24:40.000Z">2019-08-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Java-基础篇/">Java 基础篇</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-07-27T02:07:08.000Z">2019-07-27</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    27 分钟 读完 (大约 3999 个字)
+                    1 分钟 读完 (大约 193 个字)
                 </span>
                 
                 
@@ -122,13 +118,14 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/08/06/java-多线程/">Java 多线程基础总结</a>
+                <a class="has-link-black-ter" href="/2019/07/27/MyCat/">MyCat</a>
             
         </h1>
         <div class="content">
-            <blockquote>
-<p>本文是Java多线程的基础入门篇</p>
-</blockquote>
+            <h2 id="MyCat-简介"><a href="#MyCat-简介" class="headerlink" title="MyCat 简介"></a>MyCat 简介</h2><ul>
+<li>MyCat是一个开源的分布式数据库系统，但是由于真正的数据库需要存储引擎，而 Mycat 并没有存 储引擎，所以并不是完全意义的分布式数据库系统</li>
+<li>MyCat是一个数据库中间件，也可以理解为是数据库代理。在架构体系中是位于数据库和应用层之间的一个组件，并且对于应用层是透明的，即数据库 感受不到MyCat的存在，认为是直接连接的mysql数据库（实际上是连接的MyCat,MyCat实现了mysql的原生协议）</li>
+<li>MyCat的三大功能：分表、读写分离、主从切换</li></ul>
             
         </div>
         
@@ -136,61 +133,10 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/08/06/java-多线程/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2019/07/27/MyCat/#more">阅读更多</a>
                 </div>
             </div>
         </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/07/27/Java面试难点和易混淆点总结-一/" class="image is-7by1">
-            <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPf-wbTYNHQCWba3r_16Q4UZutJ654am4s_rYmL8EDDRElDEMy_g" alt="Java面试难点和易混淆点总结(一)">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-27T04:33:28.000Z">2019-07-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/剑指offer/">剑指offer</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    几秒 读完 (大约 45 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/27/Java面试难点和易混淆点总结-一/">Java面试难点和易混淆点总结(一)</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="数据库方面"><a href="#数据库方面" class="headerlink" title="数据库方面"></a><strong>数据库方面</strong></h2><h3 id="数据库的事务"><a href="#数据库的事务" class="headerlink" title="数据库的事务"></a><strong>数据库的事务</strong></h3><h4 id="隔离性级别"><a href="#隔离性级别" class="headerlink" title="隔离性级别"></a>隔离性级别</h4><h3 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a><strong>数据库连接池</strong></h3><h3 id="如何解除死锁"><a href="#如何解除死锁" class="headerlink" title="如何解除死锁"></a><strong>如何解除死锁</strong></h3><h3 id="主从复制-读写分离"><a href="#主从复制-读写分离" class="headerlink" title="主从复制,读写分离"></a><strong>主从复制,读写分离</strong></h3><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a><strong>索引</strong></h3><h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a><strong>存储过程</strong></h3><h3 id="SQL-优化"><a href="#SQL-优化" class="headerlink" title="SQL 优化"></a><strong>SQL 优化</strong></h3>
-            
-        </div>
-        
         
         
     </div>
@@ -305,6 +251,65 @@
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/2019/07/20/单例模式/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/07/08/SSM-整合/" class="image is-7by1">
+            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567922795170&amp;di=82e7390d098b05ce346d4f4ad79593b3&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D3603680830%2C2752111433%26fm%3D214%26gp%3D0.jpg" alt="SSM 整合">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-08T03:12:29.000Z">2019-07-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/SSM/">SSM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 278 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/08/SSM-整合/">SSM 整合</a>
+            
+        </h1>
+        <div class="content">
+            <p>通过对 SSM 框架的整合，加深对其应用的熟练以及底层原理的深刻理解，该整合使用的环境是 IntelliJ IDEA。</p>
+            
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/08/SSM-整合/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -567,18 +572,18 @@
         
         <article class="media">
             
-            <a href="/2019/09/27/MyCat/" class="media-left">
+            <a href="/2019/09/23/代理模式/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="MyCat">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk1x6eq1CTJ2Bt6ER5hYIFytfkLqWEhe_P9BH1bZl3mLqHz8mh" alt="代理模式">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-27T02:07:08.000Z">2019-09-27</time></div>
-                    <a href="/2019/09/27/MyCat/" class="has-link-black-ter is-size-6">MyCat</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-23T09:58:55.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/代理模式/" class="has-link-black-ter is-size-6">代理模式</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
                     </p>
                 </div>
             </div>
@@ -605,35 +610,16 @@
         
         <article class="media">
             
-            <a href="/2019/09/11/通用-Mapper/" class="media-left">
+            <a href="/2019/09/12/策略、回调和多态/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&amp;fm=11&amp;gp=0.jpg" alt="通用 Mapper">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1568430089&amp;di=961720ec57406a9a44663cf2b84f2d04&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201410%2F24%2F20141024012317_wnSix.jpeg" alt="策略、回调和多态">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T11:58:19.000Z">2019-09-11</time></div>
-                    <a href="/2019/09/11/通用-Mapper/" class="has-link-black-ter is-size-6">通用 Mapper</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/10/Dubbo-学习归档/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3753737640,834291282&amp;fm=26&amp;gp=0.jpg" alt="Dubbo 学习归档">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T11:40:46.000Z">2019-09-10</time></div>
-                    <a href="/2019/09/10/Dubbo-学习归档/" class="has-link-black-ter is-size-6">Dubbo 学习归档</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-12T07:05:10.000Z">2019-09-12</time></div>
+                    <a href="/2019/09/12/策略、回调和多态/" class="has-link-black-ter is-size-6">策略、回调和多态</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -643,7 +629,26 @@
         
         <article class="media">
             
-            <a href="/2019/09/10/面向艺术，面向接口/" class="media-left">
+            <a href="/2019/09/07/Java-锁的种类及辨析/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567835839339&amp;di=f757513bf57ef0573ff630f0d1244089&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F04%2F20180804161455_HkifW.jpeg" alt="Java 锁的种类及辨析">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T01:54:57.000Z">2019-09-07</time></div>
+                    <a href="/2019/09/07/Java-锁的种类及辨析/" class="has-link-black-ter is-size-6">Java 锁的种类及辨析</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/06/面向艺术，面向接口/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://news.mydrivers.com/Img/20090817/09393557.jpg" alt="面向艺术，面向接口">
                 </p>
@@ -651,8 +656,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T02:42:40.000Z">2019-09-10</time></div>
-                    <a href="/2019/09/10/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-06T02:42:40.000Z">2019-09-06</time></div>
+                    <a href="/2019/09/06/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -738,7 +743,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -760,7 +765,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -771,7 +776,7 @@
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1099,7 +1104,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1121,7 +1126,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -1132,7 +1137,7 @@
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>

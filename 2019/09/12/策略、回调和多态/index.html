@@ -3,30 +3,30 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Dubbo 学习归档 - Gavino</title>
+<title>策略、回调和多态 - Gavino</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="目前Dubbo主要版本有两个：Dubbo 2.7和Dubbo 2.6两个版本最大的差异，在于配置管理中心。Dubbo 2.6版本所有数据都存在注册中心上，Dubbo 2.7版本分成了注册中心，配置中心，和元数据中心。  Dubbo 官网">
+    <meta name="description" content="策略可以理解为是一个接口的子实现回调是一种双向的调用方式,是一种思想、是一种机制回调也是多态的一种体(实)现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dubbo 学习归档">
-<meta property="og:url" content="https://gavino0119.github.io/2019/09/10/Dubbo-学习归档/index.html">
+<meta property="og:title" content="策略、回调和多态">
+<meta property="og:url" content="https://gavino0119.github.io/2019/09/12/策略、回调和多态/index.html">
 <meta property="og:site_name" content="Gavino">
-<meta property="og:description" content="目前Dubbo主要版本有两个：Dubbo 2.7和Dubbo 2.6两个版本最大的差异，在于配置管理中心。Dubbo 2.6版本所有数据都存在注册中心上，Dubbo 2.7版本分成了注册中心，配置中心，和元数据中心。  Dubbo 官网">
+<meta property="og:description" content="策略可以理解为是一个接口的子实现回调是一种双向的调用方式,是一种思想、是一种机制回调也是多态的一种体(实)现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3753737640,834291282&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-09-22T12:47:32.247Z">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568430089&di=961720ec57406a9a44663cf2b84f2d04&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201410%2F24%2F20141024012317_wnSix.jpeg">
+<meta property="og:updated_time" content="2019-10-05T13:04:39.848Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dubbo 学习归档">
-<meta name="twitter:description" content="目前Dubbo主要版本有两个：Dubbo 2.7和Dubbo 2.6两个版本最大的差异，在于配置管理中心。Dubbo 2.6版本所有数据都存在注册中心上，Dubbo 2.7版本分成了注册中心，配置中心，和元数据中心。  Dubbo 官网">
-<meta name="twitter:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3753737640,834291282&fm=26&gp=0.jpg">
+<meta name="twitter:title" content="策略、回调和多态">
+<meta name="twitter:description" content="策略可以理解为是一个接口的子实现回调是一种双向的调用方式,是一种思想、是一种机制回调也是多态的一种体(实)现">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568430089&di=961720ec57406a9a44663cf2b84f2d04&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201410%2F24%2F20141024012317_wnSix.jpeg">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="Dubbo 学习归档" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="策略、回调和多态" type="application/atom+xml">
 
 
 
@@ -48,7 +48,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Dubbo 学习归档" height="28">
+                <img src="/images/logo.png" alt="策略、回调和多态" height="28">
             
             </a>
         </div>
@@ -98,7 +98,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3753737640,834291282&amp;fm=26&amp;gp=0.jpg" alt="Dubbo 学习归档">
+            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1568430089&amp;di=961720ec57406a9a44663cf2b84f2d04&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201410%2F24%2F20141024012317_wnSix.jpeg" alt="策略、回调和多态">
         </span>
     </div>
     
@@ -106,13 +106,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-10T11:40:46.000Z">2019-09-10</time>
+                <time class="level-item has-text-grey" datetime="2019-09-12T07:05:10.000Z">2019-09-12</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2176 个字)
+                    2 分钟 读完 (大约 367 个字)
                 </span>
                 
                 
@@ -121,87 +121,29 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Dubbo 学习归档
+                策略、回调和多态
             
         </h1>
         <div class="content">
             <blockquote>
-<p>目前Dubbo主要版本有两个：Dubbo 2.7和Dubbo 2.6<br>两个版本最大的差异，在于配置管理中心。Dubbo 2.6版本所有数据都存在注册中心上，Dubbo 2.7版本分成了注册中心，配置中心，和元数据中心。</p>
+<p>策略可以理解为是一个接口的子实现<br>回调是一种双向的调用方式,是一种思想、是一种机制<br>回调也是多态的一种体(实)现</p>
 </blockquote>
-<p><a href="http://dubbo.apache.org" target="_blank" rel="noopener">Dubbo 官网</a></p>
 <a id="more"></a>
-<p>分布式服务架构<br>RPC : 远程过程调用<br>流动计算架构</p>
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a><strong>环境搭建</strong></h2><h3 id="注册中心-zookeeper-的安装"><a href="#注册中心-zookeeper-的安装" class="headerlink" title="注册中心 zookeeper 的安装"></a><strong>注册中心 zookeeper 的安装</strong></h3><ul>
-<li><p>第一步：<br>解压 zookeeper 安装包(zookeeper-3.4.13.tar.gz)</p>
-</li>
-<li><p>第二步：<br>运行 bin 目录下的zkServer.cmd<br>第一次运行 zkServer.cmd 会报一个错：<br>org.apache.zookeeper.server.quorum.QuorumPeerConfig$ConfigException: Error processing D:\Software\Dubbo\zookeeper-3.4.13\bin..\conf\zoo.cfg<br>初次运行会报错，没有zoo.cfg配置文件</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Microsoft Windows [版本 10.0.17134.950]</span><br><span class="line">(c) 2018 Microsoft Corporation。保留所有权利。</span><br><span class="line"></span><br><span class="line">D:\Software\Dubbo\zookeeper-3.4.13\bin&gt;zkServer.cmd</span><br><span class="line"></span><br><span class="line">D:\Software\Dubbo\zookeeper-3.4.13\bin&gt;call &quot;C:\Program Files\Java\jdk1.8.0_131&quot;\bin\java &quot;-Dzookeeper.log.dir=D:\Software\Dubbo\zookeeper-3.4.13\bin\..&quot; &quot;-Dzookeeper.root.logger=INFO,CONSOLE&quot; -cp &quot;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\build\classes;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\build\lib\*;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\*;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\*;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf&quot; org.apache.zookeeper.server.quorum.QuorumPeerMain &quot;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf\zoo.cfg&quot;</span><br><span class="line">2019-09-22 09:06:43,767 [myid:] - INFO  [main:QuorumPeerConfig@136] - Reading configuration from: D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf\zoo.cfg</span><br><span class="line">2019-09-22 09:06:43,777 [myid:] - ERROR [main:QuorumPeerMain@88] - Invalid config, exiting abnormally</span><br><span class="line">org.apache.zookeeper.server.quorum.QuorumPeerConfig$ConfigException: Error processing D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf\zoo.cfg</span><br><span class="line">        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:156)</span><br><span class="line">        at org.apache.zookeeper.server.quorum.QuorumPeerMain.initializeAndRun(QuorumPeerMain.java:104)</span><br><span class="line">        at org.apache.zookeeper.server.quorum.QuorumPeerMain.main(QuorumPeerMain.java:81)</span><br><span class="line">Caused by: java.lang.IllegalArgumentException: D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf\zoo.cfg file is missing</span><br><span class="line">        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:140)</span><br><span class="line">        ... 2 more</span><br><span class="line">Invalid config, exiting abnormally</span><br><span class="line"></span><br><span class="line">D:\Software\Dubbo\zookeeper-3.4.13\bin&gt;endlocal</span><br><span class="line"></span><br><span class="line">D:\Software\Dubbo\zookeeper-3.4.13\bin&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第三步：<br>解决：<br>在 zookeeper 的解压包下有一个 conf 文件夹，在该目录下有一个 zoo_sample.cfg 的配置文件, 在当前目录下复制一个该配置文件的副本，并且重命名为 zoo.cfg</p>
-</li>
-<li><p>第四步：<br>打开该配置文件(zoo.cfg)</p>
-<ul>
-<li>dataDir=/tmp/zookeeper 临时数据的存储位置<br>这里是 linux 的目录结构，我们可以在 zookeeper 的解压路径下创建一个 tmp文件夹,然后在该目录下创建一个data 文件夹，用来存储临时数据<br>修改配置为: dataDir=../tmp/data 并保存配置文件即可</li>
-<li>clientPort=2181     这是zookeeper的端口号:2181</li>
-</ul>
-</li>
-<li><p>第五步：<br>按第二步再次运行 bin 目录下的 zkServer.cmd</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">D:\Software\Dubbo\zookeeper-3.4.13\bin&gt;zkServer.cmd</span><br><span class="line"></span><br><span class="line">D:\Software\Dubbo\zookeeper-3.4.13\bin&gt;call &quot;C:\Program Files\Java\jdk1.8.0_131&quot;\bin\java &quot;-Dzookeeper.log.dir=D:\Software\Dubbo\zookeeper-3.4.13\bin\..&quot; &quot;-Dzookeeper.root.logger=INFO,CONSOLE&quot; -cp &quot;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\build\classes;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\build\lib\*;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\*;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\*;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf&quot; org.apache.zookeeper.server.quorum.QuorumPeerMain &quot;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf\zoo.cfg&quot;</span><br><span class="line">2019-09-22 09:35:38,679 [myid:] - INFO  [main:QuorumPeerConfig@136] - Reading configuration from: D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf\zoo.cfg</span><br><span class="line">2019-09-22 09:35:38,708 [myid:] - INFO  [main:DatadirCleanupManager@78] - autopurge.snapRetainCount set to 3</span><br><span class="line">2019-09-22 09:35:38,709 [myid:] - INFO  [main:DatadirCleanupManager@79] - autopurge.purgeInterval set to 0</span><br><span class="line">2019-09-22 09:35:38,712 [myid:] - INFO  [main:DatadirCleanupManager@101] - Purge task is not scheduled.</span><br><span class="line">2019-09-22 09:35:38,722 [myid:] - WARN  [main:QuorumPeerMain@116] - Either no config or no quorum defined in config, running  in standalone mode</span><br><span class="line">2019-09-22 09:35:38,959 [myid:] - INFO  [main:QuorumPeerConfig@136] - Reading configuration from: D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf\zoo.cfg</span><br><span class="line">2019-09-22 09:35:38,960 [myid:] - INFO  [main:ZooKeeperServerMain@98] - Starting server</span><br><span class="line">2019-09-22 09:35:43,545 [myid:] - INFO  [main:Environment@100] - Server environment:zookeeper.version=3.4.13-2d71af4dbe22557fda74f9a9b4309b15a7487f03, built on 06/29/2018 04:05 GMT</span><br><span class="line">2019-09-22 09:35:43,546 [myid:] - INFO  [main:Environment@100] - Server environment:host.name=Gavino</span><br><span class="line">2019-09-22 09:35:43,552 [myid:] - INFO  [main:Environment@100] - Server environment:java.version=1.8.0_131</span><br><span class="line">2019-09-22 09:35:43,556 [myid:] - INFO  [main:Environment@100] - Server environment:java.vendor=Oracle Corporation</span><br><span class="line">2019-09-22 09:35:43,559 [myid:] - INFO  [main:Environment@100] - Server environment:java.home=C:\Program Files\Java\jdk1.8.0_131\jre</span><br><span class="line">2019-09-22 09:35:43,567 [myid:] - INFO  [main:Environment@100] - Server environment:java.class.path=D:\Software\Dubbo\zookeeper-3.4.13\bin\..\build\classes;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\build\lib\*;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\zookeeper-3.4.13.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\audience-annotations-0.5.0.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\jline-0.9.94.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\log4j-1.2.17.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\netty-3.10.6.Final.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\slf4j-api-1.7.25.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\slf4j-log4j12-1.7.25.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf</span><br><span class="line">2019-09-22 09:35:43,569 [myid:] - INFO  [main:Environment@100] - Server environment:java.library.path=C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;&quot;;C:\Program Files\Java\jdk1.8.0_131\bin&quot;;D:\Software\UML\Rational\rose\common;D:\Common Tools\tools package\sublime text\Sublime Text 3;C:\Windows\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\Software\Maven\apache-maven-3.5.4\bin;D:\Software\Git\cmd;D:\Software\Compiler\tdm64-gcc-5.1.0\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\Software\Nodejs\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;D:\Software\py\Python\Python37\Scripts\;D:\Software\py\Python\Python37\;C:\Users\dell\AppData\Local\Microsoft\WindowsApps;C:\Users\dell\AppData\Roaming\npm;.</span><br><span class="line">2019-09-22 09:35:43,573 [myid:] - INFO  [main:Environment@100] - Server environment:java.io.tmpdir=C:\Users\dell\AppData\Local\Temp\</span><br><span class="line">2019-09-22 09:35:43,586 [myid:] - INFO  [main:Environment@100] - Server environment:java.compiler=&lt;NA&gt;</span><br><span class="line">2019-09-22 09:35:43,591 [myid:] - INFO  [main:Environment@100] - Server environment:os.name=Windows 10</span><br><span class="line">2019-09-22 09:35:43,594 [myid:] - INFO  [main:Environment@100] - Server environment:os.arch=amd64</span><br><span class="line">2019-09-22 09:35:43,599 [myid:] - INFO  [main:Environment@100] - Server environment:os.version=10.0</span><br><span class="line">2019-09-22 09:35:43,604 [myid:] - INFO  [main:Environment@100] - Server environment:user.name=dell</span><br><span class="line">2019-09-22 09:35:43,604 [myid:] - INFO  [main:Environment@100] - Server environment:user.home=C:\Users\dell</span><br><span class="line">2019-09-22 09:35:43,608 [myid:] - INFO  [main:Environment@100] - Server environment:user.dir=D:\Software\Dubbo\zookeeper-3.4.13\bin</span><br><span class="line">2019-09-22 09:35:43,642 [myid:] - INFO  [main:ZooKeeperServer@836] - tickTime set to 2000</span><br><span class="line">2019-09-22 09:35:43,643 [myid:] - INFO  [main:ZooKeeperServer@845] - minSessionTimeout set to -1</span><br><span class="line">2019-09-22 09:35:43,646 [myid:] - INFO  [main:ZooKeeperServer@854] - maxSessionTimeout set to -1</span><br><span class="line">2019-09-22 09:35:44,195 [myid:] - INFO  [main:ServerCnxnFactory@117] - Using org.apache.zookeeper.server.NIOServerCnxnFactory as server connection factory</span><br><span class="line">2019-09-22 09:35:44,204 [myid:] - INFO  [main:NIOServerCnxnFactory@89] - binding to port 0.0.0.0/0.0.0.0:2181</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<p>此时 zookeeper 正常启动起来了,端口为 2181,(binding to port 0.0.0.0/0.0.0.0:2181)</p>
-<ul>
-<li><p>第六步：<br>测试<br>在 bin 目录下有个 zkCli.cmd, 使用它连接 zookeeper 服务器，</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">D:\Software\Dubbo\zookeeper-3.4.13\bin&gt;zkCli.cmd</span><br><span class="line">Connecting to localhost:2181</span><br><span class="line">2019-09-22 09:42:23,193 [myid:] - INFO  [main:Environment@100] - Client environment:zookeeper.version=3.4.13-2d71af4dbe22557fda74f9a9b4309b15a7487f03, built on 06/29/2018 04:05 GMT</span><br><span class="line">2019-09-22 09:42:23,200 [myid:] - INFO  [main:Environment@100] - Client environment:host.name=Gavino</span><br><span class="line">2019-09-22 09:42:23,201 [myid:] - INFO  [main:Environment@100] - Client environment:java.version=1.8.0_131</span><br><span class="line">2019-09-22 09:42:23,207 [myid:] - INFO  [main:Environment@100] - Client environment:java.vendor=Oracle Corporation</span><br><span class="line">2019-09-22 09:42:23,208 [myid:] - INFO  [main:Environment@100] - Client environment:java.home=C:\Program Files\Java\jdk1.8.0_131\jre</span><br><span class="line">2019-09-22 09:42:23,208 [myid:] - INFO  [main:Environment@100] - Client environment:java.class.path=D:\Software\Dubbo\zookeeper-3.4.13\bin\..\build\classes;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\build\lib\*;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\zookeeper-3.4.13.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\audience-annotations-0.5.0.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\jline-0.9.94.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\log4j-1.2.17.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\netty-3.10.6.Final.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\slf4j-api-1.7.25.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\lib\slf4j-log4j12-1.7.25.jar;D:\Software\Dubbo\zookeeper-3.4.13\bin\..\conf</span><br><span class="line">2019-09-22 09:42:23,209 [myid:] - INFO  [main:Environment@100] - Client environment:java.library.path=C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;&quot;;C:\Program Files\Java\jdk1.8.0_131\bin&quot;;D:\Software\UML\Rational\rose\common;D:\Common Tools\tools package\sublime text\Sublime Text 3;C:\Windows\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\Software\Maven\apache-maven-3.5.4\bin;D:\Software\Git\cmd;D:\Software\Compiler\tdm64-gcc-5.1.0\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\Software\Nodejs\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;D:\Software\py\Python\Python37\Scripts\;D:\Software\py\Python\Python37\;C:\Users\dell\AppData\Local\Microsoft\WindowsApps;C:\Users\dell\AppData\Roaming\npm;.</span><br><span class="line">2019-09-22 09:42:23,210 [myid:] - INFO  [main:Environment@100] - Client environment:java.io.tmpdir=C:\Users\dell\AppData\Local\Temp\</span><br><span class="line">2019-09-22 09:42:23,217 [myid:] - INFO  [main:Environment@100] - Client environment:java.compiler=&lt;NA&gt;</span><br><span class="line">2019-09-22 09:42:23,219 [myid:] - INFO  [main:Environment@100] - Client environment:os.name=Windows 10</span><br><span class="line">2019-09-22 09:42:23,221 [myid:] - INFO  [main:Environment@100] - Client environment:os.arch=amd64</span><br><span class="line">2019-09-22 09:42:23,227 [myid:] - INFO  [main:Environment@100] - Client environment:os.version=10.0</span><br><span class="line">2019-09-22 09:42:23,229 [myid:] - INFO  [main:Environment@100] - Client environment:user.name=dell</span><br><span class="line">2019-09-22 09:42:23,237 [myid:] - INFO  [main:Environment@100] - Client environment:user.home=C:\Users\dell</span><br><span class="line">2019-09-22 09:42:23,240 [myid:] - INFO  [main:Environment@100] - Client environment:user.dir=D:\Software\Dubbo\zookeeper-3.4.13\bin</span><br><span class="line">2019-09-22 09:42:23,246 [myid:] - INFO  [main:ZooKeeper@442] - Initiating client connection, connectString=localhost:2181 sessionTimeout=30000 watcher=org.apache.zookeeper.ZooKeeperMain$MyWatcher@579bb367</span><br><span class="line">Welcome to ZooKeeper!</span><br><span class="line">2019-09-22 09:42:23,791 [myid:] - INFO  [main-SendThread(localhost:2181):ClientCnxn$SendThread@1029] - Opening socket connection to server localhost/0:0:0:0:0:0:0:1:2181. Will not attempt to authenticate using SASL (unknown error)</span><br><span class="line">2019-09-22 09:42:23,797 [myid:] - INFO  [main-SendThread(localhost:2181):ClientCnxn$SendThread@879] - Socket connection established to localhost/0:0:0:0:0:0:0:1:2181, initiating session</span><br><span class="line">JLine support is enabled</span><br><span class="line">[zk: localhost:2181(CONNECTING) 0] 2019-09-22 09:42:24,237 [myid:] - INFO  [main-SendThread(localhost:2181):ClientCnxn$SendThread@1303] - Session establishment complete on server localhost/0:0:0:0:0:0:0:1:2181, sessionid = 0x100039b26a10000, negotiated timeout = 30000</span><br><span class="line"></span><br><span class="line">WATCHER::</span><br><span class="line"></span><br><span class="line">WatchedEvent state:SyncConnected type:None path:null</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>测试: 获取根节点下的值 <strong>get /</strong></p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">WatchedEvent state:SyncConnected type:None path:null</span><br><span class="line">get /</span><br><span class="line">cZxid = 0x0</span><br><span class="line">ctime = Thu Jan 01 08:00:00 CST 1970</span><br><span class="line">mZxid = 0x0</span><br><span class="line">mtime = Thu Jan 01 08:00:00 CST 1970</span><br><span class="line">pZxid = 0x0</span><br><span class="line">cversion = -1</span><br><span class="line">dataVersion = 0</span><br><span class="line">aclVersion = 0</span><br><span class="line">ephemeralOwner = 0x0</span><br><span class="line">dataLength = 0</span><br><span class="line">numChildren = 1</span><br><span class="line">[zk: localhost:2181(CONNECTED) 1]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试: <strong>ls /</strong></p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[zk: localhost:2181(CONNECTED) 2] ls /</span><br><span class="line">[zookeeper]</span><br><span class="line">[zk: localhost:2181(CONNECTED) 3]</span><br></pre></td></tr></table></figure>
-
-<p>说明在根节点下有一个 zookeeper 节点</p>
-</li>
-<li><p>测试: 在根节点下创建一个临时节点 gavino , 值为 0119     <strong>create -e /gavino 0119</strong><br>并且查看根目录节点    <strong>ls /</strong><br>获取临时节点 gavino     <strong>get /gavino</strong></p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[zk: localhost:2181(CONNECTED) 3] create -e /gavino 0119</span><br><span class="line">Created /gavino</span><br><span class="line">[zk: localhost:2181(CONNECTED) 4] ls /</span><br><span class="line">[zookeeper, gavino]</span><br><span class="line">[zk: localhost:2181(CONNECTED) 5] get /gavino</span><br><span class="line">0119</span><br><span class="line">cZxid = 0x2</span><br><span class="line">ctime = Sun Sep 22 09:55:55 CST 2019</span><br><span class="line">mZxid = 0x2</span><br><span class="line">mtime = Sun Sep 22 09:55:55 CST 2019</span><br><span class="line">pZxid = 0x2</span><br><span class="line">cversion = 0</span><br><span class="line">dataVersion = 0</span><br><span class="line">aclVersion = 0</span><br><span class="line">ephemeralOwner = 0x100039b26a10000</span><br><span class="line">dataLength = 4</span><br><span class="line">numChildren = 0</span><br><span class="line">[zk: localhost:2181(CONNECTED) 6]</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
+<p>回调思想：</p>
 <blockquote>
-<p>常用命令：(windows 下 cmd)<br>输入 zkServer.cmd  点击回车启动 zookeeper<br>建立节点   create /zk  value<br>获得节点  get /zk<br>设置节点 set /zk value2<br>建立子节点  set /zk/subzk value3<br>输出节点目录 ls /zk<br>删除节点  delete /zk<br>关闭客户端    quit<br>关闭zookeeper服务 Ctrl+C,  选择Y 关闭服务</p>
+<p>假如 类 A 中有方法a()和方法aBack(),类 B 中有方法b()<br>类 A 调用 类 B 中的方法 b(),方法b()执行完后，主动调用类 A 的aBack() 方法<br>形成一种双向调用的形式<br><strong>回调的核心就是调用方将本身即this传递给回调方，回调方再反过来调用调用方的方法</strong></p>
 </blockquote>
-<h3 id="监控中心的安装"><a href="#监控中心的安装" class="headerlink" title="监控中心的安装"></a><strong>监控中心的安装</strong></h3><p>监控中心可以不安装，不影响使用，监控中心会提供可视化的操作</p>
-<h4 id="第一步-安装管理控制台"><a href="#第一步-安装管理控制台" class="headerlink" title="第一步: 安装管理控制台"></a>第一步: 安装管理控制台</h4><ol>
-<li><p>先进入到 dubbo 的github 的项目地址(<a href="https://github.com/apache/dubbo" target="_blank" rel="noopener">https://github.com/apache/dubbo</a>)</p>
-</li>
-<li><p>在该页面往下找到<br>Dubbo ecosystem 下面的<br>Dubbo Admin - The reference implementation for Dubbo admin<br>点击进去下载该项目到本地<br>下载代码: git clone <a href="https://github.com/apache/dubbo-admin.git" target="_blank" rel="noopener">https://github.com/apache/dubbo-admin.git</a></p>
-</li>
-<li><p>解压<br>在 dubbo-admin-server/src/main/resources/application.properties中指定注册中心地址</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">admin.registry.address=zookeeper://127.0.0.1:2181</span><br><span class="line">admin.config-center=zookeeper://127.0.0.1:2181</span><br><span class="line">admin.metadata-report.address=zookeeper://127.0.0.1:2181</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>构建以及启动<br>在dubbo-admin-develop目录下:</p>
-</li>
-</ol>
-<ul>
-<li><p>构建</p>
-<ul>
-<li>mvn clean package</li>
-</ul>
-</li>
-<li><p>启动</p>
-<ul>
-<li>mvn –projects dubbo-admin-server spring-boot:run<br>或者</li>
-<li>cd dubbo-admin-distribution/target; java -jar dubbo-admin-0.1.jar</li>
-</ul>
-</li>
-</ul>
-<ol start="5">
-<li>访问<br><a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></li>
-</ol>
+<p>回调分为同步回调和异步回调。</p>
+<p>经典应用场景<br>在网上看到过一个比较经典的应用场景，非常好的解释了回调机制</p>
+<blockquote>
+<p>老师问学生问题，学生思考完毕回答老师。<br>场景分析:</p>
+</blockquote>
+<p>策略、回调和多态三者之间的联系：</p>
+<blockquote>
+<p>回调的方法，即重写的方法，是某一个策略实现<br>在动态绑定过程中，根据多态的性质，首先利用策略决定绑定对象<br>然后由该对象调用回调方法实现方法重写，实际上调用的是重写的方法<br>在这种情况下，可以说多态是由策略和回调实现的</p>
+</blockquote>
+<p>注：<br>至于重载到底属不属于多态<br>牵强的说是可以的</p>
 
             
 <div style="padding: 15px;
@@ -223,7 +165,7 @@
             本文由 <a href="https://gavino0119.github.io/">gavino</a> 创作，
             采用
             <a href="http://creativecommons.org/licenses/by/3.0/cn" target="_blank" rel="external">CC BY 3.0 CN协议</a> 进行许可。
-            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/09/10/Dubbo-学习归档/index.html <br>
+            可自由转载、引用，但需署名作者且注明文章出处 https://gavino0119.github.io/2019/09/12/策略、回调和多态/index.html <br>
             -->
         </div>
         <div style="clear:both;height:0px;"></div>
@@ -277,16 +219,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/11/通用-Mapper/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/17/Java-内存模型/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">通用 Mapper</span>
+                <span class="level-item">Java 内存模型</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/10/面向艺术，面向接口/">
-                <span class="level-item">面向艺术，面向接口</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/07/Java-锁的种类及辨析/">
+                <span class="level-item">Java 锁的种类及辨析</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -302,8 +244,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://gavino0119.github.io/2019/09/10/Dubbo-学习归档/';
-        this.page.identifier = '2019/09/10/Dubbo-学习归档/';
+        this.page.url = 'https://gavino0119.github.io/2019/09/12/策略、回调和多态/';
+        this.page.identifier = '2019/09/12/策略、回调和多态/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -540,18 +482,18 @@
         
         <article class="media">
             
-            <a href="/2019/09/27/MyCat/" class="media-left">
+            <a href="/2019/09/23/代理模式/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="MyCat">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk1x6eq1CTJ2Bt6ER5hYIFytfkLqWEhe_P9BH1bZl3mLqHz8mh" alt="代理模式">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-27T02:07:08.000Z">2019-09-27</time></div>
-                    <a href="/2019/09/27/MyCat/" class="has-link-black-ter is-size-6">MyCat</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-23T09:58:55.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/代理模式/" class="has-link-black-ter is-size-6">代理模式</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
                     </p>
                 </div>
             </div>
@@ -578,35 +520,16 @@
         
         <article class="media">
             
-            <a href="/2019/09/11/通用-Mapper/" class="media-left">
+            <a href="/2019/09/12/策略、回调和多态/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3117305469,256420719&amp;fm=11&amp;gp=0.jpg" alt="通用 Mapper">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1568430089&amp;di=961720ec57406a9a44663cf2b84f2d04&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201410%2F24%2F20141024012317_wnSix.jpeg" alt="策略、回调和多态">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T11:58:19.000Z">2019-09-11</time></div>
-                    <a href="/2019/09/11/通用-Mapper/" class="has-link-black-ter is-size-6">通用 Mapper</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/SSM/">SSM</a> / <a class="has-link-grey -link" href="/categories/Spring/">Spring</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/10/Dubbo-学习归档/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3753737640,834291282&amp;fm=26&amp;gp=0.jpg" alt="Dubbo 学习归档">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T11:40:46.000Z">2019-09-10</time></div>
-                    <a href="/2019/09/10/Dubbo-学习归档/" class="has-link-black-ter is-size-6">Dubbo 学习归档</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-12T07:05:10.000Z">2019-09-12</time></div>
+                    <a href="/2019/09/12/策略、回调和多态/" class="has-link-black-ter is-size-6">策略、回调和多态</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -616,7 +539,26 @@
         
         <article class="media">
             
-            <a href="/2019/09/10/面向艺术，面向接口/" class="media-left">
+            <a href="/2019/09/07/Java-锁的种类及辨析/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567835839339&amp;di=f757513bf57ef0573ff630f0d1244089&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F04%2F20180804161455_HkifW.jpeg" alt="Java 锁的种类及辨析">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T01:54:57.000Z">2019-09-07</time></div>
+                    <a href="/2019/09/07/Java-锁的种类及辨析/" class="has-link-black-ter is-size-6">Java 锁的种类及辨析</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/06/面向艺术，面向接口/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://news.mydrivers.com/Img/20090817/09393557.jpg" alt="面向艺术，面向接口">
                 </p>
@@ -624,8 +566,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T02:42:40.000Z">2019-09-10</time></div>
-                    <a href="/2019/09/10/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-06T02:42:40.000Z">2019-09-06</time></div>
+                    <a href="/2019/09/06/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -711,7 +653,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -733,7 +675,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -744,7 +686,7 @@
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1048,7 +990,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Dubbo 学习归档" height="28">
+                    <img src="/images/logo.png" alt="策略、回调和多态" height="28">
                 
                 </a>
                 <p class="is-size-7">
