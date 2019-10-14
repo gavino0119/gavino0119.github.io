@@ -17,7 +17,7 @@
 <meta property="og:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://imgcdn.sdk.cn/article/5NDCeYTsMsYv2QFvewwt.png">
-<meta property="og:updated_time" content="2019-10-05T13:07:51.040Z">
+<meta property="og:updated_time" content="2019-10-09T00:56:38.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这就是Spring">
 <meta name="twitter:description" content="本文将通过对 Spring 基础知识的总结，加深对 Spring 的理解与应用。">
@@ -138,7 +138,7 @@
 <h2 id="一、Spring-概述"><a href="#一、Spring-概述" class="headerlink" title="一、Spring 概述"></a><strong>一、Spring 概述</strong></h2><h3 id="Spring-的优势"><a href="#Spring-的优势" class="headerlink" title="Spring 的优势"></a><strong>Spring 的优势</strong></h3><p>方便解耦，简化开发<br>AOP编程的支持<br>声明式事务的支持<br>方便程序的测试<br>方便集成各种优秀框架<br>降低 JavaEE API 的使用难度<br>Java 源码是经典学习范例</p>
 <h3 id="Spring-的体系结构"><a href="#Spring-的体系结构" class="headerlink" title="Spring 的体系结构"></a><strong>Spring 的体系结构</strong></h3><p>核心容器</p>
 <h3 id="Sping-的开发包"><a href="#Sping-的开发包" class="headerlink" title="Sping 的开发包"></a><strong>Sping 的开发包</strong></h3><p>官网<a href="https://spring.io/" target="_blank" rel="noopener">https://spring.io/</a><br>下载地址(<a href="http://repo.springsource.org/libs-release-local/org/springframework/spring" target="_blank" rel="noopener">http://repo.springsource.org/libs-release-local/org/springframework/spring</a>)</p>
-<h2 id="二、IOC-的概念和作用"><a href="#二、IOC-的概念和作用" class="headerlink" title="二、IOC 的概念和作用"></a><strong>二、IOC 的概念和作用</strong></h2><p>这部分内容可查看之前的文章<a href="https://gavino0119.github.io/2019/08/19/IOC%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/">IOC基本原理及相关实现</a><br>对IOC有单独的阐述</p>
+<h2 id="二、IOC-的概念和作用"><a href="#二、IOC-的概念和作用" class="headerlink" title="二、IOC 的概念和作用"></a><strong>二、IOC 的概念和作用</strong></h2><p>这部分内容可查看之前的文章<a href="https://gavino0119.github.io/2019/04/24/IOC%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/">IOC基本原理及相关实现</a><br>对IOC有单独的阐述</p>
 <h2 id="三、使用-spring-的-IOC-解决程序耦合"><a href="#三、使用-spring-的-IOC-解决程序耦合" class="headerlink" title="三、使用 spring 的 IOC 解决程序耦合"></a><strong>三、使用 spring 的 IOC 解决程序耦合</strong></h2><h3 id="创建持久层接口和实现类"><a href="#创建持久层接口和实现类" class="headerlink" title="创建持久层接口和实现类"></a><strong>创建持久层接口和实现类</strong></h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package gavino.spring.dao;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Yan weigang</span><br><span class="line"> */</span><br><span class="line">public interface IDemoDao &#123;</span><br><span class="line">    void print();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">package gavino.spring.dao.impl;</span><br><span class="line">import gavino.spring.dao.IDemoDao;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Yan weigang</span><br><span class="line"> */</span><br><span class="line">public class DemoDaoImpl implements IDemoDao &#123;</span><br><span class="line">    public void print() &#123;</span><br><span class="line">        System.out.println(&quot;使用 spring 的 IOC 解决程序耦合&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="创建业务层接口和实现类"><a href="#创建业务层接口和实现类" class="headerlink" title="创建业务层接口和实现类"></a><strong>创建业务层接口和实现类</strong></h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package gavino.spring.service;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Yan weigang</span><br><span class="line"> */</span><br><span class="line">public interface IDemoService &#123;</span><br><span class="line">    void print();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">package gavino.spring.service.impl;</span><br><span class="line">import gavino.spring.dao.IDemoDao;</span><br><span class="line">import gavino.spring.dao.impl.DemoDaoImpl;</span><br><span class="line">import gavino.spring.service.IDemoService;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Yan weigang</span><br><span class="line"> */</span><br><span class="line">public class DemoServiceImpl implements IDemoService &#123;</span><br><span class="line">    IDemoDao dao = new DemoDaoImpl();//将通过ioc解决这种依赖关系</span><br><span class="line">    public void print() &#123;</span><br><span class="line">        dao.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -520,7 +520,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        39
                     </p>
                 </div>
             </div>
@@ -752,25 +752,6 @@
         
         <article class="media">
             
-            <a href="/2019/09/07/Java-锁的种类及辨析/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567835839339&amp;di=f757513bf57ef0573ff630f0d1244089&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F04%2F20180804161455_HkifW.jpeg" alt="Java 锁的种类及辨析">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T01:54:57.000Z">2019-09-07</time></div>
-                    <a href="/2019/09/07/Java-锁的种类及辨析/" class="has-link-black-ter is-size-6">Java 锁的种类及辨析</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/09/06/面向艺术，面向接口/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://news.mydrivers.com/Img/20090817/09393557.jpg" alt="面向艺术，面向接口">
@@ -783,6 +764,25 @@
                     <a href="/2019/09/06/面向艺术，面向接口/" class="has-link-black-ter is-size-6">面向艺术，面向接口</a>
                     <p class="is-size-7 is-uppercase">
                         
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/04/策略模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1567835697206&amp;di=d98b7f057de45131214481de594d6dd2&amp;imgtype=0&amp;src=http%3A%2F%2Fimage.mamicode.com%2Finfo%2F201405%2F20180930173858260281.jpg" alt="策略模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-04T02:07:50.000Z">2019-09-04</time></div>
+                    <a href="/2019/09/04/策略模式/" class="has-link-black-ter is-size-6">策略模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/设计模式/">设计模式</a>
                     </p>
                 </div>
             </div>
@@ -866,7 +866,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
